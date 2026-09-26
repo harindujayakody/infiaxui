@@ -420,31 +420,6 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
                 </div>
               )}
 
-              {/* Hover Quick Action Overlay */}
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2 p-3 z-30">
-                <button
-                  onClick={(e) => handleCopyCli(e, block.id, block.cliCommand)}
-                  className="flex items-center gap-1.5 h-8 px-3 rounded-lg border border-white/20 bg-black/80 hover:bg-black text-white text-xs font-mono transition-colors shadow-lg cursor-pointer"
-                  title="Copy CLI install command"
-                >
-                  {copiedId === block.id ? (
-                    <>
-                      <Check className="size-3.5 text-emerald-400" />
-                      <span className="text-emerald-400 text-[11px]">Copied CLI</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="size-3.5 text-zinc-300" />
-                      <span className="text-[11px]">CLI Add</span>
-                    </>
-                  )}
-                </button>
-
-                <div className="flex items-center gap-1 h-8 px-3 rounded-lg bg-[var(--text-main)] text-[var(--bg-page)] text-xs font-medium hover:opacity-90 transition-opacity shadow-lg">
-                  <span>View</span>
-                  <ArrowRight className="size-3" />
-                </div>
-              </div>
             </div>
 
             {/* Bottom Content Metadata Area matching typography rules (16px Title, 13px Body) */}
