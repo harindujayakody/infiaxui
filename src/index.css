@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Created by Peek from ui.shadcn.com */
+/* Version: 0.8.10.1 */
+/* Created at: 9/26/2026, 11:53:45 AM */
+/* Learn more: https://trypeek.app */
+
+/* 17 Type Styles Identified, Selected: 10 */
+/* Typography – Raw tokens (Layer 2) */
+:root {
+  --font-geist: "Geist Sans", Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --text-12: 12px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-16: 16px;
+  --text-18: 18px;
+  --text-30: 30px;
+  --tracking-neg-0-75: -0.75px;
+
+  /* Global Color Tokens - Light Theme */
+  --bg-page: #FFFFFF;
+  --bg-card: #FAFAFA;
+  --bg-subtle: #F4F4F5;
+  --border-subtle: #E4E4E7;
+  --text-main: #09090B;
+  --text-muted: #71717A;
+
+  --background: #FFFFFF;
+  --foreground: #09090B;
+  --card: #FAFAFA;
+  --card-foreground: #09090B;
+  --popover: #FAFAFA;
+  --popover-foreground: #09090B;
+  --primary: #09090B;
+  --primary-foreground: #FAFAFA;
+  --secondary: #F4F4F5;
+  --secondary-foreground: #09090B;
+  --muted: #F4F4F5;
+  --muted-foreground: #71717A;
+  --accent: #F4F4F5;
+  --accent-foreground: #09090B;
+  --destructive: #EF4444;
+  --destructive-foreground: #FAFAFA;
+  --border: #E4E4E7;
+  --input: #E4E4E7;
+  --ring: #71717A;
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Global Color Tokens - Dark Theme: Exact Shadcn UI #0A0A0A & #161616 */
+  --bg-page: #0A0A0A;
+  --bg-card: #161616;
+  --bg-subtle: #1F1F1F;
+  --border-subtle: #262626;
+  --text-main: #EDEDED;
+  --text-muted: #8C8C8C;
+
+  --background: #0A0A0A;
+  --foreground: #EDEDED;
+  --card: #161616;
+  --card-foreground: #EDEDED;
+  --popover: #161616;
+  --popover-foreground: #EDEDED;
+  --primary: #EDEDED;
+  --primary-foreground: #0A0A0A;
+  --secondary: #242424;
+  --secondary-foreground: #EDEDED;
+  --muted: #1F1F1F;
+  --muted-foreground: #8C8C8C;
+  --accent: #1F1F1F;
+  --accent-foreground: #EDEDED;
+  --destructive: #7F1D1D;
+  --destructive-foreground: #EDEDED;
+  --border: #262626;
+  --input: #262626;
+  --ring: #8C8C8C;
+}
+
+/* Typography – Semantic type styles (Layer 1) */
+.type-h1 {
+  font-family: var(--font-geist);
+  font-size: var(--text-30);
+  font-weight: 600;
+  line-height: 1.20;
+  letter-spacing: var(--tracking-neg-0-75);
+}
+
+.type-h2 {
+  font-family: var(--font-geist);
+  font-size: var(--text-18);
+  font-weight: 600;
+  line-height: 1.46;
+}
+
+.type-heading {
+  font-family: var(--font-geist);
+  font-size: var(--text-16);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.type-header {
+  font-family: var(--font-geist);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: 1.50;
+}
+
+.type-body {
+  font-family: var(--font-geist);
+  font-size: var(--text-15);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.type-link {
+  font-family: var(--font-geist);
+  font-size: var(--text-14);
+  font-weight: 500;
+  line-height: 1.43;
+}
+
+.type-small-body {
+  font-family: var(--font-geist);
+  font-size: var(--text-14);
+  font-weight: 400;
+  line-height: 1.43;
+}
+
+.type-link-12 {
+  font-family: var(--font-geist);
+  font-size: var(--text-12);
+  font-weight: 500;
+  line-height: 1.52;
+}
+
+.type-caption {
+  font-family: var(--font-geist);
+  font-size: var(--text-12);
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.type-link-12-400 {
+  font-family: var(--font-geist);
+  font-size: var(--text-12);
+  font-weight: 400;
+  line-height: 1.52;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-geist);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+code, pre {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
