@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -28,6 +28,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Flickering Grid",
     "Morphing Text",
     "Particles",
+    "Pointer",
     "Tooltip Card",
     "Pixel Image",
     "Ripple",
@@ -1274,6 +1275,21 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "texts",
       "className",
       "useMorphingText",
+    ],
+  },
+  "Pointer": {
+    id: "pointer",
+    name: "Pointer",
+    description: "A component that displays a pointer when hovering over an element.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/pointer",
+    importCode: `import { Pointer } from "@/components/magicui/pointer"`,
+    usageCode: `<div className="relative rounded-xl border p-6">\n  Hover over me\n  <Pointer>\n    <div className="text-2xl">👆</div>\n  </Pointer>\n</div>`,
+    apiReference: [
+      "Pointer",
+      "children",
+      "className",
+      "style",
     ],
   },
 }

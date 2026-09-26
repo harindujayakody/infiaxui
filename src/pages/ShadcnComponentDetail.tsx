@@ -222,6 +222,8 @@ import { FlickeringGridDemo } from "@/components/magicui/flickering-grid-demo"
 import { FlickeringGridGuide } from "@/components/magicui/flickering-grid-guide"
 import { MorphingTextDemo } from "@/components/magicui/morphing-text-demo"
 import { MorphingTextGuide } from "@/components/magicui/morphing-text-guide"
+import { PointerDemo } from "@/components/magicui/pointer-demo"
+import { PointerGuide } from "@/components/magicui/pointer-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1288,6 +1290,60 @@ export function MorphingTextDemo() {
   return (
     <div className="relative flex h-[340px] sm:h-[420px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-4 text-white shadow-2xl">
       <MorphingText texts={texts} className="text-white" />
+    </div>
+  )
+}`
+
+      case "Pointer":
+        return `import { motion } from "framer-motion"
+import { Pointer } from "@/components/magicui/pointer"
+
+export function PointerDemo() {
+  return (
+    <div className="grid w-full max-w-2xl grid-cols-1 gap-6 md:grid-cols-2">
+      {/* 1. Animated Pointer */}
+      <div className="relative rounded-xl border border-white/10 bg-[#141414] p-6 text-center">
+        <h3 className="text-xl font-semibold text-white">Animated Pointer</h3>
+        <p className="text-sm text-neutral-400 mt-1">Animated pointer</p>
+        <Pointer>
+          <motion.div
+            animate={{ scale: [0.85, 1.15, 0.85], rotate: [0, 6, -6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg width="36" height="36" viewBox="0 0 24 24" className="text-pink-500 fill-current">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </motion.div>
+        </Pointer>
+      </div>
+
+      {/* 2. Colored Pointer */}
+      <div className="relative rounded-xl border border-white/10 bg-[#141414] p-6 text-center">
+        <h3 className="text-xl font-semibold text-white">Colored Pointer</h3>
+        <p className="text-sm text-neutral-400 mt-1">A custom pointer with different color</p>
+        <Pointer className="fill-blue-500" />
+      </div>
+
+      {/* 3. Custom Shape */}
+      <div className="relative rounded-xl border border-white/10 bg-[#141414] p-6 text-center">
+        <h3 className="text-xl font-semibold text-white">Custom Shape</h3>
+        <p className="text-sm text-neutral-400 mt-1">A pointer with a custom SVG shape</p>
+        <Pointer>
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" className="fill-purple-600" />
+            <circle cx="12" cy="12" r="4.5" className="fill-white" />
+          </svg>
+        </Pointer>
+      </div>
+
+      {/* 4. Emoji Pointer */}
+      <div className="relative rounded-xl border border-white/10 bg-[#141414] p-6 text-center">
+        <h3 className="text-xl font-semibold text-white">Emoji Pointer</h3>
+        <p className="text-sm text-neutral-400 mt-1">Using an emoji as a custom pointer</p>
+        <Pointer>
+          <div className="text-2xl">👆</div>
+        </Pointer>
+      </div>
     </div>
   )
 }`
@@ -3772,6 +3828,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Pointer":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <PointerDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4528,6 +4591,8 @@ export function ScrollAreaDemo() {
         <FlickeringGridGuide />
       ) : componentData.name === "Morphing Text" ? (
         <MorphingTextGuide />
+      ) : componentData.name === "Pointer" ? (
+        <PointerGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

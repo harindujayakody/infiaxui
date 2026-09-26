@@ -56,6 +56,7 @@ import { FocusCardsBlockPreview } from "@/components/ui/focus-cards-demo"
 import { LensBlockPreview } from "@/components/ui/lens-demo"
 import { FlickeringGridBlockPreview } from "@/components/magicui/flickering-grid-demo"
 import { MorphingTextBlockPreview } from "@/components/magicui/morphing-text-demo"
+import { PointerBlockPreview } from "@/components/magicui/pointer-demo"
 
 interface BlockItem {
   id: string
@@ -413,6 +414,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A dynamic text morphing component for Magic UI.",
       cliCommand: "npx shadcn@latest add @magicui/morphing-text",
       renderPreview: () => <MorphingTextBlockPreview />,
+    },
+    {
+      id: "pointer",
+      title: "Pointer",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Pointer",
+      description:
+        "A component that displays a pointer when hovering over an element.",
+      cliCommand: "npx shadcn@latest add @magicui/pointer",
+      renderPreview: () => <PointerBlockPreview />,
     },
     {
       id: "tooltip-card",
