@@ -153,6 +153,7 @@ import { ContextMenuDemo } from "@/components/shadcn/context-menu-demo"
 import { ChartDemo } from "@/components/shadcn/chart-demo"
 import { BubbleDemo } from "@/components/shadcn/bubble-demo"
 import { AvatarDemo } from "@/components/shadcn/avatar-demo"
+import { SeparatorDemo } from "@/components/shadcn/separator-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -2459,6 +2460,13 @@ export function ScrollAreaDemo() {
         return (
           <div className="w-full flex justify-center py-6">
             <BubbleDemo />
+          </div>
+        )
+
+      case "Separator":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <SeparatorDemo />
           </div>
         )
 
