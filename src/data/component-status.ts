@@ -187,6 +187,93 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout support & API reference",
     ],
   },
+  "Spinner": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Basic animated loading spinner",
+      "Custom icon replacement (LoaderIcon, Loader2, RefreshCw)",
+      "Size variants (xs, sm, default, lg, xl)",
+      "Button with loading state & inline spinner",
+      "Badge with inline status spinner",
+      "Input group with live search spinner",
+      "Empty state full section loading placeholder",
+      "RTL support & API reference",
+    ],
+  },
+  "Slider": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Basic single thumb range input",
+      "Dual thumb range slider",
+      "Multiple thumbs support",
+      "Vertical orientation slider",
+      "Controlled slider with step adjustments",
+      "Disabled state",
+      "RTL support & API reference",
+    ],
+  },
+  "Skeleton": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Basic animated pulse placeholders",
+      "Avatar and user profile skeleton",
+      "Card image + content skeleton with reveal demo",
+      "Paragraph and multi-line text skeleton",
+      "Form fields & submit button skeleton",
+      "Table rows & columns skeleton loader",
+      "RTL layout support",
+    ],
+  },
+  "Sidebar": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Complete composable hierarchy (Provider → Header/Content/Footer/Rail)",
+      "Collapsible modes (icon, offcanvas, none)",
+      "Visual variants (sidebar, floating, inset)",
+      "useSidebar hook integration",
+      "SidebarGroup, Menu, Badges, and Skeletons",
+      "CSS variable theming support",
+      "RTL support with migration changelog",
+    ],
+  },
+  "Sheet": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "4-side slide-in positioning (top, right, bottom, left)",
+      "Header, Title, Description, Content, Footer composition",
+      "Close button visibility toggle (showCloseButton={false})",
+      "Smooth Framer Motion backdrop & slide animations",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Separator": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Horizontal & vertical divider lines",
+      "Menu item vertical divider layout",
+      "List item horizontal divider separators",
+      "Decorative accessibility attribute support",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Select": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Dropdown selection trigger & popup menu",
+      "Grouped items with SelectGroup, SelectLabel, SelectSeparator",
+      "Scrollable dropdown for long lists (timezones)",
+      "Disabled select trigger & individual disabled items",
+      "Validation error state with data-invalid & aria-invalid",
+      "RTL layout support & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

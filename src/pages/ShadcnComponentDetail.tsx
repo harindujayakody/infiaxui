@@ -86,6 +86,13 @@ import { TextareaGuide } from "@/components/shadcn/textarea-guide"
 import { TabsGuide } from "@/components/shadcn/tabs-guide"
 import { TableGuide } from "@/components/shadcn/table-guide"
 import { SwitchGuide } from "@/components/shadcn/switch-guide"
+import { SpinnerGuide } from "@/components/shadcn/spinner-guide"
+import { SliderGuide } from "@/components/shadcn/slider-guide"
+import { SkeletonGuide } from "@/components/shadcn/skeleton-guide"
+import { SidebarGuide } from "@/components/shadcn/sidebar-guide"
+import { SheetGuide } from "@/components/shadcn/sheet-guide"
+import { SeparatorGuide } from "@/components/shadcn/separator-guide"
+import { SelectGuide } from "@/components/shadcn/select-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2779,6 +2786,20 @@ export function ChartDemo() {
         <TableGuide />
       ) : componentData.name === "Switch" ? (
         <SwitchGuide />
+      ) : componentData.name === "Spinner" ? (
+        <SpinnerGuide />
+      ) : componentData.name === "Slider" ? (
+        <SliderGuide />
+      ) : componentData.name === "Skeleton" ? (
+        <SkeletonGuide />
+      ) : componentData.name === "Sidebar" ? (
+        <SidebarGuide />
+      ) : componentData.name === "Sheet" ? (
+        <SheetGuide />
+      ) : componentData.name === "Separator" ? (
+        <SeparatorGuide />
+      ) : componentData.name === "Select" ? (
+        <SelectGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

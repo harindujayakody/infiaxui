@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Check, Copy, ChevronDown, ChevronUp } from "lucide-react"
+import { Check, Copy, ChevronDown, Code2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 interface CodeBlockProps {
@@ -16,8 +16,8 @@ export function CodeBlock({
   language = "tsx",
   showLineNumbers = true,
   fileName,
-  initialExpanded = true,
-  maxCollapsedHeight = 240,
+  initialExpanded = false,
+  maxCollapsedHeight = 84,
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false)
   const [isExpanded, setIsExpanded] = useState(initialExpanded)
@@ -30,181 +30,157 @@ export function CodeBlock({
 
   const lines = code.trim().split("\n")
 
-  // Simple, robust syntax colorizer
+  // Same syntax colorizer as main detail page
   const renderHighlightedLine = (line: string) => {
     if (!line.trim()) return <span>&nbsp;</span>
 
     const parts = line.split(
-      /(".*?"|'.*?'|`.*?`|\b(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)\b|[{}\[\](),;<>])/g
+      /(\".*?\"|'.*?'|`.*?`|\b(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)\b|[{}\[\](),;<>])/g
     )
 
     return (
       <span>
         {parts.map((part, index) => {
           if (!part) return null
-          // String literal
           if (
             (part.startsWith('"') && part.endsWith('"')) ||
             (part.startsWith("'") && part.endsWith("'")) ||
             (part.startsWith("`") && part.endsWith("`"))
           ) {
-            return (
-              <span key={index} className="text-emerald-400">
-                {part}
-              </span>
-            )
+            return <span key={index} className="text-emerald-400">{part}</span>
           }
-          // Keywords
-          if (
-            /^(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)$/.test(
-              part
-            )
-          ) {
-            return (
-              <span key={index} className="text-purple-400 font-medium">
-                {part}
-              </span>
-            )
+          if (/^(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)$/.test(part)) {
+            return <span key={index} className="text-purple-400 font-medium">{part}</span>
           }
-          // Tags or JSX
           if (/^[<>]/.test(part)) {
-            return (
-              <span key={index} className="text-pink-400 font-medium">
-                {part}
-              </span>
-            )
+            return <span key={index} className="text-pink-400 font-medium">{part}</span>
           }
-          // Symbols
-          if (/^[{}[\](),;]$/.test(part)) {
-            return (
-              <span key={index} className="text-[var(--text-muted)]">
-                {part}
-              </span>
-            )
+          if (/^[{}\[\](),;]$/.test(part)) {
+            return <span key={index} className="text-[var(--text-muted)]">{part}</span>
           }
-          // Default text
-          return (
-            <span key={index} className="text-[var(--text-main)]">
-              {part}
-            </span>
-          )
+          return <span key={index} className="text-[var(--text-main)]">{part}</span>
         })}
       </span>
     )
   }
 
-  const isLongCode = lines.length > 8
-
   return (
-    <div className="relative group rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] font-mono text-xs overflow-hidden shadow-lg transition-colors">
-      {/* Mac Style Code Header */}
-      <div className="flex items-center justify-between border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/60 px-4 py-2.5 text-xs select-none">
-        <div className="flex items-center gap-3">
-          {/* Static macOS Window Controls */}
-          <div className="flex items-center gap-1.5" aria-hidden="true">
-            <span className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
-            <span className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
-            <span className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
-          </div>
-
-          <div className="h-3 w-px bg-[var(--border-subtle)]" />
-
-          {/* TS badge & File name */}
-          <div className="flex items-center gap-2 text-[var(--text-muted)]">
-            <span className="font-bold text-[10px] bg-[var(--bg-subtle)] border border-[var(--border-subtle)] px-1.5 py-0.5 rounded text-[var(--text-main)] font-mono">
-              {language.toUpperCase()}
-            </span>
-            {fileName && (
-              <span className="font-mono text-xs text-[var(--text-muted)] group-hover:text-[var(--text-main)] transition-colors">
-                {fileName}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Right side: Expand + Copy buttons */}
-        <div className="flex items-center gap-2">
-          {isLongCode && (
-            <button
-              type="button"
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors type-link-12 font-medium px-2 py-0.5 rounded hover:bg-[var(--bg-subtle)] cursor-pointer"
-            >
-              <span>{isExpanded ? "Collapse" : "Expand"}</span>
-              <ChevronDown
-                className={`size-3 transition-transform duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  isExpanded ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-          )}
-
-          <button
-            type="button"
-            onClick={handleCopy}
-            className="flex items-center gap-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/70 hover:bg-[var(--bg-subtle)] px-2.5 py-1 text-xs text-[var(--text-main)] transition-all cursor-pointer"
-            title="Copy code"
-          >
-            {copied ? (
-              <>
-                <Check className="size-3.5 text-emerald-400" />
-                <span className="text-emerald-400">Copied</span>
-              </>
-            ) : (
-              <>
-                <Copy className="size-3.5 text-[var(--text-muted)]" />
-                <span>Copy</span>
-              </>
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Code container with smooth height animation */}
+    <div className="relative rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-page)] font-mono text-xs overflow-hidden shadow-lg transition-colors">
+      {/* Mac Style Code Header — same as detail page */}
       <motion.div
         initial={false}
-        animate={{
-          height: isExpanded || !isLongCode ? "auto" : maxCollapsedHeight,
-        }}
+        animate={{ opacity: isExpanded ? 1 : 0, height: isExpanded ? "auto" : 0 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="overflow-hidden"
+      >
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60 select-none">
+          <div className="flex items-center gap-3">
+            {/* Static macOS dots — size-2.5 like detail page */}
+            <div className="flex items-center gap-1.5" aria-hidden="true">
+              <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
+              <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
+              <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
+            </div>
+            <div className="h-3 w-px bg-[var(--border-subtle)]" />
+            <div className="flex items-center gap-2 text-[var(--text-muted)]">
+              <span className="font-bold text-[10px] bg-[var(--bg-card)] border border-[var(--border-subtle)] px-1.5 py-0.5 rounded text-[var(--text-main)] font-mono">
+                {language.toUpperCase()}
+              </span>
+              {fileName && (
+                <span className="font-mono text-xs text-[var(--text-muted)]">{fileName}</span>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setIsExpanded(false)}
+              className="px-2.5 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer"
+            >
+              Collapse Code
+            </button>
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] text-xs text-[var(--text-main)] transition-colors cursor-pointer"
+              title="Copy code"
+            >
+              {copied ? (
+                <>
+                  <Check className="size-3.5 text-emerald-400" />
+                  <span className="text-emerald-400">Copied</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="size-3.5 text-[var(--text-muted)]" />
+                  <span>Copy</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Code area — smooth height animation */}
+      <motion.div
+        initial={false}
+        animate={{ height: isExpanded ? "auto" : maxCollapsedHeight }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="relative overflow-hidden"
       >
-        <div className={`p-4 ${isExpanded ? "overflow-x-auto max-h-[600px]" : "overflow-hidden"}`}>
+        <div className={`p-4 leading-relaxed text-[var(--text-main)] ${isExpanded ? "overflow-x-auto max-h-[500px]" : "overflow-hidden"}`}>
           <pre className="table w-full">
             <code>
               {lines.map((line, idx) => (
-                <div key={idx} className="table-row leading-relaxed hover:bg-[var(--bg-subtle)]/40">
+                <div key={idx} className="flex gap-4 hover:bg-[var(--bg-subtle)]/30 px-1 py-0.5 rounded">
                   {showLineNumbers && (
-                    <span className="table-cell select-none pr-4 text-right text-[var(--text-muted)]/60 w-8 text-xs font-mono">
+                    <span className="text-[var(--text-muted)]/60 select-none w-6 text-right shrink-0">
                       {idx + 1}
                     </span>
                   )}
-                  <span className="table-cell whitespace-pre">
-                    {renderHighlightedLine(line)}
-                  </span>
+                  <span className="whitespace-pre">{renderHighlightedLine(line)}</span>
                 </div>
               ))}
             </code>
           </pre>
         </div>
 
+        {/* Bottom Collapse Footer */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: isExpanded ? 1 : 0, height: isExpanded ? "auto" : 0 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="overflow-hidden"
+        >
+          <div className="flex justify-end p-2 border-t border-[var(--border-subtle)] bg-[var(--bg-subtle)]/30">
+            <button
+              type="button"
+              onClick={() => setIsExpanded(false)}
+              className="px-3 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer"
+            >
+              Collapse Code
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Collapsed overlay with centered "View Code" button — same as detail page */}
         <AnimatePresence>
-          {!isExpanded && isLongCode && (
+          {!isExpanded && (
             <motion.div
               key="codeblock-collapsed-overlay"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[var(--bg-card)] via-[var(--bg-card)]/80 to-transparent flex items-end justify-center pb-2 select-none"
+              className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)]/85 to-transparent z-10 select-none"
             >
               <button
                 type="button"
                 onClick={() => setIsExpanded(true)}
-                className="text-xs text-[var(--text-main)] bg-[var(--bg-subtle)] hover:bg-[var(--bg-card)] border border-[var(--border-subtle)] px-3 py-1 rounded-full shadow-lg transition-colors flex items-center gap-1 cursor-pointer"
+                className="px-4 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] text-xs text-[var(--text-main)] shadow-lg transition-colors flex items-center gap-1.5 cursor-pointer"
               >
-                <span>Expand code ({lines.length} lines)</span>
-                <ChevronDown className="size-3" />
+                <Code2 className="size-3.5" />
+                <span>View Code</span>
               </button>
             </motion.div>
           )}
