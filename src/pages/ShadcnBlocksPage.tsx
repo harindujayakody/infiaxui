@@ -24,7 +24,6 @@ import {
   HeroSectionsPreview,
   AnimatedBeamMiniPreview,
   BentoGridMiniPreview,
-  GlobeMiniPreview,
 } from "@/components/blocks/block-previews"
 import { GlareHoverBlockCardPreview } from "@/components/magicui/glare-hover-demo"
 import { DockCardPreview } from "@/components/magicui/dock-demo"
@@ -33,6 +32,7 @@ import { MagicCardBlockPreview } from "@/components/magicui/magic-card-demo"
 import { WarpBackgroundBlockPreview } from "@/components/magicui/warp-background-demo"
 import { Floating3DParticlesBlockPreview } from "@/components/magicui/floating-3d-particles-demo"
 import { MarqueeBlockPreview } from "@/components/magicui/marquee-demo"
+import { GlobeBlockPreview } from "@/components/magicui/globe-demo"
 
 interface BlockItem {
   id: string
@@ -126,14 +126,15 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       renderPreview: () => <BentoGridMiniPreview />,
     },
     {
-      id: "interactive-globe",
-      title: "Interactive Globe",
-      category: "Canvas & Shaders",
+      id: "globe",
+      title: "Globe",
+      category: "Magic UI",
       badge: "WebGL",
+      componentTarget: "Globe",
       description:
-        "Lightweight canvas 3D globe with interactive arcs, glowing pinpoint markers, and auto-rotation.",
+        "An autorotating, interactive, and highly performant globe made using WebGL.",
       cliCommand: "npx shadcn@latest add @magicui/globe",
-      renderPreview: () => <GlobeMiniPreview />,
+      renderPreview: () => <GlobeBlockPreview />,
     },
     {
       id: "dock",

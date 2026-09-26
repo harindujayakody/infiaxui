@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -76,6 +76,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Dock",
     "Empty",
     "Floating 3D Particles",
+    "Globe",
     "Input",
     "Item",
     "Magic Card",
@@ -802,6 +803,21 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "vertical",
       "repeat",
       "children",
+    ],
+  },
+  Globe: {
+    id: "globe",
+    name: "Globe",
+    description: "An autorotating, interactive, and highly performant globe made using WebGL.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/globe",
+    importCode: `import { Globe } from "@/components/magicui/globe"`,
+    usageCode: `<div className="relative flex size-full items-center justify-center">\n  <span className="text-8xl font-semibold">Globe</span>\n  <Globe className="top-28" />\n</div>`,
+    apiReference: [
+      "Globe",
+      "className",
+      "config",
+      "COBEOptions",
     ],
   },
 }

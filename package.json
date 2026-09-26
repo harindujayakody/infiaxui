@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "cobe": "^0.6.4",
     "framer-motion": "^12.4.7",
     "geist": "^1.7.2",
     "lucide-react": "^1.16.0",
