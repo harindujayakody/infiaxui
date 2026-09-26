@@ -116,9 +116,9 @@ export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsC
                 }}
                 className="group flex flex-col justify-between p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] hover:border-[var(--border-strong)] transition-all shadow-sm"
               >
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-xs text-[var(--text-main)] transition-colors flex items-center gap-1.5">
+                    <span className="font-semibold text-[16px] text-[var(--text-main)] transition-colors flex items-center gap-1.5">
                       {comp}
                     </span>
                     {isNew && (
@@ -128,7 +128,7 @@ export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsC
                     )}
                   </div>
                   {detail?.description && (
-                    <p className="text-[11px] text-[var(--text-muted)] line-clamp-2 leading-relaxed">
+                    <p className="text-[13px] text-[var(--text-muted)] line-clamp-2 leading-relaxed">
                       {detail.description}
                     </p>
                   )}
