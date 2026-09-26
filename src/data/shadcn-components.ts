@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -17,6 +17,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "3D Card Effect",
     "Animated Shiny Text",
     "Scroll Based Velocity",
+    "Smooth Cursor",
     "Accordion",
     "Aspect Ratio",
     "Badge",
@@ -933,6 +934,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "direction",
       "scrollReactivity",
       "wrap",
+    ],
+  },
+  "Smooth Cursor": {
+    id: "smooth-cursor",
+    name: "Smooth Cursor",
+    description: "A customizable, physics-based smooth cursor animation component for React applications.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/smooth-cursor",
+    importCode: `import { SmoothCursor } from "@/components/ui/smooth-cursor"`,
+    usageCode: `<SmoothCursor />`,
+    apiReference: [
+      "SmoothCursor",
+      "DefaultCursorSVG",
+      "cursor",
+      "springConfig",
+      "containerRef",
     ],
   },
 }

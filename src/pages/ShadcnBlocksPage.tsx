@@ -38,6 +38,7 @@ import { RainbowButtonBlockPreview } from "@/components/magicui/rainbow-button-d
 import { ThreeDCardBlockPreview } from "@/components/ui/three-d-card-demo"
 import { AnimatedShinyTextBlockPreview } from "@/components/magicui/animated-shiny-text-demo"
 import { ScrollBasedVelocityBlockPreview } from "@/components/magicui/scroll-based-velocity-demo"
+import { SmoothCursorBlockPreview } from "@/components/magicui/smooth-cursor-demo"
 
 interface BlockItem {
   id: string
@@ -274,6 +275,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "Scrolling text whose speed changes based on scroll speed.",
       cliCommand: "npx shadcn@latest add @magicui/scroll-based-velocity",
       renderPreview: () => <ScrollBasedVelocityBlockPreview />,
+    },
+    {
+      id: "smooth-cursor",
+      title: "Smooth Cursor",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Smooth Cursor",
+      description:
+        "A customizable, physics-based smooth cursor animation component for React applications.",
+      cliCommand: "npx shadcn@latest add @magicui/smooth-cursor",
+      renderPreview: () => <SmoothCursorBlockPreview />,
     },
   ]
 

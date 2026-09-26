@@ -186,6 +186,8 @@ import { AnimatedShinyTextDemo } from "@/components/magicui/animated-shiny-text-
 import { AnimatedShinyTextGuide } from "@/components/magicui/animated-shiny-text-guide"
 import { ScrollBasedVelocityDemo } from "@/components/magicui/scroll-based-velocity-demo"
 import { ScrollBasedVelocityGuide } from "@/components/magicui/scroll-based-velocity-guide"
+import { SmoothCursorDemo } from "@/components/magicui/smooth-cursor-demo"
+import { SmoothCursorGuide } from "@/components/magicui/smooth-cursor-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -747,6 +749,20 @@ export function ScrollBasedVelocityDemo() {
 
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 sm:w-1/3 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 sm:w-1/3 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10" />
+    </div>
+  )
+}`
+
+      case "Smooth Cursor":
+        return `import { SmoothCursor } from "@/components/ui/smooth-cursor"
+
+export function SmoothCursorDemo() {
+  return (
+    <div className="relative flex min-h-[360px] w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] select-none p-6 shadow-2xl">
+      <p className="pointer-events-none z-10 text-base sm:text-lg font-normal text-zinc-300 tracking-tight select-none">
+        Move your mouse around
+      </p>
+      <SmoothCursor />
     </div>
   )
 }`
@@ -3105,6 +3121,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Smooth Cursor":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <SmoothCursorDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3825,6 +3848,8 @@ export function ScrollAreaDemo() {
         <AnimatedShinyTextGuide />
       ) : componentData.name === "Scroll Based Velocity" ? (
         <ScrollBasedVelocityGuide />
+      ) : componentData.name === "Smooth Cursor" ? (
+        <SmoothCursorGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
