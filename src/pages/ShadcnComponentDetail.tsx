@@ -133,6 +133,8 @@ import { ButtonGroupGuide } from "@/components/shadcn/button-group-guide"
 import { AlertGuide } from "@/components/shadcn/alert-guide"
 import { AlertDialogGuide } from "@/components/shadcn/alert-dialog-guide"
 import { AspectRatioGuide } from "@/components/shadcn/aspect-ratio-guide"
+import { AttachmentGuide } from "@/components/shadcn/attachment-guide"
+import { ButtonGuide } from "@/components/shadcn/button-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2920,6 +2922,10 @@ export function ChartDemo() {
         <AlertDialogGuide />
       ) : componentData.name === "Aspect Ratio" ? (
         <AspectRatioGuide />
+      ) : componentData.name === "Attachment" ? (
+        <AttachmentGuide />
+      ) : componentData.name === "Button" ? (
+        <ButtonGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

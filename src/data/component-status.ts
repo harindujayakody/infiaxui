@@ -701,6 +701,27 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "API reference",
     ],
   },
+  "Attachment": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "File and image attachment cards with media and actions",
+      "Upload lifecycle states (idle, uploading, processing, error, done)",
+      "AttachmentGroup horizontally snapping carousel row",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Button": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "6 Visual variants (default, outline, secondary, ghost, destructive, link)",
+      "8 Sizing options and rounded-full pill button support",
+      "Inline icon slots and animated loading spinner state",
+      "buttonVariants helper for semantic link styling",
+      "RTL layout support & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {
