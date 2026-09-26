@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -18,6 +18,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Animated List",
     "Animated Shiny Text",
     "Animated Testimonials",
+    "Background Ripple Effect",
     "Card Spotlight",
     "Dia Text Reveal",
     "Dot Pattern",
@@ -1161,6 +1162,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "children",
       "radius",
       "color",
+      "className",
+    ],
+  },
+  "Background Ripple Effect": {
+    id: "background-ripple-effect",
+    name: "Background Ripple Effect",
+    description: "A grid of cells that ripple when clicked.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/background-ripple-effect-demo",
+    importCode: `import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"`,
+    usageCode: `<BackgroundRippleEffect rows={8} cols={27} cellSize={56} />`,
+    apiReference: [
+      "BackgroundRippleEffect",
+      "rows",
+      "cols",
+      "cellSize",
       "className",
     ],
   },

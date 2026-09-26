@@ -210,6 +210,8 @@ import { AnimatedTestimonialsDemo } from "@/components/ui/animated-testimonials-
 import { AnimatedTestimonialsGuide } from "@/components/ui/animated-testimonials-guide"
 import { CardSpotlightDemo } from "@/components/ui/card-spotlight-demo"
 import { CardSpotlightGuide } from "@/components/ui/card-spotlight-guide"
+import { BackgroundRippleEffectDemo } from "@/components/ui/background-ripple-effect-demo"
+import { BackgroundRippleEffectGuide } from "@/components/ui/background-ripple-effect-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1109,6 +1111,29 @@ export function CardSpotlightDemo() {
         Ensuring your account is properly secured helps protect your personal information and data.
       </p>
     </CardSpotlight>
+  )
+}`
+
+      case "Background Ripple Effect":
+        return `import React from "react"
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
+
+export function BackgroundRippleEffectDemo() {
+  return (
+    <div className="relative flex min-h-[440px] sm:min-h-[520px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-neutral-800 bg-[#0A0A0A] p-6 sm:p-10 select-none shadow-2xl">
+      <BackgroundRippleEffect rows={9} cols={22} cellSize={48} />
+      <div className="relative z-10 mx-auto max-w-4xl text-center pointer-events-none mt-4">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+          Interactive Background
+          <br />
+          Boxes Ripple Effect
+        </h2>
+        <p className="mt-4 max-w-xl mx-auto text-xs sm:text-sm text-neutral-400 leading-relaxed">
+          Hover over the boxes above and click. To be used on backgrounds of hero
+          sections OR Call to Action sections. I beg you don't use it everywhere.
+        </p>
+      </div>
+    </div>
   )
 }`
 
@@ -3550,6 +3575,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Background Ripple Effect":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <BackgroundRippleEffectDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4294,6 +4326,8 @@ export function ScrollAreaDemo() {
         <AnimatedTestimonialsGuide />
       ) : componentData.name === "Card Spotlight" ? (
         <CardSpotlightGuide />
+      ) : componentData.name === "Background Ripple Effect" ? (
+        <BackgroundRippleEffectGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

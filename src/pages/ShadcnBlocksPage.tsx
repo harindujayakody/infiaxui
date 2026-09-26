@@ -50,6 +50,7 @@ import { ParticlesBlockPreview } from "@/components/magicui/particles-demo"
 import { TooltipCardBlockPreview } from "@/components/ui/tooltip-card-demo"
 import { AnimatedTestimonialsBlockPreview } from "@/components/ui/animated-testimonials-demo"
 import { CardSpotlightBlockPreview } from "@/components/ui/card-spotlight-demo"
+import { BackgroundRippleEffectBlockPreview } from "@/components/ui/background-ripple-effect-demo"
 
 interface BlockItem {
   id: string
@@ -418,6 +419,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A card component with a spotlight effect revealing a radial gradient background.",
       cliCommand: "npx shadcn@latest add @aceternity/card-spotlight-demo",
       renderPreview: () => <CardSpotlightBlockPreview />,
+    },
+    {
+      id: "background-ripple-effect",
+      title: "Background Ripple Effect",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Background Ripple Effect",
+      description:
+        "A grid of cells that ripple when clicked.",
+      cliCommand: "npx shadcn@latest add @aceternity/background-ripple-effect-demo",
+      renderPreview: () => <BackgroundRippleEffectBlockPreview />,
     },
   ]
 
