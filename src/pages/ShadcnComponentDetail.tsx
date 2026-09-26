@@ -166,6 +166,8 @@ import { TweetCardDemo } from "@/components/magicui/tweet-card-demo"
 import { TweetCardGuide } from "@/components/magicui/tweet-card-guide"
 import { MagicCardDemo } from "@/components/magicui/magic-card-demo"
 import { MagicCardGuide } from "@/components/magicui/magic-card-guide"
+import { WarpBackgroundDemo } from "@/components/magicui/warp-background-demo"
+import { WarpBackgroundGuide } from "@/components/magicui/warp-background-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -371,6 +373,32 @@ export function MagicCardDemo() {
           </p>
         </div>
       </MagicCard>
+    </div>
+  )
+}`
+
+      case "Warp Background":
+        return `import { WarpBackground } from "@/components/magicui/warp-background"
+
+export function WarpBackgroundDemo() {
+  return (
+    <div className="flex w-full items-center justify-center p-8">
+      <WarpBackground
+        perspective={120}
+        beamsPerSide={4}
+        beamSize={5}
+        beamDuration={3.5}
+        className="w-full max-w-xl min-h-[360px] p-6 sm:p-12 shadow-2xl"
+      >
+        <div className="relative rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)]/90 p-6 sm:p-8 backdrop-blur-md shadow-2xl max-w-md text-left">
+          <h3 className="text-base sm:text-lg font-bold text-[var(--text-main)]">
+            Congratulations on Your Promotion!
+          </h3>
+          <p className="mt-2.5 text-xs sm:text-[13px] text-[var(--text-muted)] leading-relaxed">
+            Your hard work and dedication have paid off. We're thrilled to see you take this next step in your career. Keep up the fantastic work!
+          </p>
+        </div>
+      </WarpBackground>
     </div>
   )
 }`
@@ -2659,6 +2687,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Warp Background":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <WarpBackgroundDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3359,6 +3394,8 @@ export function ScrollAreaDemo() {
         <TweetCardGuide />
       ) : componentData.name === "Magic Card" ? (
         <MagicCardGuide />
+      ) : componentData.name === "Warp Background" ? (
+        <WarpBackgroundGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

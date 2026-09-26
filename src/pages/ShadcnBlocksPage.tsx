@@ -30,6 +30,7 @@ import { GlareHoverBlockCardPreview } from "@/components/magicui/glare-hover-dem
 import { DockCardPreview } from "@/components/magicui/dock-demo"
 import { TweetCardBlockPreview } from "@/components/magicui/tweet-card-demo"
 import { MagicCardBlockPreview } from "@/components/magicui/magic-card-demo"
+import { WarpBackgroundBlockPreview } from "@/components/magicui/warp-background-demo"
 
 interface BlockItem {
   id: string
@@ -175,6 +176,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
       cliCommand: "npx shadcn@latest add @magicui/magic-card",
       renderPreview: () => <MagicCardBlockPreview />,
+    },
+    {
+      id: "warp-background",
+      title: "Warp Background",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Warp Background",
+      description:
+        "A card with a time warping background effect.",
+      cliCommand: "npx shadcn@latest add @magicui/warp-background",
+      renderPreview: () => <WarpBackgroundBlockPreview />,
     },
   ]
 

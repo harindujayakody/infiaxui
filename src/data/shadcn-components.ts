@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -79,6 +79,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Item",
     "Magic Card",
     "Tweet Card",
+    "Warp Background",
   ],
 ]
 
@@ -743,6 +744,25 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "glowSize",
       "glowBlur",
       "glowOpacity",
+    ],
+  },
+  "Warp Background": {
+    id: "warp-background",
+    name: "Warp Background",
+    description: "A card with a time warping background effect.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/warp-background",
+    importCode: `import { WarpBackground } from "@/components/magicui/warp-background"`,
+    usageCode: `<WarpBackground>\n  <div className="w-80">\n    <p>Warp Background</p>\n    <p>This is a component that creates a warp background effect.</p>\n  </div>\n</WarpBackground>`,
+    apiReference: [
+      "WarpBackground",
+      "perspective",
+      "beamsPerSide",
+      "beamSize",
+      "beamDuration",
+      "beamDelayMin",
+      "beamDelayMax",
+      "gridColor",
     ],
   },
 }
