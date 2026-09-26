@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -81,6 +81,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Item",
     "Magic Card",
     "Marquee",
+    "Terminal",
     "Tweet Card",
     "Warp Background",
   ],
@@ -818,6 +819,25 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "className",
       "config",
       "COBEOptions",
+    ],
+  },
+  Terminal: {
+    id: "terminal",
+    name: "Terminal",
+    description: "An implementation of the MacOS terminal. Useful for showcasing a command line interface.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/terminal",
+    importCode: `import {\n  Terminal,\n  AnimatedSpan,\n  TypingAnimation,\n} from "@/components/magicui/terminal"`,
+    usageCode: `<Terminal>\n  <TypingAnimation>> pnpm dlx shadcn@latest init</TypingAnimation>\n  <AnimatedSpan>✔ Preflight checks.</AnimatedSpan>\n  <AnimatedSpan>✔ Validating Tailwind CSS.</AnimatedSpan>\n  <TypingAnimation>Success! Project initialization completed.</TypingAnimation>\n</Terminal>`,
+    apiReference: [
+      "Terminal",
+      "AnimatedSpan",
+      "TypingAnimation",
+      "sequence",
+      "startOnView",
+      "duration",
+      "delay",
+      "as",
     ],
   },
 }

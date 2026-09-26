@@ -174,6 +174,8 @@ import { MarqueeDemo } from "@/components/magicui/marquee-demo"
 import { MarqueeGuide } from "@/components/magicui/marquee-guide"
 import { GlobeDemo } from "@/components/magicui/globe-demo"
 import { GlobeGuide } from "@/components/magicui/globe-guide"
+import { TerminalDemo } from "@/components/magicui/terminal-demo"
+import { TerminalGuide } from "@/components/magicui/terminal-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -490,6 +492,60 @@ export function GlobeDemo() {
       <Globe className="top-28" />
       <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
     </div>
+  )
+}`
+
+      case "Terminal":
+        return `import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/magicui/terminal"
+
+export function TerminalDemo() {
+  return (
+    <Terminal>
+      <TypingAnimation>> pnpm dlx shadcn@latest init</TypingAnimation>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Preflight checks.
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Verifying framework. Found Next.js.
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Validating Tailwind CSS.
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Validating import alias.
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Writing components.json.
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Checking registry.
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Updating tailwind.config.ts
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Updating app/globals.css
+      </AnimatedSpan>
+      <AnimatedSpan className="text-emerald-400">
+        ✔ Installing dependencies.
+      </AnimatedSpan>
+      <AnimatedSpan className="text-blue-400">
+        ℹ Updated 1 file:
+      </AnimatedSpan>
+      <AnimatedSpan className="text-blue-400 pl-4">
+        - lib/utils.ts
+      </AnimatedSpan>
+      <TypingAnimation className="text-zinc-200">
+        Success! Project initialization completed.
+      </TypingAnimation>
+      <AnimatedSpan className="text-zinc-500">
+        You may now add components.
+      </AnimatedSpan>
+    </Terminal>
   )
 }`
 
@@ -2805,6 +2861,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Terminal":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <TerminalDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3513,6 +3576,8 @@ export function ScrollAreaDemo() {
         <MarqueeGuide />
       ) : componentData.name === "Globe" ? (
         <GlobeGuide />
+      ) : componentData.name === "Terminal" ? (
+        <TerminalGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

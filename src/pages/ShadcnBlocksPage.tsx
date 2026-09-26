@@ -33,6 +33,7 @@ import { WarpBackgroundBlockPreview } from "@/components/magicui/warp-background
 import { Floating3DParticlesBlockPreview } from "@/components/magicui/floating-3d-particles-demo"
 import { MarqueeBlockPreview } from "@/components/magicui/marquee-demo"
 import { GlobeBlockPreview } from "@/components/magicui/globe-demo"
+import { TerminalBlockPreview } from "@/components/magicui/terminal-demo"
 
 interface BlockItem {
   id: string
@@ -212,6 +213,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "An infinite scrolling component that can be used to display text, images, or videos.",
       cliCommand: "npx shadcn@latest add @magicui/marquee",
       renderPreview: () => <MarqueeBlockPreview />,
+    },
+    {
+      id: "terminal",
+      title: "Terminal",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Terminal",
+      description:
+        "An implementation of the MacOS terminal. Useful for showcasing a command line interface.",
+      cliCommand: "npx shadcn@latest add @magicui/terminal",
+      renderPreview: () => <TerminalBlockPreview />,
     },
   ]
 
