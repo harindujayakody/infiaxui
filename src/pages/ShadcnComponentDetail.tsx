@@ -142,6 +142,8 @@ import { IntroductionGuide } from "@/components/shadcn/introduction-guide"
 import { SkillsGuide } from "@/components/shadcn/skills-guide"
 import { NavigationMenuDemo } from "@/components/shadcn/navigation-menu-demo"
 import { HoverCardDemo } from "@/components/shadcn/hover-card-demo"
+import { PopoverDemo } from "@/components/shadcn/popover-demo"
+import { MenubarDemo } from "@/components/shadcn/menubar-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -235,6 +237,136 @@ export function ButtonDemo() {
       <Button variant="ghost">Ghost</Button>
       <Button variant="link">Link</Button>
     </div>
+  )
+}`
+
+      case "Popover":
+        return `import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { SlidersHorizontal } from "lucide-react"
+
+export function PopoverDemo() {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline" className="gap-2">
+          <SlidersHorizontal className="size-4" />
+          <span>Dimensions</span>
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80">
+        <PopoverHeader>
+          <PopoverTitle>Dimensions</PopoverTitle>
+          <PopoverDescription>
+            Set the dimensions for the layer.
+          </PopoverDescription>
+        </PopoverHeader>
+        <div className="grid gap-3 pt-1">
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="width">Width</Label>
+            <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="maxWidth">Max. width</Label>
+            <Input id="maxWidth" defaultValue="300px" className="col-span-2 h-8" />
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="height">Height</Label>
+            <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="maxHeight">Max. height</Label>
+            <Input id="maxHeight" defaultValue="none" className="col-span-2 h-8" />
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+  )
+}`
+
+      case "Menubar":
+        return `import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
+
+export function MenubarDemo() {
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            New Window <MenubarShortcut>⌘N</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem disabled>New Incognito Window</MenubarItem>
+          <MenubarSeparator />
+          <MenubarSub>
+            <MenubarSubTrigger>Share</MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem>Email link</MenubarItem>
+              <MenubarItem>Messages</MenubarItem>
+              <MenubarItem>Notes</MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+          <MenubarSeparator />
+          <MenubarItem>
+            Print... <MenubarShortcut>⌘P</MenubarShortcut>
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+          <MenubarCheckboxItem checked>Always Show Bookmarks Bar</MenubarCheckboxItem>
+          <MenubarCheckboxItem>Always Show Full URLs</MenubarCheckboxItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Profiles</MenubarTrigger>
+        <MenubarContent>
+          <MenubarRadioGroup value="benoit">
+            <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
+            <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
+            <MenubarRadioItem value="luis">Luis</MenubarRadioItem>
+          </MenubarRadioGroup>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
   )
 }`
 
@@ -2105,6 +2237,20 @@ export function ChartDemo() {
         return (
           <div className="w-full flex justify-center py-6">
             <HoverCardDemo />
+          </div>
+        )
+
+      case "Popover":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <PopoverDemo />
+          </div>
+        )
+
+      case "Menubar":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <MenubarDemo />
           </div>
         )
 
