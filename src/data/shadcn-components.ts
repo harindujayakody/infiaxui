@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -17,6 +17,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Accordion",
     "Aspect Ratio",
     "Badge",
+    "Bento Grid",
     "Button",
     "Card",
     "Checkbox",
@@ -838,6 +839,26 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "duration",
       "delay",
       "as",
+    ],
+  },
+  "Bento Grid": {
+    id: "bento-grid",
+    name: "Bento Grid",
+    description: "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/bento-grid",
+    importCode: `import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid"`,
+    usageCode: `<BentoGrid>\n  {features.map((feature, idx) => (\n    <BentoCard key={idx} {...feature} />\n  ))}\n</BentoGrid>`,
+    apiReference: [
+      "BentoGrid",
+      "BentoCard",
+      "name",
+      "description",
+      "href",
+      "cta",
+      "background",
+      "Icon",
+      "className",
     ],
   },
 }

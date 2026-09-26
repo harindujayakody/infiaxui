@@ -176,6 +176,8 @@ import { GlobeDemo } from "@/components/magicui/globe-demo"
 import { GlobeGuide } from "@/components/magicui/globe-guide"
 import { TerminalDemo } from "@/components/magicui/terminal-demo"
 import { TerminalGuide } from "@/components/magicui/terminal-guide"
+import { BentoDemo } from "@/components/magicui/bento-grid-demo"
+import { BentoGridGuide } from "@/components/magicui/bento-grid-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -546,6 +548,59 @@ export function TerminalDemo() {
         You may now add components.
       </AnimatedSpan>
     </Terminal>
+  )
+}`
+
+      case "Bento Grid":
+        return `import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid"
+import { Bell, Calendar, FileText, Share2 } from "lucide-react"
+
+const features = [
+  {
+    Icon: FileText,
+    name: "Save your files",
+    description: "We automatically save your files as you type.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-1",
+    background: <div className="absolute inset-0 bg-zinc-900/40" />,
+  },
+  {
+    Icon: Bell,
+    name: "Notifications",
+    description: "Get notified when something happens.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-2",
+    background: <div className="absolute inset-0 bg-zinc-900/40" />,
+  },
+  {
+    Icon: Share2,
+    name: "Integrations",
+    description: "Supports 100+ integrations and counting.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-2",
+    background: <div className="absolute inset-0 bg-zinc-900/40" />,
+  },
+  {
+    Icon: Calendar,
+    name: "Calendar",
+    description: "Use the calendar to filter your files by date.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-1",
+    background: <div className="absolute inset-0 bg-zinc-900/40" />,
+  },
+]
+
+export function BentoDemo() {
+  return (
+    <BentoGrid className="max-w-4xl">
+      {features.map((feature, idx) => (
+        <BentoCard key={idx} {...feature} />
+      ))}
+    </BentoGrid>
   )
 }`
 
@@ -2868,6 +2923,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Bento Grid":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <BentoDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3578,6 +3640,8 @@ export function ScrollAreaDemo() {
         <GlobeGuide />
       ) : componentData.name === "Terminal" ? (
         <TerminalGuide />
+      ) : componentData.name === "Bento Grid" ? (
+        <BentoGridGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

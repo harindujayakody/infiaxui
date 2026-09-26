@@ -23,7 +23,6 @@ import {
   CloudShaderPreview,
   HeroSectionsPreview,
   AnimatedBeamMiniPreview,
-  BentoGridMiniPreview,
 } from "@/components/blocks/block-previews"
 import { GlareHoverBlockCardPreview } from "@/components/magicui/glare-hover-demo"
 import { DockCardPreview } from "@/components/magicui/dock-demo"
@@ -34,6 +33,7 @@ import { Floating3DParticlesBlockPreview } from "@/components/magicui/floating-3
 import { MarqueeBlockPreview } from "@/components/magicui/marquee-demo"
 import { GlobeBlockPreview } from "@/components/magicui/globe-demo"
 import { TerminalBlockPreview } from "@/components/magicui/terminal-demo"
+import { BentoGridBlockPreview } from "@/components/magicui/bento-grid-demo"
 
 interface BlockItem {
   id: string
@@ -118,13 +118,14 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
     },
     {
       id: "bento-grid",
-      title: "Bento Grids",
-      category: "Heroes",
-      badge: "6 blocks",
+      title: "Bento Grid",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Bento Grid",
       description:
-        "Asymmetrical responsive card layouts with dynamic hover highlights and interactive widgets.",
+        "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
       cliCommand: "npx shadcn@latest add @magicui/bento-grid",
-      renderPreview: () => <BentoGridMiniPreview />,
+      renderPreview: () => <BentoGridBlockPreview />,
     },
     {
       id: "globe",
