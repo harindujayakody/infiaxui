@@ -206,6 +206,8 @@ import { ParticlesDemo } from "@/components/magicui/particles-demo"
 import { ParticlesGuide } from "@/components/magicui/particles-guide"
 import { TooltipCardDemo } from "@/components/ui/tooltip-card-demo"
 import { TooltipCardGuide } from "@/components/ui/tooltip-card-guide"
+import { AnimatedTestimonialsDemo } from "@/components/ui/animated-testimonials-demo"
+import { AnimatedTestimonialsGuide } from "@/components/ui/animated-testimonials-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1037,6 +1039,50 @@ export function TooltipCardDemo() {
       </p>
     </div>
   )
+}`
+
+      case "Animated Testimonials":
+        return `import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+
+export function AnimatedTestimonialsDemo() {
+  const testimonials = [
+    {
+      quote:
+        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
+      name: "Sarah Chen",
+      designation: "Product Manager at TechFlow",
+      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+      name: "Michael Rodriguez",
+      designation: "CTO at InnovateSphere",
+      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+      name: "Emily Watson",
+      designation: "Operations Director at CloudScale",
+      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+      name: "James Kim",
+      designation: "Engineering Lead at DataPro",
+      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+      name: "Lisa Thompson",
+      designation: "VP of Technology at FutureNet",
+      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ];
+  return <AnimatedTestimonials testimonials={testimonials} />;
 }`
 
       case "Button":
@@ -3463,6 +3509,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Animated Testimonials":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <AnimatedTestimonialsDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4203,6 +4256,8 @@ export function ScrollAreaDemo() {
         <ParticlesGuide />
       ) : componentData.name === "Tooltip Card" ? (
         <TooltipCardGuide />
+      ) : componentData.name === "Animated Testimonials" ? (
+        <AnimatedTestimonialsGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

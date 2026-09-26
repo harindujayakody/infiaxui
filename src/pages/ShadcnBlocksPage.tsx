@@ -48,6 +48,7 @@ import { ThemeTogglerBlockPreview } from "@/components/magicui/animated-theme-to
 import { DotPatternBlockPreview } from "@/components/magicui/dot-pattern-demo"
 import { ParticlesBlockPreview } from "@/components/magicui/particles-demo"
 import { TooltipCardBlockPreview } from "@/components/ui/tooltip-card-demo"
+import { AnimatedTestimonialsBlockPreview } from "@/components/ui/animated-testimonials-demo"
 
 interface BlockItem {
   id: string
@@ -394,6 +395,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A tooltip card container that follows mouse pointer when hovered over.",
       cliCommand: "npx shadcn@latest add @aceternity/tooltip-card-demo",
       renderPreview: () => <TooltipCardBlockPreview />,
+    },
+    {
+      id: "animated-testimonials",
+      title: "Animated Testimonials",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Animated Testimonials",
+      description:
+        "Minimal testimonials sections with image and quote.",
+      cliCommand: "npx shadcn@latest add @aceternity/animated-testimonials-demo",
+      renderPreview: () => <AnimatedTestimonialsBlockPreview />,
     },
   ]
 
