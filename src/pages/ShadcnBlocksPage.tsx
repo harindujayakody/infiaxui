@@ -55,6 +55,7 @@ import { CometCardBlockPreview } from "@/components/ui/comet-card-demo"
 import { FocusCardsBlockPreview } from "@/components/ui/focus-cards-demo"
 import { LensBlockPreview } from "@/components/ui/lens-demo"
 import { FlickeringGridBlockPreview } from "@/components/magicui/flickering-grid-demo"
+import { MorphingTextBlockPreview } from "@/components/magicui/morphing-text-demo"
 
 interface BlockItem {
   id: string
@@ -401,6 +402,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
       cliCommand: "npx shadcn@latest add @magicui/flickering-grid",
       renderPreview: () => <FlickeringGridBlockPreview />,
+    },
+    {
+      id: "morphing-text",
+      title: "Morphing Text",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Morphing Text",
+      description:
+        "A dynamic text morphing component for Magic UI.",
+      cliCommand: "npx shadcn@latest add @magicui/morphing-text",
+      renderPreview: () => <MorphingTextBlockPreview />,
     },
     {
       id: "tooltip-card",

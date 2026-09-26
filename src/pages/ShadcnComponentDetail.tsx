@@ -220,6 +220,8 @@ import { LensDemo } from "@/components/ui/lens-demo"
 import { LensGuide } from "@/components/ui/lens-guide"
 import { FlickeringGridDemo } from "@/components/magicui/flickering-grid-demo"
 import { FlickeringGridGuide } from "@/components/magicui/flickering-grid-guide"
+import { MorphingTextDemo } from "@/components/magicui/morphing-text-demo"
+import { MorphingTextGuide } from "@/components/magicui/morphing-text-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1263,6 +1265,29 @@ export function FlickeringGridDemo() {
         maxOpacity={0.5}
         flickerChance={0.15}
       />
+    </div>
+  )
+}`
+
+      case "Morphing Text":
+        return `import { MorphingText } from "@/components/magicui/morphing-text"
+
+const texts = [
+  "Hello",
+  "Morphing",
+  "Text",
+  "Animation",
+  "React",
+  "Component",
+  "Smooth",
+  "Transition",
+  "Engaging",
+]
+
+export function MorphingTextDemo() {
+  return (
+    <div className="relative flex h-[340px] sm:h-[420px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-4 text-white shadow-2xl">
+      <MorphingText texts={texts} className="text-white" />
     </div>
   )
 }`
@@ -3740,6 +3765,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Morphing Text":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <MorphingTextDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4494,6 +4526,8 @@ export function ScrollAreaDemo() {
         <LensGuide />
       ) : componentData.name === "Flickering Grid" ? (
         <FlickeringGridGuide />
+      ) : componentData.name === "Morphing Text" ? (
+        <MorphingTextGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

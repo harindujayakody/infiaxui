@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -26,6 +26,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Dia Text Reveal",
     "Dot Pattern",
     "Flickering Grid",
+    "Morphing Text",
     "Particles",
     "Tooltip Card",
     "Pixel Image",
@@ -1258,6 +1259,21 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "width",
       "height",
       "className",
+    ],
+  },
+  "Morphing Text": {
+    id: "morphing-text",
+    name: "Morphing Text",
+    description: "A dynamic text morphing component for Magic UI.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/morphing-text",
+    importCode: `import { MorphingText } from "@/components/magicui/morphing-text"`,
+    usageCode: `<MorphingText texts={["Hello", "Morphing", "Text", "Animation"]} />`,
+    apiReference: [
+      "MorphingText",
+      "texts",
+      "className",
+      "useMorphingText",
     ],
   },
 }
