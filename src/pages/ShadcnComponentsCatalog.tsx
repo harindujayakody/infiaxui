@@ -118,7 +118,7 @@ export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsC
               >
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-xs text-[var(--text-main)] group-hover:text-indigo-500 transition-colors flex items-center gap-1.5">
+                    <span className="font-semibold text-xs text-[var(--text-main)] transition-colors flex items-center gap-1.5">
                       {comp}
                     </span>
                     {isNew && (

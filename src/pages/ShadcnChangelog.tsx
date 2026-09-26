@@ -585,7 +585,7 @@ export function ShadcnChangelog() {
                 <span className="type-caption font-mono text-[var(--text-muted)]">
                   {item.date}
                 </span>
-                <h4 className="type-heading text-[var(--text-main)] font-medium group-hover:text-blue-400 transition-colors">
+                <h4 className="type-heading text-[var(--text-main)] font-medium transition-colors">
                   {item.title}
                 </h4>
               </div>
