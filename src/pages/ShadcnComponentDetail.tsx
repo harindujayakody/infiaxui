@@ -218,6 +218,8 @@ import { FocusCardsDemo } from "@/components/ui/focus-cards-demo"
 import { FocusCardsGuide } from "@/components/ui/focus-cards-guide"
 import { LensDemo } from "@/components/ui/lens-demo"
 import { LensGuide } from "@/components/ui/lens-guide"
+import { FlickeringGridDemo } from "@/components/magicui/flickering-grid-demo"
+import { FlickeringGridGuide } from "@/components/magicui/flickering-grid-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1243,6 +1245,24 @@ export function LensDemo() {
           The all new apple vision pro was the best thing that happened around 8 months ago, not anymore.
         </p>
       </motion.div>
+    </div>
+  )
+}`
+
+      case "Flickering Grid":
+        return `import { FlickeringGrid } from "@/components/magicui/flickering-grid"
+
+export function FlickeringGridDemo() {
+  return (
+    <div className="relative flex h-[480px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-2xl">
+      <FlickeringGrid
+        className="absolute inset-0 z-0 size-full"
+        squareSize={4}
+        gridGap={6}
+        color="#6B7280"
+        maxOpacity={0.5}
+        flickerChance={0.15}
+      />
     </div>
   )
 }`
@@ -3713,6 +3733,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Flickering Grid":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <FlickeringGridDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4465,6 +4492,8 @@ export function ScrollAreaDemo() {
         <FocusCardsGuide />
       ) : componentData.name === "Lens" ? (
         <LensGuide />
+      ) : componentData.name === "Flickering Grid" ? (
+        <FlickeringGridGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

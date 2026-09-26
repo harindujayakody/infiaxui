@@ -54,6 +54,7 @@ import { BackgroundRippleEffectBlockPreview } from "@/components/ui/background-r
 import { CometCardBlockPreview } from "@/components/ui/comet-card-demo"
 import { FocusCardsBlockPreview } from "@/components/ui/focus-cards-demo"
 import { LensBlockPreview } from "@/components/ui/lens-demo"
+import { FlickeringGridBlockPreview } from "@/components/magicui/flickering-grid-demo"
 
 interface BlockItem {
   id: string
@@ -389,6 +390,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "Particles are a fun way to add some visual flair, movement, and depth to your website.",
       cliCommand: "npx shadcn@latest add @magicui/particles",
       renderPreview: () => <ParticlesBlockPreview />,
+    },
+    {
+      id: "flickering-grid",
+      title: "Flickering Grid",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Flickering Grid",
+      description:
+        "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
+      cliCommand: "npx shadcn@latest add @magicui/flickering-grid",
+      renderPreview: () => <FlickeringGridBlockPreview />,
     },
     {
       id: "tooltip-card",
