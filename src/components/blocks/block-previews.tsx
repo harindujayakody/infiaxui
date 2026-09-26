@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, User, Cloud, Database, Cpu, Layers, Zap } from "lucide-react"
+import { ArrowRight, User, Cloud, Database, Cpu, Layers, Zap, Bot } from "lucide-react"
+import { AnimatedBeam } from "@/components/magicui/animated-beam"
 
 // 1. Image Generation Loader Preview (Matches Card 1 from screenshot)
 export function ImageGenerationLoaderPreview() {
@@ -197,52 +198,99 @@ export function HeroSectionsPreview() {
   )
 }
 
-// 5. Animated Beam Mini Preview (Matches screenshot media_1790454691578.png)
+// 5. Animated Beam Real Component Showcase on Card
 export function AnimatedBeamMiniPreview() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const div1Ref = useRef<HTMLDivElement>(null)
+  const div2Ref = useRef<HTMLDivElement>(null)
+  const div3Ref = useRef<HTMLDivElement>(null)
+  const div4Ref = useRef<HTMLDivElement>(null)
+  const div5Ref = useRef<HTMLDivElement>(null)
+
   return (
-    <div className="relative w-full h-full overflow-hidden bg-[#090A0F] flex items-center justify-between px-10">
-      {/* Node 1 */}
-      <div className="relative z-10 size-11 rounded-full bg-zinc-900 border border-zinc-700/80 flex items-center justify-center text-amber-400 shadow-md">
-        <User className="size-5" />
+    <div
+      ref={containerRef}
+      className="relative flex h-full w-full items-center justify-between overflow-hidden bg-[#090A0F] px-5 sm:px-7 select-none"
+    >
+      {/* Left Input Nodes */}
+      <div className="flex flex-col justify-between h-[125px] z-10">
+        <div
+          ref={div1Ref}
+          className="z-10 flex size-9 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 shadow-md text-emerald-400 hover:scale-110 transition-transform"
+        >
+          <Cloud className="size-4" />
+        </div>
+        <div
+          ref={div2Ref}
+          className="z-10 flex size-9 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 shadow-md text-sky-400 hover:scale-110 transition-transform"
+        >
+          <Zap className="size-4" />
+        </div>
       </div>
 
-      {/* Flowing Laser SVG Beam */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M 60 85 Q 140 40 220 85"
-          fill="none"
-          stroke="rgba(255,255,255,0.12)"
-          strokeWidth="2"
-        />
-        <motion.path
-          d="M 60 85 Q 140 40 220 85"
-          fill="none"
-          stroke="url(#beam-gradient-mini)"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-          strokeDasharray="40 180"
-          animate={{
-            strokeDashoffset: [220, 0],
-          }}
-          transition={{
-            duration: 2.4,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        <defs>
-          <linearGradient id="beam-gradient-mini" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
-            <stop offset="50%" stopColor="#38bdf8" />
-            <stop offset="100%" stopColor="#a855f7" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* Node 2 */}
-      <div className="relative z-10 size-11 rounded-full bg-zinc-900 border border-zinc-700/80 flex items-center justify-center text-purple-400 shadow-md">
-        <Cloud className="size-5" />
+      {/* Center Hub Node */}
+      <div className="flex flex-col justify-center z-10">
+        <div
+          ref={div3Ref}
+          className="z-10 flex size-12 items-center justify-center rounded-full border border-blue-500/50 bg-blue-500/10 shadow-[0_0_24px_rgba(59,130,246,0.35)] text-blue-400 hover:scale-110 transition-transform"
+        >
+          <User className="size-6" />
+        </div>
       </div>
+
+      {/* Right Output Nodes */}
+      <div className="flex flex-col justify-between h-[125px] z-10">
+        <div
+          ref={div4Ref}
+          className="z-10 flex size-9 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 shadow-md text-amber-400 hover:scale-110 transition-transform"
+        >
+          <Database className="size-4" />
+        </div>
+        <div
+          ref={div5Ref}
+          className="z-10 flex size-9 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 shadow-md text-purple-400 hover:scale-110 transition-transform"
+        >
+          <Bot className="size-4" />
+        </div>
+      </div>
+
+      {/* Real AnimatedBeam Component Instances */}
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div3Ref}
+        curvature={-25}
+        gradientStartColor="#10b981"
+        gradientStopColor="#3b82f6"
+        duration={3}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div2Ref}
+        toRef={div3Ref}
+        curvature={25}
+        gradientStartColor="#38bdf8"
+        gradientStopColor="#3b82f6"
+        duration={3}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div3Ref}
+        toRef={div4Ref}
+        curvature={-25}
+        gradientStartColor="#3b82f6"
+        gradientStopColor="#f59e0b"
+        duration={3}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div3Ref}
+        toRef={div5Ref}
+        curvature={25}
+        gradientStartColor="#3b82f6"
+        gradientStopColor="#a855f7"
+        duration={3}
+      />
     </div>
   )
 }
