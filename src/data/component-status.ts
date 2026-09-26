@@ -483,6 +483,61 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout support & API reference",
     ],
   },
+  "Hover Card": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Popup card preview on hover & keyboard focus",
+      "4-side positioning (top, bottom, left, right)",
+      "Configurable delay & closeDelay timing",
+      "Rich media user card layout",
+      "RTL support & API reference",
+    ],
+  },
+  "Field": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "FieldSet, FieldLegend, FieldGroup, Field, FieldLabel, FieldDescription, FieldError composition",
+      "3 Layout orientations: vertical, horizontal, responsive",
+      "data-invalid & aria-invalid error state styling",
+      "Required & optional field markers",
+      "RTL support & API reference",
+    ],
+  },
+  "Empty": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Empty state container with EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, and EmptyContent",
+      "3 Frame variants: default, outlined dashed, gradient background",
+      "Avatar group & icon media integrations",
+      "Action CTAs and secondary links",
+      "RTL support & API reference",
+    ],
+  },
+  "Dropdown Menu": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Account menu with groups, shortcuts, and destructive action item",
+      "DropdownMenuCheckboxItem multi-select options",
+      "DropdownMenuRadioGroup single-select theme switcher",
+      "DropdownMenuSub nested cascading submenus",
+      "RTL support & API reference",
+    ],
+  },
+  "Drawer": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Fluid swipeable bottom and edge drawer sheets",
+      "4 directions: bottom, top, left, right",
+      "Pill handle, swipe gestures, and backdrop dismiss",
+      "Custom step controls & submit flow",
+      "RTL mirroring & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

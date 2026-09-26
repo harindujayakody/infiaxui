@@ -112,6 +112,11 @@ import { ItemGuide } from "@/components/shadcn/item-guide"
 import { InputOTPGuide } from "@/components/shadcn/input-otp-guide"
 import { InputGroupGuide } from "@/components/shadcn/input-group-guide"
 import { InputGuide } from "@/components/shadcn/input-guide"
+import { HoverCardGuide } from "@/components/shadcn/hover-card-guide"
+import { FieldGuide } from "@/components/shadcn/field-guide"
+import { EmptyGuide } from "@/components/shadcn/empty-guide"
+import { DropdownMenuGuide } from "@/components/shadcn/dropdown-menu-guide"
+import { DrawerGuide } from "@/components/shadcn/drawer-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2857,6 +2862,16 @@ export function ChartDemo() {
         <InputGroupGuide />
       ) : componentData.name === "Input" ? (
         <InputGuide />
+      ) : componentData.name === "Hover Card" ? (
+        <HoverCardGuide />
+      ) : componentData.name === "Field" ? (
+        <FieldGuide />
+      ) : componentData.name === "Empty" ? (
+        <EmptyGuide />
+      ) : componentData.name === "Dropdown Menu" ? (
+        <DropdownMenuGuide />
+      ) : componentData.name === "Drawer" ? (
+        <DrawerGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}
