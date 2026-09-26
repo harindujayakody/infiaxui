@@ -28,6 +28,48 @@ import { Skeleton } from "@/components/shadcn/skeleton"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/shadcn/avatar"
 import { Separator } from "@/components/shadcn/separator"
 import { Slider } from "@/components/shadcn/slider"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/shadcn/accordion"
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/shadcn/tabs"
+import { Progress } from "@/components/shadcn/progress"
+import { RadioGroup, RadioGroupItem } from "@/components/shadcn/radio-group"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/shadcn/dialog"
+import { Textarea } from "@/components/shadcn/textarea"
+import { Tooltip } from "@/components/shadcn/tooltip"
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@/components/shadcn/table"
+import { InputOTP } from "@/components/shadcn/input-otp"
+import { Select } from "@/components/shadcn/select"
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "@/components/shadcn/collapsible"
+import { cn } from "@/lib/utils"
 
 interface ShadcnComponentDetailProps {
   componentName: string
@@ -53,6 +95,17 @@ export function ShadcnComponentDetail({
   const [switchOn, setSwitchOn] = useState(false)
   const [checkboxOn, setCheckboxOn] = useState(true)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(1)
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [toastActive, setToastActive] = useState(false)
+  const [radioValue, setRadioValue] = useState("comfortable")
+  const [otpVal, setOtpVal] = useState("123456")
+  const [textareaVal, setTextareaVal] = useState("")
+  const [collapsibleOpen, setCollapsibleOpen] = useState(false)
+  const [toggleBold, setToggleBold] = useState(true)
+  const [toggleItalic, setToggleItalic] = useState(false)
+  const [toggleUnderline, setToggleUnderline] = useState(false)
+  const [datePickerOpen, setDatePickerOpen] = useState(false)
+  const [carouselIndex, setCarouselIndex] = useState(0)
 
   // Accurate alphabetical sequence for previous / next navigation matching shadcn docs
   const { prev, next } = getPrevNextComponents(componentName)
@@ -455,6 +508,589 @@ export function ComboboxDemo() {
   )
 }`
 
+      case "Accordion":
+        return `import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+export function AccordionDemo() {
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with default styles that matches the other components' aesthetic.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It's animated by default, but you can disable it if you prefer.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}`
+
+      case "Aspect Ratio":
+        return `import { AspectRatio } from "@/components/ui/aspect-ratio"
+
+export function AspectRatioDemo() {
+  return (
+    <div className="w-[450px]">
+      <AspectRatio ratio={16 / 9}>
+        <img
+          src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+          alt="Photo by Drew Beamer"
+          className="rounded-md object-cover"
+        />
+      </AspectRatio>
+    </div>
+  )
+}`
+
+      case "Collapsible":
+        return `import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import { ChevronsUpDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
+export function CollapsibleDemo() {
+  return (
+    <Collapsible className="w-[350px] space-y-2">
+      <div className="flex items-center justify-between space-x-4 px-4">
+        <h4 className="text-sm font-semibold">
+          @peduarte starred 3 repositories
+        </h4>
+        <CollapsibleTrigger asChild>
+          <Button variant="ghost" size="sm" className="w-9 p-0">
+            <ChevronsUpDown className="h-4 w-4" />
+          </Button>
+        </CollapsibleTrigger>
+      </div>
+      <div className="rounded-md border px-4 py-3 font-mono text-sm">
+        @radix-ui/primitives
+      </div>
+      <CollapsibleContent className="space-y-2">
+        <div className="rounded-md border px-4 py-3 font-mono text-sm">
+          @radix-ui/colors
+        </div>
+        <div className="rounded-md border px-4 py-3 font-mono text-sm">
+          @stitches/react
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  )
+}`
+
+      case "Dialog":
+      case "Alert Dialog":
+        return `import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export function DialogDemo() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Edit Profile</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Edit profile</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you're done.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">Name</Label>
+            <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="username" className="text-right">Username</Label>
+            <Input id="username" defaultValue="@peduarte" className="col-span-3" />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button type="submit">Save changes</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}`
+
+      case "Tabs":
+        return `import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+
+export function TabsDemo() {
+  return (
+    <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        <Card>
+          <CardHeader>
+            <CardTitle>Account</CardTitle>
+            <CardDescription>
+              Make changes to your account here. Click save when you're done.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <Input id="name" defaultValue="Pedro Duarte" />
+            <Input id="username" defaultValue="@peduarte" />
+          </CardContent>
+          <CardFooter>
+            <Button>Save changes</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="password">
+        <Card>
+          <CardHeader>
+            <CardTitle>Password</CardTitle>
+            <CardDescription>
+              Change your password here. After saving, you'll be logged out.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <Input id="current" type="password" />
+            <Input id="new" type="password" />
+          </CardContent>
+          <CardFooter>
+            <Button>Save password</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  )
+}`
+
+      case "Progress":
+        return `import { Progress } from "@/components/ui/progress"
+
+export function ProgressDemo() {
+  return <Progress value={66} className="w-[60%]" />
+}`
+
+      case "Radio Group":
+        return `import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+
+export function RadioGroupDemo() {
+  return (
+    <RadioGroup defaultValue="comfortable">
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="default" id="r1" />
+        <Label htmlFor="r1">Default</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="comfortable" id="r2" />
+        <Label htmlFor="r2">Comfortable</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="compact" id="r3" />
+        <Label htmlFor="r3">Compact</Label>
+      </div>
+    </RadioGroup>
+  )
+}`
+
+      case "Textarea":
+        return `import { Textarea } from "@/components/ui/textarea"
+
+export function TextareaDemo() {
+  return <Textarea placeholder="Type your message here." />
+}`
+
+      case "Tooltip":
+        return `import { Button } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
+export function TooltipDemo() {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="outline">Hover</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Add to library</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+}`
+
+      case "Table":
+      case "Data Table":
+        return `import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+const invoices = [
+  { invoice: "INV001", paymentStatus: "Paid", totalAmount: "$250.00", paymentMethod: "Credit Card" },
+  { invoice: "INV002", paymentStatus: "Pending", totalAmount: "$150.00", paymentMethod: "PayPal" },
+  { invoice: "INV003", paymentStatus: "Unpaid", totalAmount: "$350.00", paymentMethod: "Bank Transfer" },
+]
+
+export function TableDemo() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-[100px]">Invoice</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead className="text-right">Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {invoices.map((invoice) => (
+          <TableRow key={invoice.invoice}>
+            <TableCell className="font-medium">{invoice.invoice}</TableCell>
+            <TableCell>{invoice.paymentStatus}</TableCell>
+            <TableCell>{invoice.paymentMethod}</TableCell>
+            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  )
+}`
+
+      case "Input OTP":
+        return `import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+
+export function InputOTPDemo() {
+  return (
+    <InputOTP maxLength={6}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+        <InputOTPSlot index={3} />
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>
+  )
+}`
+
+      case "Select":
+        return `import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+export function SelectDemo() {
+  return (
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </SelectContent>
+    </Select>
+  )
+}`
+
+      case "Toggle":
+      case "Toggle Group":
+        return `import { Bold, Italic, Underline } from "lucide-react"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group"
+
+export function ToggleGroupDemo() {
+  return (
+    <ToggleGroup type="multiple">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">
+        <Bold className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">
+        <Italic className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">
+        <Underline className="h-4 w-4" />
+      </ToggleGroupItem>
+    </ToggleGroup>
+  )
+}`
+
+      case "Toast":
+      case "Sonner":
+        return `import { toast } from "sonner"
+import { Button } from "@/components/ui/button"
+
+export function SonnerDemo() {
+  return (
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast("Event has been created", {
+          description: "Sunday, December 03, 2026 at 9:00 AM",
+          action: {
+            label: "Undo",
+            onClick: () => console.log("Undo"),
+          },
+        })
+      }
+    >
+      Show Toast
+    </Button>
+  )
+}`
+
+      case "Command":
+        return `import {
+  Calculator,
+  Calendar,
+  CreditCard,
+  Settings,
+  Smile,
+  User,
+} from "lucide-react"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command"
+
+export function CommandDemo() {
+  return (
+    <Command className="rounded-lg border shadow-md">
+      <CommandInput placeholder="Type a command or search..." />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>
+            <Calendar className="mr-2 h-4 w-4" />
+            <span>Calendar</span>
+          </CommandItem>
+          <CommandItem>
+            <Smile className="mr-2 h-4 w-4" />
+            <span>Search Emoji</span>
+          </CommandItem>
+          <CommandItem>
+            <Calculator className="mr-2 h-4 w-4" />
+            <span>Calculator</span>
+          </CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Settings">
+          <CommandItem>
+            <User className="mr-2 h-4 w-4" />
+            <span>Profile</span>
+            <CommandShortcut>⌘P</CommandShortcut>
+          </CommandItem>
+          <CommandItem>
+            <CreditCard className="mr-2 h-4 w-4" />
+            <span>Billing</span>
+            <CommandShortcut>⌘B</CommandShortcut>
+          </CommandItem>
+          <CommandItem>
+            <Settings className="mr-2 h-4 w-4" />
+            <span>Settings</span>
+            <CommandShortcut>⌘S</CommandShortcut>
+          </CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  )
+}`
+
+      case "Date Picker":
+        return `import * as React from "react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
+export function DatePickerDemo() {
+  const [date, setDate] = React.useState<Date>()
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant={"outline"}
+          className={cn(
+            "w-[280px] justify-start text-left font-normal",
+            !date && "text-muted-foreground"
+          )}
+        >
+          <CalendarIcon className="mr-2 h-4 w-4" />
+          {date ? format(date, "PPP") : <span>Pick a date</span>}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          initialFocus
+        />
+      </PopoverContent>
+    </Popover>
+  )
+}`
+
+      case "Carousel":
+        return `import * as React from "react"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
+export function CarouselDemo() {
+  return (
+    <Carousel className="w-full max-w-xs">
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  )
+}`
+
+      case "Scroll Area":
+        return `import * as React from "react"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Separator } from "@/components/ui/separator"
+
+const tags = Array.from({ length: 50 }).map(
+  (_, i, a) => \`v1.2.0-beta.\${a.length - i}\`
+)
+
+export function ScrollAreaDemo() {
+  return (
+    <ScrollArea className="h-72 w-48 rounded-md border">
+      <div className="p-4">
+        <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+        {tags.map((tag) => (
+          <React.Fragment key={tag}>
+            <div className="text-sm">{tag}</div>
+            <Separator className="my-2" />
+          </React.Fragment>
+        ))}
+      </div>
+    </ScrollArea>
+  )
+}`
+
+      case "Chart":
+        return `import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+
+const data = [
+  { name: "Jan", total: 1400 },
+  { name: "Feb", total: 2300 },
+  { name: "Mar", total: 3200 },
+  { name: "Apr", total: 4500 },
+  { name: "May", total: 3800 },
+  { name: "Jun", total: 5100 },
+]
+
+export function ChartDemo() {
+  return (
+    <ResponsiveContainer width="100%" height={250}>
+      <BarChart data={data}>
+        <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+        <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+        <Bar dataKey="total" fill="currentColor" radius={[4, 4, 0, 0]} className="fill-primary" />
+      </BarChart>
+    </ResponsiveContainer>
+  )
+}`
+
       default:
         return `${componentData.importCode}\n\nexport function ${componentData.name.replace(/[^a-zA-Z0-9]/g, "")}Demo() {\n  return (\n    <div className="flex items-center justify-center p-6">\n      ${componentData.usageCode}\n    </div>\n  )\n}`
     }
@@ -811,6 +1447,547 @@ export function ComboboxDemo() {
               <span>Next.js</span>
               <ChevronDown className="size-4" />
             </div>
+          </div>
+        )
+      case "Accordion":
+        return (
+          <div className="w-full max-w-md">
+            <Accordion type="single" defaultValue="item-1" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It adheres to the WAI-ARIA design pattern and supports full keyboard navigation.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It comes with default styles that match the other components' aesthetic.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It's animated by default, but you can disable it if you prefer.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        )
+
+      case "Aspect Ratio":
+        return (
+          <div className="w-full max-w-md overflow-hidden rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-md">
+            <div className="relative aspect-video w-full bg-[var(--bg-subtle)] flex items-center justify-center overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&auto=format&fit=crop&q=80"
+                alt="Photo by Drew Beamer"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute bottom-2 left-2 rounded bg-black/60 px-2 py-1 text-[11px] font-mono text-white backdrop-blur-sm">
+                16:9 Aspect Ratio
+              </div>
+            </div>
+          </div>
+        )
+
+      case "Collapsible":
+        return (
+          <div className="w-full max-w-sm rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 space-y-2">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-semibold text-[var(--text-main)]">
+                @peduarte starred 3 repositories
+              </h4>
+              <button
+                onClick={() => setCollapsibleOpen(!collapsibleOpen)}
+                className="size-7 rounded-md hover:bg-[var(--bg-subtle)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
+              >
+                <ChevronDown className={cn("size-4 transition-transform", collapsibleOpen && "rotate-180")} />
+              </button>
+            </div>
+            <div className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/40 px-3 py-2 text-xs font-mono text-[var(--text-main)]">
+              @radix-ui/primitives
+            </div>
+            {collapsibleOpen && (
+              <div className="space-y-2 animate-in fade-in-0 duration-150">
+                <div className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/40 px-3 py-2 text-xs font-mono text-[var(--text-main)]">
+                  @radix-ui/colors
+                </div>
+                <div className="rounded-md border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/40 px-3 py-2 text-xs font-mono text-[var(--text-main)]">
+                  @stitches/react
+                </div>
+              </div>
+            )}
+          </div>
+        )
+
+      case "Dialog":
+      case "Alert Dialog":
+        return (
+          <div className="flex flex-col items-center gap-4">
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <DialogTrigger>
+                <Button variant="outline">Open {componentData.name}</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Edit Profile</DialogTitle>
+                  <DialogDescription>
+                    Make changes to your profile here. Click save when you're done.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <div className="grid grid-cols-4 items-center gap-4 text-xs">
+                    <label className="text-right text-[var(--text-muted)]">Name</label>
+                    <Input defaultValue="Pedro Duarte" className="col-span-3" />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4 text-xs">
+                    <label className="text-right text-[var(--text-muted)]">Username</label>
+                    <Input defaultValue="@peduarte" className="col-span-3" />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button variant="outline" size="sm" onClick={() => setDialogOpen(false)}>
+                    Cancel
+                  </Button>
+                  <Button size="sm" onClick={() => setDialogOpen(false)}>
+                    Save changes
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
+        )
+
+      case "Drawer":
+      case "Sheet":
+        return (
+          <div className="flex flex-col items-center gap-4">
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <DialogTrigger>
+                <Button variant="outline">Open {componentData.name}</Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-sm">
+                <DialogHeader>
+                  <DialogTitle>{componentData.name} Slide-over</DialogTitle>
+                  <DialogDescription>
+                    This is a slide-over panel that opens from the edge of the screen.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="py-4 space-y-2 text-xs text-[var(--text-muted)]">
+                  <p>Configure project settings, environment variables, or inspect telemetry data.</p>
+                </div>
+                <DialogFooter>
+                  <Button size="sm" onClick={() => setDialogOpen(false)}>Close</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
+        )
+
+      case "Tabs":
+        return (
+          <div className="w-full max-w-sm">
+            <Tabs defaultValue="account">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="account">Account</TabsTrigger>
+                <TabsTrigger value="password">Password</TabsTrigger>
+              </TabsList>
+              <TabsContent value="account">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Account</CardTitle>
+                    <CardDescription className="text-xs">
+                      Make changes to your account here. Click save when you're done.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    <Input placeholder="Your Name" defaultValue="Pedro Duarte" />
+                    <Input placeholder="Username" defaultValue="@peduarte" />
+                  </CardContent>
+                  <CardFooter>
+                    <Button size="sm">Save changes</Button>
+                  </CardFooter>
+                </Card>
+              </TabsContent>
+              <TabsContent value="password">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Password</CardTitle>
+                    <CardDescription className="text-xs">
+                      Change your password here. After saving, you'll be logged out.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-2">
+                    <Input type="password" placeholder="Current password" />
+                    <Input type="password" placeholder="New password" />
+                  </CardContent>
+                  <CardFooter>
+                    <Button size="sm">Save password</Button>
+                  </CardFooter>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </div>
+        )
+
+      case "Progress":
+        return (
+          <div className="w-full max-w-sm space-y-3 p-4">
+            <div className="flex justify-between text-xs text-[var(--text-muted)] font-mono">
+              <span>Syncing repository...</span>
+              <span>66%</span>
+            </div>
+            <Progress value={66} />
+          </div>
+        )
+
+      case "Radio Group":
+        return (
+          <RadioGroup defaultValue="comfortable" value={radioValue} onValueChange={setRadioValue}>
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem value="default" id="r1" />
+              <label htmlFor="r1" className="text-xs font-medium text-[var(--text-main)] cursor-pointer">
+                Default
+              </label>
+            </div>
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem value="comfortable" id="r2" />
+              <label htmlFor="r2" className="text-xs font-medium text-[var(--text-main)] cursor-pointer">
+                Comfortable
+              </label>
+            </div>
+            <div className="flex items-center space-x-3">
+              <RadioGroupItem value="compact" id="r3" />
+              <label htmlFor="r3" className="text-xs font-medium text-[var(--text-main)] cursor-pointer">
+                Compact
+              </label>
+            </div>
+          </RadioGroup>
+        )
+
+      case "Textarea":
+        return (
+          <div className="w-full max-w-sm space-y-2">
+            <label className="type-caption font-medium text-[var(--text-main)]">Your message</label>
+            <Textarea
+              placeholder="Type your message here."
+              value={textareaVal}
+              onChange={(e) => setTextareaVal(e.target.value)}
+            />
+            <p className="type-caption text-[var(--text-muted)]">Your message will be sent to the team.</p>
+          </div>
+        )
+
+      case "Tooltip":
+        return (
+          <Tooltip content="Add to library">
+            <Button variant="outline">Hover over me</Button>
+          </Tooltip>
+        )
+
+      case "Table":
+      case "Data Table":
+        return (
+          <div className="w-full max-w-xl">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">Invoice</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Method</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">INV001</TableCell>
+                  <TableCell><span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px]">Paid</span></TableCell>
+                  <TableCell>Credit Card</TableCell>
+                  <TableCell className="text-right font-mono">$250.00</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">INV002</TableCell>
+                  <TableCell><span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px]">Pending</span></TableCell>
+                  <TableCell>PayPal</TableCell>
+                  <TableCell className="text-right font-mono">$150.00</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">INV003</TableCell>
+                  <TableCell><span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px]">Paid</span></TableCell>
+                  <TableCell>Bank Transfer</TableCell>
+                  <TableCell className="text-right font-mono">$350.00</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        )
+
+      case "Input OTP":
+        return (
+          <div className="space-y-3 text-center">
+            <InputOTP value={otpVal} onChange={setOtpVal} />
+            <p className="type-caption text-[var(--text-muted)] font-mono">
+              Value: {otpVal}
+            </p>
+          </div>
+        )
+
+      case "Select":
+        return (
+          <Select
+            options={[
+              { value: "apple", label: "Apple" },
+              { value: "banana", label: "Banana" },
+              { value: "blueberry", label: "Blueberry" },
+              { value: "grapes", label: "Grapes" },
+              { value: "pineapple", label: "Pineapple" },
+            ]}
+            defaultValue="apple"
+            placeholder="Select a fruit"
+          />
+        )
+
+      case "Toggle":
+      case "Toggle Group":
+        return (
+          <div className="flex items-center gap-1 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] p-1">
+            <button
+              onClick={() => setToggleBold(!toggleBold)}
+              className={cn(
+                "px-3 py-1.5 rounded text-xs font-bold transition-colors",
+                toggleBold
+                  ? "bg-[var(--bg-subtle)] text-[var(--text-main)] shadow-sm"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+              )}
+            >
+              B
+            </button>
+            <button
+              onClick={() => setToggleItalic(!toggleItalic)}
+              className={cn(
+                "px-3 py-1.5 rounded text-xs italic transition-colors font-serif",
+                toggleItalic
+                  ? "bg-[var(--bg-subtle)] text-[var(--text-main)] shadow-sm"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+              )}
+            >
+              I
+            </button>
+            <button
+              onClick={() => setToggleUnderline(!toggleUnderline)}
+              className={cn(
+                "px-3 py-1.5 rounded text-xs underline transition-colors",
+                toggleUnderline
+                  ? "bg-[var(--bg-subtle)] text-[var(--text-main)] shadow-sm"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+              )}
+            >
+              U
+            </button>
+          </div>
+        )
+
+      case "Toast":
+      case "Sonner":
+        return (
+          <div className="relative flex flex-col items-center">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setToastActive(true)
+                setTimeout(() => setToastActive(false), 4000)
+              }}
+            >
+              Show Toast
+            </Button>
+            {toastActive && (
+              <div className="fixed bottom-6 right-6 z-50 flex items-center justify-between gap-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 shadow-2xl animate-in slide-in-from-bottom-5 duration-200">
+                <div className="space-y-0.5">
+                  <div className="type-heading font-semibold text-xs text-[var(--text-main)]">
+                    Event has been created
+                  </div>
+                  <div className="type-caption text-[var(--text-muted)]">
+                    Sunday, December 03, 2026 at 9:00 AM
+                  </div>
+                </div>
+                <Button size="sm" variant="outline" onClick={() => setToastActive(false)}>
+                  Undo
+                </Button>
+              </div>
+            )}
+          </div>
+        )
+
+      case "Command":
+        return (
+          <div className="w-full max-w-sm rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-md overflow-hidden">
+            <div className="flex items-center border-b border-[var(--border-subtle)] px-3">
+              <Input
+                placeholder="Type a command or search..."
+                className="border-0 focus:ring-0 shadow-none px-0 py-2.5 bg-transparent"
+              />
+            </div>
+            <div className="p-2 space-y-1 text-xs">
+              <div className="px-2 py-1 text-[10px] uppercase font-mono text-[var(--text-muted)]">Suggestions</div>
+              <div className="flex items-center gap-2 px-2 py-1.5 rounded-md bg-[var(--bg-subtle)] text-[var(--text-main)] cursor-pointer">
+                <span>📅 Calendar</span>
+              </div>
+              <div className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-[var(--bg-subtle)]/50 text-[var(--text-muted)] hover:text-[var(--text-main)] cursor-pointer">
+                <span>🔍 Search Emoji</span>
+              </div>
+              <div className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-[var(--bg-subtle)]/50 text-[var(--text-muted)] hover:text-[var(--text-main)] cursor-pointer">
+                <span>⚙️ Settings</span>
+              </div>
+            </div>
+          </div>
+        )
+
+      case "Date Picker":
+        return (
+          <div className="w-full max-w-xs space-y-2">
+            <button
+              onClick={() => setDatePickerOpen(!datePickerOpen)}
+              className="flex h-9 w-full items-center justify-between rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] px-3 text-xs text-[var(--text-main)] shadow-sm"
+            >
+              <span>September 26, 2026</span>
+              <span>📅</span>
+            </button>
+            {datePickerOpen && (
+              <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-3 text-center shadow-lg animate-in fade-in-0 duration-150">
+                <div className="text-xs font-semibold text-[var(--text-main)] mb-2">September 2026</div>
+                <div className="grid grid-cols-7 gap-1 text-[10px] text-[var(--text-muted)] mb-1">
+                  <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                </div>
+                <div className="grid grid-cols-7 gap-1 text-xs">
+                  {Array.from({ length: 30 }, (_, i) => i + 1).map((d) => (
+                    <button
+                      key={d}
+                      onClick={() => setDatePickerOpen(false)}
+                      className={cn(
+                        "size-6 rounded flex items-center justify-center transition-colors",
+                        d === 26
+                          ? "bg-[var(--text-main)] text-[var(--bg-page)] font-bold"
+                          : "hover:bg-[var(--bg-subtle)] text-[var(--text-main)]"
+                      )}
+                    >
+                      {d}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )
+
+      case "Carousel":
+        return (
+          <div className="w-full max-w-xs space-y-3">
+            <div className="relative aspect-video rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] flex items-center justify-center p-6 shadow">
+              <div className="text-center space-y-1">
+                <span className="text-3xl font-black text-[var(--text-main)] font-mono">{carouselIndex + 1}</span>
+                <p className="text-xs text-[var(--text-muted)]">Slide {carouselIndex + 1} of 5</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCarouselIndex((prev) => (prev > 0 ? prev - 1 : 4))}
+              >
+                Previous
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCarouselIndex((prev) => (prev < 4 ? prev + 1 : 0))}
+              >
+                Next
+              </Button>
+            </div>
+          </div>
+        )
+
+      case "Pagination":
+        return (
+          <nav aria-label="pagination" className="flex items-center gap-1 text-xs">
+            <Button variant="ghost" size="sm">Previous</Button>
+            <Button size="sm" className="size-8 p-0">1</Button>
+            <Button variant="ghost" size="sm" className="size-8 p-0">2</Button>
+            <Button variant="ghost" size="sm" className="size-8 p-0">3</Button>
+            <span className="px-2 text-[var(--text-muted)]">...</span>
+            <Button variant="ghost" size="sm" className="size-8 p-0">10</Button>
+            <Button variant="ghost" size="sm">Next</Button>
+          </nav>
+        )
+
+      case "Scroll Area":
+        return (
+          <div className="h-48 w-48 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 overflow-y-auto space-y-2">
+            <h4 className="text-xs font-semibold text-[var(--text-main)] sticky top-0 bg-[var(--bg-card)] pb-1">
+              Tags
+            </h4>
+            {Array.from({ length: 20 }, (_, i) => `v1.2.0-beta.${20 - i}`).map((tag) => (
+              <div key={tag} className="text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] cursor-pointer py-1 border-b border-[var(--border-subtle)]/50 last:border-0 font-mono">
+                {tag}
+              </div>
+            ))}
+          </div>
+        )
+
+      case "Chart":
+        return (
+          <div className="w-full max-w-sm rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-semibold text-[var(--text-main)]">Weekly Visitors</span>
+              <span className="text-xs font-mono text-emerald-400">+12.5%</span>
+            </div>
+            <div className="flex items-end justify-between gap-2 h-28 pt-4">
+              {[40, 70, 55, 90, 65, 85, 100].map((h, i) => (
+                <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                  <div
+                    className="w-full bg-[var(--text-main)] rounded-t transition-all hover:opacity-80"
+                    style={{ height: `${h}%` }}
+                  />
+                  <span className="text-[10px] text-[var(--text-muted)] font-mono">
+                    {["M", "T", "W", "T", "F", "S", "S"][i]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+
+      case "Empty":
+        return (
+          <div className="w-full max-w-sm rounded-xl border border-dashed border-[var(--border-subtle)] bg-[var(--bg-card)]/50 p-8 text-center space-y-3">
+            <div className="size-10 rounded-full bg-[var(--bg-subtle)] mx-auto flex items-center justify-center text-[var(--text-muted)]">
+              📭
+            </div>
+            <div className="space-y-1">
+              <h4 className="type-heading text-sm text-[var(--text-main)]">No projects found</h4>
+              <p className="type-caption text-[var(--text-muted)]">Get started by creating your first component library project.</p>
+            </div>
+            <Button size="sm">Create Project</Button>
+          </div>
+        )
+
+      case "Item":
+        return (
+          <div className="w-full max-w-sm rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] divide-y divide-[var(--border-subtle)] overflow-hidden">
+            {[
+              { name: "Documentation.pdf", size: "2.4 MB", tag: "Synced" },
+              { name: "Brand_Assets.zip", size: "14.8 MB", tag: "Ready" },
+              { name: "Schema.prisma", size: "8.1 KB", tag: "Updated" },
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center justify-between p-3 text-xs hover:bg-[var(--bg-subtle)]/50 transition-colors">
+                <span className="font-mono text-[var(--text-main)]">{item.name}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-[var(--text-muted)]">{item.size}</span>
+                  <span className="px-1.5 py-0.5 rounded bg-[var(--bg-subtle)] text-[10px] text-[var(--text-muted)] font-mono">{item.tag}</span>
+                </div>
+              </div>
+            ))}
           </div>
         )
 
