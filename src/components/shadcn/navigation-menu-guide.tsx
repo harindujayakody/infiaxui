@@ -18,10 +18,10 @@ import {
   navigationMenuTriggerStyle,
 } from "./navigation-menu"
 import { NavigationMenuDemo, NavigationMenuRtlDemo } from "./navigation-menu-demo"
+import { InstallationSection } from "./installation-section"
 import { cn } from "@/lib/utils"
 
 export function NavigationMenuGuide() {
-  const [installTab, setInstallTab] = useState<"cli" | "manual">("cli")
 
   const manualComponentCode = `import * as React from "react"
 import { cva } from "class-variance-authority"
@@ -234,68 +234,13 @@ export function NavigationMenuLink({
       </section>
 
       {/* Installation */}
-      <section id="installation" className="scroll-mt-20 space-y-4">
-        <h2 className="type-h2 text-[var(--text-main)]">Installation</h2>
-
-        <div className="space-y-4">
-          <div className="flex items-center gap-1 border-b border-[var(--border-subtle)] pb-2">
-            <button
-              onClick={() => setInstallTab("cli")}
-              className={cn(
-                "px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
-                installTab === "cli"
-                  ? "bg-[var(--bg-subtle)] text-[var(--text-main)] font-semibold shadow-sm"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
-              )}
-            >
-              Command
-            </button>
-            <button
-              onClick={() => setInstallTab("manual")}
-              className={cn(
-                "px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
-                installTab === "manual"
-                  ? "bg-[var(--bg-subtle)] text-[var(--text-main)] font-semibold shadow-sm"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
-              )}
-            >
-              Manual
-            </button>
-          </div>
-
-          {installTab === "cli" ? (
-            <CodeBlock
-              code="npx shadcn@latest add navigation-menu"
-              language="bash"
-              fileName="Terminal"
-            />
-          ) : (
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <span className="text-xs text-[var(--text-muted)] font-medium">
-                  1. Install the following dependencies:
-                </span>
-                <CodeBlock
-                  code="npm install @base-ui/react framer-motion class-variance-authority"
-                  language="bash"
-                  fileName="Terminal"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <span className="text-xs text-[var(--text-muted)] font-medium">
-                  2. Copy and paste the following code into your project:
-                </span>
-                <CodeBlock
-                  code={manualComponentCode}
-                  language="tsx"
-                  fileName="components/ui/navigation-menu.tsx"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
+      <InstallationSection
+        componentName="Navigation Menu"
+        componentSlug="navigation-menu"
+        dependencies="@base-ui/react framer-motion"
+        sourceCode={manualComponentCode}
+        sourcePath="components/ui/navigation-menu.tsx"
+      />
 
       {/* Usage */}
       <section id="usage" className="scroll-mt-20 space-y-4">

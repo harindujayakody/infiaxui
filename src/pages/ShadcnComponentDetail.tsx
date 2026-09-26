@@ -142,6 +142,7 @@ import { IntroductionGuide } from "@/components/shadcn/introduction-guide"
 import { SkillsGuide } from "@/components/shadcn/skills-guide"
 import { NavigationMenuDemo } from "@/components/shadcn/navigation-menu-demo"
 import { HoverCardDemo } from "@/components/shadcn/hover-card-demo"
+import { InstallationSection } from "@/components/shadcn/installation-section"
 import { cn } from "@/lib/utils"
 
 interface ShadcnComponentDetailProps {
@@ -2714,160 +2715,13 @@ export function ChartDemo() {
       </div>
 
       {/* Installation Section matching Screenshot */}
-      <div id="installation" className="scroll-mt-20 space-y-5 pt-4">
-        <h2 className="type-h2 text-[var(--text-main)]">Installation</h2>
-
-        {/* Command | Manual switcher */}
-        <div className="flex items-center gap-6 border-b border-[var(--border-subtle)]">
-          {(["Command", "Manual"] as const).map((mode) => (
-            <button
-              key={mode}
-              onClick={() => setInstallMode(mode)}
-              className={`pb-2.5 transition-colors relative type-link ${
-                installMode === mode
-                  ? "text-[var(--text-main)] font-semibold"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
-              }`}
-            >
-              {mode}
-              {installMode === mode && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--text-main)] rounded-full" />
-              )}
-            </button>
-          ))}
-        </div>
-
-        {installMode === "Command" ? (
-          <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 space-y-3">
-            {/* Package Manager Tabs: pnpm | npm | yarn | bun */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1">
-                {(["pnpm", "npm", "yarn", "bun"] as const).map((pkg) => (
-                  <button
-                    key={pkg}
-                    onClick={() => setPkgManager(pkg)}
-                    className={`px-3 py-1 rounded-md type-link-12 font-mono transition-colors ${
-                      pkgManager === pkg
-                        ? "bg-[var(--bg-subtle)] text-[var(--text-main)] font-medium"
-                        : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
-                    }`}
-                  >
-                    {pkg}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                onClick={() => handleCopy(getCliCommand(), "cli")}
-                className="p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
-                title="Copy command"
-              >
-                {copiedSection === "cli" ? (
-                  <Check className="size-3.5 text-emerald-400" />
-                ) : (
-                  <Copy className="size-3.5" />
-                )}
-              </button>
-            </div>
-
-            {/* CLI Command Line */}
-            <div className="font-mono text-xs text-[var(--text-main)] pt-1">
-              <code>{getCliCommand()}</code>
-            </div>
-          </div>
-        ) : (
-          /* Manual Mode matching exact user screenshot! */
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="flex items-center justify-center size-6 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] type-link-12 font-semibold text-[var(--text-main)]">
-                1
-              </span>
-              <span className="type-heading text-[var(--text-main)]">
-                Copy and paste the following code into your project.
-              </span>
-            </div>
-
-            {/* Manual Code block with Mac style header matching user request */}
-            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs shadow-md">
-              <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/60 select-none">
-                <div className="flex items-center gap-3">
-                  {/* Static macOS Window Controls */}
-                  <div className="flex items-center gap-1.5" aria-hidden="true">
-                    <span className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
-                    <span className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
-                    <span className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
-                  </div>
-
-                  <div className="h-3 w-px bg-[var(--border-subtle)]" />
-
-                  {/* TS badge & file path */}
-                  <div className="flex items-center gap-2 text-[var(--text-muted)]">
-                    <span className="font-bold text-[10px] bg-[var(--bg-subtle)] border border-[var(--border-subtle)] px-1.5 py-0.5 rounded text-[var(--text-main)]">
-                      TS
-                    </span>
-                    <span className="font-mono text-xs">components/ui/{componentData.id}.tsx</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 text-[var(--text-muted)]">
-                  <button
-                    onClick={() => setIsManualExpanded(!isManualExpanded)}
-                    className="hover:text-[var(--text-main)] transition-colors type-link-12 font-medium"
-                  >
-                    {isManualExpanded ? "Collapse" : "Expand"}
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleCopy(
-                        `import * as React from "react"\nimport { mergeProps } from "@base-ui/react/merge-props"\nimport { useRender } from "@base-ui/react/use-render"\nimport { cn } from "cn"\nimport { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"\n\nexport function ${componentName}() {\n  return (\n    <div className={cn("inline-flex items-center gap-2")}>\n      {/* ${componentName} implementation */}\n    </div>\n  )\n}`,
-                        "manual-file"
-                      )
-                    }
-                    className="flex items-center gap-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/70 hover:bg-[var(--bg-subtle)] px-2 py-1 text-xs text-[var(--text-main)] transition-all"
-                    title="Copy source"
-                  >
-                    {copiedSection === "manual-file" ? (
-                      <>
-                        <Check className="size-3.5 text-emerald-400" />
-                        <span className="text-emerald-400">Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="size-3.5 text-[var(--text-muted)]" />
-                        <span>Copy</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              <div
-                className={`p-4 overflow-x-auto text-[var(--text-main)] leading-relaxed transition-all duration-200 ${
-                  isManualExpanded ? "max-h-[500px]" : "max-h-[220px]"
-                }`}
-              >
-                <div><span className="text-[var(--text-muted)] mr-4">1</span><span className="text-purple-400">import</span> * <span className="text-purple-400">as</span> React <span className="text-purple-400">from</span> <span className="text-emerald-300">"react"</span></div>
-                <div><span className="text-[var(--text-muted)] mr-4">2</span><span className="text-purple-400">import</span> &#123; mergeProps &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"@base-ui/react/merge-props"</span></div>
-                <div><span className="text-[var(--text-muted)] mr-4">3</span><span className="text-purple-400">import</span> &#123; useRender &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"@base-ui/react/use-render"</span></div>
-                <div><span className="text-[var(--text-muted)] mr-4">4</span><span className="text-purple-400">import</span> &#123; cn &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"cn"</span></div>
-                <div><span className="text-[var(--text-muted)] mr-4">5</span><span className="text-purple-400">import</span> &#123; ChevronRightIcon, MoreHorizontalIcon &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"lucide-react"</span></div>
-                {isManualExpanded && (
-                  <>
-                    <div className="pt-2"><span className="text-[var(--text-muted)] mr-4">6</span></div>
-                    <div><span className="text-[var(--text-muted)] mr-4">7</span><span className="text-purple-400">export function</span> <span className="text-blue-300">{componentName}</span>() &#123;</div>
-                    <div><span className="text-[var(--text-muted)] mr-4">8</span>  <span className="text-purple-400">return</span> (</div>
-                    <div><span className="text-[var(--text-muted)] mr-4">9</span>    &lt;<span className="text-pink-400">div</span> <span className="text-sky-300">className</span>={"{cn(\"inline-flex items-center gap-2\")}"}&gt;</div>
-                    <div><span className="text-[var(--text-muted)] mr-4">10</span>      &lt;<span className="text-pink-400">span</span>&gt;{componentName} Primitive&lt;/<span className="text-pink-400">span</span>&gt;</div>
-                    <div><span className="text-[var(--text-muted)] mr-4">11</span>    &lt;/<span className="text-pink-400">div</span>&gt;</div>
-                    <div><span className="text-[var(--text-muted)] mr-4">12</span>  )</div>
-                    <div><span className="text-[var(--text-muted)] mr-4">13</span>&#125;</div>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      <InstallationSection
+        componentName={componentData.name}
+        componentSlug={componentData.id}
+        dependencies="@base-ui/react"
+        sourceCode={`import * as React from "react"\nimport { cn } from "@/lib/utils"\n\nexport function ${componentName.replace(/\s+/g, "")}() {\n  return (\n    <div className={cn("inline-flex items-center gap-2")}>\n      {/* ${componentName} implementation */}\n    </div>\n  )\n}`}
+        sourcePath={`components/ui/${componentData.id}.tsx`}
+      />
 
       {/* Usage Section matching Screenshot 3 */}
       <div id="usage" className="scroll-mt-20 space-y-4 pt-4">

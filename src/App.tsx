@@ -141,7 +141,7 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-main)] flex flex-col font-sans transition-colors duration-150">
       {/* Mac Style Window Header + Navigation Shell */}
-      <div className="sticky top-0 z-50 w-full backdrop-blur">
+      <div className="sticky top-0 z-50 w-full bg-[var(--bg-page)]">
         <MacTitleBar
           title={windowTitle}
           subtitle="shadcn/ui"

@@ -21,6 +21,7 @@ import {
   HoverCardDelaysDemo,
   HoverCardRtlDemo,
 } from "./hover-card-demo"
+import { InstallationSection } from "./installation-section"
 import { cn } from "@/lib/utils"
 
 export function HoverCardGuide() {
@@ -268,68 +269,13 @@ export function HoverCardContent({
       </section>
 
       {/* Installation */}
-      <section id="installation" className="scroll-mt-20 space-y-4">
-        <h2 className="type-h2 text-[var(--text-main)]">Installation</h2>
-
-        <div className="space-y-4">
-          <div className="flex items-center gap-1 border-b border-[var(--border-subtle)] pb-2">
-            <button
-              onClick={() => setInstallTab("cli")}
-              className={cn(
-                "px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
-                installTab === "cli"
-                  ? "bg-[var(--bg-subtle)] text-[var(--text-main)] font-semibold shadow-sm"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
-              )}
-            >
-              Command
-            </button>
-            <button
-              onClick={() => setInstallTab("manual")}
-              className={cn(
-                "px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
-                installTab === "manual"
-                  ? "bg-[var(--bg-subtle)] text-[var(--text-main)] font-semibold shadow-sm"
-                  : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
-              )}
-            >
-              Manual
-            </button>
-          </div>
-
-          {installTab === "cli" ? (
-            <CodeBlock
-              code="npx shadcn@latest add hover-card"
-              language="bash"
-              fileName="Terminal"
-            />
-          ) : (
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <span className="text-xs text-[var(--text-muted)] font-medium">
-                  1. Install the following dependencies:
-                </span>
-                <CodeBlock
-                  code="npm install @base-ui/react framer-motion"
-                  language="bash"
-                  fileName="Terminal"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <span className="text-xs text-[var(--text-muted)] font-medium">
-                  2. Copy and paste the following code into your project:
-                </span>
-                <CodeBlock
-                  code={manualComponentCode}
-                  language="tsx"
-                  fileName="components/ui/hover-card.tsx"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
+      <InstallationSection
+        componentName="Hover Card"
+        componentSlug="hover-card"
+        dependencies="@base-ui/react framer-motion"
+        sourceCode={manualComponentCode}
+        sourcePath="components/ui/hover-card.tsx"
+      />
 
       {/* Usage */}
       <section id="usage" className="scroll-mt-20 space-y-4">
