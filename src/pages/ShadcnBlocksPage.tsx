@@ -47,6 +47,7 @@ import { DiaTextRevealBlockPreview } from "@/components/magicui/dia-text-reveal-
 import { ThemeTogglerBlockPreview } from "@/components/magicui/animated-theme-toggler-demo"
 import { DotPatternBlockPreview } from "@/components/magicui/dot-pattern-demo"
 import { ParticlesBlockPreview } from "@/components/magicui/particles-demo"
+import { TooltipCardBlockPreview } from "@/components/ui/tooltip-card-demo"
 
 interface BlockItem {
   id: string
@@ -382,6 +383,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "Particles are a fun way to add some visual flair, movement, and depth to your website.",
       cliCommand: "npx shadcn@latest add @magicui/particles",
       renderPreview: () => <ParticlesBlockPreview />,
+    },
+    {
+      id: "tooltip-card",
+      title: "Tooltip Card",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Tooltip Card",
+      description:
+        "A tooltip card container that follows mouse pointer when hovered over.",
+      cliCommand: "npx shadcn@latest add @aceternity/tooltip-card-demo",
+      renderPreview: () => <TooltipCardBlockPreview />,
     },
   ]
 

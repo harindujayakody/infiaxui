@@ -204,6 +204,8 @@ import { DotPatternDemo } from "@/components/magicui/dot-pattern-demo"
 import { DotPatternGuide } from "@/components/magicui/dot-pattern-guide"
 import { ParticlesDemo } from "@/components/magicui/particles-demo"
 import { ParticlesGuide } from "@/components/magicui/particles-guide"
+import { TooltipCardDemo } from "@/components/ui/tooltip-card-demo"
+import { TooltipCardGuide } from "@/components/ui/tooltip-card-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -988,6 +990,51 @@ export function ParticlesDemo() {
         Particles
       </p>
       <Particles className="absolute inset-0" quantity={100} ease={80} color="#ffffff" />
+    </div>
+  )
+}`
+
+      case "Tooltip Card":
+        return `import { Tooltip } from "@/components/ui/tooltip-card"
+import React from "react"
+
+export function TooltipCardDemo() {
+  return (
+    <div className="mx-auto max-w-2xl p-4 md:p-10">
+      <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        There was a problem with the server. Once{" "}
+        <Tooltip
+          containerClassName="text-neutral-600 dark:text-neutral-400"
+          content="AWS markets itself as the “world's most comprehensive and broadly adopted cloud platform” offering over 200 fully featured services globally."
+        >
+          <span className="font-bold">AWS</span>
+        </Tooltip>{" "}
+        went down, we had to quickly migrate to a new provider. AWS in general
+        is a great service, but sometimes it's not available.
+      </p>
+      <p className="mt-10 text-sm text-neutral-600 dark:text-neutral-400">
+        The server was administered by{" "}
+        <Tooltip
+          containerClassName="text-neutral-600 dark:text-neutral-400"
+          content={<TooltipCard />}
+        >
+          <span className="cursor-pointer font-bold">Tyler Durden.</span>
+        </Tooltip>{" "}
+        Tyler has been with us for a long time. He is a great asset to the team
+        and sometimes tries to act in different ways which can be difficult to
+        manage.
+      </p>
+      <p className="mt-10 text-sm text-neutral-600 dark:text-neutral-400">
+        That is when we approached Tyler for a cute little{" "}
+        <Tooltip
+          containerClassName="text-neutral-600 dark:text-neutral-400"
+          content={<TestimonialCard />}
+        >
+          <span className="cursor-pointer font-bold">testimonial.</span>
+        </Tooltip>{" "}
+        Instead of a testimonial, he started yapping about project mayhem and
+        how we should be using our skills to build a better future.
+      </p>
     </div>
   )
 }`
@@ -3409,6 +3456,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Tooltip Card":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <TooltipCardDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4147,6 +4201,8 @@ export function ScrollAreaDemo() {
         <DotPatternGuide />
       ) : componentData.name === "Particles" ? (
         <ParticlesGuide />
+      ) : componentData.name === "Tooltip Card" ? (
+        <TooltipCardGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

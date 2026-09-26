@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -20,6 +20,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Dia Text Reveal",
     "Dot Pattern",
     "Particles",
+    "Tooltip Card",
     "Pixel Image",
     "Ripple",
     "Scroll Based Velocity",
@@ -1111,6 +1112,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "vx",
       "vy",
       "className",
+    ],
+  },
+  "Tooltip Card": {
+    id: "tooltip-card",
+    name: "Tooltip Card",
+    description: "A tooltip card container that follows mouse pointer when hovered over.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/tooltip-card-demo",
+    importCode: `import { Tooltip, TooltipCard } from "@/components/ui/tooltip-card"`,
+    usageCode: `<Tooltip\n  content={<div className="p-2">Hovered card content</div>}\n>\n  <span className="cursor-pointer font-bold">Hover me</span>\n</Tooltip>`,
+    apiReference: [
+      "Tooltip",
+      "TooltipCard",
+      "content",
+      "children",
+      "containerClassName",
     ],
   },
 }
