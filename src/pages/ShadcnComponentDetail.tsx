@@ -104,6 +104,14 @@ import { PaginationGuide } from "@/components/shadcn/pagination-guide"
 import { NativeSelectGuide } from "@/components/shadcn/native-select-guide"
 import { MessageScrollerGuide } from "@/components/shadcn/message-scroller-guide"
 import { MessageGuide } from "@/components/shadcn/message-guide"
+import { MenubarGuide } from "@/components/shadcn/menubar-guide"
+import { MarkerGuide } from "@/components/shadcn/marker-guide"
+import { LabelGuide } from "@/components/shadcn/label-guide"
+import { KbdGuide } from "@/components/shadcn/kbd-guide"
+import { ItemGuide } from "@/components/shadcn/item-guide"
+import { InputOTPGuide } from "@/components/shadcn/input-otp-guide"
+import { InputGroupGuide } from "@/components/shadcn/input-group-guide"
+import { InputGuide } from "@/components/shadcn/input-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2833,6 +2841,22 @@ export function ChartDemo() {
         <MessageScrollerGuide />
       ) : componentData.name === "Message" ? (
         <MessageGuide />
+      ) : componentData.name === "Menubar" ? (
+        <MenubarGuide />
+      ) : componentData.name === "Marker" ? (
+        <MarkerGuide />
+      ) : componentData.name === "Label" ? (
+        <LabelGuide />
+      ) : componentData.name === "Kbd" ? (
+        <KbdGuide />
+      ) : componentData.name === "Item" ? (
+        <ItemGuide />
+      ) : componentData.name === "Input OTP" ? (
+        <InputOTPGuide />
+      ) : componentData.name === "Input Group" ? (
+        <InputGroupGuide />
+      ) : componentData.name === "Input" ? (
+        <InputGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

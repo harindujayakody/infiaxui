@@ -398,6 +398,91 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "Live status indicator accessibility & API reference",
     ],
   },
+  "Menubar": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Desktop application style horizontal menu bar",
+      "Submenus, checkbox items, and radio groups",
+      "Keyboard shortcut combination badges",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Marker": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Inline status notes, bordered rows, and labeled separators",
+      "role='status' with Spinner for live AI progress updates",
+      "Polymorphic render prop for link and button markers",
+      "Accessibility guidelines for labeled dividers",
+      "API reference",
+    ],
+  },
+  "Label": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Accessible label associated with form controls",
+      "Checkbox and Switch label control pairings",
+      "FieldLabel integration with description & validation errors",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Kbd": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Keyboard key display tags and KbdGroup shortcut combinations",
+      "Button and search field input addon pairings",
+      "Tooltip keyboard shortcut badges",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Item": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Versatile row layout with media (icon, avatar, image)",
+      "Title, description, actions, and header/footer slots",
+      "ItemGroup container with dividers",
+      "Item vs Field usage guide",
+      "Polymorphic link render support & API reference",
+    ],
+  },
+  "Input OTP": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "One-time password input with individual character slots",
+      "6-digit OTP and 4-digit security PIN configurations",
+      "Auto-focus progression and clipboard paste support",
+      "Invalid error validation styling & API reference",
+    ],
+  },
+  "Input Group": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Input wrappers with leading and trailing addons",
+      "Currency prefix and copy-to-clipboard button addons",
+      "Textarea with bottom submit and helper action bar",
+      "Focus management with logical alignment props",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Input": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Standard text input with built-in styling and accessibility",
+      "Field wrapper with label, recommended badge, and description",
+      "Disabled and invalid validation error states",
+      "File upload (type='file') styling",
+      "Inline search with submit button",
+      "RTL layout support & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {
