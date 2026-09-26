@@ -190,6 +190,8 @@ import { SmoothCursorDemo } from "@/components/magicui/smooth-cursor-demo"
 import { SmoothCursorGuide } from "@/components/magicui/smooth-cursor-guide"
 import { AnimatedListDemo } from "@/components/magicui/animated-list-demo"
 import { AnimatedListGuide } from "@/components/magicui/animated-list-guide"
+import { RippleDemo } from "@/components/magicui/ripple-demo"
+import { RippleGuide } from "@/components/magicui/ripple-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -873,6 +875,20 @@ export function AnimatedListDemo() {
 
       <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0A0A0A] to-transparent z-10" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10" />
+    </div>
+  )
+}`
+
+      case "Ripple":
+        return `import { Ripple } from "@/components/ui/ripple"
+
+export function RippleDemo() {
+  return (
+    <div className="relative flex h-[380px] sm:h-[450px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-2xl select-none">
+      <p className="z-10 whitespace-pre-wrap text-center text-4xl sm:text-5xl font-bold tracking-tight text-white pointer-events-none">
+        Ripple
+      </p>
+      <Ripple />
     </div>
   )
 }`
@@ -3245,6 +3261,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Ripple":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <RippleDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3969,6 +3992,8 @@ export function ScrollAreaDemo() {
         <SmoothCursorGuide />
       ) : componentData.name === "Animated List" ? (
         <AnimatedListGuide />
+      ) : componentData.name === "Ripple" ? (
+        <RippleGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

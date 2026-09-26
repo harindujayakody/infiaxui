@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -17,6 +17,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "3D Card Effect",
     "Animated List",
     "Animated Shiny Text",
+    "Ripple",
     "Scroll Based Velocity",
     "Smooth Cursor",
     "Accordion",
@@ -966,6 +967,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "AnimatedListItem",
       "delay",
       "children",
+      "className",
+    ],
+  },
+  Ripple: {
+    id: "ripple",
+    name: "Ripple",
+    description: "An animated ripple effect typically used behind elements to emphasize them.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/ripple",
+    importCode: `import { Ripple } from "@/components/ui/ripple"`,
+    usageCode: `<div className="relative h-[500px] w-full overflow-hidden">\n  <Ripple />\n</div>`,
+    apiReference: [
+      "Ripple",
+      "mainCircleSize",
+      "mainCircleOpacity",
+      "numCircles",
       "className",
     ],
   },

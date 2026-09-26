@@ -40,6 +40,7 @@ import { AnimatedShinyTextBlockPreview } from "@/components/magicui/animated-shi
 import { ScrollBasedVelocityBlockPreview } from "@/components/magicui/scroll-based-velocity-demo"
 import { SmoothCursorBlockPreview } from "@/components/magicui/smooth-cursor-demo"
 import { AnimatedListBlockPreview } from "@/components/magicui/animated-list-demo"
+import { RippleBlockPreview } from "@/components/magicui/ripple-demo"
 
 interface BlockItem {
   id: string
@@ -298,6 +299,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A list that animates each item in sequence with a delay. Used to showcase notifications or events.",
       cliCommand: "npx shadcn@latest add @magicui/animated-list",
       renderPreview: () => <AnimatedListBlockPreview />,
+    },
+    {
+      id: "ripple",
+      title: "Ripple",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Ripple",
+      description:
+        "An animated ripple effect typically used behind elements to emphasize them.",
+      cliCommand: "npx shadcn@latest add @magicui/ripple",
+      renderPreview: () => <RippleBlockPreview />,
     },
   ]
 

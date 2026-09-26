@@ -112,6 +112,14 @@ export default {
             "background-position": "calc(100% + var(--shiny-width, 100px)) 0",
           },
         },
+        ripple: {
+          "0%, 100%": {
+            transform: "translate(-50%, -50%) scale(1)",
+          },
+          "50%": {
+            transform: "translate(-50%, -50%) scale(0.9)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -124,6 +132,7 @@ export default {
         "marquee-vertical": "marquee-vertical var(--duration, 40s) linear infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         "shiny-text": "shiny-text 8s infinite",
+        ripple: "ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite",
       },
     },
   },
