@@ -264,17 +264,19 @@ function AppContent() {
         </main>
 
         {/* Right Table of Contents & Vercel Deploy Card */}
-        <ShadcnRightToc
-          view={
-            selectedComponent
-              ? "detail"
-              : activeSection === "Changelog"
-              ? "changelog"
-              : "catalog"
-          }
-          componentName={selectedComponent || undefined}
-          apiReference={currentCompData?.apiReference}
-        />
+        {(!activeSection || activeSection !== "Blocks" || selectedComponent !== null) && (
+          <ShadcnRightToc
+            view={
+              selectedComponent
+                ? "detail"
+                : activeSection === "Changelog"
+                ? "changelog"
+                : "catalog"
+            }
+            componentName={selectedComponent || undefined}
+            apiReference={currentCompData?.apiReference}
+          />
+        )}
       </div>
 
       {/* Mobile Navigation Slide-Over Drawer */}
