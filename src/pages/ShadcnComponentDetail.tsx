@@ -196,6 +196,8 @@ import { StripedPatternDemo } from "@/components/magicui/striped-pattern-demo"
 import { StripedPatternGuide } from "@/components/magicui/striped-pattern-guide"
 import { PixelImageDemo } from "@/components/magicui/pixel-image-demo"
 import { PixelImageGuide } from "@/components/magicui/pixel-image-guide"
+import { DiaTextRevealDemo } from "@/components/magicui/dia-text-reveal-demo"
+import { DiaTextRevealGuide } from "@/components/magicui/dia-text-reveal-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -926,6 +928,17 @@ export function PixelImageDemo() {
         className="h-72 w-72 md:h-80 md:w-80 shadow-2xl"
       />
     </div>
+  )
+}`
+
+      case "Dia Text Reveal":
+        return `import { DiaTextReveal } from "@/components/ui/dia-text-reveal"
+
+export function DiaTextRevealDemo() {
+  return (
+    <h2 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white">
+      <DiaTextReveal text="Magic" repeat repeatDelay={1.5} textColor="#ffffff" />
+    </h2>
   )
 }`
 
@@ -3318,6 +3331,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Dia Text Reveal":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <DiaTextRevealDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4048,6 +4068,8 @@ export function ScrollAreaDemo() {
         <StripedPatternGuide />
       ) : componentData.name === "Pixel Image" ? (
         <PixelImageGuide />
+      ) : componentData.name === "Dia Text Reveal" ? (
+        <DiaTextRevealGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

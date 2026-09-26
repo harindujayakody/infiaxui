@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -17,6 +17,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "3D Card Effect",
     "Animated List",
     "Animated Shiny Text",
+    "Dia Text Reveal",
     "Pixel Image",
     "Ripple",
     "Scroll Based Velocity",
@@ -1023,6 +1024,29 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "colorRevealDelay",
       "className",
       "alt",
+    ],
+  },
+  "Dia Text Reveal": {
+    id: "dia-text-reveal",
+    name: "Dia Text Reveal",
+    description: "A horizontal color band sweeps across text with a gradient shine, then settles on your theme foreground color.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/dia-text-reveal",
+    importCode: `import { DiaTextReveal } from "@/components/ui/dia-text-reveal"`,
+    usageCode: `<DiaTextReveal text="Magic UI" />`,
+    apiReference: [
+      "DiaTextReveal",
+      "text",
+      "colors",
+      "textColor",
+      "duration",
+      "delay",
+      "repeat",
+      "repeatDelay",
+      "startOnView",
+      "once",
+      "fixedWidth",
+      "className",
     ],
   },
 }

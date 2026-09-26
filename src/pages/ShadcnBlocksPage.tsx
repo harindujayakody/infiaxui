@@ -43,6 +43,7 @@ import { AnimatedListBlockPreview } from "@/components/magicui/animated-list-dem
 import { RippleBlockPreview } from "@/components/magicui/ripple-demo"
 import { StripedPatternBlockPreview } from "@/components/magicui/striped-pattern-demo"
 import { PixelImageBlockPreview } from "@/components/magicui/pixel-image-demo"
+import { DiaTextRevealBlockPreview } from "@/components/magicui/dia-text-reveal-demo"
 
 interface BlockItem {
   id: string
@@ -334,6 +335,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A component that displays your image with a pixelated effect, enhancing visual appeal.",
       cliCommand: "npx shadcn@latest add @magicui/pixel-image",
       renderPreview: () => <PixelImageBlockPreview />,
+    },
+    {
+      id: "dia-text-reveal",
+      title: "Dia Text Reveal",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Dia Text Reveal",
+      description:
+        "A horizontal color band sweeps across text with a gradient shine, then settles on your foreground color.",
+      cliCommand: "npx shadcn@latest add @magicui/dia-text-reveal",
+      renderPreview: () => <DiaTextRevealBlockPreview />,
     },
   ]
 
