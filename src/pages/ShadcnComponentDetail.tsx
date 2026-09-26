@@ -156,6 +156,8 @@ import { AvatarDemo } from "@/components/shadcn/avatar-demo"
 import { SeparatorDemo } from "@/components/shadcn/separator-demo"
 import { ComboboxDemo } from "@/components/shadcn/combobox-demo"
 import { CarouselDemo } from "@/components/shadcn/carousel-demo"
+import { AnimatedBeamDemo } from "@/components/magicui/animated-beam-demo"
+import { AnimatedBeamGuide } from "@/components/magicui/animated-beam-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -236,6 +238,38 @@ export function ShadcnComponentDetail({
 
   const getComponentDemoCode = (): string => {
     switch (componentData.name) {
+      case "Animated Beam":
+        return `import React, { useRef } from "react"
+import { AnimatedBeam } from "@/components/magicui/animated-beam"
+import { CircleUser, Server, Cloud, Database, Globe, Layers, Cpu } from "lucide-react"
+
+export function AnimatedBeamDemo() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const div1Ref = useRef<HTMLDivElement>(null)
+  const div2Ref = useRef<HTMLDivElement>(null)
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative flex h-[350px] w-full items-center justify-between overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-10"
+    >
+      <div ref={div1Ref} className="z-10 flex size-12 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--bg-subtle)] shadow-md">
+        <CircleUser className="size-6 text-indigo-400" />
+      </div>
+      <div ref={div2Ref} className="z-10 flex size-12 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--bg-subtle)] shadow-md">
+        <Server className="size-6 text-cyan-400" />
+      </div>
+
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div2Ref}
+        curvature={0}
+      />
+    </div>
+  )
+}`
+
       case "Button":
         return `import { Button } from "@/components/ui/button"
 
@@ -2485,6 +2519,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Animated Beam":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <AnimatedBeamDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3175,6 +3216,8 @@ export function ScrollAreaDemo() {
         <ChartGuide />
       ) : componentData.name === "Carousel" ? (
         <CarouselGuide />
+      ) : componentData.name === "Animated Beam" ? (
+        <AnimatedBeamGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

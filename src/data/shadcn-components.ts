@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -638,6 +638,26 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     importCode: `npx skills add shadcn/ui`,
     usageCode: `npx skills add shadcn/ui`,
     apiReference: ["npx skills", "components.json", ".cursorrules", "Schema"],
+  },
+  "Animated Beam": {
+    id: "animated-beam",
+    name: "Animated Beam",
+    description: "An animated beam of light which travels along a path. Useful for showcasing the \"integration\" features of a website.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/animated-beam",
+    importCode: `import { AnimatedBeam } from "@/components/ui/animated-beam"`,
+    usageCode: `<AnimatedBeam containerRef={containerRef} fromRef={fromRef} toRef={toRef} />`,
+    apiReference: [
+      "AnimatedBeam",
+      "containerRef",
+      "fromRef",
+      "toRef",
+      "curvature",
+      "reverse",
+      "duration",
+      "gradientStartColor",
+      "gradientStopColor",
+    ],
   },
 }
 

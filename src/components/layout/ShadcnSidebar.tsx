@@ -18,6 +18,7 @@ export function ShadcnSidebar({
   const sections = [
     { id: "Introduction", label: "Introduction", href: "/components" },
     { id: "Components", label: "Components", href: "/components" },
+    { id: "Blocks", label: "Blocks", href: "/blocks" },
     { id: "Installation", label: "Installation", href: "/components" },
     { id: "Theming", label: "Theming", href: "/components" },
     { id: "CLI", label: "CLI", href: "/components" },

@@ -7,6 +7,7 @@ import { ShadcnRightToc } from "@/components/layout/ShadcnRightToc"
 import { ShadcnComponentsCatalog } from "@/pages/ShadcnComponentsCatalog"
 import { ShadcnComponentDetail } from "@/pages/ShadcnComponentDetail"
 import { ShadcnChangelog } from "@/pages/ShadcnChangelog"
+import { ShadcnBlocksPage } from "@/pages/ShadcnBlocksPage"
 import { SHADCN_COMPONENTS_DETAIL } from "@/data/shadcn-components"
 import { CommandPalette } from "@/components/layout/CommandPalette"
 import { MobileNavDrawer } from "@/components/layout/MobileNavDrawer"
@@ -20,7 +21,11 @@ function AppContent() {
   const initialRoute = parseCurrentRoute()
 
   const [activeNavTab, setActiveNavTab] = useState<string>(
-    initialRoute.view === "changelog" ? "Changelog" : "Components"
+    initialRoute.view === "changelog"
+      ? "Changelog"
+      : initialRoute.view === "blocks"
+      ? "Blocks"
+      : "Components"
   )
   const [activeSection, setActiveSection] = useState<string>(initialRoute.sectionName)
   const [selectedComponent, setSelectedComponent] = useState<string | null>(
@@ -41,6 +46,10 @@ function AppContent() {
         setSelectedComponent(null)
         setActiveSection("Components")
         setActiveNavTab("Components")
+      } else if (route.view === "blocks") {
+        setSelectedComponent(null)
+        setActiveSection("Blocks")
+        setActiveNavTab("Blocks")
       } else if (route.view === "changelog") {
         setSelectedComponent(null)
         setActiveSection("Changelog")
@@ -66,6 +75,11 @@ function AppContent() {
         window.history.replaceState(null, "", "/components")
       }
       document.title = "Components - shadcn/ui"
+    } else if (route.view === "blocks") {
+      if (window.location.pathname !== "/blocks") {
+        window.history.replaceState(null, "", "/blocks")
+      }
+      document.title = "Blocks - shadcn/ui"
     } else if (route.view === "changelog") {
       document.title = "Changelog - shadcn/ui"
     }
@@ -117,6 +131,8 @@ function AppContent() {
       document.title = `${selectedComponent} - shadcn/ui`
     } else if (activeSection === "Changelog") {
       document.title = "Changelog - shadcn/ui"
+    } else if (activeSection === "Blocks") {
+      document.title = "Blocks - shadcn/ui"
     } else {
       document.title = "Components - shadcn/ui"
     }
@@ -154,6 +170,14 @@ function AppContent() {
           window.history.pushState(null, "", targetUrl)
         }
       }
+    } else if (section === "Blocks") {
+      setSelectedComponent(null)
+      setActiveNavTab("Blocks")
+      if (pushHistory) {
+        if (window.location.pathname !== "/blocks") {
+          window.history.pushState(null, "", "/blocks")
+        }
+      }
     } else {
       setSelectedComponent(null)
       if (pushHistory) {
@@ -178,6 +202,8 @@ function AppContent() {
     ? `${selectedComponent} - shadcn/ui`
     : activeSection === "Changelog"
     ? "Changelog - shadcn/ui"
+    : activeSection === "Blocks"
+    ? "Blocks - shadcn/ui"
     : "Components - shadcn/ui"
 
   return (
@@ -195,6 +221,8 @@ function AppContent() {
             setActiveNavTab(tab)
             if (tab === "Changelog") {
               handleSelectSection("Changelog")
+            } else if (tab === "Blocks") {
+              handleSelectSection("Blocks")
             } else if (tab === "Components") {
               handleSelectSection("Components")
             } else if (tab === "Docs" || tab === "Home") {
@@ -226,6 +254,8 @@ function AppContent() {
             />
           ) : activeSection === "Changelog" ? (
             <ShadcnChangelog />
+          ) : activeSection === "Blocks" ? (
+            <ShadcnBlocksPage onSelectComponent={handleSelectComponent} />
           ) : (
             <ShadcnComponentsCatalog
               onSelectComponent={handleSelectComponent}

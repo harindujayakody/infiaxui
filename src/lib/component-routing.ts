@@ -80,7 +80,7 @@ export function getPrevNextComponents(name: string): {
 }
 
 export interface ParsedRoute {
-  view: "component" | "catalog" | "changelog" | "section"
+  view: "component" | "catalog" | "changelog" | "section" | "blocks"
   componentName?: string
   sectionName: string
 }
@@ -93,7 +93,12 @@ export function parseCurrentRoute(pathname = window.location.pathname): ParsedRo
     return { view: "changelog", sectionName: "Changelog" }
   }
 
-  // 2. /docs/introduction, /docs/installation, /docs/theming, /docs/skills or direct /theming etc.
+  // 2. /blocks or /docs/blocks
+  if (cleanPath === "/blocks" || cleanPath === "/docs/blocks") {
+    return { view: "blocks", sectionName: "Blocks" }
+  }
+
+  // 3. /docs/introduction, /docs/installation, /docs/theming, /docs/skills or direct /theming etc.
   const docMatch = cleanPath.match(/^(?:\/docs)?\/(introduction|installation|theming|skills)$/)
   if (docMatch) {
     const slug = docMatch[1]
@@ -103,13 +108,13 @@ export function parseCurrentRoute(pathname = window.location.pathname): ParsedRo
     }
   }
 
-  // 3. /components or /docs/components (exact match)
+  // 4. /components or /docs/components (exact match)
   if (cleanPath === "/components" || cleanPath === "/docs/components") {
     return { view: "catalog", sectionName: "Components" }
   }
 
-  // 4. /components/:slug or /docs/components/:slug
-  const compMatch = cleanPath.match(/^(?:\/docs)?\/components\/([a-z0-9-]+)$/)
+  // 5. /components/:slug or /docs/components/:slug or /blocks/:slug
+  const compMatch = cleanPath.match(/^(?:\/docs)?\/(?:components|blocks)\/([a-z0-9-]+)$/)
   if (compMatch) {
     const slug = compMatch[1]
     const compName = slugToComponentName(slug)
@@ -118,7 +123,16 @@ export function parseCurrentRoute(pathname = window.location.pathname): ParsedRo
     }
   }
 
-  // 5. Default / or unrecognized -> default to Button component
+  // 6. Direct slug match: /animated-beam etc
+  const directMatch = cleanPath.match(/^\/([a-z0-9-]+)$/)
+  if (directMatch) {
+    const compName = slugToComponentName(directMatch[1])
+    if (compName) {
+      return { view: "component", componentName: compName, sectionName: "Components" }
+    }
+  }
+
+  // 7. Default / or unrecognized -> default to Button component
   return { view: "component", componentName: "Button", sectionName: "Components" }
 }
 

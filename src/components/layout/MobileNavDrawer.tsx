@@ -28,6 +28,7 @@ export function MobileNavDrawer({
   const sections = [
     { id: "Introduction", label: "Introduction" },
     { id: "Components", label: "Components" },
+    { id: "Blocks", label: "Blocks" },
     { id: "Installation", label: "Installation" },
     { id: "Theming", label: "Theming" },
     { id: "CLI", label: "CLI" },
