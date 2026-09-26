@@ -73,6 +73,11 @@ import {
 import { DataTableDemo } from "@/components/shadcn/data-table-demo"
 import { DataTableGuide } from "@/components/shadcn/data-table-guide"
 import { AccordionGuide } from "@/components/shadcn/accordion-guide"
+import { Bubble, BubbleContent, BubbleReactions, BubbleGroup } from "@/components/shadcn/bubble"
+import { BubbleGuide } from "@/components/shadcn/bubble-guide"
+import { BadgeGuide } from "@/components/shadcn/badge-guide"
+import { AvatarGuide } from "@/components/shadcn/avatar-guide"
+import { AvatarBadge, AvatarGroup, AvatarGroupCount } from "@/components/shadcn/avatar"
 import { cn } from "@/lib/utils"
 
 interface ShadcnComponentDetailProps {
@@ -432,18 +437,24 @@ export function ButtonGroupDemo() {
 }`
 
       case "Bubble":
-        return `import { Bubble, BubbleMessage, BubbleAvatar } from "@/components/ui/bubble"
+        return `import { Bubble, BubbleContent, BubbleReactions } from "@/components/ui/bubble"
 
 export function BubbleDemo() {
   return (
     <div className="w-full max-w-md space-y-4">
-      <Bubble sender="assistant">
-        <BubbleAvatar initials="AI" />
-        <BubbleMessage>Hello! How can I assist you with your project today?</BubbleMessage>
+      <Bubble variant="secondary" align="start">
+        <BubbleContent>
+          I checked the registry output and removed the stale route.
+        </BubbleContent>
+        <BubbleReactions>
+          <span>👍</span>
+          <span>🔥</span>
+        </BubbleReactions>
       </Bubble>
-      <Bubble sender="user">
-        <BubbleMessage>Show me how to build modern interfaces with shadcn/ui.</BubbleMessage>
-        <BubbleAvatar initials="ME" />
+      <Bubble variant="default" align="end">
+        <BubbleContent>
+          Awesome, thank you! Deploying the update now.
+        </BubbleContent>
       </Bubble>
     </div>
   )
@@ -1682,23 +1693,22 @@ export function ChartDemo() {
 
       case "Bubble":
         return (
-          <div className="w-full max-w-md space-y-3">
-            <div className="flex items-start gap-2.5">
-              <Avatar className="size-7">
-                <AvatarFallback className="text-[10px] bg-blue-600 text-white font-semibold">AI</AvatarFallback>
-              </Avatar>
-              <div className="rounded-2xl rounded-tl-sm bg-[var(--bg-card)] border border-[var(--border-subtle)] px-4 py-2.5 text-xs text-[var(--text-main)] shadow-sm max-w-[85%]">
-                Hello! How can I assist you with your project today?
-              </div>
-            </div>
-            <div className="flex items-start justify-end gap-2.5">
-              <div className="rounded-2xl rounded-tr-sm bg-blue-600 text-white px-4 py-2.5 text-xs shadow-sm max-w-[85%]">
-                I'm building an interface with shadcn/ui and React!
-              </div>
-              <Avatar className="size-7">
-                <AvatarFallback className="text-[10px] bg-[var(--bg-subtle)] text-[var(--text-main)] font-semibold">ME</AvatarFallback>
-              </Avatar>
-            </div>
+          <div className="w-full max-w-md space-y-4">
+            <Bubble variant="secondary" align="start">
+              <BubbleContent>
+                I checked the registry output and removed the stale route.
+              </BubbleContent>
+              <BubbleReactions side="bottom" align="end">
+                <span>👍</span>
+                <span>🔥</span>
+                <span className="text-[10px] text-[var(--text-muted)] font-mono">+1</span>
+              </BubbleReactions>
+            </Bubble>
+            <Bubble variant="default" align="end">
+              <BubbleContent>
+                Awesome! Deploying the update to production now.
+              </BubbleContent>
+            </Bubble>
           </div>
         )
 
@@ -2726,6 +2736,12 @@ export function ChartDemo() {
         <DataTableGuide />
       ) : componentData.name === "Accordion" ? (
         <AccordionGuide />
+      ) : componentData.name === "Bubble" ? (
+        <BubbleGuide />
+      ) : componentData.name === "Badge" ? (
+        <BadgeGuide />
+      ) : componentData.name === "Avatar" ? (
+        <AvatarGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

@@ -166,9 +166,9 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     name: "Avatar",
     description: "An image element with a fallback for representing the user.",
     installationCommand: "npx shadcn@latest add avatar",
-    importCode: `import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from "@/components/ui/avatar"`,
+    importCode: `import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n  AvatarBadge,\n  AvatarGroup,\n  AvatarGroupCount,\n} from "@/components/ui/avatar"`,
     usageCode: `<Avatar>\n  <AvatarImage src="https://github.com/shadcn.png" />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>`,
-    apiReference: ["Avatar", "AvatarImage", "AvatarFallback"],
+    apiReference: ["Avatar", "AvatarImage", "AvatarFallback", "AvatarBadge", "AvatarGroup", "AvatarGroupCount"],
   },
   Skeleton: {
     id: "skeleton",
@@ -543,11 +543,11 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
   Bubble: {
     id: "bubble",
     name: "Bubble",
-    description: "Chat message bubble and notification capsule with avatar and timestamp integration.",
+    description: "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
     installationCommand: "npx shadcn@latest add bubble",
-    importCode: `import { Bubble, BubbleMessage, BubbleAvatar } from "@/components/ui/bubble"`,
-    usageCode: `<Bubble sender="assistant">\n  <BubbleMessage>Hello! How can I help you today?</BubbleMessage>\n</Bubble>`,
-    apiReference: ["Bubble", "BubbleMessage", "BubbleAvatar"],
+    importCode: `import { Bubble, BubbleContent, BubbleReactions, BubbleGroup } from "@/components/ui/bubble"`,
+    usageCode: `<Bubble>\n  <BubbleContent>\n    I checked the registry output and removed the stale route.\n  </BubbleContent>\n  <BubbleReactions>\n    <span>👍</span>\n  </BubbleReactions>\n</Bubble>`,
+    apiReference: ["Bubble", "BubbleContent", "BubbleReactions", "BubbleGroup"],
   },
   Calendar: {
     id: "calendar",
