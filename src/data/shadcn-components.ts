@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -19,6 +19,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Animated Shiny Text",
     "Dia Text Reveal",
     "Dot Pattern",
+    "Particles",
     "Pixel Image",
     "Ripple",
     "Scroll Based Velocity",
@@ -1088,6 +1089,27 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "cy",
       "cr",
       "glow",
+      "className",
+    ],
+  },
+  Particles: {
+    id: "particles",
+    name: "Particles",
+    description: "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/particles",
+    importCode: `import { Particles } from "@/components/ui/particles"`,
+    usageCode: `<div className="relative h-[500px] w-full overflow-hidden">\n  <Particles className="absolute inset-0" quantity={100} ease={80} color="#ffffff" refresh />\n</div>`,
+    apiReference: [
+      "Particles",
+      "quantity",
+      "staticity",
+      "ease",
+      "size",
+      "refresh",
+      "color",
+      "vx",
+      "vy",
       "className",
     ],
   },

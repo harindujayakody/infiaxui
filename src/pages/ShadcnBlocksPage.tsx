@@ -46,6 +46,7 @@ import { PixelImageBlockPreview } from "@/components/magicui/pixel-image-demo"
 import { DiaTextRevealBlockPreview } from "@/components/magicui/dia-text-reveal-demo"
 import { ThemeTogglerBlockPreview } from "@/components/magicui/animated-theme-toggler-demo"
 import { DotPatternBlockPreview } from "@/components/magicui/dot-pattern-demo"
+import { ParticlesBlockPreview } from "@/components/magicui/particles-demo"
 
 interface BlockItem {
   id: string
@@ -370,6 +371,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
       cliCommand: "npx shadcn@latest add @magicui/dot-pattern",
       renderPreview: () => <DotPatternBlockPreview />,
+    },
+    {
+      id: "particles",
+      title: "Particles",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Particles",
+      description:
+        "Particles are a fun way to add some visual flair, movement, and depth to your website.",
+      cliCommand: "npx shadcn@latest add @magicui/particles",
+      renderPreview: () => <ParticlesBlockPreview />,
     },
   ]
 

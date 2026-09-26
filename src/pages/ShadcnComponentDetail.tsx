@@ -202,6 +202,8 @@ import { ThemeTogglerDemo } from "@/components/magicui/animated-theme-toggler-de
 import { AnimatedThemeTogglerGuide } from "@/components/magicui/animated-theme-toggler-guide"
 import { DotPatternDemo } from "@/components/magicui/dot-pattern-demo"
 import { DotPatternGuide } from "@/components/magicui/dot-pattern-guide"
+import { ParticlesDemo } from "@/components/magicui/particles-demo"
+import { ParticlesGuide } from "@/components/magicui/particles-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -972,6 +974,20 @@ export function DotPatternDemo() {
         cr={1}
         className="text-zinc-400/50 [mask-image:radial-gradient(circle_at_center,white,transparent_75%)]"
       />
+    </div>
+  )
+}`
+
+      case "Particles":
+        return `import { Particles } from "@/components/ui/particles"
+
+export function ParticlesDemo() {
+  return (
+    <div className="relative flex h-[380px] sm:h-[450px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-2xl select-none">
+      <p className="z-10 whitespace-pre-wrap text-center text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white pointer-events-none">
+        Particles
+      </p>
+      <Particles className="absolute inset-0" quantity={100} ease={80} color="#ffffff" />
     </div>
   )
 }`
@@ -3386,6 +3402,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Particles":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ParticlesDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4122,6 +4145,8 @@ export function ScrollAreaDemo() {
         <AnimatedThemeTogglerGuide />
       ) : componentData.name === "Dot Pattern" ? (
         <DotPatternGuide />
+      ) : componentData.name === "Particles" ? (
+        <ParticlesGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
