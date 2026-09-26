@@ -140,7 +140,7 @@ export const DockIcon = ({
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full transition-colors",
-        disableMagnification && "hover:bg-muted-foreground transition-colors",
+        disableMagnification && "hover:bg-zinc-800/80 transition-colors",
         className
       )}
       {...props}

@@ -325,34 +325,83 @@ export function GlareHoverDemo() {
 
       case "Dock":
         return `import { Dock, DockIcon } from "@/components/magicui/dock"
-import { Home, Terminal, Globe, Mail, Folder, Settings } from "lucide-react"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Home, Pencil, Mail } from "lucide-react"
 
 export function DockDemo() {
   return (
-    <div className="relative flex w-full items-center justify-center p-8 overflow-hidden">
-      <Dock className="bg-[var(--bg-card)]/90 border border-[var(--border-subtle)] shadow-2xl">
-        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-blue-500/20 text-[var(--text-main)] hover:text-blue-400">
-          <Home className="size-5" />
-        </DockIcon>
-        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-emerald-500/20 text-[var(--text-main)] hover:text-emerald-400">
-          <Terminal className="size-5" />
-        </DockIcon>
-        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-cyan-500/20 text-[var(--text-main)] hover:text-cyan-400">
-          <Globe className="size-5" />
-        </DockIcon>
-        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-purple-500/20 text-[var(--text-main)] hover:text-purple-400">
-          <Mail className="size-5" />
-        </DockIcon>
+    <div className="relative flex flex-col w-full items-center justify-center p-8 overflow-hidden select-none">
+      <span className="pointer-events-none select-none bg-gradient-to-b from-white to-zinc-800/10 bg-clip-text text-8xl font-bold tracking-tight text-transparent pb-3">
+        Dock
+      </span>
 
-        <div className="h-6 w-[1px] bg-[var(--border-subtle)] mx-1" />
+      <TooltipProvider delayDuration={0}>
+        <Dock className="bg-[#161616]/90 border border-[#262626] shadow-2xl backdrop-blur-md">
+          <DockIcon>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  aria-label="Home"
+                  className="size-11 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800/80 transition-colors"
+                >
+                  <Home className="size-5" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                className="bg-[#161616] text-zinc-200 border border-[#262626] text-xs px-2.5 py-1 rounded-md shadow-xl"
+              >
+                <p>Home</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
 
-        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-amber-500/20 text-[var(--text-main)] hover:text-amber-400">
-          <Folder className="size-5" />
-        </DockIcon>
-        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-rose-500/20 text-[var(--text-main)] hover:text-rose-400">
-          <Settings className="size-5" />
-        </DockIcon>
-      </Dock>
+          <DockIcon>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  aria-label="Blog"
+                  className="size-11 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800/80 transition-colors"
+                >
+                  <Pencil className="size-5" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                className="bg-[#161616] text-zinc-200 border border-[#262626] text-xs px-2.5 py-1 rounded-md shadow-xl"
+              >
+                <p>Blog</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+
+          <div className="h-6 w-[1px] bg-[#262626] mx-1 self-center" />
+
+          <DockIcon>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  aria-label="Contact"
+                  className="size-11 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800/80 transition-colors"
+                >
+                  <Mail className="size-5" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                className="bg-[#161616] text-zinc-200 border border-[#262626] text-xs px-2.5 py-1 rounded-md shadow-xl"
+              >
+                <p>Contact</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+        </Dock>
+      </TooltipProvider>
     </div>
   )
 }`

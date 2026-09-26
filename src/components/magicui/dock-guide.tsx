@@ -159,7 +159,7 @@ export const DockIcon = ({
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full transition-colors",
-        disableMagnification && "hover:bg-muted-foreground transition-colors",
+        disableMagnification && "hover:bg-zinc-800/80 transition-colors",
         className
       )}
       {...props}
@@ -276,39 +276,39 @@ DockIcon.displayName = "DockIcon"`
             </thead>
             <tbody className="divide-y divide-[var(--border-subtle)] text-[var(--text-main)]">
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">className</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">className</td>
                 <td className="p-3.5 text-[var(--text-muted)]">string</td>
                 <td className="p-3.5 text-[var(--text-muted)]">—</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Custom styling applied to dock container.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">iconSize</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">iconSize</td>
                 <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">40</td>
+                <td className="p-3.5 text-zinc-300">40</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Default resting size for child icons (in px).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">iconMagnification</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">iconMagnification</td>
                 <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">60</td>
+                <td className="p-3.5 text-zinc-300">60</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Maximum size of hovered icons (in px).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">iconDistance</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">iconDistance</td>
                 <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">140</td>
+                <td className="p-3.5 text-zinc-300">140</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Mouse distance threshold triggering spring magnification.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">direction</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">direction</td>
                 <td className="p-3.5 text-[var(--text-muted)]">"top" | "middle" | "bottom"</td>
-                <td className="p-3.5 text-emerald-400">"middle"</td>
+                <td className="p-3.5 text-zinc-300">"middle"</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Vertical alignment of icons within the dock container.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">disableMagnification</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">disableMagnification</td>
                 <td className="p-3.5 text-[var(--text-muted)]">boolean</td>
-                <td className="p-3.5 text-emerald-400">false</td>
+                <td className="p-3.5 text-zinc-300">false</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Disable hover zoom effect and keep static size.</td>
               </tr>
             </tbody>
@@ -331,25 +331,25 @@ DockIcon.displayName = "DockIcon"`
             </thead>
             <tbody className="divide-y divide-[var(--border-subtle)] text-[var(--text-main)]">
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">size</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">size</td>
                 <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">40</td>
+                <td className="p-3.5 text-zinc-300">40</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Base icon size override for this specific icon.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">magnification</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">magnification</td>
                 <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">60</td>
+                <td className="p-3.5 text-zinc-300">60</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Magnified size override for this specific icon.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">className</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">className</td>
                 <td className="p-3.5 text-[var(--text-muted)]">string</td>
                 <td className="p-3.5 text-[var(--text-muted)]">—</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Custom styling applied to the icon wrapper.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">children</td>
+                <td className="p-3.5 text-zinc-200 font-semibold">children</td>
                 <td className="p-3.5 text-[var(--text-muted)]">React.ReactNode</td>
                 <td className="p-3.5 text-[var(--text-muted)]">—</td>
                 <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Icon element or image content.</td>
@@ -368,7 +368,7 @@ DockIcon.displayName = "DockIcon"`
             href="https://magicui.design/docs/components/dock"
             target="_blank"
             rel="noreferrer"
-            className="text-blue-400 hover:underline inline-flex items-center gap-1"
+            className="text-zinc-300 hover:text-white underline underline-offset-4 decoration-zinc-700 hover:decoration-zinc-400 transition-colors inline-flex items-center gap-1"
           >
             @dillionverma <ExternalLink className="size-3" />
           </a>{" "}
