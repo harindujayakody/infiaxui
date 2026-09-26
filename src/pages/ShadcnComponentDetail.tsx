@@ -144,6 +144,10 @@ import { NavigationMenuDemo } from "@/components/shadcn/navigation-menu-demo"
 import { HoverCardDemo } from "@/components/shadcn/hover-card-demo"
 import { PopoverDemo } from "@/components/shadcn/popover-demo"
 import { MenubarDemo } from "@/components/shadcn/menubar-demo"
+import { LabelDemo } from "@/components/shadcn/label-demo"
+import { InputOTPDemo } from "@/components/shadcn/input-otp-demo"
+import { DropdownMenuDemo } from "@/components/shadcn/dropdown-menu-demo"
+import { DrawerDemo } from "@/components/shadcn/drawer-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -367,6 +371,143 @@ export function MenubarDemo() {
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
+  )
+}`
+
+      case "Label":
+        return `import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export function LabelDemo() {
+  return (
+    <div className="w-full max-w-sm space-y-4">
+      <div className="flex items-center space-x-2">
+        <Checkbox id="terms" />
+        <Label htmlFor="terms" className="cursor-pointer">
+          Accept terms and conditions
+        </Label>
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="email">Your email address</Label>
+        <Input id="email" type="email" placeholder="name@example.com" />
+      </div>
+    </div>
+  )
+}`
+
+      case "Input OTP":
+        return `import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+
+export function InputOTPDemo() {
+  return (
+    <InputOTP maxLength={6}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+      </InputOTPGroup>
+      <InputOTPSeparator />
+      <InputOTPGroup>
+        <InputOTPSlot index={3} />
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>
+  )
+}`
+
+      case "Dropdown Menu":
+        return `import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { User, CreditCard, Settings, LogOut } from "lucide-react"
+
+export function DropdownMenuDemo() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open Menu</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <User className="mr-2 size-4" />
+            <span>Profile</span>
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <CreditCard className="mr-2 size-4" />
+            <span>Billing</span>
+            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Settings className="mr-2 size-4" />
+            <span>Settings</span>
+            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem variant="destructive">
+          <LogOut className="mr-2 size-4" />
+          <span>Log out</span>
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}`
+
+      case "Drawer":
+        return `import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import { Button } from "@/components/ui/button"
+
+export function DrawerDemo() {
+  return (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button variant="outline">Open Drawer</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Move Goal</DrawerTitle>
+          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+        </DrawerHeader>
+        <div className="p-4 text-center">
+          <div className="text-5xl font-bold font-mono">350</div>
+          <div className="text-xs text-muted-foreground">Calories/day</div>
+        </div>
+        <DrawerFooter>
+          <Button>Submit</Button>
+          <DrawerClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   )
 }`
 
@@ -1457,28 +1598,6 @@ export function DataTableDemo() {
   )
 }`
 
-      case "Input OTP":
-        return `import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp"
-
-export function InputOTPDemo() {
-  return (
-    <InputOTP maxLength={6}>
-      <InputOTPGroup>
-        <InputOTPSlot index={0} />
-        <InputOTPSlot index={1} />
-        <InputOTPSlot index={2} />
-        <InputOTPSlot index={3} />
-        <InputOTPSlot index={4} />
-        <InputOTPSlot index={5} />
-      </InputOTPGroup>
-    </InputOTP>
-  )
-}`
-
       case "Select":
         return `import {
   Select,
@@ -2154,7 +2273,6 @@ export function ChartDemo() {
           </div>
         )
 
-      case "Drawer":
       case "Sheet":
         return (
           <div className="flex flex-col items-center gap-4">
@@ -2254,6 +2372,34 @@ export function ChartDemo() {
           </div>
         )
 
+      case "Label":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <LabelDemo />
+          </div>
+        )
+
+      case "Input OTP":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <InputOTPDemo />
+          </div>
+        )
+
+      case "Dropdown Menu":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <DropdownMenuDemo />
+          </div>
+        )
+
+      case "Drawer":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <DrawerDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -2347,16 +2493,6 @@ export function ChartDemo() {
 
       case "Data Table":
         return <DataTableDemo />
-
-      case "Input OTP":
-        return (
-          <div className="space-y-3 text-center">
-            <InputOTP value={otpVal} onChange={setOtpVal} />
-            <p className="type-caption text-[var(--text-muted)] font-mono">
-              Value: {otpVal}
-            </p>
-          </div>
-        )
 
       case "Select":
         return (
