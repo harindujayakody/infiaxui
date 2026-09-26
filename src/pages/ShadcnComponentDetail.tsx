@@ -72,6 +72,7 @@ import {
 } from "@/components/shadcn/collapsible"
 import { DataTableDemo } from "@/components/shadcn/data-table-demo"
 import { DataTableGuide } from "@/components/shadcn/data-table-guide"
+import { AccordionGuide } from "@/components/shadcn/accordion-guide"
 import { cn } from "@/lib/utils"
 
 interface ShadcnComponentDetailProps {
@@ -2723,6 +2724,8 @@ export function ChartDemo() {
       {/* Component-specific custom documentation sections */}
       {componentData.name === "Data Table" ? (
         <DataTableGuide />
+      ) : componentData.name === "Accordion" ? (
+        <AccordionGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

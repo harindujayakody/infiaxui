@@ -6,48 +6,72 @@ import { cn } from "@/lib/utils"
 interface AccordionContextType {
   openItems: string[]
   toggleItem: (value: string) => void
+  multiple?: boolean
 }
 
 const AccordionContext = createContext<AccordionContextType | null>(null)
 
 export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: "single" | "multiple"
+  multiple?: boolean
   defaultValue?: string | string[]
+  value?: string | string[]
+  onValueChange?: (value: string | string[]) => void
   collapsible?: boolean
   children: React.ReactNode
 }
 
 export function Accordion({
   type = "single",
+  multiple = false,
   defaultValue,
+  value: controlledValue,
+  onValueChange,
   collapsible = true,
   children,
   className,
   ...props
 }: AccordionProps) {
-  const [openItems, setOpenItems] = useState<string[]>(() => {
-    if (!defaultValue) return []
-    return Array.isArray(defaultValue) ? defaultValue : [defaultValue]
+  const isMultiple = multiple || type === "multiple"
+
+  const [internalOpenItems, setInternalOpenItems] = useState<string[]>(() => {
+    if (defaultValue) {
+      return Array.isArray(defaultValue) ? defaultValue : [defaultValue]
+    }
+    return []
   })
 
-  const toggleItem = (value: string) => {
-    setOpenItems((prev) => {
-      if (type === "single") {
-        if (prev.includes(value)) {
-          return collapsible ? [] : prev
-        }
-        return [value]
+  const isControlled = controlledValue !== undefined
+  const openItems = isControlled
+    ? Array.isArray(controlledValue)
+      ? controlledValue
+      : [controlledValue]
+    : internalOpenItems
+
+  const toggleItem = (itemValue: string) => {
+    let next: string[]
+    if (isMultiple) {
+      if (openItems.includes(itemValue)) {
+        next = openItems.filter((v) => v !== itemValue)
       } else {
-        if (prev.includes(value)) {
-          return prev.filter((item) => item !== value)
-        }
-        return [...prev, value]
+        next = [...openItems, itemValue]
       }
-    })
+    } else {
+      if (openItems.includes(itemValue)) {
+        next = collapsible ? [] : openItems
+      } else {
+        next = [itemValue]
+      }
+    }
+
+    if (!isControlled) {
+      setInternalOpenItems(next)
+    }
+    onValueChange?.(isMultiple ? next : next[0] || "")
   }
 
   return (
-    <AccordionContext.Provider value={{ openItems, toggleItem }}>
+    <AccordionContext.Provider value={{ openItems, toggleItem, multiple: isMultiple }}>
       <div className={cn("w-full divide-y divide-[var(--border-subtle)]", className)} {...props}>
         {children}
       </div>
@@ -55,17 +79,37 @@ export function Accordion({
   )
 }
 
-const AccordionItemContext = createContext<{ value: string } | null>(null)
+interface AccordionItemContextType {
+  value: string
+  disabled?: boolean
+}
+
+const AccordionItemContext = createContext<AccordionItemContextType | null>(null)
 
 export interface AccordionItemProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string
+  disabled?: boolean
   children: React.ReactNode
 }
 
-export function AccordionItem({ value, children, className, ...props }: AccordionItemProps) {
+export function AccordionItem({
+  value,
+  disabled = false,
+  children,
+  className,
+  ...props
+}: AccordionItemProps) {
   return (
-    <AccordionItemContext.Provider value={{ value }}>
-      <div className={cn("border-b border-[var(--border-subtle)] py-1", className)} {...props}>
+    <AccordionItemContext.Provider value={{ value, disabled }}>
+      <div
+        className={cn(
+          "border-b border-[var(--border-subtle)] py-1",
+          disabled && "opacity-50 pointer-events-none",
+          className
+        )}
+        data-disabled={disabled ? "" : undefined}
+        {...props}
+      >
         {children}
       </div>
     </AccordionItemContext.Provider>
@@ -76,7 +120,13 @@ export interface AccordionTriggerProps extends React.ButtonHTMLAttributes<HTMLBu
   children: React.ReactNode
 }
 
-export function AccordionTrigger({ children, className, ...props }: AccordionTriggerProps) {
+export function AccordionTrigger({
+  children,
+  className,
+  disabled: controlledDisabled,
+  onClick,
+  ...props
+}: AccordionTriggerProps) {
   const context = useContext(AccordionContext)
   const itemContext = useContext(AccordionItemContext)
 
@@ -84,14 +134,20 @@ export function AccordionTrigger({ children, className, ...props }: AccordionTri
     throw new Error("AccordionTrigger must be used within an AccordionItem and Accordion")
   }
 
+  const isDisabled = controlledDisabled || itemContext.disabled
   const isOpen = context.openItems.includes(itemContext.value)
 
   return (
     <button
       type="button"
-      onClick={() => context.toggleItem(itemContext.value)}
+      disabled={isDisabled}
+      onClick={(e) => {
+        if (isDisabled) return
+        context.toggleItem(itemContext.value)
+        onClick?.(e)
+      }}
       className={cn(
-        "flex w-full items-center justify-between py-4 text-left text-sm font-medium text-[var(--text-main)] transition-all hover:underline [&[data-state=open]>svg]:rotate-180 cursor-pointer",
+        "flex w-full items-center justify-between py-4 text-left text-sm font-medium text-[var(--text-main)] transition-all hover:underline [&[data-state=open]>svg]:rotate-180 cursor-pointer disabled:cursor-not-allowed disabled:hover:no-underline",
         className
       )}
       data-state={isOpen ? "open" : "closed"}
