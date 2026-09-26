@@ -162,6 +162,8 @@ import { GlareHoverDemo } from "@/components/magicui/glare-hover-demo"
 import { GlareHoverGuide } from "@/components/magicui/glare-hover-guide"
 import { DockDemo } from "@/components/magicui/dock-demo"
 import { DockGuide } from "@/components/magicui/dock-guide"
+import { TweetCardDemo } from "@/components/magicui/tweet-card-demo"
+import { TweetCardGuide } from "@/components/magicui/tweet-card-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -333,6 +335,17 @@ export function DockDemo() {
           <Settings className="size-5" />
         </DockIcon>
       </Dock>
+    </div>
+  )
+}`
+
+      case "Tweet Card":
+        return `import { TweetCard } from "@/components/magicui/tweet-card"
+
+export function TweetCardDemo() {
+  return (
+    <div className="flex w-full items-center justify-center p-8">
+      <TweetCard id="1441032681968212480" />
     </div>
   )
 }`
@@ -2607,6 +2620,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Tweet Card":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <TweetCardDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3303,6 +3323,8 @@ export function ScrollAreaDemo() {
         <GlareHoverGuide />
       ) : componentData.name === "Dock" ? (
         <DockGuide />
+      ) : componentData.name === "Tweet Card" ? (
+        <TweetCardGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

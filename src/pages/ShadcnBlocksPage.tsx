@@ -28,6 +28,7 @@ import {
 } from "@/components/blocks/block-previews"
 import { GlareHoverBlockCardPreview } from "@/components/magicui/glare-hover-demo"
 import { DockCardPreview } from "@/components/magicui/dock-demo"
+import { TweetCardBlockPreview } from "@/components/magicui/tweet-card-demo"
 
 interface BlockItem {
   id: string
@@ -151,6 +152,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A diagonal light glare on hover using a ::before gradient, CSS variables, and background-position animation—no extra global keyframes required.",
       cliCommand: "npx shadcn@latest add @magicui/glare-hover",
       renderPreview: () => <GlareHoverBlockCardPreview />,
+    },
+    {
+      id: "tweet-card",
+      title: "Tweet Card",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Tweet Card",
+      description:
+        "A card that displays a tweet with the author's name, handle, and profile picture.",
+      cliCommand: "npx shadcn@latest add @magicui/tweet-card",
+      renderPreview: () => <TweetCardBlockPreview />,
     },
   ]
 

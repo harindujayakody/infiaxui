@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -77,6 +77,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Empty",
     "Input",
     "Item",
+    "Tweet Card",
   ],
 ]
 
@@ -697,6 +698,26 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "iconDistance",
       "direction",
       "disableMagnification",
+    ],
+  },
+  "Tweet Card": {
+    id: "tweet-card",
+    name: "Tweet Card",
+    description: "A card that displays a tweet with the author's name, handle, and profile picture.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/tweet-card",
+    importCode: `import { TweetCard, ClientTweetCard } from "@/components/magicui/tweet-card"`,
+    usageCode: `<TweetCard id="1441032681968212480" />`,
+    apiReference: [
+      "TweetCard",
+      "ClientTweetCard",
+      "MagicTweet",
+      "TweetHeader",
+      "TweetBody",
+      "TweetMedia",
+      "id",
+      "tweet",
+      "fallback",
     ],
   },
 }
