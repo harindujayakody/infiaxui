@@ -250,7 +250,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
             className="group relative flex flex-col rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden hover:border-[var(--border-active)] hover:shadow-2xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
           >
             {/* Top Interactive Preview Stage with Aspect Ratio */}
-            <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#0A0A0A] border-b border-[var(--border-subtle)]/70 p-2.5 select-none flex items-center justify-center">
+            <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#0A0A0A] p-2.5 select-none flex items-center justify-center">
               {block.renderPreview()}
 
               {/* Star Badge on Top-Right (as shown on Card 4 in screenshot) */}
