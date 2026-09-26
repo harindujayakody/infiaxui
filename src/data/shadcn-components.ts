@@ -9,11 +9,12 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
   [
+    "3D Card Effect",
     "Accordion",
     "Aspect Ratio",
     "Badge",
@@ -877,6 +878,27 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "variant",
       "size",
       "asChild",
+    ],
+  },
+  "3D Card Effect": {
+    id: "3d-card",
+    name: "3D Card Effect",
+    description: "A card perspective effect, hover over the card to elevate card elements.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/3d-card-demo",
+    importCode: `import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"`,
+    usageCode: `<CardContainer>\n  <CardBody>\n    <CardItem translateZ="50">Make things float</CardItem>\n  </CardBody>\n</CardContainer>`,
+    apiReference: [
+      "CardContainer",
+      "CardBody",
+      "CardItem",
+      "translateZ",
+      "translateX",
+      "translateY",
+      "rotateX",
+      "rotateY",
+      "rotateZ",
+      "as",
     ],
   },
 }

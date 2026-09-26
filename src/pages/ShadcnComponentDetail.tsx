@@ -180,6 +180,8 @@ import { BentoDemo } from "@/components/magicui/bento-grid-demo"
 import { BentoGridGuide } from "@/components/magicui/bento-grid-guide"
 import { RainbowButtonDemo } from "@/components/magicui/rainbow-button-demo"
 import { RainbowButtonGuide } from "@/components/magicui/rainbow-button-guide"
+import { ThreeDCardDemo } from "@/components/ui/three-d-card-demo"
+import { ThreeDCardGuide } from "@/components/ui/three-d-card-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -614,6 +616,41 @@ export function RainbowButtonDemo() {
     <RainbowButton>
       Get Unlimited Access
     </RainbowButton>
+  )
+}`
+
+      case "3D Card Effect":
+        return `import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
+
+export function ThreeDCardDemo() {
+  return (
+    <CardContainer className="inter-var">
+      <CardBody className="bg-[#0A0A0A] relative group/card border-zinc-800/80 w-auto sm:w-[30rem] h-auto rounded-2xl p-6 border">
+        <CardItem translateZ="50" className="text-xl font-bold text-white tracking-tight">
+          Make things float in air
+        </CardItem>
+        <CardItem as="p" translateZ="60" className="text-zinc-400 text-xs sm:text-[13px] max-w-sm mt-2 leading-relaxed">
+          Hover over this card to unleash the power of CSS perspective
+        </CardItem>
+        <CardItem translateZ="100" className="w-full mt-4">
+          <img
+            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop"
+            height="1000"
+            width="1000"
+            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+            alt="Forest thumbnail"
+          />
+        </CardItem>
+        <div className="flex justify-between items-center mt-8">
+          <CardItem translateZ={20} as="a" href="#" className="px-4 py-2 rounded-xl text-xs font-normal text-white">
+            Try now →
+          </CardItem>
+          <CardItem translateZ={20} as="button" className="px-5 py-2 rounded-xl bg-white text-black text-xs font-bold shadow-md">
+            Sign up
+          </CardItem>
+        </div>
+      </CardBody>
+    </CardContainer>
   )
 }`
 
@@ -2950,6 +2987,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "3D Card Effect":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ThreeDCardDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3664,6 +3708,8 @@ export function ScrollAreaDemo() {
         <BentoGridGuide />
       ) : componentData.name === "Rainbow Button" ? (
         <RainbowButtonGuide />
+      ) : componentData.name === "3D Card Effect" ? (
+        <ThreeDCardGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

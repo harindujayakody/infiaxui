@@ -35,6 +35,7 @@ import { GlobeBlockPreview } from "@/components/magicui/globe-demo"
 import { TerminalBlockPreview } from "@/components/magicui/terminal-demo"
 import { BentoGridBlockPreview } from "@/components/magicui/bento-grid-demo"
 import { RainbowButtonBlockPreview } from "@/components/magicui/rainbow-button-demo"
+import { ThreeDCardBlockPreview } from "@/components/ui/three-d-card-demo"
 
 interface BlockItem {
   id: string
@@ -64,6 +65,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
     "Canvas & Shaders",
     "Heroes",
     "Integrations",
+    "Components",
   ]
 
   // Blocks catalog matching the user reference screenshot (media_1790454297899.png)
@@ -237,6 +239,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "An animated button with a continuous rainbow linear gradient border and glowing aura.",
       cliCommand: "npx shadcn@latest add @magicui/rainbow-button",
       renderPreview: () => <RainbowButtonBlockPreview />,
+    },
+    {
+      id: "3d-card",
+      title: "3D Card Effect",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "3D Card Effect",
+      description:
+        "A card perspective effect, hover over the card to elevate card elements.",
+      cliCommand: "npx shadcn@latest add @aceternity/3d-card-demo",
+      renderPreview: () => <ThreeDCardBlockPreview />,
     },
   ]
 
