@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -77,6 +77,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Empty",
     "Input",
     "Item",
+    "Magic Card",
     "Tweet Card",
   ],
 ]
@@ -718,6 +719,30 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "id",
       "tweet",
       "fallback",
+    ],
+  },
+  "Magic Card": {
+    id: "magic-card",
+    name: "Magic Card",
+    description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/magic-card",
+    importCode: `import { MagicCard } from "@/components/magicui/magic-card"`,
+    usageCode: `<MagicCard>\n  <div className="p-4">\n    <p>Hello World</p>\n    <span>Hover me</span>\n  </div>\n</MagicCard>`,
+    apiReference: [
+      "MagicCard",
+      "mode",
+      "gradientSize",
+      "gradientColor",
+      "gradientOpacity",
+      "gradientFrom",
+      "gradientTo",
+      "glowFrom",
+      "glowTo",
+      "glowAngle",
+      "glowSize",
+      "glowBlur",
+      "glowOpacity",
     ],
   },
 }

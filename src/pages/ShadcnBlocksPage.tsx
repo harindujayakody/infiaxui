@@ -29,6 +29,7 @@ import {
 import { GlareHoverBlockCardPreview } from "@/components/magicui/glare-hover-demo"
 import { DockCardPreview } from "@/components/magicui/dock-demo"
 import { TweetCardBlockPreview } from "@/components/magicui/tweet-card-demo"
+import { MagicCardBlockPreview } from "@/components/magicui/magic-card-demo"
 
 interface BlockItem {
   id: string
@@ -163,6 +164,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A card that displays a tweet with the author's name, handle, and profile picture.",
       cliCommand: "npx shadcn@latest add @magicui/tweet-card",
       renderPreview: () => <TweetCardBlockPreview />,
+    },
+    {
+      id: "magic-card",
+      title: "Magic Card",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Magic Card",
+      description:
+        "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
+      cliCommand: "npx shadcn@latest add @magicui/magic-card",
+      renderPreview: () => <MagicCardBlockPreview />,
     },
   ]
 

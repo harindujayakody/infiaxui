@@ -164,6 +164,8 @@ import { DockDemo } from "@/components/magicui/dock-demo"
 import { DockGuide } from "@/components/magicui/dock-guide"
 import { TweetCardDemo } from "@/components/magicui/tweet-card-demo"
 import { TweetCardGuide } from "@/components/magicui/tweet-card-guide"
+import { MagicCardDemo } from "@/components/magicui/magic-card-demo"
+import { MagicCardGuide } from "@/components/magicui/magic-card-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -346,6 +348,29 @@ export function TweetCardDemo() {
   return (
     <div className="flex w-full items-center justify-center p-8">
       <TweetCard id="1441032681968212480" />
+    </div>
+  )
+}`
+
+      case "Magic Card":
+        return `import { MagicCard } from "@/components/magicui/magic-card"
+
+export function MagicCardDemo() {
+  return (
+    <div className="flex w-full items-center justify-center p-8">
+      <MagicCard
+        gradientSize={240}
+        gradientFrom="#9E7AFF"
+        gradientTo="#FE8BBB"
+        className="p-6 cursor-pointer max-w-sm"
+      >
+        <div className="flex flex-col gap-2">
+          <h3 className="text-base font-semibold text-white">Spotlight Effect</h3>
+          <p className="text-xs text-zinc-400">
+            A spotlight effect that follows your mouse cursor and highlights borders on hover.
+          </p>
+        </div>
+      </MagicCard>
     </div>
   )
 }`
@@ -2627,6 +2652,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Magic Card":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <MagicCardDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3325,6 +3357,8 @@ export function ScrollAreaDemo() {
         <DockGuide />
       ) : componentData.name === "Tweet Card" ? (
         <TweetCardGuide />
+      ) : componentData.name === "Magic Card" ? (
+        <MagicCardGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
