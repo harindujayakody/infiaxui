@@ -27,6 +27,7 @@ import {
   GlobeMiniPreview,
   DockMiniPreview,
 } from "@/components/blocks/block-previews"
+import { GlareHoverBlockCardPreview } from "@/components/magicui/glare-hover-demo"
 
 interface BlockItem {
   id: string
@@ -138,6 +139,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A magnification dock inspired by macOS with spring physics and tooltip indicators.",
       cliCommand: "npx shadcn@latest add @magicui/dock",
       renderPreview: () => <DockMiniPreview />,
+    },
+    {
+      id: "glare-hover",
+      title: "Glare Hover",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Glare Hover",
+      description:
+        "A diagonal light glare on hover using a ::before gradient, CSS variables, and background-position animation—no extra global keyframes required.",
+      cliCommand: "npx shadcn@latest add @magicui/glare-hover",
+      renderPreview: () => <GlareHoverBlockCardPreview />,
     },
   ]
 

@@ -158,6 +158,8 @@ import { ComboboxDemo } from "@/components/shadcn/combobox-demo"
 import { CarouselDemo } from "@/components/shadcn/carousel-demo"
 import { AnimatedBeamDemo } from "@/components/magicui/animated-beam-demo"
 import { AnimatedBeamGuide } from "@/components/magicui/animated-beam-guide"
+import { GlareHoverDemo } from "@/components/magicui/glare-hover-demo"
+import { GlareHoverGuide } from "@/components/magicui/glare-hover-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -267,6 +269,35 @@ export function AnimatedBeamDemo() {
         curvature={0}
       />
     </div>
+  )
+}`
+
+      case "Glare Hover":
+        return `import { GlareHover } from "@/components/magicui/glare-hover"
+import { Sparkles } from "lucide-react"
+
+export function GlareHoverDemo() {
+  return (
+    <GlareHover
+      className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-2xl"
+      color="#ffffff"
+      opacity={0.35}
+      angle={-45}
+      size={260}
+      duration={600}
+    >
+      <div className="flex max-w-sm flex-col gap-3 p-6 text-left">
+        <div className="flex size-11 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400">
+          <Sparkles className="size-5" />
+        </div>
+        <h4 className="text-base font-semibold text-[var(--text-main)]">
+          Diagonal Light Glare
+        </h4>
+        <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+          Hover over this card to watch a smooth optical diagonal glare sweep across the surface.
+        </p>
+      </div>
+    </GlareHover>
   )
 }`
 
@@ -2526,6 +2557,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Glare Hover":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <GlareHoverDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3218,6 +3256,8 @@ export function ScrollAreaDemo() {
         <CarouselGuide />
       ) : componentData.name === "Animated Beam" ? (
         <AnimatedBeamGuide />
+      ) : componentData.name === "Glare Hover" ? (
+        <GlareHoverGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

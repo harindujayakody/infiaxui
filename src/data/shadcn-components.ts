@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -657,6 +657,27 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "duration",
       "gradientStartColor",
       "gradientStopColor",
+    ],
+  },
+  "Glare Hover": {
+    id: "glare-hover",
+    name: "Glare Hover",
+    description: "A diagonal light glare on hover using a ::before gradient, CSS variables, and background-position animation—no extra global keyframes required.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/glare-hover",
+    importCode: `import { GlareHover } from "@/components/magicui/glare-hover"`,
+    usageCode: `<GlareHover className="rounded-xl" color="#ffffff" opacity={0.35}>\n  <div>Content</div>\n</GlareHover>`,
+    apiReference: [
+      "GlareHover",
+      "color",
+      "opacity",
+      "angle",
+      "size",
+      "duration",
+      "playOnce",
+      "background",
+      "width",
+      "height",
     ],
   },
 }
