@@ -19,64 +19,66 @@
   --text-30: 30px;
   --tracking-neg-0-75: -0.75px;
 
-  /* Global Color Tokens - Light Theme */
+  /* Global Slate Color Tokens - Light Theme */
   --bg-page: #FFFFFF;
-  --bg-card: #FAFAFA;
-  --bg-subtle: #F4F4F5;
-  --border-subtle: #E4E4E7;
-  --text-main: #09090B;
-  --text-muted: #71717A;
+  --bg-card: #F8FAFC;
+  --bg-subtle: #F1F5F9;
+  --border-subtle: #E2E8F0;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --brand: #0284C7;
 
   --background: #FFFFFF;
-  --foreground: #09090B;
-  --card: #FAFAFA;
-  --card-foreground: #09090B;
-  --popover: #FAFAFA;
-  --popover-foreground: #09090B;
-  --primary: #09090B;
-  --primary-foreground: #FAFAFA;
-  --secondary: #F4F4F5;
-  --secondary-foreground: #09090B;
-  --muted: #F4F4F5;
-  --muted-foreground: #71717A;
-  --accent: #F4F4F5;
-  --accent-foreground: #09090B;
+  --foreground: #0F172A;
+  --card: #F8FAFC;
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  --primary: #0F172A;
+  --primary-foreground: #F8FAFC;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #0F172A;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #F1F5F9;
+  --accent-foreground: #0F172A;
   --destructive: #EF4444;
-  --destructive-foreground: #FAFAFA;
-  --border: #E4E4E7;
-  --input: #E4E4E7;
-  --ring: #71717A;
+  --destructive-foreground: #F8FAFC;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #94A3B8;
   --radius: 0.75rem;
 }
 
 .dark {
-  /* Global Color Tokens - Dark Theme: Exact Shadcn UI #0A0A0A & #161616 */
-  --bg-page: #0A0A0A;
-  --bg-card: #161616;
-  --bg-subtle: #1F1F1F;
-  --border-subtle: #262626;
-  --text-main: #EDEDED;
-  --text-muted: #8C8C8C;
+  /* Global Slate Color Tokens - Dark Theme (Rich Slate 950 / 900 / 800) */
+  --bg-page: #020817;
+  --bg-card: #0B1329;
+  --bg-subtle: #1E293B;
+  --border-subtle: #1E293B;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --brand: #38BDF8;
 
-  --background: #0A0A0A;
-  --foreground: #EDEDED;
-  --card: #161616;
-  --card-foreground: #EDEDED;
-  --popover: #161616;
-  --popover-foreground: #EDEDED;
-  --primary: #EDEDED;
-  --primary-foreground: #0A0A0A;
-  --secondary: #242424;
-  --secondary-foreground: #EDEDED;
-  --muted: #1F1F1F;
-  --muted-foreground: #8C8C8C;
-  --accent: #1F1F1F;
-  --accent-foreground: #EDEDED;
+  --background: #020817;
+  --foreground: #F8FAFC;
+  --card: #0B1329;
+  --card-foreground: #F8FAFC;
+  --popover: #0B1329;
+  --popover-foreground: #F8FAFC;
+  --primary: #F8FAFC;
+  --primary-foreground: #020817;
+  --secondary: #1E293B;
+  --secondary-foreground: #F8FAFC;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #1E293B;
+  --accent-foreground: #F8FAFC;
   --destructive: #7F1D1D;
-  --destructive-foreground: #EDEDED;
-  --border: #262626;
-  --input: #262626;
-  --ring: #8C8C8C;
+  --destructive-foreground: #F8FAFC;
+  --border: #1E293B;
+  --input: #1E293B;
+  --ring: #475569;
 }
 
 /* Typography – Semantic type styles (Layer 1) */

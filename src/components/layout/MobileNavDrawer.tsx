@@ -97,7 +97,7 @@ export function MobileNavDrawer({
                   onClose()
                   onSearchClick()
                 }}
-                className="w-full flex items-center justify-between h-9 px-3 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
+                className="w-full flex items-center justify-between h-9 px-3 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] dark:bg-slate-950/60 text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <Search className="size-3.5" />

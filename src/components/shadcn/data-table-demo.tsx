@@ -136,7 +136,7 @@ export function DataTableDemo() {
           placeholder="Filter emails..."
           value={filterText}
           onChange={(e) => setFilterText(e.target.value)}
-          className="max-w-sm h-9 bg-[var(--bg-page)]/70 border-[var(--border-subtle)] text-xs text-[var(--text-main)] placeholder:text-[var(--text-muted)]/70 rounded-lg focus:ring-1 focus:ring-[var(--brand)]"
+          className="max-w-sm h-9 bg-[var(--bg-page)]/80 dark:bg-slate-950/80 border-[var(--border-subtle)] text-xs text-[var(--text-main)] placeholder:text-[var(--text-muted)] rounded-xl focus:ring-1 focus:ring-slate-400"
         />
 
         <DropdownMenu>
