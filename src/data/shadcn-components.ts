@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -18,6 +18,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Animated List",
     "Animated Shiny Text",
     "Animated Testimonials",
+    "Background Gradient Animation",
     "Background Ripple Effect",
     "Card Spotlight",
     "Comet Card",
@@ -1290,6 +1291,32 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "children",
       "className",
       "style",
+    ],
+  },
+  "Background Gradient Animation": {
+    id: "background-gradient-animation",
+    name: "Background Gradient Animation",
+    description: "A smooth and elegant background gradient animation that changes the gradient position over time.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/background-gradient-animation-demo",
+    importCode: `import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation"`,
+    usageCode: `<BackgroundGradientAnimation containerClassName="h-[500px] w-full rounded-2xl">\n  <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold text-3xl md:text-5xl">\n    Gradients X Animations\n  </div>\n</BackgroundGradientAnimation>`,
+    apiReference: [
+      "BackgroundGradientAnimation",
+      "gradientBackgroundStart",
+      "gradientBackgroundEnd",
+      "firstColor",
+      "secondColor",
+      "thirdColor",
+      "fourthColor",
+      "fifthColor",
+      "pointerColor",
+      "size",
+      "blendingValue",
+      "interactive",
+      "containerClassName",
+      "className",
+      "children",
     ],
   },
 }

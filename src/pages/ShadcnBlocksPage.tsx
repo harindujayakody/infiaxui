@@ -57,6 +57,7 @@ import { LensBlockPreview } from "@/components/ui/lens-demo"
 import { FlickeringGridBlockPreview } from "@/components/magicui/flickering-grid-demo"
 import { MorphingTextBlockPreview } from "@/components/magicui/morphing-text-demo"
 import { PointerBlockPreview } from "@/components/magicui/pointer-demo"
+import { BackgroundGradientAnimationBlockPreview } from "@/components/ui/background-gradient-animation-demo"
 
 interface BlockItem {
   id: string
@@ -425,6 +426,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A component that displays a pointer when hovering over an element.",
       cliCommand: "npx shadcn@latest add @magicui/pointer",
       renderPreview: () => <PointerBlockPreview />,
+    },
+    {
+      id: "background-gradient-animation",
+      title: "Background Gradient Animation",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Background Gradient Animation",
+      description:
+        "A smooth and elegant background gradient animation that changes the gradient position over time.",
+      cliCommand: "npx shadcn@latest add @aceternity/background-gradient-animation-demo",
+      renderPreview: () => <BackgroundGradientAnimationBlockPreview />,
     },
     {
       id: "tooltip-card",

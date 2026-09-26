@@ -224,6 +224,8 @@ import { MorphingTextDemo } from "@/components/magicui/morphing-text-demo"
 import { MorphingTextGuide } from "@/components/magicui/morphing-text-guide"
 import { PointerDemo } from "@/components/magicui/pointer-demo"
 import { PointerGuide } from "@/components/magicui/pointer-guide"
+import { BackgroundGradientAnimationDemo } from "@/components/ui/background-gradient-animation-demo"
+import { BackgroundGradientAnimationGuide } from "@/components/ui/background-gradient-animation-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1344,6 +1346,24 @@ export function PointerDemo() {
           <div className="text-2xl">👆</div>
         </Pointer>
       </div>
+    </div>
+  )
+}`
+
+      case "Background Gradient Animation":
+        return `import React from "react"
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation"
+
+export function BackgroundGradientAnimationDemo() {
+  return (
+    <div className="relative flex h-[440px] sm:h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+      <BackgroundGradientAnimation containerClassName="absolute inset-0 size-full">
+        <div className="absolute z-50 inset-0 flex items-center justify-center px-4 pointer-events-none select-none text-center">
+          <p className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/95 via-white/80 to-white/30">
+            Gradients X Animations
+          </p>
+        </div>
+      </BackgroundGradientAnimation>
     </div>
   )
 }`
@@ -3835,6 +3855,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Background Gradient Animation":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <BackgroundGradientAnimationDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4593,6 +4620,8 @@ export function ScrollAreaDemo() {
         <MorphingTextGuide />
       ) : componentData.name === "Pointer" ? (
         <PointerGuide />
+      ) : componentData.name === "Background Gradient Animation" ? (
+        <BackgroundGradientAnimationGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
