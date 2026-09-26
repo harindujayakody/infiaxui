@@ -41,6 +41,7 @@ export function ShadcnComponentDetail({
   const [installMode, setInstallMode] = useState<"Command" | "Manual">("Manual")
   const [pkgManager, setPkgManager] = useState<"pnpm" | "npm" | "yarn" | "bun">("npm")
   const [isCodeExpanded, setIsCodeExpanded] = useState(false)
+  const [isManualExpanded, setIsManualExpanded] = useState(false)
   const [copiedSection, setCopiedSection] = useState<string | null>(null)
   
   // Interactive state demos
@@ -442,32 +443,104 @@ export function ShadcnComponentDetail({
               </span>
             </div>
 
-            {/* Manual Code block matching user screenshot */}
-            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs">
-              <div className="flex items-center justify-between px-4 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/50">
-                <div className="flex items-center gap-2 text-[var(--text-muted)]">
-                  <span className="font-bold text-[10px] bg-[var(--bg-subtle)] px-1.5 py-0.5 rounded text-[var(--text-main)]">
-                    TS
-                  </span>
-                  <span>components/ui/{componentData.id}.tsx</span>
+            {/* Manual Code block with Mac style header matching user request */}
+            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs shadow-md">
+              <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/60 select-none">
+                <div className="flex items-center gap-3">
+                  {/* macOS Window Controls */}
+                  <div className="flex items-center gap-1.5 group/dots">
+                    <span
+                      className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
+                      title="Close"
+                    >
+                      <span className="opacity-0 group-hover/dots:opacity-100 text-[8px] text-[#4A0002] leading-none font-bold">
+                        ✕
+                      </span>
+                    </span>
+                    <span
+                      className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
+                      title="Minimize"
+                    >
+                      <span className="opacity-0 group-hover/dots:opacity-100 text-[8px] text-[#402A00] leading-none font-bold">
+                        −
+                      </span>
+                    </span>
+                    <span
+                      onClick={() => setIsManualExpanded(!isManualExpanded)}
+                      className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
+                      title={isManualExpanded ? "Collapse" : "Expand"}
+                    >
+                      <span className="opacity-0 group-hover/dots:opacity-100 text-[7px] text-[#003800] leading-none font-black">
+                        {isManualExpanded ? "⤡" : "⤢"}
+                      </span>
+                    </span>
+                  </div>
+
+                  <div className="h-3 w-px bg-[var(--border-subtle)]" />
+
+                  {/* TS badge & file path */}
+                  <div className="flex items-center gap-2 text-[var(--text-muted)]">
+                    <span className="font-bold text-[10px] bg-[var(--bg-subtle)] border border-[var(--border-subtle)] px-1.5 py-0.5 rounded text-[var(--text-main)]">
+                      TS
+                    </span>
+                    <span className="font-mono text-xs">components/ui/{componentData.id}.tsx</span>
+                  </div>
                 </div>
+
                 <div className="flex items-center gap-3 text-[var(--text-muted)]">
-                  <button className="hover:text-[var(--text-main)] transition-colors">Expand</button>
                   <button
-                    onClick={() => handleCopy(componentData.importCode, "manual-file")}
-                    className="hover:text-[var(--text-main)] transition-colors"
+                    onClick={() => setIsManualExpanded(!isManualExpanded)}
+                    className="hover:text-[var(--text-main)] transition-colors type-link-12 font-medium"
                   >
-                    <Copy className="size-3.5" />
+                    {isManualExpanded ? "Collapse" : "Expand"}
+                  </button>
+                  <button
+                    onClick={() =>
+                      handleCopy(
+                        `import * as React from "react"\nimport { mergeProps } from "@base-ui/react/merge-props"\nimport { useRender } from "@base-ui/react/use-render"\nimport { cn } from "cn"\nimport { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"\n\nexport function ${componentName}() {\n  return (\n    <div className={cn("inline-flex items-center gap-2")}>\n      {/* ${componentName} implementation */}\n    </div>\n  )\n}`,
+                        "manual-file"
+                      )
+                    }
+                    className="flex items-center gap-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/70 hover:bg-[var(--bg-subtle)] px-2 py-1 text-xs text-[var(--text-main)] transition-all"
+                    title="Copy source"
+                  >
+                    {copiedSection === "manual-file" ? (
+                      <>
+                        <Check className="size-3.5 text-emerald-400" />
+                        <span className="text-emerald-400">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="size-3.5 text-[var(--text-muted)]" />
+                        <span>Copy</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
 
-              <div className="p-4 overflow-x-auto text-[var(--text-main)] leading-relaxed">
-                <div><span className="text-[var(--text-muted)] mr-4">1</span>import * as React from "react"</div>
-                <div><span className="text-[var(--text-muted)] mr-4">2</span>import &#123; mergeProps &#125; from "@base-ui/react/merge-props"</div>
-                <div><span className="text-[var(--text-muted)] mr-4">3</span>import &#123; useRender &#125; from "@base-ui/react/use-render"</div>
-                <div><span className="text-[var(--text-muted)] mr-4">4</span>import &#123; cn &#125; from "cn"</div>
-                <div><span className="text-[var(--text-muted)] mr-4">5</span>import &#123; ChevronRightIcon, MoreHorizontalIcon &#125; from "lucide-react"</div>
+              <div
+                className={`p-4 overflow-x-auto text-[var(--text-main)] leading-relaxed transition-all duration-200 ${
+                  isManualExpanded ? "max-h-[500px]" : "max-h-[220px]"
+                }`}
+              >
+                <div><span className="text-[var(--text-muted)] mr-4">1</span><span className="text-purple-400">import</span> * <span className="text-purple-400">as</span> React <span className="text-purple-400">from</span> <span className="text-emerald-300">"react"</span></div>
+                <div><span className="text-[var(--text-muted)] mr-4">2</span><span className="text-purple-400">import</span> &#123; mergeProps &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"@base-ui/react/merge-props"</span></div>
+                <div><span className="text-[var(--text-muted)] mr-4">3</span><span className="text-purple-400">import</span> &#123; useRender &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"@base-ui/react/use-render"</span></div>
+                <div><span className="text-[var(--text-muted)] mr-4">4</span><span className="text-purple-400">import</span> &#123; cn &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"cn"</span></div>
+                <div><span className="text-[var(--text-muted)] mr-4">5</span><span className="text-purple-400">import</span> &#123; ChevronRightIcon, MoreHorizontalIcon &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">"lucide-react"</span></div>
+                {isManualExpanded && (
+                  <>
+                    <div className="pt-2"><span className="text-[var(--text-muted)] mr-4">6</span></div>
+                    <div><span className="text-[var(--text-muted)] mr-4">7</span><span className="text-purple-400">export function</span> <span className="text-blue-300">{componentName}</span>() &#123;</div>
+                    <div><span className="text-[var(--text-muted)] mr-4">8</span>  <span className="text-purple-400">return</span> (</div>
+                    <div><span className="text-[var(--text-muted)] mr-4">9</span>    &lt;<span className="text-pink-400">div</span> <span className="text-sky-300">className</span>={"{cn(\"inline-flex items-center gap-2\")}"}&gt;</div>
+                    <div><span className="text-[var(--text-muted)] mr-4">10</span>      &lt;<span className="text-pink-400">span</span>&gt;{componentName} Primitive&lt;/<span className="text-pink-400">span</span>&gt;</div>
+                    <div><span className="text-[var(--text-muted)] mr-4">11</span>    &lt;/<span className="text-pink-400">div</span>&gt;</div>
+                    <div><span className="text-[var(--text-muted)] mr-4">12</span>  )</div>
+                    <div><span className="text-[var(--text-muted)] mr-4">13</span>&#125;</div>
+                  </>
+                )}
               </div>
             </div>
           </div>

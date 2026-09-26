@@ -134,7 +134,7 @@ export function ShadcnRightToc({ view, componentName, apiReference }: ShadcnRigh
 
     const el = document.getElementById(id)
     if (el) {
-      const headerOffset = 70
+      const headerOffset = 105
       const targetY = el.getBoundingClientRect().top + window.scrollY - headerOffset
       window.scrollTo({
         top: Math.max(0, targetY),
@@ -149,7 +149,7 @@ export function ShadcnRightToc({ view, componentName, apiReference }: ShadcnRigh
   }
 
   return (
-    <div className="hidden xl:block w-64 shrink-0 pl-6 py-8 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto">
+    <div className="hidden xl:block w-64 shrink-0 pl-6 py-8 sticky top-[92px] h-[calc(100vh-92px)] overflow-y-auto">
       <div className="space-y-3 mb-8">
         <h5 className="type-caption text-[var(--text-main)] font-semibold tracking-tight">
           On This Page

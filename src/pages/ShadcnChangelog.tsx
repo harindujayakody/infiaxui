@@ -97,9 +97,17 @@ export function ShadcnChangelog() {
         </p>
 
         {/* Code Snippet */}
-        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm">
-          <div className="flex items-center justify-between px-4 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50">
-            <span className="text-[var(--text-muted)]">Component usage</span>
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm shadow-md">
+          <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50 select-none">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 group/dots">
+                <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
+                <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
+                <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
+              </div>
+              <div className="h-3 w-px bg-[var(--border-subtle)]" />
+              <span className="text-[var(--text-muted)] font-mono text-xs">Component usage</span>
+            </div>
             <button
               onClick={() => handleCopy("code-cn-1", `import { cn } from "cn"\n\n;<div className={cn("flex items-center", className)} />`)}
               className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
@@ -145,9 +153,17 @@ export function ShadcnChangelog() {
             <p className="type-body text-[var(--text-muted)] leading-relaxed">
               The <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">utils</code> registry item still exists. It now re-exports <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> so your own code keeps working and you still have a single place for project helpers.
             </p>
-            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm">
-              <div className="flex items-center justify-between px-4 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50">
-                <span className="text-[var(--text-muted)]">lib/utils.ts</span>
+            <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm shadow-md">
+              <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50 select-none">
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5 group/dots">
+                    <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
+                    <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
+                    <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
+                  </div>
+                  <div className="h-3 w-px bg-[var(--border-subtle)]" />
+                  <span className="text-[var(--text-muted)] font-mono text-xs">lib/utils.ts</span>
+                </div>
                 <button
                   onClick={() => handleCopy("code-utils", `export { cn } from "cn"`)}
                   className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
@@ -288,9 +304,17 @@ export function ShadcnChangelog() {
           <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">@shadcn/helpers</code> can now mock human-in-the-loop flows for the AI SDK. A scripted conversation can pause for real user input, wait for an approval, and continue with whatever the user decided. Everything streams through the real <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">useChat</code> lifecycle, so your tool cards, approval prompts, and question flows render identically.
         </p>
 
-        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm">
-          <div className="flex items-center justify-between px-4 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50">
-            <span className="text-[var(--text-muted)]">AI SDK Helper Mock</span>
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm shadow-md">
+          <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50 select-none">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 group/dots">
+                <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
+                <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
+                <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
+              </div>
+              <div className="h-3 w-px bg-[var(--border-subtle)]" />
+              <span className="text-[var(--text-muted)] font-mono text-xs">AI SDK Helper Mock</span>
+            </div>
             <button
               onClick={() => handleCopy("code-hitl", `chat\n  .assistant(({ writer }) => {\n    writer.text("That will archive 3 drafts. I need your approval.")\n    writer.tool("archiveDrafts", {\n      input: { count: 3 },\n      needsApproval: true,\n      output: { archived: 3 },\n    })\n  })`)}
               className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"

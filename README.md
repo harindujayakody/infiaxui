@@ -22,6 +22,7 @@
 - **57+ Canonical Shadcn Components**: Breadcrumb, Button, Card, Badge, Alert, Checkbox, Switch, Input, Skeleton, Separator, Avatar, Questionnaire, and more.
 - **Up-to-Date Changelog**: Canonical release timeline tracking **September 2026** (`cn` package), **August 2026** (Private GitHub Registries, Human in the Loop, Questionnaire), and **July 2026** (Dynamic Search).
 - **Interactive Questionnaire Component**: Built-in multi-step question flow primitive for intake forms, AI clarification, and onboarding.
+- **Mac Style Window Header & Code Blocks**: Desktop-class macOS window titlebar with interactive red/yellow/green traffic lights, fullscreen toggle, dynamic titles, and Mac-themed code editors with TS badges and line expanders.
 - **Interactive Action Bar**: Split-pill button (`Copy Page | ⌵`) with copy options and previous/next squircle navigation buttons.
 - **Precision ScrollSpy Table of Contents**: Dynamic right sidebar tracking headers in real time with smooth scrolling and sticky header offsets.
 - **Command Palette (`⌘K`)**: Instant modal search across all components and CLI commands.

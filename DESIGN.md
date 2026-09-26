@@ -89,10 +89,18 @@ Infiax UI incorporates exact tokens extracted from canonical Shadcn UI:
 - Dropdown arrow (`⌵`) triggering copy options (Markdown, Raw TSX, CLI command).
 
 ### 4.4 Right Table of Contents (Timeline Menu)
-- Sticky positioned at `top-14` with independent scroll.
-- ScrollSpy tracking the viewport with 100px threshold.
+- Sticky positioned at `top-[92px]` with independent scroll.
+- ScrollSpy tracking the viewport with 105px threshold.
 - Active item marked with `text-[var(--text-main)] font-semibold`.
 - Sub-item indent with `pl-3.5`.
+
+### 4.5 Mac Style Window Header & Code Blocks
+- **Window Header (`MacTitleBar`)**:
+  - Pinned desktop-style header with macOS traffic lights (`#FF5F56`, `#FFBD2E`, `#27C93F`).
+  - Interactive hover glyphs (`✕`, `−`, `⤢`) on traffic light cluster with full-screen toggle on the green dot.
+  - Centered dynamic window title (e.g. `Breadcrumb - Infiax UI — shadcn/ui`).
+- **Mac Style Code Headers**:
+  - Code block window bar with traffic light buttons, language badges (`[TS]`), file path (`components/ui/{component}.tsx`), interactive `Expand` / `Collapse` controls, and copy feedback.
 
 ---
 

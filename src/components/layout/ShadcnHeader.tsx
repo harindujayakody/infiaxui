@@ -23,7 +23,7 @@ export function ShadcnHeader({ activeTab, onTabChange, onSearchClick }: ShadcnHe
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/95 backdrop-blur transition-colors">
+    <header className="w-full border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/95 backdrop-blur transition-colors">
       <div className="flex h-14 items-center justify-between px-4 sm:px-6 max-w-[1500px] mx-auto">
         {/* Left Nav items */}
         <nav className="flex items-center gap-5">

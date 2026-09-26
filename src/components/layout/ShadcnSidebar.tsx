@@ -63,7 +63,7 @@ export function ShadcnSidebar({
   ]
 
   return (
-    <aside className="w-56 shrink-0 hidden md:block py-6 pr-4 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto">
+    <aside className="w-56 shrink-0 hidden md:block py-6 pr-4 sticky top-[92px] h-[calc(100vh-92px)] overflow-y-auto">
       {/* Sections Group */}
       <div className="space-y-1 mb-6">
         <h4 className="px-3 mb-2 type-caption text-[var(--text-muted)] uppercase tracking-wider">

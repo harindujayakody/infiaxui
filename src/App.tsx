@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { ThemeProvider } from "@/lib/theme-context"
+import { MacTitleBar } from "@/components/layout/MacTitleBar"
 import { ShadcnHeader } from "@/components/layout/ShadcnHeader"
 import { ShadcnSidebar } from "@/components/layout/ShadcnSidebar"
 import { ShadcnRightToc } from "@/components/layout/ShadcnRightToc"
@@ -32,24 +33,37 @@ function AppContent() {
     ? SHADCN_COMPONENTS_DETAIL[selectedComponent]
     : undefined
 
+  const windowTitle = selectedComponent
+    ? `${selectedComponent} - Infiax UI`
+    : activeSection === "Changelog"
+    ? "Changelog - Infiax UI"
+    : "Components - Infiax UI"
+
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-main)] flex flex-col font-sans transition-colors duration-150">
-      {/* Exact Shadcn Top Navigation Bar with working Dark/Light toggle */}
-      <ShadcnHeader
-        activeTab={activeNavTab}
-        onTabChange={(tab) => {
-          setActiveNavTab(tab)
-          if (tab === "Changelog") {
-            setActiveSection("Changelog")
-            setSelectedComponent(null)
-            window.scrollTo({ top: 0, behavior: "smooth" })
-          } else if (tab === "Components") {
-            setActiveSection("Components")
-            setSelectedComponent(null)
-          }
-        }}
-        onSearchClick={() => setIsSearchOpen(true)}
-      />
+      {/* Mac Style Window Header + Navigation Shell */}
+      <div className="sticky top-0 z-50 w-full backdrop-blur">
+        <MacTitleBar
+          title={windowTitle}
+          subtitle="shadcn/ui"
+          onSearchClick={() => setIsSearchOpen(true)}
+        />
+        <ShadcnHeader
+          activeTab={activeNavTab}
+          onTabChange={(tab) => {
+            setActiveNavTab(tab)
+            if (tab === "Changelog") {
+              setActiveSection("Changelog")
+              setSelectedComponent(null)
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            } else if (tab === "Components") {
+              setActiveSection("Components")
+              setSelectedComponent(null)
+            }
+          }}
+          onSearchClick={() => setIsSearchOpen(true)}
+        />
+      </div>
 
       {/* Main 3-Column Document Shell */}
       <div className="flex-1 max-w-[1500px] w-full mx-auto flex px-4 sm:px-6">
