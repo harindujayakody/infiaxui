@@ -155,6 +155,7 @@ import { BubbleDemo } from "@/components/shadcn/bubble-demo"
 import { AvatarDemo } from "@/components/shadcn/avatar-demo"
 import { SeparatorDemo } from "@/components/shadcn/separator-demo"
 import { ComboboxDemo } from "@/components/shadcn/combobox-demo"
+import { CarouselDemo } from "@/components/shadcn/carousel-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -612,6 +613,38 @@ export function BubbleDemo() {
         </Bubble>
       </BubbleGroup>
     </div>
+  )
+}`
+
+      case "Carousel":
+        return `import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { Card, CardContent } from "@/components/ui/card"
+
+export function CarouselDemo() {
+  return (
+    <Carousel className="w-full max-w-xs">
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   )
 }`
 
@@ -1877,39 +1910,6 @@ export function DatePickerDemo() {
   )
 }`
 
-      case "Carousel":
-        return `import * as React from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-
-export function CarouselDemo() {
-  return (
-    <Carousel className="w-full max-w-xs">
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  )
-}`
-
       case "Scroll Area":
         return `import * as React from "react"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -2478,6 +2478,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Carousel":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <CarouselDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -2716,34 +2723,6 @@ export function ScrollAreaDemo() {
                 </div>
               </div>
             )}
-          </div>
-        )
-
-      case "Carousel":
-        return (
-          <div className="w-full max-w-xs space-y-3">
-            <div className="relative aspect-video rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] flex items-center justify-center p-6 shadow">
-              <div className="text-center space-y-1">
-                <span className="text-3xl font-black text-[var(--text-main)] font-mono">{carouselIndex + 1}</span>
-                <p className="text-xs text-[var(--text-muted)]">Slide {carouselIndex + 1} of 5</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCarouselIndex((prev) => (prev > 0 ? prev - 1 : 4))}
-              >
-                Previous
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCarouselIndex((prev) => (prev < 4 ? prev + 1 : 0))}
-              >
-                Next
-              </Button>
-            </div>
           </div>
         )
 
