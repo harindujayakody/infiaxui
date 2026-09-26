@@ -93,6 +93,13 @@ import { SidebarGuide } from "@/components/shadcn/sidebar-guide"
 import { SheetGuide } from "@/components/shadcn/sheet-guide"
 import { SeparatorGuide } from "@/components/shadcn/separator-guide"
 import { SelectGuide } from "@/components/shadcn/select-guide"
+import { ScrollAreaGuide } from "@/components/shadcn/scroll-area-guide"
+import { ResizableGuide } from "@/components/shadcn/resizable-guide"
+import { RadioGroupGuide } from "@/components/shadcn/radio-group-guide"
+import { QuestionnaireGuide } from "@/components/shadcn/questionnaire-guide"
+import { ProgressGuide } from "@/components/shadcn/progress-guide"
+import { PopoverGuide } from "@/components/shadcn/popover-guide"
+import { NavigationMenuGuide } from "@/components/shadcn/navigation-menu-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2800,6 +2807,20 @@ export function ChartDemo() {
         <SeparatorGuide />
       ) : componentData.name === "Select" ? (
         <SelectGuide />
+      ) : componentData.name === "Scroll Area" ? (
+        <ScrollAreaGuide />
+      ) : componentData.name === "Resizable" ? (
+        <ResizableGuide />
+      ) : componentData.name === "Radio Group" ? (
+        <RadioGroupGuide />
+      ) : componentData.name === "Questionnaire" ? (
+        <QuestionnaireGuide />
+      ) : componentData.name === "Progress" ? (
+        <ProgressGuide />
+      ) : componentData.name === "Popover" ? (
+        <PopoverGuide />
+      ) : componentData.name === "Navigation Menu" ? (
+        <NavigationMenuGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

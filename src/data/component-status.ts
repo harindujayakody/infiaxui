@@ -274,6 +274,83 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout support & API reference",
     ],
   },
+  "Scroll Area": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Augments native scrolling with styled cross-browser scrollbars",
+      "Vertical scroll list of release tags",
+      "Horizontal image cards scroll track",
+      "ScrollBar component orientation control",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Resizable": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Accessible resizable panel groups with keyboard support",
+      "Interactive horizontal & vertical drag resizing",
+      "ResizableHandle withHandle drag grip icon",
+      "react-resizable-panels v4 migration changelog",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Radio Group": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Checkable radio buttons with singular active state",
+      "Supporting description text layout",
+      "Choice Card clickable box selection style",
+      "Semantic Fieldset & FieldLegend grouping",
+      "Disabled state & invalid validation styling",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Questionnaire": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Multi-step questionnaire flow with answer persistence",
+      "Single-choice & multiple-choice questions",
+      "Freeform custom answer input integration",
+      "Skippable optional steps & keyboard shortcuts",
+      "Animated step transitions & progress indicator",
+      "Semantic fieldset accessibility & API reference",
+    ],
+  },
+  "Progress": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Animated completion task indicator",
+      "ProgressLabel and ProgressValue readout integration",
+      "Controlled progress & live ticker simulation",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Popover": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Floating popover portal anchored to trigger button",
+      "PopoverHeader, Title, and Description composition",
+      "Alignment options (start, center, end)",
+      "Embedded interactive form inputs",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Navigation Menu": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Hierarchical top-level website navigation menu",
+      "Rich animated flyout panels on hover / click",
+      "Next.js Link / framework anchor integration",
+      "RTL layout support & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {
