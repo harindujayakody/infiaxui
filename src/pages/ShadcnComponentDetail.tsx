@@ -208,6 +208,8 @@ import { TooltipCardDemo } from "@/components/ui/tooltip-card-demo"
 import { TooltipCardGuide } from "@/components/ui/tooltip-card-guide"
 import { AnimatedTestimonialsDemo } from "@/components/ui/animated-testimonials-demo"
 import { AnimatedTestimonialsGuide } from "@/components/ui/animated-testimonials-guide"
+import { CardSpotlightDemo } from "@/components/ui/card-spotlight-demo"
+import { CardSpotlightGuide } from "@/components/ui/card-spotlight-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1083,6 +1085,31 @@ export function AnimatedTestimonialsDemo() {
     },
   ];
   return <AnimatedTestimonials testimonials={testimonials} />;
+}`
+
+      case "Card Spotlight":
+        return `import { CardSpotlight } from "@/components/ui/card-spotlight"
+
+export function CardSpotlightDemo() {
+  return (
+    <CardSpotlight className="h-96 w-96">
+      <p className="text-xl font-bold relative z-20 mt-2 text-white">
+        Authentication steps
+      </p>
+      <div className="text-neutral-200 mt-4 relative z-20">
+        Follow these steps to secure your account:
+        <ul className="list-none mt-2">
+          <Step title="Enter your email address" />
+          <Step title="Create a strong password" />
+          <Step title="Set up two-factor authentication" />
+          <Step title="Verify your identity" />
+        </ul>
+      </div>
+      <p className="text-neutral-300 text-sm mt-4 relative z-20">
+        Ensuring your account is properly secured helps protect your personal information and data.
+      </p>
+    </CardSpotlight>
+  )
 }`
 
       case "Button":
@@ -3516,6 +3543,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Card Spotlight":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <CardSpotlightDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4258,6 +4292,8 @@ export function ScrollAreaDemo() {
         <TooltipCardGuide />
       ) : componentData.name === "Animated Testimonials" ? (
         <AnimatedTestimonialsGuide />
+      ) : componentData.name === "Card Spotlight" ? (
+        <CardSpotlightGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

@@ -49,6 +49,7 @@ import { DotPatternBlockPreview } from "@/components/magicui/dot-pattern-demo"
 import { ParticlesBlockPreview } from "@/components/magicui/particles-demo"
 import { TooltipCardBlockPreview } from "@/components/ui/tooltip-card-demo"
 import { AnimatedTestimonialsBlockPreview } from "@/components/ui/animated-testimonials-demo"
+import { CardSpotlightBlockPreview } from "@/components/ui/card-spotlight-demo"
 
 interface BlockItem {
   id: string
@@ -406,6 +407,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "Minimal testimonials sections with image and quote.",
       cliCommand: "npx shadcn@latest add @aceternity/animated-testimonials-demo",
       renderPreview: () => <AnimatedTestimonialsBlockPreview />,
+    },
+    {
+      id: "card-spotlight",
+      title: "Card Spotlight",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Card Spotlight",
+      description:
+        "A card component with a spotlight effect revealing a radial gradient background.",
+      cliCommand: "npx shadcn@latest add @aceternity/card-spotlight-demo",
+      renderPreview: () => <CardSpotlightBlockPreview />,
     },
   ]
 

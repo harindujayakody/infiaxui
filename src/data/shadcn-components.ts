@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -18,6 +18,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Animated List",
     "Animated Shiny Text",
     "Animated Testimonials",
+    "Card Spotlight",
     "Dia Text Reveal",
     "Dot Pattern",
     "Particles",
@@ -1145,6 +1146,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "autoplay",
       "className",
       "Testimonial",
+    ],
+  },
+  "Card Spotlight": {
+    id: "card-spotlight",
+    name: "Card Spotlight",
+    description: "A card component with a spotlight effect revealing a radial gradient background",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/card-spotlight-demo",
+    importCode: `import { CardSpotlight } from "@/components/ui/card-spotlight"`,
+    usageCode: `<CardSpotlight radius={350} color="#262626">\n  <p className="text-xl font-bold text-white">Title</p>\n</CardSpotlight>`,
+    apiReference: [
+      "CardSpotlight",
+      "children",
+      "radius",
+      "color",
+      "className",
     ],
   },
 }
