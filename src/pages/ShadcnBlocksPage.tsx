@@ -34,6 +34,7 @@ import { MarqueeBlockPreview } from "@/components/magicui/marquee-demo"
 import { GlobeBlockPreview } from "@/components/magicui/globe-demo"
 import { TerminalBlockPreview } from "@/components/magicui/terminal-demo"
 import { BentoGridBlockPreview } from "@/components/magicui/bento-grid-demo"
+import { RainbowButtonBlockPreview } from "@/components/magicui/rainbow-button-demo"
 
 interface BlockItem {
   id: string
@@ -225,6 +226,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "An implementation of the MacOS terminal. Useful for showcasing a command line interface.",
       cliCommand: "npx shadcn@latest add @magicui/terminal",
       renderPreview: () => <TerminalBlockPreview />,
+    },
+    {
+      id: "rainbow-button",
+      title: "Rainbow Button",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Rainbow Button",
+      description:
+        "An animated button with a continuous rainbow linear gradient border and glowing aura.",
+      cliCommand: "npx shadcn@latest add @magicui/rainbow-button",
+      renderPreview: () => <RainbowButtonBlockPreview />,
     },
   ]
 

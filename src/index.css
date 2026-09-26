@@ -19,6 +19,13 @@
   --text-30: 30px;
   --tracking-neg-0-75: -0.75px;
 
+  /* Magic UI Rainbow Colors */
+  --color-1: hsl(0 100% 63%);
+  --color-2: hsl(270 100% 63%);
+  --color-3: hsl(210 100% 63%);
+  --color-4: hsl(195 100% 63%);
+  --color-5: hsl(90 100% 63%);
+
   /* Global Color Tokens - Light Theme */
   --bg-page: #FFFFFF;
   --bg-card: #FAFAFA;
@@ -208,4 +215,18 @@ code, pre {
 
 .animate-marquee-vertical {
   animation: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+/* Magic UI Rainbow Animation */
+@keyframes rainbow {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.animate-rainbow {
+  animation: rainbow var(--speed, 2s) infinite linear;
 }

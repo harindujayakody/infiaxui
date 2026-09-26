@@ -178,6 +178,8 @@ import { TerminalDemo } from "@/components/magicui/terminal-demo"
 import { TerminalGuide } from "@/components/magicui/terminal-guide"
 import { BentoDemo } from "@/components/magicui/bento-grid-demo"
 import { BentoGridGuide } from "@/components/magicui/bento-grid-guide"
+import { RainbowButtonDemo } from "@/components/magicui/rainbow-button-demo"
+import { RainbowButtonGuide } from "@/components/magicui/rainbow-button-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -601,6 +603,17 @@ export function BentoDemo() {
         <BentoCard key={idx} {...feature} />
       ))}
     </BentoGrid>
+  )
+}`
+
+      case "Rainbow Button":
+        return `import { RainbowButton } from "@/components/magicui/rainbow-button"
+
+export function RainbowButtonDemo() {
+  return (
+    <RainbowButton>
+      Get Unlimited Access
+    </RainbowButton>
   )
 }`
 
@@ -2930,6 +2943,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Rainbow Button":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <RainbowButtonDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3642,6 +3662,8 @@ export function ScrollAreaDemo() {
         <TerminalGuide />
       ) : componentData.name === "Bento Grid" ? (
         <BentoGridGuide />
+      ) : componentData.name === "Rainbow Button" ? (
+        <RainbowButtonGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

@@ -48,6 +48,11 @@ export default {
           DEFAULT: "var(--bg-card)",
           foreground: "var(--text-main)",
         },
+        "color-1": "var(--color-1)",
+        "color-2": "var(--color-2)",
+        "color-3": "var(--color-3)",
+        "color-4": "var(--color-4)",
+        "color-5": "var(--color-5)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -95,6 +100,10 @@ export default {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-100% - var(--gap, 1rem)))" },
         },
+        rainbow: {
+          "0%": { "background-position": "0%" },
+          "100%": { "background-position": "200%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -105,6 +114,7 @@ export default {
         "pulse-glow": "pulseGlow 4s ease-in-out infinite",
         marquee: "marquee var(--duration, 40s) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration, 40s) linear infinite",
+        rainbow: "rainbow var(--speed, 2s) infinite linear",
       },
     },
   },

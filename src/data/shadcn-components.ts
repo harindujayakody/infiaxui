@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -31,6 +31,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Pagination",
     "Progress",
     "Radio Group",
+    "Rainbow Button",
     "Scroll Area",
     "Separator",
     "Skeleton",
@@ -859,6 +860,23 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "background",
       "Icon",
       "className",
+    ],
+  },
+  "Rainbow Button": {
+    id: "rainbow-button",
+    name: "Rainbow Button",
+    description: "An animated button with a rainbow effect.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/rainbow-button",
+    importCode: `import { RainbowButton } from "@/components/magicui/rainbow-button"`,
+    usageCode: `<RainbowButton>Get Unlimited Access</RainbowButton>`,
+    apiReference: [
+      "RainbowButton",
+      "children",
+      "className",
+      "variant",
+      "size",
+      "asChild",
     ],
   },
 }
