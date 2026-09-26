@@ -117,6 +117,10 @@ import { FieldGuide } from "@/components/shadcn/field-guide"
 import { EmptyGuide } from "@/components/shadcn/empty-guide"
 import { DropdownMenuGuide } from "@/components/shadcn/dropdown-menu-guide"
 import { DrawerGuide } from "@/components/shadcn/drawer-guide"
+import { DirectionGuide } from "@/components/shadcn/direction-guide"
+import { DialogGuide } from "@/components/shadcn/dialog-guide"
+import { DatePickerGuide } from "@/components/shadcn/date-picker-guide"
+import { ContextMenuGuide } from "@/components/shadcn/context-menu-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2872,6 +2876,14 @@ export function ChartDemo() {
         <DropdownMenuGuide />
       ) : componentData.name === "Drawer" ? (
         <DrawerGuide />
+      ) : componentData.name === "Direction" ? (
+        <DirectionGuide />
+      ) : componentData.name === "Dialog" ? (
+        <DialogGuide />
+      ) : componentData.name === "Date Picker" ? (
+        <DatePickerGuide />
+      ) : componentData.name === "Context Menu" ? (
+        <ContextMenuGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

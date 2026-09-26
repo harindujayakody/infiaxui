@@ -538,6 +538,47 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL mirroring & API reference",
     ],
   },
+  "Direction": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "DirectionProvider for global and subtree text flow (ltr & rtl)",
+      "Interactive bidirectional layout toggle with live mirroring",
+      "useDirection hook for ambient context consumption",
+      "API reference",
+    ],
+  },
+  "Dialog": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Accessible modal window with Framer Motion spring backdrop",
+      "Form editing, Confirmation, and Share link dialog demos",
+      "showCloseButton toggle & custom close trigger buttons",
+      "Sticky action footers & scrollable content areas",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Date Picker": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Composition of Popover and Calendar primitives",
+      "Single date picker and multi-day Date Range picker",
+      "Integrated time selection input combination",
+      "RTL calendar mirroring & API reference",
+    ],
+  },
+  "Context Menu": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Interactive right-click canvas with coordinate-aware placement",
+      "Cascading submenus, shortcuts (⌘[, ⌘], ⌘R), and checkboxes",
+      "Logical placement with side='inline-end' in RTL mode",
+      "API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {
