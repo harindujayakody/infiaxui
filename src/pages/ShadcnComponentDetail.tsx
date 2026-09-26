@@ -200,6 +200,8 @@ import { DiaTextRevealDemo } from "@/components/magicui/dia-text-reveal-demo"
 import { DiaTextRevealGuide } from "@/components/magicui/dia-text-reveal-guide"
 import { ThemeTogglerDemo } from "@/components/magicui/animated-theme-toggler-demo"
 import { AnimatedThemeTogglerGuide } from "@/components/magicui/animated-theme-toggler-guide"
+import { DotPatternDemo } from "@/components/magicui/dot-pattern-demo"
+import { DotPatternGuide } from "@/components/magicui/dot-pattern-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -953,6 +955,24 @@ export function ThemeTogglerDemo() {
       variant="circle"
       className="size-16 rounded-full bg-black text-white dark:bg-white dark:text-black border border-white/20 shadow-2xl"
     />
+  )
+}`
+
+      case "Dot Pattern":
+        return `import { DotPattern } from "@/components/ui/dot-pattern"
+
+export function DotPatternDemo() {
+  return (
+    <div className="relative flex h-[380px] sm:h-[450px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-2xl select-none">
+      <DotPattern
+        width={16}
+        height={16}
+        cx={1}
+        cy={1}
+        cr={1}
+        className="text-zinc-400/50 [mask-image:radial-gradient(circle_at_center,white,transparent_75%)]"
+      />
+    </div>
   )
 }`
 
@@ -3359,6 +3379,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Dot Pattern":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <DotPatternDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4093,6 +4120,8 @@ export function ScrollAreaDemo() {
         <DiaTextRevealGuide />
       ) : componentData.name === "Theme Toggler" ? (
         <AnimatedThemeTogglerGuide />
+      ) : componentData.name === "Dot Pattern" ? (
+        <DotPatternGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

@@ -45,6 +45,7 @@ import { StripedPatternBlockPreview } from "@/components/magicui/striped-pattern
 import { PixelImageBlockPreview } from "@/components/magicui/pixel-image-demo"
 import { DiaTextRevealBlockPreview } from "@/components/magicui/dia-text-reveal-demo"
 import { ThemeTogglerBlockPreview } from "@/components/magicui/animated-theme-toggler-demo"
+import { DotPatternBlockPreview } from "@/components/magicui/dot-pattern-demo"
 
 interface BlockItem {
   id: string
@@ -358,6 +359,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "Animated theme toggle using the View Transitions API with configurable clip-path shapes.",
       cliCommand: "npx shadcn@latest add @magicui/animated-theme-toggler",
       renderPreview: () => <ThemeTogglerBlockPreview />,
+    },
+    {
+      id: "dot-pattern",
+      title: "Dot Pattern",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Dot Pattern",
+      description:
+        "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
+      cliCommand: "npx shadcn@latest add @magicui/dot-pattern",
+      renderPreview: () => <DotPatternBlockPreview />,
     },
   ]
 
