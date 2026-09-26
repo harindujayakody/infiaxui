@@ -20,7 +20,7 @@ export function Avatar({
   return (
     <div
       className={cn(
-        "relative flex shrink-0 rounded-full border border-[var(--border-subtle)] select-none",
+        "relative inline-flex shrink-0 rounded-full border border-[var(--border-subtle)] select-none",
         sizeClasses[size],
         className
       )}
@@ -37,7 +37,7 @@ export interface AvatarImageProps extends React.ImgHTMLAttributes<HTMLImageEleme
   alt?: string
 }
 
-export function AvatarImage({ className, src, alt = "", ...props }: AvatarImageProps) {
+export function AvatarImage({ className, src, alt = "", onError, ...props }: AvatarImageProps) {
   const [hasError, setHasError] = React.useState(false)
 
   if (!src || hasError) return null
@@ -46,7 +46,10 @@ export function AvatarImage({ className, src, alt = "", ...props }: AvatarImageP
     <img
       src={src}
       alt={alt}
-      onError={() => setHasError(true)}
+      onError={(e) => {
+        setHasError(true)
+        onError?.(e)
+      }}
       className={cn("aspect-square size-full rounded-full object-cover", className)}
       {...props}
     />
@@ -79,7 +82,7 @@ export function AvatarBadge({ className, children, ...props }: AvatarBadgeProps)
   return (
     <span
       className={cn(
-        "absolute bottom-0 right-0 z-10 flex size-3 -translate-x-0 -translate-y-0 items-center justify-center rounded-full bg-emerald-500 ring-2 ring-[var(--bg-page)]",
+        "absolute bottom-0 right-0 rtl:right-auto rtl:left-0 z-10 flex size-3 items-center justify-center rounded-full bg-emerald-500 ring-2 ring-[var(--bg-page)]",
         children && "size-4 text-[9px] text-white",
         className
       )}
@@ -97,7 +100,7 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 export function AvatarGroup({ className, children, ...props }: AvatarGroupProps) {
   return (
     <div
-      className={cn("flex items-center -space-x-2.5 overflow-hidden", className)}
+      className={cn("flex items-center -space-x-2.5 rtl:space-x-reverse overflow-hidden", className)}
       {...props}
     >
       {children}

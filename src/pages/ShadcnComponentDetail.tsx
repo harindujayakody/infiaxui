@@ -152,6 +152,7 @@ import { DirectionDemo } from "@/components/shadcn/direction-demo"
 import { ContextMenuDemo } from "@/components/shadcn/context-menu-demo"
 import { ChartDemo } from "@/components/shadcn/chart-demo"
 import { BubbleDemo } from "@/components/shadcn/bubble-demo"
+import { AvatarDemo } from "@/components/shadcn/avatar-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -785,21 +786,31 @@ export function SliderDemo() {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  AvatarBadge,
+  AvatarGroup,
+  AvatarGroupCount,
 } from "@/components/ui/avatar"
 
 export function AvatarDemo() {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-wrap items-center gap-6">
       <Avatar>
-        <AvatarImage src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="@shadcn" />
-        <AvatarFallback>SC</AvatarFallback>
-      </Avatar>
-      <Avatar>
+        <AvatarImage src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
+        <AvatarBadge className="bg-emerald-500" />
       </Avatar>
-      <Avatar>
-        <AvatarFallback>UI</AvatarFallback>
-      </Avatar>
+
+      <AvatarGroup>
+        <Avatar>
+          <AvatarImage src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80" alt="Sarah" />
+          <AvatarFallback>SA</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarImage src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&q=80" alt="Marcus" />
+          <AvatarFallback>MA</AvatarFallback>
+        </Avatar>
+        <AvatarGroupCount>+3</AvatarGroupCount>
+      </AvatarGroup>
     </div>
   )
 }`
@@ -2052,17 +2063,8 @@ export function ScrollAreaDemo() {
 
       case "Avatar":
         return (
-          <div className="flex items-center gap-4">
-            <Avatar>
-              <AvatarImage src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="@shadcn" />
-              <AvatarFallback>SC</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar>
-              <AvatarFallback>UI</AvatarFallback>
-            </Avatar>
+          <div className="w-full flex justify-center py-6">
+            <AvatarDemo />
           </div>
         )
 
