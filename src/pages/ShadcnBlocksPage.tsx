@@ -51,6 +51,7 @@ import { TooltipCardBlockPreview } from "@/components/ui/tooltip-card-demo"
 import { AnimatedTestimonialsBlockPreview } from "@/components/ui/animated-testimonials-demo"
 import { CardSpotlightBlockPreview } from "@/components/ui/card-spotlight-demo"
 import { BackgroundRippleEffectBlockPreview } from "@/components/ui/background-ripple-effect-demo"
+import { CometCardBlockPreview } from "@/components/ui/comet-card-demo"
 
 interface BlockItem {
   id: string
@@ -430,6 +431,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A grid of cells that ripple when clicked.",
       cliCommand: "npx shadcn@latest add @aceternity/background-ripple-effect-demo",
       renderPreview: () => <BackgroundRippleEffectBlockPreview />,
+    },
+    {
+      id: "comet-card",
+      title: "Comet Card",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Comet Card",
+      description:
+        "A perspective, 3D, Tilt card as seen on Perplexity Comet's website.",
+      cliCommand: "npx shadcn@latest add @aceternity/comet-card-demo",
+      renderPreview: () => <CometCardBlockPreview />,
     },
   ]
 

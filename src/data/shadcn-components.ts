@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -20,6 +20,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Animated Testimonials",
     "Background Ripple Effect",
     "Card Spotlight",
+    "Comet Card",
     "Dia Text Reveal",
     "Dot Pattern",
     "Particles",
@@ -1178,6 +1179,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "rows",
       "cols",
       "cellSize",
+      "className",
+    ],
+  },
+  "Comet Card": {
+    id: "comet-card",
+    name: "Comet Card",
+    description: "A perspective, 3D, Tilt card as seen on Perplexity Comet's website.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/comet-card-demo",
+    importCode: `import { CometCard } from "@/components/ui/comet-card"`,
+    usageCode: `<CometCard rotateDepth={17.5} translateDepth={20}>\n  <div className="p-4 bg-[#1F2121] rounded-[16px]">\n    <p className="text-white">Comet Invitation</p>\n  </div>\n</CometCard>`,
+    apiReference: [
+      "CometCard",
+      "children",
+      "rotateDepth",
+      "translateDepth",
       "className",
     ],
   },
