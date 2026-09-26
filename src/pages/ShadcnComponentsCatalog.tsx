@@ -213,10 +213,10 @@ export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsC
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="size-4 text-emerald-400" />
                   <h2 className="type-h2 text-[var(--text-main)] text-base font-semibold">
-                    Fixed & Verified Components ({fixedComponentsList.length})
+                    I Already Fixed ({fixedComponentsList.length})
                   </h2>
                 </div>
-                <span className="text-xs text-emerald-400/90 font-mono">100% Up to date</span>
+                <span className="text-xs text-emerald-400/90 font-mono">Manually verified &amp; overhauled</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -255,17 +255,17 @@ export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsC
             </div>
           )}
 
-          {/* Pending Fix Section */}
+          {/* Still Need A Fix Section */}
           {filterMode !== "fixed" && (
             <div id="needs-fix" className="space-y-3 pt-4 border-t border-[var(--border-subtle)]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Clock className="size-4 text-amber-400" />
                   <h2 className="type-h2 text-[var(--text-main)] text-base font-semibold">
-                    Remaining / Baseline Components ({pendingComponentsList.length})
+                    Still Need A Fix ({pendingComponentsList.length})
                   </h2>
                 </div>
-                <span className="text-xs text-amber-400/90 font-mono">Next up</span>
+                <span className="text-xs text-amber-400/90 font-mono">Awaiting manual fix</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-cols-3 gap-2.5">
