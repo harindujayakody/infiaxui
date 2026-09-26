@@ -78,6 +78,7 @@ import { BubbleGuide } from "@/components/shadcn/bubble-guide"
 import { BadgeGuide } from "@/components/shadcn/badge-guide"
 import { AvatarGuide } from "@/components/shadcn/avatar-guide"
 import { AvatarBadge, AvatarGroup, AvatarGroupCount } from "@/components/shadcn/avatar"
+import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
 interface ShadcnComponentDetailProps {
@@ -2340,9 +2341,21 @@ export function ChartDemo() {
       {/* Header section matching Screenshot 2 */}
       <div className="flex items-start justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
         <div className="space-y-1.5">
-          <h1 className="type-h1 text-[var(--text-main)]">
-            {componentData.name}
-          </h1>
+          <div className="flex items-center gap-3 flex-wrap">
+            <h1 className="type-h1 text-[var(--text-main)]">
+              {componentData.name}
+            </h1>
+            {isComponentFixed(componentData.name) ? (
+              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
+                <Check className="size-3 text-emerald-400" />
+                <span>Fixed &amp; Verified</span>
+              </span>
+            ) : (
+              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20 font-medium">
+                <span>Pending Review</span>
+              </span>
+            )}
+          </div>
           <p className="type-body text-[var(--text-muted)] max-w-xl">
             {componentData.description}
           </p>
