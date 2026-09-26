@@ -72,7 +72,7 @@ export function ShadcnHeader({
           {/* Desktop Search documentation... input */}
           <button
             onClick={onSearchClick}
-            className="hidden md:flex items-center gap-3 h-8 w-44 sm:w-60 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] dark:bg-slate-950/60 px-3 type-small-body text-[var(--text-muted)] hover:border-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors justify-between cursor-pointer"
+            className="hidden md:flex items-center gap-3 h-8 w-44 sm:w-60 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] px-3 type-small-body text-[var(--text-muted)] hover:border-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors justify-between cursor-pointer"
           >
             <span className="truncate">Search documentation...</span>
             <kbd className="hidden sm:inline-flex items-center type-caption text-[var(--text-muted)] font-mono">
