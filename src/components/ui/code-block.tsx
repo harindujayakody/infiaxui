@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { Check, Copy, ChevronDown, Code2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
+import { highlightGithubLine } from "@/lib/github-highlighter"
+
 interface CodeBlockProps {
   code: string
   language?: string
@@ -29,40 +31,6 @@ export function CodeBlock({
   }
 
   const lines = code.trim().split("\n")
-
-  // Same syntax colorizer as main detail page
-  const renderHighlightedLine = (line: string) => {
-    if (!line.trim()) return <span>&nbsp;</span>
-
-    const parts = line.split(
-      /(\".*?\"|'.*?'|`.*?`|\b(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)\b|[{}\[\](),;<>])/g
-    )
-
-    return (
-      <span>
-        {parts.map((part, index) => {
-          if (!part) return null
-          if (
-            (part.startsWith('"') && part.endsWith('"')) ||
-            (part.startsWith("'") && part.endsWith("'")) ||
-            (part.startsWith("`") && part.endsWith("`"))
-          ) {
-            return <span key={index} className="text-emerald-400">{part}</span>
-          }
-          if (/^(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)$/.test(part)) {
-            return <span key={index} className="text-purple-400 font-medium">{part}</span>
-          }
-          if (/^[<>]/.test(part)) {
-            return <span key={index} className="text-pink-400 font-medium">{part}</span>
-          }
-          if (/^[{}\[\](),;]$/.test(part)) {
-            return <span key={index} className="text-[var(--text-muted)]">{part}</span>
-          }
-          return <span key={index} className="text-[var(--text-main)]">{part}</span>
-        })}
-      </span>
-    )
-  }
 
   return (
     <div className="relative rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-page)] font-mono text-xs overflow-hidden shadow-lg transition-colors">
@@ -138,7 +106,7 @@ export function CodeBlock({
                       {idx + 1}
                     </span>
                   )}
-                  <span className="whitespace-pre">{renderHighlightedLine(line)}</span>
+                  <span className="whitespace-pre">{highlightGithubLine(line)}</span>
                 </div>
               ))}
             </code>

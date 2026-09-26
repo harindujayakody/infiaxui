@@ -143,6 +143,7 @@ import { SkillsGuide } from "@/components/shadcn/skills-guide"
 import { NavigationMenuDemo } from "@/components/shadcn/navigation-menu-demo"
 import { HoverCardDemo } from "@/components/shadcn/hover-card-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
+import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
 
 interface ShadcnComponentDetailProps {
@@ -1613,60 +1614,7 @@ export function ChartDemo() {
   }
 
   const renderHighlightedLine = (line: string) => {
-    if (!line.trim()) return <span>&nbsp;</span>
-
-    const parts = line.split(
-      /(".*?"|'.*?'|`.*?`|\b(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)\b|[{}\[\](),;<>])/g
-    )
-
-    return (
-      <span>
-        {parts.map((part, index) => {
-          if (!part) return null
-          if (
-            (part.startsWith('"') && part.endsWith('"')) ||
-            (part.startsWith("'") && part.endsWith("'")) ||
-            (part.startsWith("`") && part.endsWith("`"))
-          ) {
-            return (
-              <span key={index} className="text-emerald-400">
-                {part}
-              </span>
-            )
-          }
-          if (
-            /^(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)$/.test(
-              part
-            )
-          ) {
-            return (
-              <span key={index} className="text-purple-400 font-medium">
-                {part}
-              </span>
-            )
-          }
-          if (/^[<>]/.test(part)) {
-            return (
-              <span key={index} className="text-pink-400 font-medium">
-                {part}
-              </span>
-            )
-          }
-          if (/^[{}[\](),;]$/.test(part)) {
-            return (
-              <span key={index} className="text-[var(--text-muted)]">
-                {part}
-              </span>
-            )
-          }
-          return (
-            <span key={index} className="text-[var(--text-main)]">
-              {part}
-            </span>
-          )
-        })}
-      </span>
-    )
+    return highlightGithubLine(line)
   }
 
   const renderLivePreview = () => {
