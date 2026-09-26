@@ -148,6 +148,10 @@ import { LabelDemo } from "@/components/shadcn/label-demo"
 import { InputOTPDemo } from "@/components/shadcn/input-otp-demo"
 import { DropdownMenuDemo } from "@/components/shadcn/dropdown-menu-demo"
 import { DrawerDemo } from "@/components/shadcn/drawer-demo"
+import { DirectionDemo } from "@/components/shadcn/direction-demo"
+import { ContextMenuDemo } from "@/components/shadcn/context-menu-demo"
+import { ChartDemo } from "@/components/shadcn/chart-demo"
+import { BubbleDemo } from "@/components/shadcn/bubble-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -511,6 +515,103 @@ export function DrawerDemo() {
   )
 }`
 
+      case "Direction":
+        return `import { DirectionProvider, useDirection } from "@/components/ui/direction"
+import { Button } from "@/components/ui/button"
+
+export function DirectionDemo() {
+  return (
+    <DirectionProvider defaultDirection="ltr">
+      <div className="space-y-4 max-w-sm">
+        <p className="text-xs text-muted-foreground">Sets application reading direction.</p>
+        <Button variant="outline">Interactive Direction Demo</Button>
+      </div>
+    </DirectionProvider>
+  )
+}`
+
+      case "Context Menu":
+        return `import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
+
+export function ContextMenuDemo() {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+        Right click here
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem>Profile</ContextMenuItem>
+        <ContextMenuItem>Billing</ContextMenuItem>
+        <ContextMenuItem>Team</ContextMenuItem>
+        <ContextMenuItem>Subscription</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  )
+}`
+
+      case "Chart":
+        return `import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart"
+
+const chartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
+]
+
+const chartConfig = {
+  desktop: { label: "Desktop", color: "#2563eb" },
+  mobile: { label: "Mobile", color: "#60a5fa" },
+} satisfies ChartConfig
+
+export function ChartDemo() {
+  return (
+    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+      <BarChart data={chartData}>
+        <CartesianGrid vertical={false} />
+        <XAxis dataKey="month" tickLine={false} axisLine={false} />
+        <ChartTooltip content={<ChartTooltipContent />} />
+        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+      </BarChart>
+    </ChartContainer>
+  )
+}`
+
+      case "Bubble":
+        return `import { Bubble, BubbleContent, BubbleReactions, BubbleGroup } from "@/components/ui/bubble"
+
+export function BubbleDemo() {
+  return (
+    <div className="space-y-4 max-w-md">
+      <Bubble variant="default" align="end">
+        <BubbleContent>Hey there! what's up?</BubbleContent>
+      </Bubble>
+      <BubbleGroup>
+        <Bubble variant="secondary" align="start">
+          <BubbleContent>Hey! Want to see chat bubbles?</BubbleContent>
+        </Bubble>
+        <Bubble variant="secondary" align="start">
+          <BubbleContent>
+            I can group messages, switch sides, and keep the whole thread easy to scan.
+          </BubbleContent>
+          <BubbleReactions>
+            <span>👍</span>
+          </BubbleReactions>
+        </Bubble>
+      </BubbleGroup>
+    </div>
+  )
+}`
+
       case "Breadcrumb":
         return `import {
   Breadcrumb,
@@ -772,30 +873,6 @@ export function ButtonGroupDemo() {
       <Button variant="outline">Middle</Button>
       <Button variant="outline">Right</Button>
     </ButtonGroup>
-  )
-}`
-
-      case "Bubble":
-        return `import { Bubble, BubbleContent, BubbleReactions } from "@/components/ui/bubble"
-
-export function BubbleDemo() {
-  return (
-    <div className="w-full max-w-md space-y-4">
-      <Bubble variant="secondary" align="start">
-        <BubbleContent>
-          I checked the registry output and removed the stale route.
-        </BubbleContent>
-        <BubbleReactions>
-          <span>👍</span>
-          <span>🔥</span>
-        </BubbleReactions>
-      </Bubble>
-      <Bubble variant="default" align="end">
-        <BubbleContent>
-          Awesome, thank you! Deploying the update now.
-        </BubbleContent>
-      </Bubble>
-    </div>
   )
 }`
 
@@ -1835,30 +1912,6 @@ export function ScrollAreaDemo() {
   )
 }`
 
-      case "Chart":
-        return `import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
-
-const data = [
-  { name: "Jan", total: 1400 },
-  { name: "Feb", total: 2300 },
-  { name: "Mar", total: 3200 },
-  { name: "Apr", total: 4500 },
-  { name: "May", total: 3800 },
-  { name: "Jun", total: 5100 },
-]
-
-export function ChartDemo() {
-  return (
-    <ResponsiveContainer width="100%" height={250}>
-      <BarChart data={data}>
-        <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
-        <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
-        <Bar dataKey="total" fill="currentColor" radius={[4, 4, 0, 0]} className="fill-primary" />
-      </BarChart>
-    </ResponsiveContainer>
-  )
-}`
-
       default:
         return `${componentData.importCode}\n\nexport function ${componentData.name.replace(/[^a-zA-Z0-9]/g, "")}Demo() {\n  return (\n    <div className="flex items-center justify-center p-6">\n      ${componentData.usageCode}\n    </div>\n  )\n}`
     }
@@ -2075,27 +2128,6 @@ export function ChartDemo() {
             <button className="px-4 py-2 text-xs font-medium bg-[var(--bg-card)] border-t border-b border-r border-[var(--border-subtle)] rounded-r-lg hover:bg-[var(--bg-subtle)] text-[var(--text-main)] transition-colors">
               Right
             </button>
-          </div>
-        )
-
-      case "Bubble":
-        return (
-          <div className="w-full max-w-md space-y-4">
-            <Bubble variant="secondary" align="start">
-              <BubbleContent>
-                I checked the registry output and removed the stale route.
-              </BubbleContent>
-              <BubbleReactions side="bottom" align="end">
-                <span>👍</span>
-                <span>🔥</span>
-                <span className="text-[10px] text-[var(--text-muted)] font-mono">+1</span>
-              </BubbleReactions>
-            </Bubble>
-            <Bubble variant="default" align="end">
-              <BubbleContent>
-                Awesome! Deploying the update to production now.
-              </BubbleContent>
-            </Bubble>
           </div>
         )
 
@@ -2400,6 +2432,34 @@ export function ChartDemo() {
           </div>
         )
 
+      case "Direction":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <DirectionDemo />
+          </div>
+        )
+
+      case "Context Menu":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ContextMenuDemo />
+          </div>
+        )
+
+      case "Chart":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ChartDemo />
+          </div>
+        )
+
+      case "Bubble":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <BubbleDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -2693,29 +2753,6 @@ export function ChartDemo() {
                 {tag}
               </div>
             ))}
-          </div>
-        )
-
-      case "Chart":
-        return (
-          <div className="w-full max-w-sm rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-xs font-semibold text-[var(--text-main)]">Weekly Visitors</span>
-              <span className="text-xs font-mono text-emerald-400">+12.5%</span>
-            </div>
-            <div className="flex items-end justify-between gap-2 h-28 pt-4">
-              {[40, 70, 55, 90, 65, 85, 100].map((h, i) => (
-                <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                  <div
-                    className="w-full bg-[var(--text-main)] rounded-t transition-all hover:opacity-80"
-                    style={{ height: `${h}%` }}
-                  />
-                  <span className="text-[10px] text-[var(--text-muted)] font-mono">
-                    {["M", "T", "W", "T", "F", "S", "S"][i]}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         )
 
