@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Check, Copy, ChevronDown, Code2 } from "lucide-react"
+import { Check, Copy, Code2, ChevronUp } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 import { highlightGithubLine } from "@/lib/github-highlighter"
@@ -22,7 +22,12 @@ export function CodeBlock({
   maxCollapsedHeight = 84,
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false)
-  const [isExpanded, setIsExpanded] = useState(initialExpanded)
+  
+  const lines = code.trim().split("\n")
+  const isShortCode = lines.length <= 5
+
+  // Short snippets (<= 5 lines) stay expanded automatically; longer snippets follow initialExpanded
+  const [isExpanded, setIsExpanded] = useState(isShortCode || initialExpanded)
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code)
@@ -30,20 +35,13 @@ export function CodeBlock({
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const lines = code.trim().split("\n")
-
   return (
     <div className="relative rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-page)] font-mono text-xs overflow-hidden shadow-lg transition-colors">
-      {/* Mac Style Code Header — same as detail page */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: isExpanded ? 1 : 0, height: isExpanded ? "auto" : 0 }}
-        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="overflow-hidden"
-      >
+      {/* Top Mac Header (always visible if short snippet, or revealed when expanded) */}
+      {(isExpanded || isShortCode) && (
         <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60 select-none">
           <div className="flex items-center gap-3">
-            {/* Static macOS dots — size-2.5 like detail page */}
+            {/* macOS window control dots */}
             <div className="flex items-center gap-1.5" aria-hidden="true">
               <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
               <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
@@ -55,18 +53,25 @@ export function CodeBlock({
                 {language.toUpperCase()}
               </span>
               {fileName && (
-                <span className="font-mono text-xs text-[var(--text-muted)]">{fileName}</span>
+                <span className="font-mono text-xs text-[var(--text-muted)] truncate max-w-[200px] sm:max-w-none">
+                  {fileName}
+                </span>
               )}
             </div>
           </div>
+
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setIsExpanded(false)}
-              className="px-2.5 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer"
-            >
-              Collapse Code
-            </button>
+            {!isShortCode && (
+              <button
+                type="button"
+                onClick={() => setIsExpanded(false)}
+                className="px-2.5 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer flex items-center gap-1"
+                title="Collapse Code"
+              >
+                <span>Collapse Code</span>
+                <ChevronUp className="size-3" />
+              </button>
+            )}
             <button
               type="button"
               onClick={handleCopy}
@@ -87,16 +92,20 @@ export function CodeBlock({
             </button>
           </div>
         </div>
-      </motion.div>
+      )}
 
-      {/* Code area — smooth height animation */}
+      {/* Code area with fluid animated height expansion */}
       <motion.div
         initial={false}
-        animate={{ height: isExpanded ? "auto" : maxCollapsedHeight }}
+        animate={{ height: isExpanded || isShortCode ? "auto" : maxCollapsedHeight }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="relative overflow-hidden"
       >
-        <div className={`p-4 leading-relaxed text-[var(--text-main)] ${isExpanded ? "overflow-x-auto max-h-[500px]" : "overflow-hidden"}`}>
+        <div
+          className={`p-4 leading-relaxed text-[var(--text-main)] ${
+            isExpanded || isShortCode ? "overflow-x-auto max-h-[520px]" : "overflow-hidden"
+          }`}
+        >
           <pre className="table w-full">
             <code>
               {lines.map((line, idx) => (
@@ -113,43 +122,53 @@ export function CodeBlock({
           </pre>
         </div>
 
-        {/* Bottom Collapse Footer */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: isExpanded ? 1 : 0, height: isExpanded ? "auto" : 0 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden"
-        >
+        {/* Bottom Collapse Footer (for long code blocks when expanded) */}
+        {!isShortCode && isExpanded && (
           <div className="flex justify-end p-2 border-t border-[var(--border-subtle)] bg-[var(--bg-subtle)]/30">
             <button
               type="button"
               onClick={() => setIsExpanded(false)}
-              className="px-3 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer"
+              className="px-3 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer flex items-center gap-1.5"
             >
-              Collapse Code
+              <span>Collapse Code</span>
+              <ChevronUp className="size-3" />
             </button>
           </div>
-        </motion.div>
+        )}
 
-        {/* Collapsed overlay with centered "View Code" button — same as detail page */}
+        {/* Collapsed overlay with centered "View Code" button and quick copy */}
         <AnimatePresence>
-          {!isExpanded && (
+          {!isExpanded && !isShortCode && (
             <motion.div
               key="codeblock-collapsed-overlay"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)]/85 to-transparent z-10 select-none"
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)]/90 to-transparent z-10 select-none"
             >
-              <button
-                type="button"
-                onClick={() => setIsExpanded(true)}
-                className="px-4 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] text-xs text-[var(--text-main)] shadow-lg transition-colors flex items-center gap-1.5 cursor-pointer"
-              >
-                <Code2 className="size-3.5" />
-                <span>View Code</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsExpanded(true)}
+                  className="px-4 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] text-xs text-[var(--text-main)] font-medium shadow-lg hover:shadow-xl transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Code2 className="size-3.5" />
+                  <span>View Code</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCopy}
+                  className="p-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] shadow-lg transition-colors cursor-pointer"
+                  title="Copy snippet"
+                >
+                  {copied ? (
+                    <Check className="size-3.5 text-emerald-400" />
+                  ) : (
+                    <Copy className="size-3.5" />
+                  )}
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

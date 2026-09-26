@@ -2888,9 +2888,10 @@ export function ScrollAreaDemo() {
                 <button
                   type="button"
                   onClick={() => setIsCodeExpanded(false)}
-                  className="px-2.5 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer"
+                  className="px-2.5 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer flex items-center gap-1"
                 >
-                  Collapse Code
+                  <span>Collapse Code</span>
+                  <ChevronDown className="size-3 rotate-180" />
                 </button>
                 <button
                   type="button"
@@ -2946,9 +2947,10 @@ export function ScrollAreaDemo() {
               <button
                 type="button"
                 onClick={() => setIsCodeExpanded(false)}
-                className="px-3 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer"
+                className="px-3 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer flex items-center gap-1.5"
               >
-                Collapse Code
+                <span>Collapse Code</span>
+                <ChevronDown className="size-3 rotate-180" />
               </button>
             </div>
           </motion.div>
@@ -2961,17 +2963,31 @@ export function ScrollAreaDemo() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
-                className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)]/85 to-transparent z-10 select-none"
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)]/90 to-transparent z-10 select-none"
               >
-                <button
-                  type="button"
-                  onClick={() => setIsCodeExpanded(true)}
-                  className="px-4 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] type-link-12 text-[var(--text-main)] shadow-lg transition-colors flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Code2 className="size-3.5" />
-                  <span>View Code</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsCodeExpanded(true)}
+                    className="px-4 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] type-link-12 text-[var(--text-main)] font-medium shadow-lg hover:shadow-xl transition-all flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <Code2 className="size-3.5" />
+                    <span>View Code</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy(getComponentDemoCode(), "preview-demo")}
+                    className="p-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] shadow-lg transition-colors cursor-pointer"
+                    title="Copy demo code"
+                  >
+                    {copiedSection === "preview-demo" ? (
+                      <Check className="size-3.5 text-emerald-400" />
+                    ) : (
+                      <Copy className="size-3.5" />
+                    )}
+                  </button>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
