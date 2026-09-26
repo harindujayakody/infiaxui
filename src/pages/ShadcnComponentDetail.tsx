@@ -136,6 +136,7 @@ import { AspectRatioGuide } from "@/components/shadcn/aspect-ratio-guide"
 import { AttachmentGuide } from "@/components/shadcn/attachment-guide"
 import { ButtonGuide } from "@/components/shadcn/button-guide"
 import { SonnerGuide } from "@/components/shadcn/sonner-guide"
+import { InstallationGuide } from "@/components/shadcn/installation-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2929,6 +2930,8 @@ export function ChartDemo() {
         <ButtonGuide />
       ) : componentData.name === "Sonner" ? (
         <SonnerGuide />
+      ) : componentData.name === "Installation" ? (
+        <InstallationGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

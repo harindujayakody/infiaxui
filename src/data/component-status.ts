@@ -733,6 +733,16 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout mirroring & API reference",
     ],
   },
+  "Installation": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Comprehensive multi-framework installation guide",
+      "Next.js, Vite, TanStack Start, Laravel, React Router, and Astro commands",
+      "Package manager selector (npm, pnpm, yarn, bun)",
+      "Project structure & components.json configuration reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

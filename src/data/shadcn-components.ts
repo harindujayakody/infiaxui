@@ -594,4 +594,13 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     usageCode: `<Item>\n  <span>Document.pdf</span>\n  <ItemTrailing>2.4 MB</ItemTrailing>\n</Item>`,
     apiReference: ["Item", "ItemLeading", "ItemTrailing"],
   },
+  Installation: {
+    id: "installation",
+    name: "Installation",
+    description: "How to install dependencies and structure your app across Next.js, Vite, Laravel, and TanStack Start.",
+    installationCommand: "npx shadcn@latest init",
+    importCode: `import { cn } from "@/lib/utils"`,
+    usageCode: `npx shadcn@latest init -t next`,
+    apiReference: ["shadcn/create", "shadcn init", "components.json", "utils.ts"],
+  },
 }
