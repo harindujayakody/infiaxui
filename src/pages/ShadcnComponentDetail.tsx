@@ -168,6 +168,8 @@ import { MagicCardDemo } from "@/components/magicui/magic-card-demo"
 import { MagicCardGuide } from "@/components/magicui/magic-card-guide"
 import { WarpBackgroundDemo } from "@/components/magicui/warp-background-demo"
 import { WarpBackgroundGuide } from "@/components/magicui/warp-background-guide"
+import { Floating3DParticlesDemo } from "@/components/magicui/floating-3d-particles-demo"
+import { Floating3DParticlesGuide } from "@/components/magicui/floating-3d-particles-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -399,6 +401,32 @@ export function WarpBackgroundDemo() {
           </p>
         </div>
       </WarpBackground>
+    </div>
+  )
+}`
+
+      case "Floating 3D Particles":
+        return `import { Floating3DParticles } from "@/components/magicui/floating-3d-particles"
+import { ArrowRight } from "lucide-react"
+
+export function Floating3DParticlesDemo() {
+  return (
+    <div className="relative flex min-h-[420px] w-full max-w-2xl flex-col items-center justify-center overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[#0A0A0A] p-6 text-center shadow-2xl">
+      <Floating3DParticles color="#FFFFFF" quantity={360} size={4} opacity={0.32} drift={0.75} depth={0.65} />
+      <div className="relative z-10 max-w-lg space-y-3 px-4">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          Build something magical
+        </h2>
+        <p className="text-xs sm:text-[13px] text-zinc-400 leading-relaxed max-w-md mx-auto">
+          A pseudo-3D particle background that stays behind your content with continuous rotation and buoyant drift.
+        </p>
+        <div className="pt-2">
+          <button className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs sm:text-sm font-medium text-black">
+            <span>Get Started</span>
+            <ArrowRight className="size-4" />
+          </button>
+        </div>
+      </div>
     </div>
   )
 }`
@@ -2694,6 +2722,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Floating 3D Particles":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <Floating3DParticlesDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3396,6 +3431,8 @@ export function ScrollAreaDemo() {
         <MagicCardGuide />
       ) : componentData.name === "Warp Background" ? (
         <WarpBackgroundGuide />
+      ) : componentData.name === "Floating 3D Particles" ? (
+        <Floating3DParticlesGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

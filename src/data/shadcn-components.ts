@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -75,6 +75,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Direction",
     "Dock",
     "Empty",
+    "Floating 3D Particles",
     "Input",
     "Item",
     "Magic Card",
@@ -763,6 +764,25 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "beamDelayMin",
       "beamDelayMax",
       "gridColor",
+    ],
+  },
+  "Floating 3D Particles": {
+    id: "floating-3d-particles",
+    name: "Floating 3D Particles",
+    description: "A canvas-based pseudo-3D particle field with perspective projection, continuous rotation, buoyant drift and depth-aware rendering.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/floating-3d-particles",
+    importCode: `import { Floating3DParticles } from "@/components/magicui/floating-3d-particles"`,
+    usageCode: `<Floating3DParticles color="#8B5CF6" quantity={400} />`,
+    apiReference: [
+      "Floating3DParticles",
+      "quantity",
+      "color",
+      "size",
+      "opacity",
+      "drift",
+      "depth",
+      "className",
     ],
   },
 }

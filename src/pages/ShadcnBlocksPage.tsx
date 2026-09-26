@@ -31,6 +31,7 @@ import { DockCardPreview } from "@/components/magicui/dock-demo"
 import { TweetCardBlockPreview } from "@/components/magicui/tweet-card-demo"
 import { MagicCardBlockPreview } from "@/components/magicui/magic-card-demo"
 import { WarpBackgroundBlockPreview } from "@/components/magicui/warp-background-demo"
+import { Floating3DParticlesBlockPreview } from "@/components/magicui/floating-3d-particles-demo"
 
 interface BlockItem {
   id: string
@@ -187,6 +188,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A card with a time warping background effect.",
       cliCommand: "npx shadcn@latest add @magicui/warp-background",
       renderPreview: () => <WarpBackgroundBlockPreview />,
+    },
+    {
+      id: "floating-3d-particles",
+      title: "Floating 3D Particles",
+      category: "Canvas & Shaders",
+      badge: "Canvas 3D",
+      componentTarget: "Floating 3D Particles",
+      description:
+        "A canvas-based pseudo-3D particle field with perspective projection, continuous rotation, buoyant drift and depth-aware rendering.",
+      cliCommand: "npx shadcn@latest add @magicui/floating-3d-particles",
+      renderPreview: () => <Floating3DParticlesBlockPreview />,
     },
   ]
 
