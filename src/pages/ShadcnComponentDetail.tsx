@@ -78,6 +78,10 @@ import { BubbleGuide } from "@/components/shadcn/bubble-guide"
 import { BadgeGuide } from "@/components/shadcn/badge-guide"
 import { AvatarGuide } from "@/components/shadcn/avatar-guide"
 import { AvatarBadge, AvatarGroup, AvatarGroupCount } from "@/components/shadcn/avatar"
+import { TooltipGuide } from "@/components/shadcn/tooltip-guide"
+import { ToggleGuide } from "@/components/shadcn/toggle-guide"
+import { ToggleGroupGuide } from "@/components/shadcn/toggle-group-guide"
+import { ToastGuide } from "@/components/shadcn/toast-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2755,6 +2759,14 @@ export function ChartDemo() {
         <BadgeGuide />
       ) : componentData.name === "Avatar" ? (
         <AvatarGuide />
+      ) : componentData.name === "Tooltip" ? (
+        <TooltipGuide />
+      ) : componentData.name === "Toggle" ? (
+        <ToggleGuide />
+      ) : componentData.name === "Toggle Group" ? (
+        <ToggleGroupGuide />
+      ) : componentData.name === "Toast" ? (
+        <ToastGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

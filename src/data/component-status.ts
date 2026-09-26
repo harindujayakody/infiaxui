@@ -83,6 +83,58 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL support & API reference",
     ],
   },
+  "Tooltip": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Basic hover & focus popup",
+      "4-side positioning (top, right, bottom, left)",
+      "Keyboard shortcut display via <kbd>",
+      "Disabled button workaround via span wrapper",
+      "Rich content (icons, links) inside TooltipContent",
+      "TooltipProvider delayDuration setup",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Toggle": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Two-state pressed / unpressed button",
+      "Outline variant",
+      "Icon + text composition",
+      "3 sizes (sm, default, lg)",
+      "Disabled state",
+      "RTL support & API reference",
+    ],
+  },
+  "Toggle Group": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Single & multiple selection modes",
+      "Outline variant",
+      "3 sizes (sm, default, lg)",
+      "Connected (spacing=0) vs spaced (spacing=2) items",
+      "Vertical orientation",
+      "Group-level disabled state",
+      "Custom font-weight selector example",
+      "2026-05-17 spacing changelog & API reference",
+    ],
+  },
+  "Toast": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Basic toast.add() call",
+      "5 types: success, info, warning, error, loading",
+      "Action button with undo pattern",
+      "Promise toast (loading → success / error)",
+      "Animated slide-in/out with Framer Motion",
+      "Toaster root layout setup guide",
+      "API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {
