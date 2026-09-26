@@ -1,5 +1,7 @@
 import { ALL_COMPONENTS_COLUMNS, NEW_COMPONENTS } from "../data/shadcn-components"
 
+export const DOCS_SECTIONS: string[] = ["Introduction", "Installation", "Theming", "Skills"]
+
 // Deduplicated and alphabetically sorted list of all components
 export const ALL_COMPONENTS_SORTED: string[] = Array.from(
   new Set([...ALL_COMPONENTS_COLUMNS.flat(), ...NEW_COMPONENTS])
@@ -16,7 +18,7 @@ export function componentNameToSlug(name: string): string {
 
 // Map of slug -> Component Name
 const SLUG_TO_NAME_MAP = new Map<string, string>()
-ALL_COMPONENTS_SORTED.forEach((name) => {
+;[...ALL_COMPONENTS_SORTED, ...DOCS_SECTIONS].forEach((name) => {
   const slug = componentNameToSlug(name)
   SLUG_TO_NAME_MAP.set(slug, name)
   // Also register collapsed non-hyphenated variant: "alertdialog" -> "Alert Dialog"
@@ -39,6 +41,9 @@ export function slugToComponentName(slug: string): string | undefined {
 
 // Get clean URL path for component
 export function getComponentUrl(name: string): string {
+  if (DOCS_SECTIONS.includes(name)) {
+    return `/docs/${componentNameToSlug(name)}`
+  }
   return `/components/${componentNameToSlug(name)}`
 }
 
@@ -88,12 +93,22 @@ export function parseCurrentRoute(pathname = window.location.pathname): ParsedRo
     return { view: "changelog", sectionName: "Changelog" }
   }
 
-  // 2. /components or /docs/components (exact match)
+  // 2. /docs/introduction, /docs/installation, /docs/theming, /docs/skills or direct /theming etc.
+  const docMatch = cleanPath.match(/^(?:\/docs)?\/(introduction|installation|theming|skills)$/)
+  if (docMatch) {
+    const slug = docMatch[1]
+    const compName = slugToComponentName(slug)
+    if (compName) {
+      return { view: "component", componentName: compName, sectionName: compName }
+    }
+  }
+
+  // 3. /components or /docs/components (exact match)
   if (cleanPath === "/components" || cleanPath === "/docs/components") {
     return { view: "catalog", sectionName: "Components" }
   }
 
-  // 3. /components/:slug or /docs/components/:slug
+  // 4. /components/:slug or /docs/components/:slug
   const compMatch = cleanPath.match(/^(?:\/docs)?\/components\/([a-z0-9-]+)$/)
   if (compMatch) {
     const slug = compMatch[1]
@@ -103,7 +118,7 @@ export function parseCurrentRoute(pathname = window.location.pathname): ParsedRo
     }
   }
 
-  // 4. Default / or unrecognized -> default to Button component
+  // 5. Default / or unrecognized -> default to Button component
   return { view: "component", componentName: "Button", sectionName: "Components" }
 }
 

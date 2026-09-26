@@ -38,7 +38,9 @@ export function ShadcnSidebar({
           Sections
         </h4>
         {sections.map((sec) => {
-          const isActive = currentSection === sec.id && currentComponent === null
+          const isActive =
+            (currentSection === sec.id && currentComponent === null) ||
+            currentComponent === sec.id
           return (
             <a
               key={sec.id}

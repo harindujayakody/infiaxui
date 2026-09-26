@@ -743,6 +743,18 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "Project structure & components.json configuration reference",
     ],
   },
+  "Theming": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Interactive theme playground with 9 color presets and 5 border radiuses",
+      "Live preview dashboard with switch, badges, buttons, and input tokens",
+      "Complete semantic CSS variables reference table (background, foreground, primary, muted, etc.)",
+      "Derived radius scale from --radius base variable",
+      "Custom token creation via @theme inline in Tailwind v4",
+      "Generated globals.css theme export",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

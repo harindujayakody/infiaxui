@@ -97,15 +97,31 @@ function AppContent() {
 
   const handleSelectSection = (section: string, pushHistory = true) => {
     setActiveSection(section)
-    setSelectedComponent(null)
 
-    if (pushHistory) {
-      let targetUrl = "/components"
-      if (section === "Changelog") {
-        targetUrl = "/docs/changelog"
+    if (
+      section === "Installation" ||
+      section === "Theming" ||
+      section === "Introduction" ||
+      section === "Skills"
+    ) {
+      setSelectedComponent(section)
+      setActiveNavTab("Docs")
+      if (pushHistory) {
+        const targetUrl = getComponentUrl(section)
+        if (window.location.pathname !== targetUrl) {
+          window.history.pushState(null, "", targetUrl)
+        }
       }
-      if (window.location.pathname !== targetUrl) {
-        window.history.pushState(null, "", targetUrl)
+    } else {
+      setSelectedComponent(null)
+      if (pushHistory) {
+        let targetUrl = "/components"
+        if (section === "Changelog") {
+          targetUrl = "/docs/changelog"
+        }
+        if (window.location.pathname !== targetUrl) {
+          window.history.pushState(null, "", targetUrl)
+        }
       }
     }
 

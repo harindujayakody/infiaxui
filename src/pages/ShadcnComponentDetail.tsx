@@ -137,6 +137,9 @@ import { AttachmentGuide } from "@/components/shadcn/attachment-guide"
 import { ButtonGuide } from "@/components/shadcn/button-guide"
 import { SonnerGuide } from "@/components/shadcn/sonner-guide"
 import { InstallationGuide } from "@/components/shadcn/installation-guide"
+import { ThemingGuide } from "@/components/shadcn/theming-guide"
+import { IntroductionGuide } from "@/components/shadcn/introduction-guide"
+import { SkillsGuide } from "@/components/shadcn/skills-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2932,6 +2935,12 @@ export function ChartDemo() {
         <SonnerGuide />
       ) : componentData.name === "Installation" ? (
         <InstallationGuide />
+      ) : componentData.name === "Theming" ? (
+        <ThemingGuide />
+      ) : componentData.name === "Introduction" ? (
+        <IntroductionGuide />
+      ) : componentData.name === "Skills" ? (
+        <SkillsGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}
