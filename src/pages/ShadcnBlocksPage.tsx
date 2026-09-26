@@ -32,6 +32,7 @@ import { TweetCardBlockPreview } from "@/components/magicui/tweet-card-demo"
 import { MagicCardBlockPreview } from "@/components/magicui/magic-card-demo"
 import { WarpBackgroundBlockPreview } from "@/components/magicui/warp-background-demo"
 import { Floating3DParticlesBlockPreview } from "@/components/magicui/floating-3d-particles-demo"
+import { MarqueeBlockPreview } from "@/components/magicui/marquee-demo"
 
 interface BlockItem {
   id: string
@@ -199,6 +200,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A canvas-based pseudo-3D particle field with perspective projection, continuous rotation, buoyant drift and depth-aware rendering.",
       cliCommand: "npx shadcn@latest add @magicui/floating-3d-particles",
       renderPreview: () => <Floating3DParticlesBlockPreview />,
+    },
+    {
+      id: "marquee",
+      title: "Marquee",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Marquee",
+      description:
+        "An infinite scrolling component that can be used to display text, images, or videos.",
+      cliCommand: "npx shadcn@latest add @magicui/marquee",
+      renderPreview: () => <MarqueeBlockPreview />,
     },
   ]
 

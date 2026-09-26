@@ -170,6 +170,8 @@ import { WarpBackgroundDemo } from "@/components/magicui/warp-background-demo"
 import { WarpBackgroundGuide } from "@/components/magicui/warp-background-guide"
 import { Floating3DParticlesDemo } from "@/components/magicui/floating-3d-particles-demo"
 import { Floating3DParticlesGuide } from "@/components/magicui/floating-3d-particles-guide"
+import { MarqueeDemo } from "@/components/magicui/marquee-demo"
+import { MarqueeGuide } from "@/components/magicui/marquee-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -427,6 +429,49 @@ export function Floating3DParticlesDemo() {
           </button>
         </div>
       </div>
+    </div>
+  )
+}`
+
+      case "Marquee":
+        return `import { Marquee } from "@/components/magicui/marquee"
+
+const reviews = [
+  {
+    name: "Jack",
+    username: "@jack",
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Jill",
+    username: "@jill",
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jill",
+  },
+  {
+    name: "John",
+    username: "@john",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/john",
+  },
+]
+
+export function MarqueeDemo() {
+  return (
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-[var(--border-subtle)] bg-[#0A0A0A]">
+      <Marquee pauseOnHover className="[--duration:20s]">
+        {reviews.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <Marquee reverse pauseOnHover className="[--duration:20s]">
+        {reviews.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#0A0A0A]" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#0A0A0A]" />
     </div>
   )
 }`
@@ -2729,6 +2774,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Marquee":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <MarqueeDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3433,6 +3485,8 @@ export function ScrollAreaDemo() {
         <WarpBackgroundGuide />
       ) : componentData.name === "Floating 3D Particles" ? (
         <Floating3DParticlesGuide />
+      ) : componentData.name === "Marquee" ? (
+        <MarqueeGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -79,6 +79,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Input",
     "Item",
     "Magic Card",
+    "Marquee",
     "Tweet Card",
     "Warp Background",
   ],
@@ -783,6 +784,24 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "drift",
       "depth",
       "className",
+    ],
+  },
+  Marquee: {
+    id: "marquee",
+    name: "Marquee",
+    description: "An infinite scrolling component that can be used to display text, images, or videos.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/marquee",
+    importCode: `import { Marquee } from "@/components/magicui/marquee"`,
+    usageCode: `<Marquee pauseOnHover className="[--duration:20s]">\n  {items.map((item) => (\n    <Card key={item.id} {...item} />\n  ))}\n</Marquee>`,
+    apiReference: [
+      "Marquee",
+      "className",
+      "reverse",
+      "pauseOnHover",
+      "vertical",
+      "repeat",
+      "children",
     ],
   },
 }
