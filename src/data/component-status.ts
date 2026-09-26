@@ -671,6 +671,36 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout mirroring & API reference",
     ],
   },
+  "Alert": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Semantic status callouts (default, destructive, warning, success)",
+      "AlertTitle, AlertDescription, and AlertAction layout slots",
+      "Custom palette tones & icon tinting",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Alert Dialog": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Modal confirmation interrupt dialog with spring backdrop",
+      "AlertDialogMedia icon badge & size='sm' support",
+      "Destructive confirmation actions & cancel buttons",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Aspect Ratio": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Content aspect ratio constraint (16/9, 1/1, 9/16, 4/3, 21/9)",
+      "Prevents cumulative layout shift (CLS) during asset loading",
+      "Responsive container scaling and RTL support",
+      "API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

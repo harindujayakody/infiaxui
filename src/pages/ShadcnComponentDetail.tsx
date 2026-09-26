@@ -130,6 +130,9 @@ import { CarouselGuide } from "@/components/shadcn/carousel-guide"
 import { CardGuide } from "@/components/shadcn/card-guide"
 import { CalendarGuide } from "@/components/shadcn/calendar-guide"
 import { ButtonGroupGuide } from "@/components/shadcn/button-group-guide"
+import { AlertGuide } from "@/components/shadcn/alert-guide"
+import { AlertDialogGuide } from "@/components/shadcn/alert-dialog-guide"
+import { AspectRatioGuide } from "@/components/shadcn/aspect-ratio-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2911,6 +2914,12 @@ export function ChartDemo() {
         <CalendarGuide />
       ) : componentData.name === "Button Group" ? (
         <ButtonGroupGuide />
+      ) : componentData.name === "Alert" ? (
+        <AlertGuide />
+      ) : componentData.name === "Alert Dialog" ? (
+        <AlertDialogGuide />
+      ) : componentData.name === "Aspect Ratio" ? (
+        <AspectRatioGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}
