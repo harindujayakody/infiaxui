@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -23,6 +23,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Scroll Based Velocity",
     "Smooth Cursor",
     "Striped Pattern",
+    "Theme Toggler",
     "Accordion",
     "Aspect Ratio",
     "Badge",
@@ -1046,6 +1047,25 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "startOnView",
       "once",
       "fixedWidth",
+      "className",
+    ],
+  },
+  "Theme Toggler": {
+    id: "theme-toggler",
+    name: "Theme Toggler",
+    description: "Animated theme toggle using the View Transitions API with configurable clip-path shapes and origin.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/animated-theme-toggler",
+    importCode: `import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"`,
+    usageCode: `<AnimatedThemeToggler variant="circle" />`,
+    apiReference: [
+      "AnimatedThemeToggler",
+      "ThemeToggler",
+      "variant",
+      "duration",
+      "fromCenter",
+      "theme",
+      "onThemeChange",
       "className",
     ],
   },

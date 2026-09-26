@@ -198,6 +198,8 @@ import { PixelImageDemo } from "@/components/magicui/pixel-image-demo"
 import { PixelImageGuide } from "@/components/magicui/pixel-image-guide"
 import { DiaTextRevealDemo } from "@/components/magicui/dia-text-reveal-demo"
 import { DiaTextRevealGuide } from "@/components/magicui/dia-text-reveal-guide"
+import { ThemeTogglerDemo } from "@/components/magicui/animated-theme-toggler-demo"
+import { AnimatedThemeTogglerGuide } from "@/components/magicui/animated-theme-toggler-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -939,6 +941,18 @@ export function DiaTextRevealDemo() {
     <h2 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white">
       <DiaTextReveal text="Magic" repeat repeatDelay={1.5} textColor="#ffffff" />
     </h2>
+  )
+}`
+
+      case "Theme Toggler":
+        return `import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
+
+export function ThemeTogglerDemo() {
+  return (
+    <AnimatedThemeToggler
+      variant="circle"
+      className="size-16 rounded-full bg-black text-white dark:bg-white dark:text-black border border-white/20 shadow-2xl"
+    />
   )
 }`
 
@@ -3338,6 +3352,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Theme Toggler":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ThemeTogglerDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4070,6 +4091,8 @@ export function ScrollAreaDemo() {
         <PixelImageGuide />
       ) : componentData.name === "Dia Text Reveal" ? (
         <DiaTextRevealGuide />
+      ) : componentData.name === "Theme Toggler" ? (
+        <AnimatedThemeTogglerGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

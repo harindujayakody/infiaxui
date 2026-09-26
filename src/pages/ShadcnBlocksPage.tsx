@@ -44,6 +44,7 @@ import { RippleBlockPreview } from "@/components/magicui/ripple-demo"
 import { StripedPatternBlockPreview } from "@/components/magicui/striped-pattern-demo"
 import { PixelImageBlockPreview } from "@/components/magicui/pixel-image-demo"
 import { DiaTextRevealBlockPreview } from "@/components/magicui/dia-text-reveal-demo"
+import { ThemeTogglerBlockPreview } from "@/components/magicui/animated-theme-toggler-demo"
 
 interface BlockItem {
   id: string
@@ -346,6 +347,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A horizontal color band sweeps across text with a gradient shine, then settles on your foreground color.",
       cliCommand: "npx shadcn@latest add @magicui/dia-text-reveal",
       renderPreview: () => <DiaTextRevealBlockPreview />,
+    },
+    {
+      id: "theme-toggler",
+      title: "Theme Toggler",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Theme Toggler",
+      description:
+        "Animated theme toggle using the View Transitions API with configurable clip-path shapes.",
+      cliCommand: "npx shadcn@latest add @magicui/animated-theme-toggler",
+      renderPreview: () => <ThemeTogglerBlockPreview />,
     },
   ]
 
