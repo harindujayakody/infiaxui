@@ -41,6 +41,7 @@ import { ScrollBasedVelocityBlockPreview } from "@/components/magicui/scroll-bas
 import { SmoothCursorBlockPreview } from "@/components/magicui/smooth-cursor-demo"
 import { AnimatedListBlockPreview } from "@/components/magicui/animated-list-demo"
 import { RippleBlockPreview } from "@/components/magicui/ripple-demo"
+import { StripedPatternBlockPreview } from "@/components/magicui/striped-pattern-demo"
 
 interface BlockItem {
   id: string
@@ -310,6 +311,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "An animated ripple effect typically used behind elements to emphasize them.",
       cliCommand: "npx shadcn@latest add @magicui/ripple",
       renderPreview: () => <RippleBlockPreview />,
+    },
+    {
+      id: "striped-pattern",
+      title: "Striped Pattern",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Striped Pattern",
+      description:
+        "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+      cliCommand: "npx shadcn@latest add @magicui/striped-pattern",
+      renderPreview: () => <StripedPatternBlockPreview />,
     },
   ]
 

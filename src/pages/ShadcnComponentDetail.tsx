@@ -192,6 +192,8 @@ import { AnimatedListDemo } from "@/components/magicui/animated-list-demo"
 import { AnimatedListGuide } from "@/components/magicui/animated-list-guide"
 import { RippleDemo } from "@/components/magicui/ripple-demo"
 import { RippleGuide } from "@/components/magicui/ripple-guide"
+import { StripedPatternDemo } from "@/components/magicui/striped-pattern-demo"
+import { StripedPatternGuide } from "@/components/magicui/striped-pattern-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -889,6 +891,22 @@ export function RippleDemo() {
         Ripple
       </p>
       <Ripple />
+    </div>
+  )
+}`
+
+      case "Striped Pattern":
+        return `import { StripedPattern } from "@/components/ui/striped-pattern"
+
+export function StripedPatternDemo() {
+  return (
+    <div className="relative flex h-[380px] sm:h-[450px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-2xl select-none">
+      <StripedPattern
+        direction="left"
+        width={14}
+        height={14}
+        className="stroke-zinc-400/40 [mask-image:radial-gradient(circle_at_center,white,transparent_75%)]"
+      />
     </div>
   )
 }`
@@ -3268,6 +3286,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Striped Pattern":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <StripedPatternDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3994,6 +4019,8 @@ export function ScrollAreaDemo() {
         <AnimatedListGuide />
       ) : componentData.name === "Ripple" ? (
         <RippleGuide />
+      ) : componentData.name === "Striped Pattern" ? (
+        <StripedPatternGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

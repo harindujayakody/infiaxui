@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -20,6 +20,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Ripple",
     "Scroll Based Velocity",
     "Smooth Cursor",
+    "Striped Pattern",
     "Accordion",
     "Aspect Ratio",
     "Badge",
@@ -983,6 +984,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "mainCircleSize",
       "mainCircleOpacity",
       "numCircles",
+      "className",
+    ],
+  },
+  "Striped Pattern": {
+    id: "striped-pattern",
+    name: "Striped Pattern",
+    description: "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/striped-pattern",
+    importCode: `import { StripedPattern } from "@/components/ui/striped-pattern"`,
+    usageCode: `<div className="relative h-[400px] w-full overflow-hidden">\n  <StripedPattern direction="left" />\n</div>`,
+    apiReference: [
+      "StripedPattern",
+      "direction",
+      "width",
+      "height",
       "className",
     ],
   },
