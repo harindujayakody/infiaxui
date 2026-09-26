@@ -154,6 +154,7 @@ import { ChartDemo } from "@/components/shadcn/chart-demo"
 import { BubbleDemo } from "@/components/shadcn/bubble-demo"
 import { AvatarDemo } from "@/components/shadcn/avatar-demo"
 import { SeparatorDemo } from "@/components/shadcn/separator-demo"
+import { ComboboxDemo } from "@/components/shadcn/combobox-demo"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -614,6 +615,36 @@ export function BubbleDemo() {
   )
 }`
 
+      case "Combobox":
+        return `import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox"
+
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
+
+export function ComboboxDemo() {
+  return (
+    <Combobox items={frameworks}>
+      <ComboboxInput placeholder="Select a framework" />
+      <ComboboxContent>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}`
+
       case "Breadcrumb":
         return `import {
   Breadcrumb,
@@ -928,26 +959,6 @@ export function FieldDemo() {
       <Input type="email" placeholder="m@example.com" />
       <FieldDescription>We will never share your email with third parties.</FieldDescription>
     </Field>
-  )
-}`
-
-      case "Combobox":
-        return `import { Combobox } from "@/components/ui/combobox"
-
-const frameworks = [
-  { value: "next.js", label: "Next.js" },
-  { value: "sveltekit", label: "SvelteKit" },
-  { value: "nuxt.js", label: "Nuxt.js" },
-  { value: "remix", label: "Remix" },
-  { value: "astro", label: "Astro" },
-]
-
-export function ComboboxDemo() {
-  return (
-    <Combobox
-      options={frameworks}
-      placeholder="Select framework..."
-    />
   )
 }`
 
@@ -2191,11 +2202,8 @@ export function ScrollAreaDemo() {
 
       case "Combobox":
         return (
-          <div className="w-full max-w-xs space-y-2">
-            <div className="flex items-center justify-between p-2.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] text-xs text-[var(--text-muted)]">
-              <span>Next.js</span>
-              <ChevronDown className="size-4" />
-            </div>
+          <div className="w-full flex justify-center py-6">
+            <ComboboxDemo />
           </div>
         )
       case "Accordion":

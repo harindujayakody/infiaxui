@@ -1,119 +1,162 @@
-import React, { useState } from "react"
+import React from "react"
+import {
+  ComboboxBasicDemo,
+  ComboboxMultipleDemo,
+  ComboboxClearDemo,
+  ComboboxGroupsDemo,
+  ComboboxCustomDemo,
+  ComboboxInvalidDemo,
+  ComboboxDisabledDemo,
+  ComboboxAutoHighlightDemo,
+  ComboboxPopupDemo,
+  ComboboxInputGroupDemo,
+  ComboboxRtlDemo,
+} from "@/components/shadcn/combobox-demo"
+import { InstallationSection } from "@/components/shadcn/installation-section"
 import { CodeBlock } from "@/components/ui/code-block"
-import { Check, ChevronsUpDown, X, Search, Plus, Sparkles } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { cn } from "@/lib/utils"
 
 export function ComboboxGuide() {
-  const frameworks = [
-    { value: "next", label: "Next.js" },
-    { value: "sveltekit", label: "SvelteKit" },
-    { value: "nuxt", label: "Nuxt.js" },
-    { value: "remix", label: "Remix" },
-    { value: "astro", label: "Astro" },
-  ]
+  const comboboxPrimitiveCode = `import * as React from "react"
+import { Check, ChevronsUpDown, X } from "lucide-react"
+import { cn } from "@/lib/utils"
 
-  const [openBasic, setOpenBasic] = useState(false)
-  const [selectedVal, setSelectedVal] = useState("next")
-  const [basicQuery, setBasicQuery] = useState("")
+export interface ComboboxContextType<T = any> {
+  open: boolean
+  setOpen: (open: boolean) => void
+  query: string
+  setQuery: (query: string) => void
+  selectedValue: any
+  setSelectedValue: (val: any) => void
+  multiple: boolean
+  items: T[]
+  itemToStringValue?: (item: T) => string
+  disabled?: boolean
+  inputRef: React.RefObject<HTMLInputElement | null>
+}
 
-  // Multi-select chips
-  const [selectedChips, setSelectedChips] = useState<string[]>(["Next.js", "Astro"])
-  const [openChips, setOpenChips] = useState(false)
+const ComboboxContext = React.createContext<ComboboxContextType | null>(null)
 
-  const filtered = frameworks.filter((f) =>
-    f.label.toLowerCase().includes(basicQuery.toLowerCase())
+export function useCombobox<T = any>() {
+  const context = React.useContext(ComboboxContext)
+  if (!context) throw new Error("useCombobox must be used within a Combobox provider")
+  return context as ComboboxContextType<T>
+}
+
+export interface ComboboxProps<T = any> extends React.HTMLAttributes<HTMLDivElement> {
+  items?: T[]
+  value?: any
+  defaultValue?: any
+  onValueChange?: (value: any) => void
+  multiple?: boolean
+  autoHighlight?: boolean
+  disabled?: boolean
+  itemToStringValue?: (item: T) => string
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+  children: React.ReactNode
+}
+
+export function Combobox<T = any>({
+  items = [],
+  value: controlledValue,
+  defaultValue,
+  onValueChange,
+  multiple = false,
+  autoHighlight = false,
+  disabled = false,
+  itemToStringValue,
+  open: controlledOpen,
+  onOpenChange,
+  className,
+  children,
+  ...props
+}: ComboboxProps<T>) {
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(false)
+  const isControlledOpen = controlledOpen !== undefined
+  const open = isControlledOpen ? controlledOpen : uncontrolledOpen
+
+  const setOpen = React.useCallback(
+    (nextOpen: boolean) => {
+      if (disabled) return
+      if (!isControlledOpen) setUncontrolledOpen(nextOpen)
+      onOpenChange?.(nextOpen)
+    },
+    [disabled, isControlledOpen, onOpenChange]
   )
 
-  const selectedLabel = frameworks.find((f) => f.value === selectedVal)?.label
+  const [uncontrolledValue, setUncontrolledValue] = React.useState<any>(
+    defaultValue !== undefined ? defaultValue : multiple ? [] : undefined
+  )
+  const isControlledValue = controlledValue !== undefined
+  const selectedValue = isControlledValue ? controlledValue : uncontrolledValue
+
+  const setSelectedValue = React.useCallback(
+    (nextVal: any) => {
+      if (disabled) return
+      if (!isControlledValue) setUncontrolledValue(nextVal)
+      onValueChange?.(nextVal)
+    },
+    [disabled, isControlledValue, onValueChange]
+  )
+
+  const [query, setQuery] = React.useState("")
+  const inputRef = React.useRef<HTMLInputElement | null>(null)
+  const containerRef = React.useRef<HTMLDivElement | null>(null)
+
+  React.useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside)
+      return () => document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [open, setOpen])
+
+  return (
+    <ComboboxContext.Provider
+      value={{
+        open,
+        setOpen,
+        query,
+        setQuery,
+        selectedValue,
+        setSelectedValue,
+        multiple,
+        items,
+        itemToStringValue,
+        disabled,
+        inputRef,
+      }}
+    >
+      <div ref={containerRef} className={cn("relative w-full", className)} {...props}>
+        {children}
+      </div>
+    </ComboboxContext.Provider>
+  )
+}`
 
   return (
     <div className="space-y-12 pt-6 text-[var(--text-main)]">
-      {/* Composition */}
-      <section id="composition" className="scroll-mt-20 space-y-4">
-        <h2 className="type-h2 text-[var(--text-main)]">Composition</h2>
-        <p className="text-sm text-[var(--text-muted)]">
-          Build autocomplete inputs and filterable multi-select chips using the <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">Combobox</code> family:
-        </p>
-        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 font-mono text-xs text-[var(--text-muted)] space-y-0.5">
-          {[
-            "Combobox (items={...})",
-            "├── ComboboxInput (or ComboboxChips + ComboboxChipsInput)",
-            "└── ComboboxContent",
-            "    ├── ComboboxEmpty",
-            "    └── ComboboxList",
-            "        ├── ComboboxGroup",
-            "        │   ├── ComboboxLabel",
-            "        │   └── ComboboxItem",
-            "        └── ComboboxSeparator",
-          ].map((l, i) => <div key={i}>{l}</div>)}
-        </div>
+      {/* Global Installation UI */}
+      <section id="installation" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Installation</h2>
+        <InstallationSection
+          componentName="combobox"
+          dependencies="@base-ui/react"
+          sourceCode={comboboxPrimitiveCode}
+          sourcePath="components/ui/combobox.tsx"
+        />
       </section>
 
-      {/* Basic Demo */}
-      <section id="basic" className="scroll-mt-20 space-y-4">
-        <h2 className="type-h2 text-[var(--text-main)]">Basic Combobox</h2>
-        <p className="text-sm text-[var(--text-muted)]">
-          Single-select searchable framework dropdown with checkmark indicators.
+      {/* Usage */}
+      <section id="usage" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Usage</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          Import the combobox components to build autocomplete search dropdowns.
         </p>
-        <div className="p-12 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] flex items-center justify-center min-h-[300px]">
-          <div className="relative w-56">
-            <button
-              onClick={() => setOpenBasic(!openBasic)}
-              className="w-full h-9 px-3 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-page)] text-xs flex items-center justify-between text-[var(--text-main)] shadow-sm hover:bg-[var(--bg-subtle)] transition-colors"
-            >
-              <span>{selectedLabel || "Select framework..."}</span>
-              <ChevronsUpDown className="size-3.5 text-[var(--text-muted)]" />
-            </button>
-
-            <AnimatePresence>
-              {openBasic && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 4 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 4 }}
-                  className="absolute left-0 top-full mt-2 w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-1.5 shadow-2xl z-50 text-xs"
-                >
-                  <div className="flex items-center px-2 py-1 border-b border-[var(--border-subtle)] mb-1">
-                    <Search className="size-3 text-[var(--text-muted)] mr-1.5" />
-                    <input
-                      autoFocus
-                      value={basicQuery}
-                      onChange={(e) => setBasicQuery(e.target.value)}
-                      placeholder="Search framework..."
-                      className="w-full bg-transparent text-xs text-[var(--text-main)] focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="space-y-0.5 max-h-40 overflow-y-auto">
-                    {filtered.length === 0 ? (
-                      <div className="p-3 text-center text-[11px] text-[var(--text-muted)]">
-                        No framework found.
-                      </div>
-                    ) : (
-                      filtered.map((item) => (
-                        <button
-                          key={item.value}
-                          onClick={() => {
-                            setSelectedVal(item.value)
-                            setOpenBasic(false)
-                            setBasicQuery("")
-                          }}
-                          className="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-[var(--bg-subtle)] text-[var(--text-main)] text-left"
-                        >
-                          <span>{item.label}</span>
-                          {selectedVal === item.value && (
-                            <Check className="size-3.5 text-indigo-500" />
-                          )}
-                        </button>
-                      ))
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
         <CodeBlock
           language="tsx"
           code={`import {
@@ -123,11 +166,13 @@ export function ComboboxGuide() {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/components/ui/combobox"
+} from "@/components/ui/combobox"`}
+        />
+        <CodeBlock
+          language="tsx"
+          code={`const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
 
-const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
-
-export function ComboboxDemo() {
+export function ExampleCombobox() {
   return (
     <Combobox items={frameworks}>
       <ComboboxInput placeholder="Select a framework" />
@@ -147,73 +192,93 @@ export function ComboboxDemo() {
         />
       </section>
 
-      {/* Multiple with Chips */}
-      <section id="multiple-chips" className="scroll-mt-20 space-y-4">
-        <h2 className="type-h2 text-[var(--text-main)]">Multiple Selection with Chips</h2>
-        <p className="text-sm text-[var(--text-muted)]">
-          Multi-select with tag pill chips and inline tag removal.
+      {/* Composition */}
+      <section id="composition" className="scroll-mt-20 space-y-6">
+        <h2 className="type-h2 text-[var(--text-main)]">Composition</h2>
+
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold text-[var(--text-main)]">Simple</h3>
+          <p className="text-xs text-[var(--text-muted)]">
+            A single-line input and a flat list.
+          </p>
+          <CodeBlock
+            language="txt"
+            showLineNumbers={false}
+            code={`Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem`}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold text-[var(--text-main)]">With chips</h3>
+          <p className="text-xs text-[var(--text-muted)]">
+            Multi-select with <code className="text-primary font-mono">multiple</code>, chips, and a chips input.
+          </p>
+          <CodeBlock
+            language="txt"
+            showLineNumbers={false}
+            code={`Combobox
+├── ComboboxChips
+│   ├── ComboboxValue
+│   │   └── ComboboxChip
+│   └── ComboboxChipsInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxItem
+        └── ComboboxItem`}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-sm font-semibold text-[var(--text-main)]">With groups and collection</h3>
+          <p className="text-xs text-[var(--text-muted)]">
+            Nested items per group using <code className="text-primary font-mono">ComboboxCollection</code> inside each <code className="text-primary font-mono">ComboboxGroup</code>.
+          </p>
+          <CodeBlock
+            language="txt"
+            showLineNumbers={false}
+            code={`Combobox
+├── ComboboxInput
+└── ComboboxContent
+    ├── ComboboxEmpty
+    └── ComboboxList
+        ├── ComboboxGroup
+        │   ├── ComboboxLabel
+        │   └── ComboboxCollection
+        │       ├── ComboboxItem
+        │       └── ComboboxItem
+        ├── ComboboxSeparator
+        └── ComboboxGroup
+            ├── ComboboxLabel
+            └── ComboboxCollection
+                ├── ComboboxItem
+                └── ComboboxItem`}
+          />
+        </div>
+      </section>
+
+      {/* Basic */}
+      <section id="basic" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Basic</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          A simple combobox with a list of frameworks.
         </p>
 
-        <div className="p-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] max-w-md mx-auto">
-          <div className="space-y-2">
-            <label className="text-xs font-medium text-[var(--text-main)]">Target Stacks</label>
-            <div className="min-h-11 p-1.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-page)] flex flex-wrap items-center gap-1.5">
-              {selectedChips.map((chip) => (
-                <span
-                  key={chip}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs text-[var(--text-main)]"
-                >
-                  <span>{chip}</span>
-                  <button
-                    onClick={() => setSelectedChips(selectedChips.filter((c) => c !== chip))}
-                    className="text-[var(--text-muted)] hover:text-red-500 transition-colors"
-                  >
-                    <X className="size-3" />
-                  </button>
-                </span>
-              ))}
-
-              <button
-                onClick={() => setOpenChips(!openChips)}
-                className="text-[11px] text-[var(--text-muted)] hover:text-[var(--text-main)] px-2 py-0.5 flex items-center gap-1"
-              >
-                <Plus className="size-3" />
-                <span>Add tag...</span>
-              </button>
-            </div>
-
-            {openChips && (
-              <div className="p-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-lg flex flex-wrap gap-1.5 text-xs">
-                {frameworks
-                  .filter((f) => !selectedChips.includes(f.label))
-                  .map((f) => (
-                    <button
-                      key={f.value}
-                      onClick={() => {
-                        setSelectedChips([...selectedChips, f.label])
-                        setOpenChips(false)
-                      }}
-                      className="px-2.5 py-1 rounded-md border border-[var(--border-subtle)] bg-[var(--bg-page)] hover:bg-[var(--bg-subtle)] text-[var(--text-main)]"
-                    >
-                      + {f.label}
-                    </button>
-                  ))}
-              </div>
-            )}
-          </div>
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxBasicDemo />
         </div>
 
         <CodeBlock
           language="tsx"
-          code={`<Combobox items={frameworks} multiple value={value} onValueChange={setValue}>
-  <ComboboxChips>
-    <ComboboxValue>
-      {value.map((item) => (
-        <ComboboxChip key={item}>{item}</ComboboxChip>
-      ))}
-    </ComboboxValue>
-    <ComboboxChipsInput placeholder="Add framework" />
-  </ComboboxChips>
+          code={`<Combobox items={frameworks}>
+  <ComboboxInput placeholder="Select a framework" />
   <ComboboxContent>
     <ComboboxEmpty>No items found.</ComboboxEmpty>
     <ComboboxList>
@@ -228,28 +293,295 @@ export function ComboboxDemo() {
         />
       </section>
 
+      {/* Multiple Selection */}
+      <section id="multiple" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Multiple</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          A combobox with multiple selection using <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">multiple</code> and <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">ComboboxChips</code>.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxMultipleDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`import * as React from "react"
+import {
+  Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxValue,
+} from "@/components/ui/combobox"
+
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
+
+export function ExampleComboboxMultiple() {
+  const [value, setValue] = React.useState<string[]>([])
+
+  return (
+    <Combobox items={frameworks} multiple value={value} onValueChange={setValue}>
+      <ComboboxChips>
+        <ComboboxValue>
+          {value.map((item) => (
+            <ComboboxChip key={item}>{item}</ComboboxChip>
+          ))}
+        </ComboboxValue>
+        <ComboboxChipsInput placeholder="Add framework" />
+      </ComboboxChips>
+      <ComboboxContent>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}`}
+        />
+      </section>
+
+      {/* Clear Button */}
+      <section id="clear-button" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Clear Button</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          Use the <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">showClear</code> prop to show a clear button.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxClearDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<Combobox items={frameworks}>
+  <ComboboxInput placeholder="Select framework" showClear />
+  <ComboboxContent>
+    <ComboboxEmpty>No items found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item} value={item}>
+          {item}
+        </ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}
+        />
+      </section>
+
+      {/* Groups */}
+      <section id="groups" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Groups</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          Use <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">ComboboxGroup</code> and <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">ComboboxSeparator</code> to group items.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxGroupsDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<ComboboxContent>
+  <ComboboxGroup>
+    <ComboboxLabel>Frontend Frameworks</ComboboxLabel>
+    <ComboboxItem value="next">Next.js</ComboboxItem>
+    <ComboboxItem value="nuxt">Nuxt.js</ComboboxItem>
+  </ComboboxGroup>
+  <ComboboxSeparator />
+  <ComboboxGroup>
+    <ComboboxLabel>Backend Runtimes</ComboboxLabel>
+    <ComboboxItem value="node">Node.js</ComboboxItem>
+    <ComboboxItem value="bun">Bun</ComboboxItem>
+  </ComboboxGroup>
+</ComboboxContent>`}
+        />
+      </section>
+
+      {/* Custom Items */}
+      <section id="custom-items" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Custom Items</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          You can render a custom component inside <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">ComboboxItem</code>. Use <code className="text-primary font-mono">itemToStringValue</code> when items are objects.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxCustomDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<Combobox
+  items={users}
+  itemToStringValue={(user) => user.name}
+>
+  <ComboboxInput placeholder="Assign to team member..." />
+  <ComboboxContent>
+    <ComboboxList>
+      {(user) => (
+        <ComboboxItem key={user.handle} value={user}>
+          <img src={user.avatar} className="size-6 rounded-full" />
+          <div className="flex flex-col">
+            <span>{user.name}</span>
+            <span className="text-xs text-muted-foreground">{user.role}</span>
+          </div>
+        </ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}
+        />
+      </section>
+
+      {/* Invalid */}
+      <section id="invalid" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Invalid</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          Use the <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">aria-invalid</code> prop to make the combobox invalid.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxInvalidDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<Combobox items={frameworks}>
+  <ComboboxInput aria-invalid={true} placeholder="Select required framework" />
+</Combobox>`}
+        />
+      </section>
+
+      {/* Disabled */}
+      <section id="disabled" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Disabled</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          Use the <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">disabled</code> prop to disable the combobox.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxDisabledDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<Combobox items={frameworks} disabled>
+  <ComboboxInput placeholder="Disabled combobox" disabled />
+</Combobox>`}
+        />
+      </section>
+
+      {/* Auto Highlight */}
+      <section id="auto-highlight" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Auto Highlight</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          Use the <code className="bg-[var(--bg-subtle)] text-[var(--text-main)] px-1.5 py-0.5 rounded text-xs font-mono">autoHighlight</code> prop to automatically highlight the first item on filter.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxAutoHighlightDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<Combobox items={frameworks} autoHighlight>
+  <ComboboxInput placeholder="Filter with auto-highlight..." />
+</Combobox>`}
+        />
+      </section>
+
+      {/* Popup */}
+      <section id="popup" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Popup</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          You can trigger the combobox from a button or any other component. Move the <code className="text-primary font-mono">ComboboxInput</code> inside the <code className="text-primary font-mono">ComboboxContent</code>.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxPopupDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<Button variant="outline">
+  <span>Select framework...</span>
+</Button>`}
+        />
+      </section>
+
+      {/* Input Group */}
+      <section id="input-group" className="scroll-mt-20 space-y-4">
+        <h2 className="type-h2 text-[var(--text-main)]">Input Group</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          You can add an addon icon or prefix to the combobox input.
+        </p>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxInputGroupDemo />
+        </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<div className="relative">
+  <Globe className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5" />
+  <ComboboxInput placeholder="Select deployment region..." className="pl-8" />
+</div>`}
+        />
+      </section>
+
       {/* RTL */}
       <section id="rtl" className="scroll-mt-20 space-y-4">
-        <h2 className="type-h2 text-[var(--text-main)]">RTL Support</h2>
-        <p className="text-sm text-[var(--text-muted)]">
-          Combobox chevron and item checkmarks mirror automatically in RTL locales.
+        <h2 className="type-h2 text-[var(--text-main)]">RTL</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          To enable RTL support in shadcn/ui, see the RTL configuration guide.
         </p>
-        <div dir="rtl" className="p-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] max-w-xs mx-auto">
-          <div className="h-9 px-3 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-page)] text-xs flex items-center justify-between">
-            <span>اختر إطار العمل...</span>
-            <ChevronsUpDown className="size-3.5 text-[var(--text-muted)]" />
-          </div>
+
+        {/* Live Demo */}
+        <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
+          <ComboboxRtlDemo />
         </div>
+
+        <CodeBlock
+          language="tsx"
+          code={`<div dir="rtl">
+  <Combobox items={["نكست جي اس", "نوفل", "رياكت"]}>
+    <ComboboxInput placeholder="ابحث عن إطار عمل..." />
+  </Combobox>
+</div>`}
+        />
       </section>
 
       {/* API Reference */}
       <section id="api-reference" className="scroll-mt-20 space-y-4">
         <h2 className="type-h2 text-[var(--text-main)]">API Reference</h2>
+        <p className="type-body text-[var(--text-muted)]">
+          See the <a href="https://base-ui.com/react/components/combobox#api-reference" target="_blank" rel="noopener noreferrer" className="text-primary underline">Base UI Combobox</a> documentation for complete prop details.
+        </p>
+
         <div className="rounded-xl border border-[var(--border-subtle)] overflow-hidden">
           <table className="w-full text-xs text-left">
             <thead className="bg-[var(--bg-subtle)]/60 text-[var(--text-main)] border-b border-[var(--border-subtle)]">
               <tr>
-                <th className="p-3 font-semibold">Component / Prop</th>
+                <th className="p-3 font-semibold">Prop</th>
                 <th className="p-3 font-semibold">Type</th>
                 <th className="p-3 font-semibold">Default</th>
                 <th className="p-3 font-semibold">Description</th>
@@ -257,22 +589,34 @@ export function ComboboxDemo() {
             </thead>
             <tbody className="divide-y divide-[var(--border-subtle)] text-[var(--text-muted)]">
               <tr>
-                <td className="p-3 font-mono text-[var(--text-main)]">Combobox.multiple</td>
-                <td className="p-3 font-mono">boolean</td>
-                <td className="p-3 font-mono">false</td>
-                <td className="p-3">Enables multi-item selection with chip tags</td>
+                <td className="p-3 font-mono text-[var(--text-main)]">items</td>
+                <td className="p-3 font-mono text-indigo-400">Array&lt;T&gt;</td>
+                <td className="p-3 font-mono">[]</td>
+                <td className="p-3">The array of selectable items or objects.</td>
               </tr>
               <tr>
-                <td className="p-3 font-mono text-[var(--text-main)]">Combobox.autoHighlight</td>
-                <td className="p-3 font-mono">boolean</td>
+                <td className="p-3 font-mono text-[var(--text-main)]">multiple</td>
+                <td className="p-3 font-mono text-indigo-400">boolean</td>
                 <td className="p-3 font-mono">false</td>
-                <td className="p-3">Automatically highlights the top search match on query</td>
+                <td className="p-3">Whether multiple items can be selected at once.</td>
               </tr>
               <tr>
-                <td className="p-3 font-mono text-[var(--text-main)]">ComboboxChips</td>
-                <td className="p-3 font-mono">HTMLDivElement</td>
+                <td className="p-3 font-mono text-[var(--text-main)]">autoHighlight</td>
+                <td className="p-3 font-mono text-indigo-400">boolean</td>
+                <td className="p-3 font-mono">false</td>
+                <td className="p-3">Automatically highlight the first matching item.</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-mono text-[var(--text-main)]">itemToStringValue</td>
+                <td className="p-3 font-mono text-indigo-400">(item: T) =&gt; string</td>
                 <td className="p-3 font-mono">-</td>
-                <td className="p-3">Container wrapper for active tag chips and input field</td>
+                <td className="p-3">Extracts search string when items are objects.</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-mono text-[var(--text-main)]">showClear</td>
+                <td className="p-3 font-mono text-indigo-400">boolean</td>
+                <td className="p-3 font-mono">false</td>
+                <td className="p-3">Shows an inline clear button on the input field.</td>
               </tr>
             </tbody>
           </table>
