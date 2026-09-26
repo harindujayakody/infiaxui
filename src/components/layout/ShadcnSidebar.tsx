@@ -1,7 +1,5 @@
 import React from "react"
 import { ALL_COMPONENTS_SORTED, getComponentUrl } from "@/lib/component-routing"
-import { isComponentFixed, getComponentFixStats } from "@/data/component-status"
-import { Check } from "lucide-react"
 
 interface ShadcnSidebarProps {
   currentSection: string
@@ -16,7 +14,6 @@ export function ShadcnSidebar({
   onSelectSection,
   onSelectComponent,
 }: ShadcnSidebarProps) {
-  const stats = getComponentFixStats(ALL_COMPONENTS_SORTED)
 
   const sections = [
     { id: "Introduction", label: "Introduction", href: "/components" },
@@ -64,20 +61,14 @@ export function ShadcnSidebar({
         })}
       </div>
 
-      {/* Components Group with Fix Stats Header */}
+      {/* Components Group */}
       <div className="space-y-0.5">
-        <div className="flex items-center justify-between px-3 mb-2">
-          <h4 className="type-caption text-[var(--text-muted)] uppercase tracking-wider font-semibold">
-            Components
-          </h4>
-          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold" title={`${stats.fixedCount} of ${stats.total} components fixed`}>
-            {stats.fixedCount}/{stats.total}
-          </span>
-        </div>
+        <h4 className="px-3 mb-2 type-caption text-[var(--text-muted)] uppercase tracking-wider font-semibold">
+          Components
+        </h4>
 
         {ALL_COMPONENTS_SORTED.map((comp) => {
           const isActive = currentComponent === comp
-          const isFixed = isComponentFixed(comp)
 
           return (
             <a
@@ -94,9 +85,6 @@ export function ShadcnSidebar({
               }`}
             >
               <span className="truncate">{comp}</span>
-              {isFixed && (
-                <Check className="size-3 text-emerald-400 shrink-0 ml-1 opacity-70" />
-              )}
             </a>
           )
         })}
