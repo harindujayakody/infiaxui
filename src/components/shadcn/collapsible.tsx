@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface CollapsibleContextType {
@@ -53,7 +54,7 @@ export function CollapsibleTrigger({
     <button
       type="button"
       onClick={() => context.setOpen(!context.open)}
-      className={className}
+      className={cn("cursor-pointer", className)}
       {...props}
     >
       {children}
@@ -69,14 +70,21 @@ export function CollapsibleContent({
   const context = useContext(CollapsibleContext)
   if (!context) throw new Error("CollapsibleContent must be used within Collapsible")
 
-  if (!context.open) return null
-
   return (
-    <div
-      className={cn("animate-in fade-in-0 duration-200 overflow-hidden", className)}
-      {...props}
-    >
-      {children}
-    </div>
+    <AnimatePresence initial={false}>
+      {context.open && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          className="overflow-hidden"
+        >
+          <div className={cn("pt-2", className)} {...props}>
+            {children}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Check, Copy, ChevronDown, ChevronUp } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface CodeBlockProps {
   code: string
@@ -125,21 +126,23 @@ export function CodeBlock({
         <div className="flex items-center gap-2">
           {isLongCode && (
             <button
+              type="button"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors type-link-12 font-medium px-2 py-0.5 rounded hover:bg-[var(--bg-subtle)]"
+              className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors type-link-12 font-medium px-2 py-0.5 rounded hover:bg-[var(--bg-subtle)] cursor-pointer"
             >
               <span>{isExpanded ? "Collapse" : "Expand"}</span>
-              {isExpanded ? (
-                <ChevronUp className="size-3" />
-              ) : (
-                <ChevronDown className="size-3" />
-              )}
+              <ChevronDown
+                className={`size-3 transition-transform duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  isExpanded ? "rotate-180" : ""
+                }`}
+              />
             </button>
           )}
 
           <button
+            type="button"
             onClick={handleCopy}
-            className="flex items-center gap-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/70 hover:bg-[var(--bg-subtle)] px-2.5 py-1 text-xs text-[var(--text-main)] transition-all"
+            className="flex items-center gap-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-subtle)]/70 hover:bg-[var(--bg-subtle)] px-2.5 py-1 text-xs text-[var(--text-main)] transition-all cursor-pointer"
             title="Copy code"
           >
             {copied ? (
@@ -157,44 +160,56 @@ export function CodeBlock({
         </div>
       </div>
 
-      {/* Code container */}
-      <div
-        className={`overflow-x-auto p-4 transition-all duration-200 ${
-          !isExpanded && isLongCode
-            ? `max-h-[${maxCollapsedHeight}px] overflow-hidden relative`
-            : "max-h-[600px]"
-        }`}
-        style={!isExpanded && isLongCode ? { maxHeight: `${maxCollapsedHeight}px` } : {}}
+      {/* Code container with smooth height animation */}
+      <motion.div
+        initial={false}
+        animate={{
+          height: isExpanded || !isLongCode ? "auto" : maxCollapsedHeight,
+        }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        className="relative overflow-hidden"
       >
-        <pre className="table w-full">
-          <code>
-            {lines.map((line, idx) => (
-              <div key={idx} className="table-row leading-relaxed hover:bg-[var(--bg-subtle)]/40">
-                {showLineNumbers && (
-                  <span className="table-cell select-none pr-4 text-right text-[var(--text-muted)]/60 w-8 text-xs font-mono">
-                    {idx + 1}
+        <div className={`p-4 ${isExpanded ? "overflow-x-auto max-h-[600px]" : "overflow-hidden"}`}>
+          <pre className="table w-full">
+            <code>
+              {lines.map((line, idx) => (
+                <div key={idx} className="table-row leading-relaxed hover:bg-[var(--bg-subtle)]/40">
+                  {showLineNumbers && (
+                    <span className="table-cell select-none pr-4 text-right text-[var(--text-muted)]/60 w-8 text-xs font-mono">
+                      {idx + 1}
+                    </span>
+                  )}
+                  <span className="table-cell whitespace-pre">
+                    {renderHighlightedLine(line)}
                   </span>
-                )}
-                <span className="table-cell whitespace-pre">
-                  {renderHighlightedLine(line)}
-                </span>
-              </div>
-            ))}
-          </code>
-        </pre>
+                </div>
+              ))}
+            </code>
+          </pre>
+        </div>
 
-        {!isExpanded && isLongCode && (
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[var(--bg-card)] via-[var(--bg-card)]/80 to-transparent flex items-end justify-center pb-2">
-            <button
-              onClick={() => setIsExpanded(true)}
-              className="text-xs text-[var(--text-main)] bg-[var(--bg-subtle)] hover:bg-[var(--bg-card)] border border-[var(--border-subtle)] px-3 py-1 rounded-full shadow-lg transition-colors flex items-center gap-1"
+        <AnimatePresence>
+          {!isExpanded && isLongCode && (
+            <motion.div
+              key="codeblock-collapsed-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[var(--bg-card)] via-[var(--bg-card)]/80 to-transparent flex items-end justify-center pb-2 select-none"
             >
-              <span>Expand code ({lines.length} lines)</span>
-              <ChevronDown className="size-3" />
-            </button>
-          </div>
-        )}
-      </div>
+              <button
+                type="button"
+                onClick={() => setIsExpanded(true)}
+                className="text-xs text-[var(--text-main)] bg-[var(--bg-subtle)] hover:bg-[var(--bg-card)] border border-[var(--border-subtle)] px-3 py-1 rounded-full shadow-lg transition-colors flex items-center gap-1 cursor-pointer"
+              >
+                <span>Expand code ({lines.length} lines)</span>
+                <ChevronDown className="size-3" />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </div>
   )
 }

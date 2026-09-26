@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext } from "react"
 import { ChevronDown } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface AccordionContextType {
@@ -90,7 +91,7 @@ export function AccordionTrigger({ children, className, ...props }: AccordionTri
       type="button"
       onClick={() => context.toggleItem(itemContext.value)}
       className={cn(
-        "flex w-full items-center justify-between py-4 text-left text-sm font-medium text-[var(--text-main)] transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+        "flex w-full items-center justify-between py-4 text-left text-sm font-medium text-[var(--text-main)] transition-all hover:underline [&[data-state=open]>svg]:rotate-180 cursor-pointer",
         className
       )}
       data-state={isOpen ? "open" : "closed"}
@@ -99,7 +100,7 @@ export function AccordionTrigger({ children, className, ...props }: AccordionTri
       <span>{children}</span>
       <ChevronDown
         className={cn(
-          "size-4 shrink-0 text-[var(--text-muted)] transition-transform duration-200",
+          "size-4 shrink-0 text-[var(--text-muted)] transition-transform duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isOpen && "rotate-180 text-[var(--text-main)]"
         )}
       />
@@ -121,17 +122,27 @@ export function AccordionContent({ children, className, ...props }: AccordionCon
 
   const isOpen = context.openItems.includes(itemContext.value)
 
-  if (!isOpen) return null
-
   return (
-    <div
-      className={cn(
-        "overflow-hidden pb-4 pt-0 text-xs text-[var(--text-muted)] leading-relaxed animate-in fade-in-50 duration-150",
-        className
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          className="overflow-hidden"
+        >
+          <div
+            className={cn(
+              "pb-4 pt-0 text-xs text-[var(--text-muted)] leading-relaxed",
+              className
+            )}
+            {...props}
+          >
+            {children}
+          </div>
+        </motion.div>
       )}
-      {...props}
-    >
-      {children}
-    </div>
+    </AnimatePresence>
   )
 }
