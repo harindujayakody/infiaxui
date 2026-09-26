@@ -2,25 +2,27 @@
 
 import React, { useState } from "react"
 import { Copy, Check, Terminal, ExternalLink } from "lucide-react"
-import { InstallationSection } from "@/components/shadcn/installation-section"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
+  GlareHoverDemo,
   GlareHoverDemoCTA,
   GlareHoverDemoAlert,
 } from "@/components/magicui/glare-hover-demo"
 
 export function GlareHoverGuide() {
-  const [copiedId, setCopiedId] = useState<string | null>(null)
+  const [copiedKey, setCopiedKey] = useState<string | null>(null)
 
-  const handleCopy = (id: string, text: string) => {
+  const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text)
-    setCopiedId(id)
-    setTimeout(() => setCopiedId(null), 2000)
+    setCopiedKey(key)
+    setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const manualSourceCode = `"use client"
+  const cliCode = `npx shadcn@latest add @magicui/glare-hover`
 
-import type { ComponentProps, CSSProperties } from "react"
+  const componentSourceCode = `import type { ComponentProps, CSSProperties } from "react"
 import { useMemo } from "react"
+
 import { cn } from "@/lib/utils"
 
 export interface GlareHoverProps extends ComponentProps<"div"> {
@@ -51,8 +53,8 @@ function parseHEX(color: Color, opacity: number): RGBA | Color {
   return color
 }
 
-export function GlareHover({
-  background = "transparent",
+function GlareHover({
+  background = "#000",
   children,
   color = "#ffffff",
   opacity = 0.5,
@@ -84,14 +86,19 @@ export function GlareHover({
       {...props}
       className={cn(
         "relative grid size-fit cursor-pointer place-items-center overflow-hidden bg-transparent",
+        // BEFORE ELEMENT
         "before:pointer-events-none before:absolute before:inset-0 before:z-10 before:bg-no-repeat before:content-['']",
+        // GRADIENT
         "before:[background-image:linear-gradient(var(--gh-angle),transparent_60%,var(--gh-rgba)_70%,transparent,transparent_100%)]",
+        // SIZE + POSITION
         "before:[background-size:var(--gh-size)_var(--gh-size),100%_100%]",
         "before:[background-position:-100%_-100%,0_0]",
+        // TRANSITION
         !playOnce &&
           "before:transition-[background-position] before:duration-[var(--gh-duration)] before:ease-in-out",
         playOnce &&
           "before:transition-none hover:before:transition-[background-position] hover:before:duration-[var(--gh-duration)]",
+        // HOVER EFFECT
         "hover:before:[background-position:100%_100%,0_0]",
         className
       )}
@@ -100,189 +107,249 @@ export function GlareHover({
       {children}
     </div>
   )
-}`
+}
+
+export { GlareHover }`
 
   return (
-    <div className="space-y-12 pt-6">
-      {/* Installation Section with CLI + Manual */}
-      <InstallationSection
-        componentName="Glare Hover"
-        componentSlug="glare-hover"
-        dependencies=""
-        sourceCode={manualSourceCode}
-        sourcePath="components/magicui/glare-hover.tsx"
-      />
+    <div className="space-y-12 pb-16 text-zinc-200">
+      {/* Overview Header */}
+      <div className="space-y-3">
+        <h1 className="text-3xl font-bold tracking-tight text-white">
+          Glare Hover
+        </h1>
+        <p className="text-base text-zinc-400 max-w-2xl leading-relaxed">
+          A diagonal light glare on hover using a <code className="text-zinc-200 font-mono text-xs">::before</code> gradient, CSS variables, and background-position animation—no extra global keyframes required.
+        </p>
+      </div>
+
+      {/* Main Interactive Demo matching user reference */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-white tracking-tight">Preview</h2>
+          <span className="text-xs text-zinc-500 font-mono">Hover to trigger glare sweep</span>
+        </div>
+        <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 sm:p-10 flex items-center justify-center">
+          <GlareHoverDemo />
+        </div>
+      </div>
 
       {/* Examples Header */}
-      <div id="examples" className="scroll-mt-20 space-y-4 pt-6 border-t border-[var(--border-subtle)]">
-        <h2 className="type-h2 text-[var(--text-main)]">Examples</h2>
-        <p className="type-body text-[var(--text-muted)] text-[13px]">
-          Explore various glare sweep styles, custom angles, CTA hero cards, and status alerts.
-        </p>
-      </div>
+      <div className="space-y-6 pt-4 border-t border-white/10">
+        <h2 className="text-2xl font-bold text-white tracking-tight">Examples</h2>
 
-      {/* Example 1: CTA Banner */}
-      <div id="example-cta" className="scroll-mt-20 space-y-4 pt-4">
-        <h3 className="type-heading text-[var(--text-main)] font-semibold text-[16px]">
-          Call To Action (CTA)
-        </h3>
-        <p className="text-[13px] text-[var(--text-muted)]">
-          Add an optical sheen to conversion banners and premium tier cards.
-        </p>
-        <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6">
-          <GlareHoverDemoCTA />
+        {/* Example 1: CTA Banner */}
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold text-white tracking-tight">
+            CTA Card
+          </h3>
+          <p className="text-xs sm:text-sm text-zinc-400">
+            Add an optical sheen to conversion banners and premium tier cards.
+          </p>
+          <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 flex items-center justify-center">
+            <GlareHoverDemoCTA />
+          </div>
+        </div>
+
+        {/* Example 2: Alerts */}
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold text-white tracking-tight">
+            Alerts
+          </h3>
+          <p className="text-xs sm:text-sm text-zinc-400">
+            Highlight critical alerts, system warnings, or important toasts with responsive hover glares.
+          </p>
+          <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 flex items-center justify-center">
+            <GlareHoverDemoAlert />
+          </div>
         </div>
       </div>
 
-      {/* Example 2: Alerts */}
-      <div id="example-alerts" className="scroll-mt-20 space-y-4 pt-4">
-        <h3 className="type-heading text-[var(--text-main)] font-semibold text-[16px]">
-          Alerts &amp; Notifications
-        </h3>
-        <p className="text-[13px] text-[var(--text-muted)]">
-          Highlight critical alerts, system warnings, or important toasts with responsive hover glares.
+      {/* Installation Tabs */}
+      <div className="space-y-4 pt-4 border-t border-white/10">
+        <h2 className="text-xl font-semibold text-white tracking-tight">Installation</h2>
+
+        <Tabs defaultValue="cli" className="w-full">
+          <TabsList className="bg-[#161616] border border-white/10 p-0.5">
+            <TabsTrigger
+              value="cli"
+              className="text-xs data-[state=active]:bg-white/10 data-[state=active]:text-white text-zinc-400"
+            >
+              CLI
+            </TabsTrigger>
+            <TabsTrigger
+              value="manual"
+              className="text-xs data-[state=active]:bg-white/10 data-[state=active]:text-white text-zinc-400"
+            >
+              Manual
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="cli" className="mt-3">
+            <div className="relative flex items-center justify-between rounded-xl border border-white/10 bg-[#161616] px-4 py-3 font-mono text-xs sm:text-sm text-zinc-300">
+              <div className="flex items-center gap-2">
+                <Terminal className="size-4 text-zinc-500" />
+                <span>{cliCode}</span>
+              </div>
+              <button
+                onClick={() => copyToClipboard(cliCode, "cli")}
+                className="text-zinc-400 hover:text-white transition-colors ml-2"
+                title="Copy command"
+              >
+                {copiedKey === "cli" ? (
+                  <Check className="size-4 text-emerald-400" />
+                ) : (
+                  <Copy className="size-4" />
+                )}
+              </button>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="manual" className="mt-4 space-y-4">
+            <p className="text-sm text-zinc-400">
+              Copy and paste the following code into your project at{" "}
+              <code className="text-zinc-200 bg-white/5 px-1.5 py-0.5 rounded text-xs font-mono">
+                @/components/ui/glare-hover.tsx
+              </code>
+              :
+            </p>
+            <div className="relative rounded-xl border border-white/10 bg-[#161616] p-4 font-mono text-xs text-zinc-300 overflow-x-auto max-h-[460px]">
+              <button
+                onClick={() => copyToClipboard(componentSourceCode, "source")}
+                className="absolute right-4 top-4 z-10 text-zinc-400 hover:text-white transition-colors"
+                title="Copy code"
+              >
+                {copiedKey === "source" ? (
+                  <Check className="size-4 text-emerald-400" />
+                ) : (
+                  <Copy className="size-4" />
+                )}
+              </button>
+              <pre>{componentSourceCode}</pre>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      {/* Usage Section */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold text-white tracking-tight">Usage</h2>
+        <p className="text-xs sm:text-sm text-zinc-400">
+          The effect is implemented with a <code className="text-zinc-200">::before</code> pseudo-element: a linear-gradient tile moves from one corner to the opposite on hover. Color is parsed from hex into rgba for the glare band.
         </p>
-        <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6">
-          <GlareHoverDemoAlert />
+        <div className="relative rounded-xl border border-white/10 bg-[#161616] p-4 font-mono text-xs sm:text-sm text-zinc-300">
+          <pre>{`import { GlareHover } from "@/components/ui/glare-hover"
+
+export default function PricingCard() {
+  return (
+    <GlareHover className="rounded-2xl border border-white/10 bg-[#161616] p-6">
+      <h3>Pro Plan</h3>
+      <p>$49/mo</p>
+    </GlareHover>
+  )
+}`}</pre>
         </div>
       </div>
 
-      {/* Example 3: Angle and Size */}
-      <div id="example-angle-size" className="scroll-mt-20 space-y-4 pt-4">
-        <h3 className="type-heading text-[var(--text-main)] font-semibold text-[16px]">
-          Angle &amp; Tile Size
-        </h3>
-        <p className="text-[13px] text-[var(--text-muted)]">
-          Configure <code className="text-zinc-200 font-mono text-xs">angle</code> (in degrees) and <code className="text-zinc-200 font-mono text-xs">size</code> (in percentage) to tailor the sweep geometry.
-        </p>
-        <div className="relative rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 font-mono text-xs overflow-x-auto">
-          <button
-            onClick={() =>
-              handleCopy(
-                "code-angle",
-                `<GlareHover className="rounded-lg" angle={-30} size={280}>\n  <Card>{/* ... */}</Card>\n</GlareHover>`
-              )
-            }
-            className="absolute top-3 right-3 p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)]"
-          >
-            {copiedId === "code-angle" ? (
-              <Check className="size-3.5 text-emerald-400" />
-            ) : (
-              <Copy className="size-3.5" />
-            )}
-          </button>
-          <pre className="text-[var(--text-main)]">
-            <code>{`<GlareHover className="rounded-lg" angle={-30} size={280}>
-  <Card>{/* ... */}</Card>
-</GlareHover>`}</code>
-          </pre>
-        </div>
-      </div>
-
-      {/* Props Reference Table */}
-      <div id="props" className="scroll-mt-20 space-y-4 pt-6 border-t border-[var(--border-subtle)]">
-        <h2 className="type-h2 text-[var(--text-main)]">Props</h2>
-        <p className="type-body text-[var(--text-muted)] text-[13px]">
-          Comprehensive API properties for <code className="text-[var(--text-main)] font-mono">&lt;GlareHover /&gt;</code>.
-        </p>
-
-        <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-x-auto">
-          <table className="w-full text-left text-xs font-mono">
-            <thead className="border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50 text-[var(--text-muted)]">
+      {/* Props Table */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold text-white tracking-tight">Props</h2>
+        <div className="overflow-x-auto rounded-xl border border-white/10 bg-[#161616]">
+          <table className="w-full text-left text-xs sm:text-sm text-zinc-300">
+            <thead className="border-b border-white/10 bg-white/5 font-mono text-zinc-400">
               <tr>
-                <th className="p-3.5 font-semibold">Prop</th>
-                <th className="p-3.5 font-semibold">Type</th>
-                <th className="p-3.5 font-semibold">Default</th>
-                <th className="p-3.5 font-semibold font-sans">Description</th>
+                <th className="px-4 py-3">Prop</th>
+                <th className="px-4 py-3">Type</th>
+                <th className="px-4 py-3">Default</th>
+                <th className="px-4 py-3">Description</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--border-subtle)] text-[var(--text-main)]">
+            <tbody className="divide-y divide-white/5 font-mono">
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">children</td>
-                <td className="p-3.5 text-[var(--text-muted)]">React.ReactNode</td>
-                <td className="p-3.5 text-[var(--text-muted)]">—</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Content inside the wrapper.</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">children</td>
+                <td className="px-4 py-3 text-zinc-400">React.ReactNode</td>
+                <td className="px-4 py-3 text-zinc-500">—</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Content inside the wrapper.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">className</td>
-                <td className="p-3.5 text-[var(--text-muted)]">string</td>
-                <td className="p-3.5 text-[var(--text-muted)]">—</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Classes on the root element.</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">className</td>
+                <td className="px-4 py-3 text-zinc-400">string</td>
+                <td className="px-4 py-3 text-zinc-500">—</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Classes on the root div (use rounded-*, overflow-hidden, etc.).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">background</td>
-                <td className="p-3.5 text-[var(--text-muted)]">string</td>
-                <td className="p-3.5 text-emerald-400">"transparent"</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Root container background color.</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">background</td>
+                <td className="px-4 py-3 text-zinc-400">string</td>
+                <td className="px-4 py-3 text-zinc-500">"#000"</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Root background color.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">color</td>
-                <td className="p-3.5 text-[var(--text-muted)]">string</td>
-                <td className="p-3.5 text-emerald-400">"#ffffff"</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Glare highlight (hex #rgb / #rrggbb).</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">color</td>
+                <td className="px-4 py-3 text-zinc-400">string</td>
+                <td className="px-4 py-3 text-zinc-500">"#ffffff"</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Glare highlight (hex #rgb / #rrggbb).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">opacity</td>
-                <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">0.5</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Alpha for parsed glare color.</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">opacity</td>
+                <td className="px-4 py-3 text-zinc-400">number</td>
+                <td className="px-4 py-3 text-zinc-500">0.5</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Alpha for the parsed glare color.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">angle</td>
-                <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">-45</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Gradient angle in degrees (--gh-angle).</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">angle</td>
+                <td className="px-4 py-3 text-zinc-400">number</td>
+                <td className="px-4 py-3 text-zinc-500">-45</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Gradient angle in degrees (--gh-angle).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">size</td>
-                <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">250</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Glare tile size in percentage (--gh-size).</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">size</td>
+                <td className="px-4 py-3 text-zinc-400">number</td>
+                <td className="px-4 py-3 text-zinc-500">250</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Glare tile size in % (--gh-size).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">duration</td>
-                <td className="p-3.5 text-[var(--text-muted)]">number</td>
-                <td className="p-3.5 text-emerald-400">650</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Transition duration in ms (--gh-duration).</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">duration</td>
+                <td className="px-4 py-3 text-zinc-400">number</td>
+                <td className="px-4 py-3 text-zinc-500">650</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Transition duration in ms (--gh-duration).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">playOnce</td>
-                <td className="p-3.5 text-[var(--text-muted)]">boolean</td>
-                <td className="p-3.5 text-emerald-400">false</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">If true, animation runs on hover only.</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">playOnce</td>
+                <td className="px-4 py-3 text-zinc-400">boolean</td>
+                <td className="px-4 py-3 text-zinc-500">false</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">If true, animation runs on hover only (no transition until hover).</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">width</td>
-                <td className="p-3.5 text-[var(--text-muted)]">string</td>
-                <td className="p-3.5 text-[var(--text-muted)]">—</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Optional width on the root style.</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">width</td>
+                <td className="px-4 py-3 text-zinc-400">string</td>
+                <td className="px-4 py-3 text-zinc-500">—</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Optional width on the root style.</td>
               </tr>
               <tr>
-                <td className="p-3.5 text-blue-400 font-semibold">height</td>
-                <td className="p-3.5 text-[var(--text-muted)]">string</td>
-                <td className="p-3.5 text-[var(--text-muted)]">—</td>
-                <td className="p-3.5 font-sans text-[var(--text-muted)] text-[13px]">Optional height on the root style.</td>
+                <td className="px-4 py-3 text-cyan-400 font-semibold">height</td>
+                <td className="px-4 py-3 text-zinc-400">string</td>
+                <td className="px-4 py-3 text-zinc-500">—</td>
+                <td className="px-4 py-3 font-sans text-zinc-300">Optional height on the root style.</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      {/* Credits Section */}
-      <div id="credits" className="scroll-mt-20 space-y-2 pt-6 border-t border-[var(--border-subtle)] text-[13px] text-[var(--text-muted)]">
-        <h4 className="font-semibold text-[var(--text-main)] text-[14px]">Credits</h4>
-        <p>
-          Component designed and credited to{" "}
+      {/* Credits */}
+      <div className="rounded-xl border border-white/10 bg-[#161616] p-4 flex items-center justify-between text-xs sm:text-sm">
+        <div className="flex items-center gap-2 text-zinc-400">
+          <span>Credit to</span>
           <a
             href="https://github.com/chishiyac"
             target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 hover:underline inline-flex items-center gap-1"
+            rel="noopener noreferrer"
+            className="text-white hover:underline flex items-center gap-1 font-medium"
           >
             @chishiyac <ExternalLink className="size-3" />
           </a>
-          .
-        </p>
+          <span>for the component.</span>
+        </div>
       </div>
     </div>
   )

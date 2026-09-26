@@ -303,29 +303,57 @@ export function AnimatedBeamDemo() {
 }`
 
       case "Glare Hover":
-        return `import { GlareHover } from "@/components/magicui/glare-hover"
-import { Sparkles } from "lucide-react"
+        return `import { GlareHover } from "@/components/ui/glare-hover"
+import { Check } from "lucide-react"
 
 export function GlareHoverDemo() {
   return (
     <GlareHover
-      className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-2xl"
+      className="w-full max-w-[340px] rounded-2xl border border-white/10 bg-[#161616] p-6 sm:p-7 shadow-2xl select-none text-left"
       color="#ffffff"
-      opacity={0.35}
+      opacity={0.3}
       angle={-45}
-      size={260}
-      duration={600}
+      size={250}
+      duration={650}
     >
-      <div className="flex max-w-sm flex-col gap-3 p-6 text-left">
-        <div className="flex size-11 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-400">
-          <Sparkles className="size-5" />
+      <div className="flex flex-col w-full">
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Pro</h3>
+            <p className="text-xs sm:text-sm text-zinc-400 mt-1">For teams that need more.</p>
+          </div>
+          <span className="rounded-full bg-zinc-200 px-3 py-0.5 text-xs font-semibold text-zinc-900 shadow-sm">
+            Popular
+          </span>
         </div>
-        <h4 className="text-base font-semibold text-[var(--text-main)]">
-          Diagonal Light Glare
-        </h4>
-        <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-          Hover over this card to watch a smooth optical diagonal glare sweep across the surface.
-        </p>
+
+        <div className="flex items-baseline my-6">
+          <span className="text-4xl font-extrabold text-white tracking-tight">$49</span>
+          <span className="text-sm font-normal text-zinc-400 ml-1">/mo</span>
+        </div>
+
+        <div className="space-y-3 mb-8">
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm text-zinc-200">
+            <Check className="size-4 shrink-0 text-white" strokeWidth={2.5} />
+            <span>Unlimited projects</span>
+          </div>
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm text-zinc-200">
+            <Check className="size-4 shrink-0 text-white" strokeWidth={2.5} />
+            <span>Team collaboration</span>
+          </div>
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm text-zinc-200">
+            <Check className="size-4 shrink-0 text-white" strokeWidth={2.5} />
+            <span>Advanced analytics</span>
+          </div>
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm text-zinc-500">
+            <span className="mx-1 text-base leading-none">·</span>
+            <span>SSO (coming soon)</span>
+          </div>
+        </div>
+
+        <button className="w-full py-2.5 px-4 rounded-xl bg-zinc-200 hover:bg-white text-zinc-900 font-semibold text-sm transition-colors shadow-sm cursor-pointer">
+          Get started
+        </button>
       </div>
     </GlareHover>
   )

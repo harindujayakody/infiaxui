@@ -94,8 +94,8 @@ function parseHEX(color: Color, opacity: number): RGBA | Color {
   return color
 }
 
-export function GlareHover({
-  background = "transparent",
+function GlareHover({
+  background = "#000",
   children,
   color = "#ffffff",
   opacity = 0.5,
@@ -149,3 +149,5 @@ export function GlareHover({
     </div>
   )
 }
+
+export { GlareHover }

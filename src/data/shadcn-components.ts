@@ -680,7 +680,7 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     description: "A diagonal light glare on hover using a ::before gradient, CSS variables, and background-position animation—no extra global keyframes required.",
     isNew: true,
     installationCommand: "npx shadcn@latest add @magicui/glare-hover",
-    importCode: `import { GlareHover } from "@/components/magicui/glare-hover"`,
+    importCode: `import { GlareHover } from "@/components/ui/glare-hover"`,
     usageCode: `<GlareHover className="rounded-xl" color="#ffffff" opacity={0.35}>\n  <div>Content</div>\n</GlareHover>`,
     apiReference: [
       "GlareHover",
