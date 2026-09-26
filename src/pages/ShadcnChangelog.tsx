@@ -69,11 +69,49 @@ export function ShadcnChangelog() {
             </a>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-400 text-xs font-mono font-medium">
               <span className="size-1.5 rounded-full bg-blue-500 animate-pulse" />
-              v1.1.0 Current
+              v1.2.0 Current
             </div>
           </div>
         </div>
       </div>
+
+      {/* 0. September 2026 - Component URLs & Code Inspector */}
+      <section id="september-2026-urls-and-inspector" className="space-y-6 scroll-mt-20">
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2">
+            <span className="type-caption font-mono uppercase tracking-wider text-blue-400 font-semibold">
+              September 2026
+            </span>
+            <span className="text-[var(--text-muted)]">•</span>
+            <span className="type-caption text-[var(--text-muted)] font-mono">v1.2.0</span>
+          </div>
+          <h2 className="type-h2 text-[var(--text-main)] font-semibold tracking-tight flex items-center gap-2 group">
+            <a href="#september-2026-urls-and-inspector" className="hover:underline">
+              Clean Component URLs, Real Code Inspector & Slider Primitive
+            </a>
+          </h2>
+        </div>
+
+        <p className="type-body text-[var(--text-muted)] leading-relaxed">
+          We have upgraded the navigation and code inspection experience across all components. Every component now lives on its own dedicated canonical path (<code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-subtle)] text-[var(--text-main)] font-mono text-sm">/components/:name</code>) with instant browser back/forward history synchronization, replacing hash-based routing.
+        </p>
+
+        {/* Feature Highlights Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] space-y-2">
+            <h3 className="type-heading text-[var(--text-main)] font-semibold">1 Page Per Component URLs</h3>
+            <p className="type-small-body text-[var(--text-muted)]">
+              Clean URLs like <code className="text-[var(--text-main)] font-mono">/components/button</code> and <code className="text-[var(--text-main)] font-mono">/components/slider</code> with full SPA state preservation and deep-linking support.
+            </p>
+          </div>
+          <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] space-y-2">
+            <h3 className="type-heading text-[var(--text-main)] font-semibold">Authentic "View Code" Inspector</h3>
+            <p className="type-small-body text-[var(--text-muted)]">
+              Clicking "View Code" displays complete, runnable TypeScript demo code with syntax highlighting, line numbers, and copy feedback.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* 1. September 2026 - cn */}
       <section id="september-2026-cn" className="space-y-6 scroll-mt-20">

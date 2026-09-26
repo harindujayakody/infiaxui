@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { ThemeProvider } from "@/lib/theme-context"
 import { MacTitleBar } from "@/components/layout/MacTitleBar"
 import { ShadcnHeader } from "@/components/layout/ShadcnHeader"
@@ -9,23 +9,106 @@ import { ShadcnComponentDetail } from "@/pages/ShadcnComponentDetail"
 import { ShadcnChangelog } from "@/pages/ShadcnChangelog"
 import { SHADCN_COMPONENTS_DETAIL } from "@/data/shadcn-components"
 import { CommandPalette } from "@/components/layout/CommandPalette"
+import {
+  parseCurrentRoute,
+  getComponentUrl,
+  slugToComponentName,
+} from "@/lib/component-routing"
 
 function AppContent() {
-  const [activeNavTab, setActiveNavTab] = useState<string>("Components")
-  const [activeSection, setActiveSection] = useState<string>("Components")
-  // By default, start with "Breadcrumb" to match the user's latest screenshot!
-  const [selectedComponent, setSelectedComponent] = useState<string | null>("Breadcrumb")
+  const initialRoute = parseCurrentRoute()
+
+  const [activeNavTab, setActiveNavTab] = useState<string>(
+    initialRoute.view === "changelog" ? "Changelog" : "Components"
+  )
+  const [activeSection, setActiveSection] = useState<string>(initialRoute.sectionName)
+  const [selectedComponent, setSelectedComponent] = useState<string | null>(
+    initialRoute.view === "component" ? (initialRoute.componentName || "Button") : null
+  )
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
-  const handleSelectComponent = (compName: string) => {
+  // Listen to browser Back/Forward popstate events
+  useEffect(() => {
+    const handlePopState = () => {
+      const route = parseCurrentRoute(window.location.pathname)
+      if (route.view === "component" && route.componentName) {
+        setSelectedComponent(route.componentName)
+        setActiveSection("Components")
+        setActiveNavTab("Components")
+      } else if (route.view === "catalog") {
+        setSelectedComponent(null)
+        setActiveSection("Components")
+        setActiveNavTab("Components")
+      } else if (route.view === "changelog") {
+        setSelectedComponent(null)
+        setActiveSection("Changelog")
+        setActiveNavTab("Changelog")
+      }
+    }
+
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [])
+
+  // Sync document title and initial URL on mount
+  useEffect(() => {
+    const route = parseCurrentRoute(window.location.pathname)
+    if (route.view === "component" && route.componentName) {
+      const expectedUrl = getComponentUrl(route.componentName)
+      if (window.location.pathname !== expectedUrl) {
+        window.history.replaceState(null, "", expectedUrl)
+      }
+      document.title = `${route.componentName} - shadcn/ui`
+    } else if (route.view === "catalog") {
+      if (window.location.pathname !== "/components") {
+        window.history.replaceState(null, "", "/components")
+      }
+      document.title = "Components - shadcn/ui"
+    } else if (route.view === "changelog") {
+      document.title = "Changelog - shadcn/ui"
+    }
+  }, [])
+
+  // Update document title whenever component or section changes
+  useEffect(() => {
+    if (selectedComponent) {
+      document.title = `${selectedComponent} - shadcn/ui`
+    } else if (activeSection === "Changelog") {
+      document.title = "Changelog - shadcn/ui"
+    } else {
+      document.title = "Components - shadcn/ui"
+    }
+  }, [selectedComponent, activeSection])
+
+  const handleSelectComponent = (compName: string, pushHistory = true) => {
     setSelectedComponent(compName)
     setActiveSection("Components")
+    setActiveNavTab("Components")
+
+    if (pushHistory) {
+      const targetUrl = getComponentUrl(compName)
+      if (window.location.pathname !== targetUrl) {
+        window.history.pushState(null, "", targetUrl)
+      }
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const handleSelectSection = (section: string) => {
+  const handleSelectSection = (section: string, pushHistory = true) => {
     setActiveSection(section)
-    setSelectedComponent(null) // show section page (e.g. Changelog or Catalog)
+    setSelectedComponent(null)
+
+    if (pushHistory) {
+      let targetUrl = "/components"
+      if (section === "Changelog") {
+        targetUrl = "/docs/changelog"
+      }
+      if (window.location.pathname !== targetUrl) {
+        window.history.pushState(null, "", targetUrl)
+      }
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
@@ -34,10 +117,10 @@ function AppContent() {
     : undefined
 
   const windowTitle = selectedComponent
-    ? `${selectedComponent} - Infiax UI`
+    ? `${selectedComponent} - shadcn/ui`
     : activeSection === "Changelog"
-    ? "Changelog - Infiax UI"
-    : "Components - Infiax UI"
+    ? "Changelog - shadcn/ui"
+    : "Components - shadcn/ui"
 
   return (
     <div className="min-h-screen bg-[var(--bg-page)] text-[var(--text-main)] flex flex-col font-sans transition-colors duration-150">
@@ -53,12 +136,11 @@ function AppContent() {
           onTabChange={(tab) => {
             setActiveNavTab(tab)
             if (tab === "Changelog") {
-              setActiveSection("Changelog")
-              setSelectedComponent(null)
-              window.scrollTo({ top: 0, behavior: "smooth" })
+              handleSelectSection("Changelog")
             } else if (tab === "Components") {
-              setActiveSection("Components")
-              setSelectedComponent(null)
+              handleSelectSection("Components")
+            } else if (tab === "Docs" || tab === "Home") {
+              handleSelectComponent("Button")
             }
           }}
           onSearchClick={() => setIsSearchOpen(true)}
@@ -81,7 +163,7 @@ function AppContent() {
             <ShadcnComponentDetail
               componentName={selectedComponent}
               onSelectComponent={handleSelectComponent}
-              onBackToCatalog={() => setSelectedComponent(null)}
+              onBackToCatalog={() => handleSelectSection("Components")}
             />
           ) : activeSection === "Changelog" ? (
             <ShadcnChangelog />
@@ -111,8 +193,7 @@ function AppContent() {
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onSelectComponent={(name) => {
-          setSelectedComponent(name)
-          setActiveSection("Components")
+          handleSelectComponent(name)
         }}
       />
     </div>

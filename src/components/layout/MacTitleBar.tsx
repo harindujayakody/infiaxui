@@ -32,9 +32,16 @@ export function MacTitleBar({
           className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center transition-all hover:brightness-95 active:brightness-90 shadow-[0_0_1px_rgba(0,0,0,0.4)]"
           title="Scroll to top"
         >
-          <span className="opacity-0 group-hover:opacity-100 text-[8px] text-[#4A0002] leading-none font-bold select-none transition-opacity">
-            ✕
-          </span>
+          <svg
+            className="size-2 text-[#4A0002] opacity-0 group-hover:opacity-100 transition-opacity"
+            viewBox="0 0 8 8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          >
+            <path d="M1.75 1.75l4.5 4.5M6.25 1.75l-4.5 4.5" />
+          </svg>
         </button>
 
         {/* Minimize (Yellow) */}
@@ -42,9 +49,16 @@ export function MacTitleBar({
           className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center transition-all hover:brightness-95 active:brightness-90 shadow-[0_0_1px_rgba(0,0,0,0.4)]"
           title="Minimize"
         >
-          <span className="opacity-0 group-hover:opacity-100 text-[8px] text-[#402A00] leading-none font-bold select-none transition-opacity">
-            −
-          </span>
+          <svg
+            className="size-2 text-[#402A00] opacity-0 group-hover:opacity-100 transition-opacity"
+            viewBox="0 0 8 8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+          >
+            <path d="M1.5 4h5" />
+          </svg>
         </button>
 
         {/* Fullscreen (Green) */}
@@ -53,9 +67,14 @@ export function MacTitleBar({
           className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center transition-all hover:brightness-95 active:brightness-90 shadow-[0_0_1px_rgba(0,0,0,0.4)]"
           title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
         >
-          <span className="opacity-0 group-hover:opacity-100 text-[7px] text-[#003800] leading-none font-black select-none transition-opacity">
-            {isFullscreen ? "⤡" : "⤢"}
-          </span>
+          <svg
+            className="size-2 text-[#003800] opacity-0 group-hover:opacity-100 transition-opacity"
+            viewBox="0 0 8 8"
+            fill="currentColor"
+          >
+            {/* Native macOS opposing triangles for fullscreen */}
+            <path d="M6.8 1.2H4.2l2.6 2.6V1.2zM1.2 6.8h2.6L1.2 4.2v2.6z" />
+          </svg>
         </button>
       </div>
 

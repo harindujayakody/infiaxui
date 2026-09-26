@@ -4,7 +4,7 @@
   <p><strong>Precision Engineering with Zero AI Slop. An open-source, ultra-minimal, high-precision React Component Library and documentation platform built with Shadcn UI, Tailwind CSS, Geist Sans, and Radix Primitives.</strong></p>
 
   <p>
-    <a href="https://github.com/harindujayakody/infiaxui"><img src="https://img.shields.io/badge/version-v1.1.0-blue.svg?style=flat-square" alt="Version" /></a>
+    <a href="https://github.com/harindujayakody/infiaxui"><img src="https://img.shields.io/badge/version-v1.2.0-blue.svg?style=flat-square" alt="Version" /></a>
     <a href="https://github.com/harindujayakody/infiaxui/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License" /></a>
     <img src="https://img.shields.io/badge/React-19.0.0-61DAFB.svg?style=flat-square&logo=react" alt="React 19" />
     <img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC.svg?style=flat-square&logo=tailwind-css" alt="Tailwind CSS" />
@@ -17,12 +17,13 @@
 ## 🌟 Highlights
 
 - **Pure Slate & Black Aesthetic**: Pure `#0A0A0A` page background, `#161616` cards & containers, `#262626` hairline borders, `#EDEDED` high-contrast typography, and `#8C8C8C` muted accents.
+- **1 Page Per Component Clean URLs**: Real URLs (`/components/button`, `/components/breadcrumb`, `/components/slider`, `/docs/changelog`) with smooth SPA history and browser back/forward support.
+- **Interactive "View Code" Inspector**: Displays actual runnable TypeScript demo code with syntax highlighting, line numbers, TS badge, and one-click copy feedback.
 - **Flawless Dark & Light Mode**: Seamless dynamic theme switching with persistent CSS variables and zero flash on reload.
 - **Geist Sans Typography**: Official typography styles extracted via Peek with exact scales (`type-h1`, `type-h2`, `type-heading`, `type-body`, `type-caption`).
-- **57+ Canonical Shadcn Components**: Breadcrumb, Button, Card, Badge, Alert, Checkbox, Switch, Input, Skeleton, Separator, Avatar, Questionnaire, and more.
-- **Up-to-Date Changelog**: Canonical release timeline tracking **September 2026** (`cn` package), **August 2026** (Private GitHub Registries, Human in the Loop, Questionnaire), and **July 2026** (Dynamic Search).
-- **Interactive Questionnaire Component**: Built-in multi-step question flow primitive for intake forms, AI clarification, and onboarding.
-- **Mac Style Window Header & Code Blocks**: Desktop-class macOS window titlebar with interactive red/yellow/green traffic lights, fullscreen toggle, dynamic titles, and Mac-themed code editors with TS badges and line expanders.
+- **57+ Canonical Shadcn Components**: Breadcrumb, Button, Button Group, Bubble, Calendar, Slider, Card, Badge, Alert, Checkbox, Switch, Input, Skeleton, Separator, Avatar, Questionnaire, and more.
+- **Up-to-Date Changelog**: Canonical release timeline tracking **September 2026** (Clean URLs, Code Inspector, and `cn` package), **August 2026** (Private GitHub Registries, Human in the Loop, Questionnaire), and **July 2026** (Dynamic Search).
+- **Mac Style Window Header & Code Blocks**: Desktop-class macOS window titlebar with interactive red/yellow/green traffic lights with vector hover icons (`✕`, `−`, `⤢`), fullscreen toggle, dynamic titles, and Mac-themed code editors.
 - **Interactive Action Bar**: Split-pill button (`Copy Page | ⌵`) with copy options and previous/next squircle navigation buttons.
 - **Precision ScrollSpy Table of Contents**: Dynamic right sidebar tracking headers in real time with smooth scrolling and sticky header offsets.
 - **Command Palette (`⌘K`)**: Instant modal search across all components and CLI commands.

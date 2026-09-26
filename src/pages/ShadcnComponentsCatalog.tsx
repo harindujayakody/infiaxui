@@ -1,13 +1,13 @@
 import React from "react"
 import { NEW_COMPONENTS, ALL_COMPONENTS_COLUMNS } from "@/data/shadcn-components"
 import { ShadcnPageActions } from "@/components/layout/ShadcnPageActions"
+import { getComponentUrl } from "@/lib/component-routing"
 
 interface ShadcnComponentsCatalogProps {
   onSelectComponent: (componentName: string) => void
 }
 
 export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsCatalogProps) {
-
   return (
     <div className="flex-1 max-w-4xl py-8 px-4 sm:px-8 space-y-10">
       {/* Header section matching Screenshot 1 */}
@@ -35,13 +35,17 @@ export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsC
         <h2 className="type-h2 text-[var(--text-main)]">New Components</h2>
         <div className="space-y-2">
           {NEW_COMPONENTS.map((comp) => (
-            <button
+            <a
               key={comp}
-              onClick={() => onSelectComponent(comp)}
+              href={getComponentUrl(comp)}
+              onClick={(e) => {
+                e.preventDefault()
+                onSelectComponent(comp)
+              }}
               className="type-link text-[var(--text-main)] hover:underline underline-offset-4 transition-colors block text-left"
             >
               {comp}
-            </button>
+            </a>
           ))}
         </div>
       </div>
@@ -53,13 +57,17 @@ export function ShadcnComponentsCatalog({ onSelectComponent }: ShadcnComponentsC
           {ALL_COMPONENTS_COLUMNS.map((col, colIdx) => (
             <div key={colIdx} className="space-y-3">
               {col.map((item) => (
-                <button
+                <a
                   key={item}
-                  onClick={() => onSelectComponent(item)}
+                  href={getComponentUrl(item)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    onSelectComponent(item)
+                  }}
                   className="type-link text-[var(--text-muted)] hover:text-[var(--text-main)] hover:underline underline-offset-4 transition-colors block w-full text-left"
                 >
                   {item}
-                </button>
+                </a>
               ))}
             </div>
           ))}

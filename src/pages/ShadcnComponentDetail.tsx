@@ -3,6 +3,7 @@ import {
   ChevronDown,
   ArrowLeft,
   ArrowRight,
+  ChevronLeft,
   Copy,
   Check,
   CheckCircle2,
@@ -11,8 +12,10 @@ import {
   MoreHorizontal,
   FileCode,
   Maximize2,
+  Code2,
 } from "lucide-react"
 import { SHADCN_COMPONENTS_DETAIL, ShadcnComponentDef, ALL_COMPONENTS_COLUMNS } from "@/data/shadcn-components"
+import { getPrevNextComponents, getComponentUrl } from "@/lib/component-routing"
 import { ShadcnPageActions } from "@/components/layout/ShadcnPageActions"
 import { Alert, AlertTitle, AlertDescription } from "@/components/shadcn/alert"
 import { Button } from "@/components/shadcn/button"
@@ -24,6 +27,7 @@ import { Checkbox } from "@/components/shadcn/checkbox"
 import { Skeleton } from "@/components/shadcn/skeleton"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/shadcn/avatar"
 import { Separator } from "@/components/shadcn/separator"
+import { Slider } from "@/components/shadcn/slider"
 
 interface ShadcnComponentDetailProps {
   componentName: string
@@ -43,25 +47,17 @@ export function ShadcnComponentDetail({
   const [isCodeExpanded, setIsCodeExpanded] = useState(false)
   const [isManualExpanded, setIsManualExpanded] = useState(false)
   const [copiedSection, setCopiedSection] = useState<string | null>(null)
+  const [sliderVal, setSliderVal] = useState<number[]>([50])
   
   // Interactive state demos
   const [switchOn, setSwitchOn] = useState(false)
   const [checkboxOn, setCheckboxOn] = useState(true)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(1)
 
-  // Flatten and sort components for next/prev navigation
-  const allComponentsList = Array.from(
-    new Set(ALL_COMPONENTS_COLUMNS.flat())
-  ).sort()
-  const currentIndex = allComponentsList.indexOf(componentName)
-  const prevComponent =
-    currentIndex > 0
-      ? allComponentsList[currentIndex - 1]
-      : allComponentsList[allComponentsList.length - 1]
-  const nextComponent =
-    currentIndex >= 0 && currentIndex < allComponentsList.length - 1
-      ? allComponentsList[currentIndex + 1]
-      : allComponentsList[0]
+  // Accurate alphabetical sequence for previous / next navigation matching shadcn docs
+  const { prev, next } = getPrevNextComponents(componentName)
+  const prevComponent = prev.name
+  const nextComponent = next.name
 
   const componentData: ShadcnComponentDef =
     SHADCN_COMPONENTS_DETAIL[componentName] || {
@@ -94,6 +90,431 @@ export function ShadcnComponentDetail({
       default:
         return `npx shadcn@latest add ${slug}`
     }
+  }
+
+  const getComponentDemoCode = (): string => {
+    switch (componentData.name) {
+      case "Button":
+        return `import { Button } from "@/components/ui/button"
+
+export function ButtonDemo() {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-3">
+      <Button variant="default">Button</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
+    </div>
+  )
+}`
+
+      case "Breadcrumb":
+        return `import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import { ChevronRight, MoreHorizontal } from "lucide-react"
+
+export function BreadcrumbDemo() {
+  return (
+    <nav aria-label="breadcrumb" className="flex items-center space-x-2 text-sm text-muted-foreground">
+      <span className="hover:text-foreground cursor-pointer transition-colors">Home</span>
+      <ChevronRight className="size-3.5" />
+      <span className="flex items-center justify-center size-6 rounded-md hover:bg-muted cursor-pointer transition-colors">
+        <MoreHorizontal className="size-4" />
+      </span>
+      <ChevronRight className="size-3.5" />
+      <span className="hover:text-foreground cursor-pointer transition-colors">Components</span>
+      <ChevronRight className="size-3.5" />
+      <span className="text-foreground font-semibold">Breadcrumb</span>
+    </nav>
+  )
+}`
+
+      case "Alert":
+        return `import { CheckCircle2, Info } from "lucide-react"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+
+export function AlertDemo() {
+  return (
+    <div className="w-full max-w-xl space-y-4">
+      <Alert>
+        <CheckCircle2 className="size-4 text-foreground" />
+        <AlertTitle>Payment successful</AlertTitle>
+        <AlertDescription>
+          Your payment of $29.99 has been processed. A receipt has been sent to your email address.
+        </AlertDescription>
+      </Alert>
+      <Alert>
+        <Info className="size-4 text-foreground" />
+        <AlertTitle>New feature available</AlertTitle>
+        <AlertDescription>
+          We've added dark mode support. You can enable it in your account settings.
+        </AlertDescription>
+      </Alert>
+    </div>
+  )
+}`
+
+      case "Badge":
+        return `import { Badge } from "@/components/ui/badge"
+
+export function BadgeDemo() {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-3">
+      <Badge variant="default">Badge</Badge>
+      <Badge variant="secondary">Secondary</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge variant="destructive">Destructive</Badge>
+    </div>
+  )
+}`
+
+      case "Card":
+        return `import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+
+export function CardDemo() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Create project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-3">
+        <div className="space-y-1">
+          <label className="text-xs text-muted-foreground">Name</label>
+          <Input placeholder="Name of your project" />
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button variant="outline" size="sm">Cancel</Button>
+        <Button size="sm">Deploy</Button>
+      </CardFooter>
+    </Card>
+  )
+}`
+
+      case "Input":
+        return `import { Input } from "@/components/ui/input"
+
+export function InputDemo() {
+  return (
+    <div className="w-full max-w-sm space-y-2">
+      <label className="text-xs font-medium text-foreground">Email</label>
+      <Input type="email" placeholder="m@example.com" />
+      <p className="text-xs text-muted-foreground">Enter your email address.</p>
+    </div>
+  )
+}`
+
+      case "Switch":
+        return `import { Switch } from "@/components/ui/switch"
+
+export function SwitchDemo() {
+  return (
+    <div className="flex items-center space-x-3 rounded-xl border border-border p-4 bg-card">
+      <Switch id="airplane-mode" />
+      <div className="space-y-0.5">
+        <label htmlFor="airplane-mode" className="text-xs font-medium cursor-pointer">
+          Airplane Mode
+        </label>
+        <p className="text-xs text-muted-foreground">Disable all wireless connections.</p>
+      </div>
+    </div>
+  )
+}`
+
+      case "Checkbox":
+        return `import { Checkbox } from "@/components/ui/checkbox"
+
+export function CheckboxDemo() {
+  return (
+    <div className="flex items-start space-x-3 rounded-xl border border-border p-4 bg-card max-w-sm">
+      <Checkbox id="terms" defaultChecked />
+      <div className="grid gap-1.5 leading-none">
+        <label htmlFor="terms" className="text-xs font-medium cursor-pointer">
+          Accept terms and conditions
+        </label>
+        <p className="text-xs text-muted-foreground">
+          You agree to our Terms of Service and Privacy Policy.
+        </p>
+      </div>
+    </div>
+  )
+}`
+
+      case "Slider":
+        return `import { Slider } from "@/components/ui/slider"
+
+export function SliderDemo() {
+  return (
+    <div className="w-full max-w-sm space-y-4">
+      <div className="flex justify-between text-xs text-muted-foreground">
+        <span>Volume</span>
+        <span>50%</span>
+      </div>
+      <Slider defaultValue={[50]} max={100} step={1} />
+    </div>
+  )
+}`
+
+      case "Avatar":
+        return `import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+
+export function AvatarDemo() {
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar>
+        <AvatarImage src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="@shadcn" />
+        <AvatarFallback>SC</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>UI</AvatarFallback>
+      </Avatar>
+    </div>
+  )
+}`
+
+      case "Skeleton":
+        return `import { Skeleton } from "@/components/ui/skeleton"
+
+export function SkeletonDemo() {
+  return (
+    <div className="flex items-center space-x-4">
+      <Skeleton className="size-12 rounded-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[200px]" />
+        <Skeleton className="h-4 w-[160px]" />
+      </div>
+    </div>
+  )
+}`
+
+      case "Separator":
+        return `import { Separator } from "@/components/ui/separator"
+
+export function SeparatorDemo() {
+  return (
+    <div className="space-y-4">
+      <div className="space-y-1">
+        <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
+        <p className="text-sm text-muted-foreground">An open-source UI component library.</p>
+      </div>
+      <Separator />
+      <div className="flex h-5 items-center space-x-4 text-sm">
+        <div>Blog</div>
+        <Separator orientation="vertical" />
+        <div>Docs</div>
+        <Separator orientation="vertical" />
+        <div>Source</div>
+      </div>
+    </div>
+  )
+}`
+
+      case "Questionnaire":
+        return `import { Questionnaire } from "@/components/ui/questionnaire"
+
+export function QuestionnaireDemo() {
+  return (
+    <Questionnaire
+      questions={[
+        {
+          id: "usecase",
+          title: "What is your primary use case?",
+          options: [
+            { id: "1", label: "Production SaaS Dashboard" },
+            { id: "2", label: "Marketing Website & Landing Pages" },
+            { id: "3", label: "Internal Tools & Admin Portals" },
+          ],
+        },
+      ]}
+    />
+  )
+}`
+
+      case "Button Group":
+        return `import { ButtonGroup } from "@/components/ui/button-group"
+import { Button } from "@/components/ui/button"
+
+export function ButtonGroupDemo() {
+  return (
+    <ButtonGroup>
+      <Button variant="outline">Left</Button>
+      <Button variant="outline">Middle</Button>
+      <Button variant="outline">Right</Button>
+    </ButtonGroup>
+  )
+}`
+
+      case "Bubble":
+        return `import { Bubble, BubbleMessage, BubbleAvatar } from "@/components/ui/bubble"
+
+export function BubbleDemo() {
+  return (
+    <div className="w-full max-w-md space-y-4">
+      <Bubble sender="assistant">
+        <BubbleAvatar initials="AI" />
+        <BubbleMessage>Hello! How can I assist you with your project today?</BubbleMessage>
+      </Bubble>
+      <Bubble sender="user">
+        <BubbleMessage>Show me how to build modern interfaces with shadcn/ui.</BubbleMessage>
+        <BubbleAvatar initials="ME" />
+      </Bubble>
+    </div>
+  )
+}`
+
+      case "Calendar":
+        return `import { Calendar } from "@/components/ui/calendar"
+import React, { useState } from "react"
+
+export function CalendarDemo() {
+  const [date, setDate] = useState<Date | undefined>(new Date())
+
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      className="rounded-md border"
+    />
+  )
+}`
+
+      case "Attachment":
+        return `import { Attachment, AttachmentPreview, AttachmentRemove } from "@/components/ui/attachment"
+
+export function AttachmentDemo() {
+  return (
+    <Attachment filename="Quarterly_Report_2026.pdf" size="2.4 MB">
+      <AttachmentPreview type="pdf" />
+      <AttachmentRemove onRemove={() => console.log("Removed")} />
+    </Attachment>
+  )
+}`
+
+      case "Field":
+        return `import { Field, FieldLabel, FieldDescription, FieldError } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+
+export function FieldDemo() {
+  return (
+    <Field>
+      <FieldLabel>Email address</FieldLabel>
+      <Input type="email" placeholder="m@example.com" />
+      <FieldDescription>We will never share your email with third parties.</FieldDescription>
+    </Field>
+  )
+}`
+
+      case "Combobox":
+        return `import { Combobox } from "@/components/ui/combobox"
+
+const frameworks = [
+  { value: "next.js", label: "Next.js" },
+  { value: "sveltekit", label: "SvelteKit" },
+  { value: "nuxt.js", label: "Nuxt.js" },
+  { value: "remix", label: "Remix" },
+  { value: "astro", label: "Astro" },
+]
+
+export function ComboboxDemo() {
+  return (
+    <Combobox
+      options={frameworks}
+      placeholder="Select framework..."
+    />
+  )
+}`
+
+      default:
+        return `${componentData.importCode}\n\nexport function ${componentData.name.replace(/[^a-zA-Z0-9]/g, "")}Demo() {\n  return (\n    <div className="flex items-center justify-center p-6">\n      ${componentData.usageCode}\n    </div>\n  )\n}`
+    }
+  }
+
+  const renderHighlightedLine = (line: string) => {
+    if (!line.trim()) return <span>&nbsp;</span>
+
+    const parts = line.split(
+      /(".*?"|'.*?'|`.*?`|\b(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)\b|[{}\[\](),;<>])/g
+    )
+
+    return (
+      <span>
+        {parts.map((part, index) => {
+          if (!part) return null
+          if (
+            (part.startsWith('"') && part.endsWith('"')) ||
+            (part.startsWith("'") && part.endsWith("'")) ||
+            (part.startsWith("`") && part.endsWith("`"))
+          ) {
+            return (
+              <span key={index} className="text-emerald-400">
+                {part}
+              </span>
+            )
+          }
+          if (
+            /^(?:import|from|export|function|const|let|var|return|default|interface|type|class|extends|public|private)$/.test(
+              part
+            )
+          ) {
+            return (
+              <span key={index} className="text-purple-400 font-medium">
+                {part}
+              </span>
+            )
+          }
+          if (/^[<>]/.test(part)) {
+            return (
+              <span key={index} className="text-pink-400 font-medium">
+                {part}
+              </span>
+            )
+          }
+          if (/^[{}[\](),;]$/.test(part)) {
+            return (
+              <span key={index} className="text-[var(--text-muted)]">
+                {part}
+              </span>
+            )
+          }
+          return (
+            <span key={index} className="text-[var(--text-main)]">
+              {part}
+            </span>
+          )
+        })}
+      </span>
+    )
   }
 
   const renderLivePreview = () => {
@@ -241,6 +662,22 @@ export function ShadcnComponentDetail({
           </div>
         )
 
+      case "Slider":
+        return (
+          <div className="w-full max-w-sm space-y-4 p-4">
+            <div className="flex justify-between type-caption text-[var(--text-muted)] font-mono">
+              <span>Volume</span>
+              <span>{sliderVal[0]}%</span>
+            </div>
+            <Slider
+              value={sliderVal}
+              onValueChange={setSliderVal}
+              max={100}
+              step={1}
+            />
+          </div>
+        )
+
       case "Questionnaire":
         return (
           <div className="w-full max-w-md rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-6 space-y-5">
@@ -271,6 +708,108 @@ export function ShadcnComponentDetail({
             <div className="flex justify-between pt-2">
               <Button variant="ghost" size="sm">Back</Button>
               <Button size="sm">Continue</Button>
+            </div>
+          </div>
+        )
+
+      case "Button Group":
+        return (
+          <div className="inline-flex rounded-lg shadow-sm" role="group">
+            <button className="px-4 py-2 text-xs font-medium bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-l-lg hover:bg-[var(--bg-subtle)] text-[var(--text-main)] transition-colors">
+              Left
+            </button>
+            <button className="px-4 py-2 text-xs font-medium bg-[var(--bg-card)] border-t border-b border-r border-[var(--border-subtle)] hover:bg-[var(--bg-subtle)] text-[var(--text-main)] transition-colors">
+              Middle
+            </button>
+            <button className="px-4 py-2 text-xs font-medium bg-[var(--bg-card)] border-t border-b border-r border-[var(--border-subtle)] rounded-r-lg hover:bg-[var(--bg-subtle)] text-[var(--text-main)] transition-colors">
+              Right
+            </button>
+          </div>
+        )
+
+      case "Bubble":
+        return (
+          <div className="w-full max-w-md space-y-3">
+            <div className="flex items-start gap-2.5">
+              <Avatar className="size-7">
+                <AvatarFallback className="text-[10px] bg-blue-600 text-white font-semibold">AI</AvatarFallback>
+              </Avatar>
+              <div className="rounded-2xl rounded-tl-sm bg-[var(--bg-card)] border border-[var(--border-subtle)] px-4 py-2.5 text-xs text-[var(--text-main)] shadow-sm max-w-[85%]">
+                Hello! How can I assist you with your project today?
+              </div>
+            </div>
+            <div className="flex items-start justify-end gap-2.5">
+              <div className="rounded-2xl rounded-tr-sm bg-blue-600 text-white px-4 py-2.5 text-xs shadow-sm max-w-[85%]">
+                I'm building an interface with shadcn/ui and React!
+              </div>
+              <Avatar className="size-7">
+                <AvatarFallback className="text-[10px] bg-[var(--bg-subtle)] text-[var(--text-main)] font-semibold">ME</AvatarFallback>
+              </Avatar>
+            </div>
+          </div>
+        )
+
+      case "Calendar":
+        return (
+          <div className="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-sm text-center">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--border-subtle)]">
+              <span className="type-caption font-semibold text-[var(--text-main)]">September 2026</span>
+              <div className="flex items-center gap-1">
+                <button className="size-6 flex items-center justify-center rounded hover:bg-[var(--bg-subtle)] text-[var(--text-muted)] text-sm">‹</button>
+                <button className="size-6 flex items-center justify-center rounded hover:bg-[var(--bg-subtle)] text-[var(--text-muted)] text-sm">›</button>
+              </div>
+            </div>
+            <div className="grid grid-cols-7 gap-1 text-[11px] text-[var(--text-muted)] font-mono mb-2">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div className="grid grid-cols-7 gap-1 text-xs">
+              {Array.from({ length: 30 }, (_, i) => i + 1).map((d) => (
+                <button
+                  key={d}
+                  className={`size-7 rounded-md flex items-center justify-center transition-colors ${
+                    d === 26
+                      ? "bg-[var(--text-main)] text-[var(--bg-page)] font-bold shadow"
+                      : "hover:bg-[var(--bg-subtle)] text-[var(--text-main)]"
+                  }`}
+                >
+                  {d}
+                </button>
+              ))}
+            </div>
+          </div>
+        )
+
+      case "Attachment":
+        return (
+          <div className="flex items-center gap-3 p-3 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] max-w-sm">
+            <div className="size-9 rounded-lg bg-[var(--bg-subtle)] flex items-center justify-center text-[var(--text-main)] font-mono text-[10px] font-bold">
+              PDF
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-xs font-medium text-[var(--text-main)] truncate">Quarterly_Report_2026.pdf</div>
+              <div className="text-[11px] text-[var(--text-muted)]">2.4 MB • Ready</div>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              Active
+            </span>
+          </div>
+        )
+
+      case "Field":
+        return (
+          <div className="w-full max-w-sm space-y-1.5">
+            <label className="type-caption font-medium text-[var(--text-main)]">Email address</label>
+            <Input type="email" placeholder="m@example.com" />
+            <p className="type-caption text-[var(--text-muted)]">We will never share your email with third parties.</p>
+          </div>
+        )
+
+      case "Combobox":
+        return (
+          <div className="w-full max-w-xs space-y-2">
+            <div className="flex items-center justify-between p-2.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] text-xs text-[var(--text-muted)]">
+              <span>Next.js</span>
+              <ChevronDown className="size-4" />
             </div>
           </div>
         )
@@ -341,30 +880,101 @@ export function ShadcnComponentDetail({
           {renderLivePreview()}
         </div>
 
-        {/* Code Snippet Preview & "View Code" bar matching user screenshot */}
-        <div className="border-t border-[var(--border-subtle)] bg-[var(--bg-page)]/70 p-4 font-mono text-xs relative">
-          <div className="overflow-hidden max-h-24 opacity-60">
-            <div className="text-[var(--text-muted)]">1  import Link from "next/link"</div>
-            <div className="text-[var(--text-muted)]">2</div>
-            <div className="text-[var(--text-muted)]">3  import &#123;</div>
-          </div>
+        {/* Code Snippet Preview & "View Code" toggle */}
+        {!isCodeExpanded ? (
+          <div className="border-t border-[var(--border-subtle)] bg-[var(--bg-page)]/80 p-4 font-mono text-xs relative select-none">
+            {/* Show real first 3 lines of demo code */}
+            <div className="overflow-hidden max-h-20 opacity-60 space-y-1">
+              {getComponentDemoCode()
+                .trim()
+                .split("\n")
+                .slice(0, 3)
+                .map((line, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <span className="text-[var(--text-muted)]/50 select-none w-4 text-right shrink-0">
+                      {idx + 1}
+                    </span>
+                    <span className="text-[var(--text-muted)] truncate">{line}</span>
+                  </div>
+                ))}
+            </div>
 
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)]/80 to-transparent">
-            <button
-              onClick={() => setIsCodeExpanded(!isCodeExpanded)}
-              className="px-4 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] type-link-12 text-[var(--text-main)] shadow-lg transition-colors"
-            >
-              {isCodeExpanded ? "Collapse Code" : "View Code"}
-            </button>
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[var(--bg-page)] via-[var(--bg-page)]/80 to-transparent">
+              <button
+                onClick={() => setIsCodeExpanded(true)}
+                className="px-4 py-1.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] type-link-12 text-[var(--text-main)] shadow-lg transition-colors flex items-center gap-1.5"
+              >
+                <Code2 className="size-3.5" />
+                <span>View Code</span>
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          /* Full expanded code block with Mac style header */
+          <div className="border-t border-[var(--border-subtle)] bg-[var(--bg-page)] font-mono text-xs overflow-hidden transition-all duration-300">
+            <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60 select-none">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5 group/dots">
+                  <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
+                  <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
+                  <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
+                </div>
+                <div className="h-3 w-px bg-[var(--border-subtle)]" />
+                <span className="font-bold text-[10px] bg-[var(--bg-card)] border border-[var(--border-subtle)] px-1.5 py-0.5 rounded text-[var(--text-main)] font-mono">
+                  TS
+                </span>
+                <span className="text-[var(--text-muted)] font-mono text-xs">
+                  components/ui/{componentData.id}-demo.tsx
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsCodeExpanded(false)}
+                  className="px-2.5 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors"
+                >
+                  Collapse Code
+                </button>
+                <button
+                  onClick={() => handleCopy(getComponentDemoCode(), "preview-demo")}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] text-xs text-[var(--text-main)] transition-colors"
+                >
+                  {copiedSection === "preview-demo" ? (
+                    <>
+                      <Check className="size-3.5 text-emerald-400" />
+                      <span className="text-emerald-400">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="size-3.5 text-[var(--text-muted)]" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
 
-        {/* Expanded code view if toggled */}
-        {isCodeExpanded && (
-          <div className="border-t border-[var(--border-subtle)] p-4 bg-[var(--bg-page)] font-mono text-xs overflow-x-auto text-[var(--text-main)]">
-            <pre className="leading-relaxed">
-              <code>{componentData.usageCode}</code>
-            </pre>
+            <div className="p-4 overflow-x-auto max-h-[500px] leading-relaxed text-[var(--text-main)]">
+              {getComponentDemoCode()
+                .trim()
+                .split("\n")
+                .map((line, idx) => (
+                  <div key={idx} className="flex gap-4 hover:bg-[var(--bg-subtle)]/30 px-1 py-0.5 rounded">
+                    <span className="text-[var(--text-muted)]/60 select-none w-6 text-right shrink-0">
+                      {idx + 1}
+                    </span>
+                    <span className="whitespace-pre">{renderHighlightedLine(line)}</span>
+                  </div>
+                ))}
+            </div>
+
+            <div className="flex justify-end p-2 border-t border-[var(--border-subtle)] bg-[var(--bg-subtle)]/30">
+              <button
+                onClick={() => setIsCodeExpanded(false)}
+                className="px-3 py-1 rounded text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-colors"
+              >
+                Collapse Code
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -757,7 +1367,9 @@ export function ShadcnComponentDetail({
               <span className="type-small-body text-[var(--text-muted)]">
                 Perform an immediate synchronization on this resource.
               </span>
-              <Button size="sm">Execute Action</Button>
+              <Button size="sm" variant="outline">
+                Remote Action
+              </Button>
             </div>
           </div>
 
@@ -821,6 +1433,40 @@ export function ShadcnComponentDetail({
             )
           })}
         </div>
+      </div>
+
+      {/* Bottom Navigation matching Shadcn Docs (media_1790405329387.png) */}
+      <div className="flex items-center justify-between pt-8 pb-16 border-t border-[var(--border-subtle)] mt-12">
+        {prev.name ? (
+          <a
+            href={prev.url}
+            onClick={(e) => {
+              e.preventDefault()
+              onSelectComponent(prev.name)
+            }}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] hover:text-[var(--text-main)] text-[var(--text-muted)] type-small-body font-medium transition-colors shadow-sm"
+          >
+            <ChevronLeft className="size-4" />
+            <span>{prev.name}</span>
+          </a>
+        ) : (
+          <div />
+        )}
+        {next.name ? (
+          <a
+            href={next.url}
+            onClick={(e) => {
+              e.preventDefault()
+              onSelectComponent(next.name)
+            }}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] hover:text-[var(--text-main)] text-[var(--text-muted)] type-small-body font-medium transition-colors shadow-sm"
+          >
+            <span>{next.name}</span>
+            <ChevronRight className="size-4" />
+          </a>
+        ) : (
+          <div />
+        )}
       </div>
     </div>
   )
