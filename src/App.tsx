@@ -71,6 +71,46 @@ function AppContent() {
     }
   }, [])
 
+  // Global keyboard shortcuts (Ctrl+K, Cmd+K, / to search, Escape to close)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Check for Ctrl+K or Cmd+K (both lowercase and uppercase 'K')
+      if ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) {
+        e.preventDefault()
+        e.stopPropagation()
+        setIsSearchOpen((prev) => !prev)
+        return
+      }
+
+      // Shortcut '/' to search when not typing in an input/textarea/editable element
+      const activeEl = document.activeElement
+      const isInput =
+        activeEl &&
+        (activeEl.tagName === "INPUT" ||
+          activeEl.tagName === "TEXTAREA" ||
+          (activeEl as HTMLElement).isContentEditable)
+
+      if (e.key === "/" && !isInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault()
+        setIsSearchOpen(true)
+        return
+      }
+
+      // Escape key to close search or mobile menu
+      if (e.key === "Escape") {
+        if (isSearchOpen) {
+          e.preventDefault()
+          setIsSearchOpen(false)
+        } else if (isMobileMenuOpen) {
+          setIsMobileMenuOpen(false)
+        }
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isSearchOpen, isMobileMenuOpen])
+
   // Update document title whenever component or section changes
   useEffect(() => {
     if (selectedComponent) {
