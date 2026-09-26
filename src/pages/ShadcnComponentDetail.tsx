@@ -216,6 +216,8 @@ import { CometCardDemo } from "@/components/ui/comet-card-demo"
 import { CometCardGuide } from "@/components/ui/comet-card-guide"
 import { FocusCardsDemo } from "@/components/ui/focus-cards-demo"
 import { FocusCardsGuide } from "@/components/ui/focus-cards-guide"
+import { LensDemo } from "@/components/ui/lens-demo"
+import { LensGuide } from "@/components/ui/lens-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1213,6 +1215,36 @@ export function FocusCardsDemo() {
   ]
 
   return <FocusCards cards={cards} />
+}`
+
+      case "Lens":
+        return `import React, { useState } from "react"
+import { Lens } from "@/components/ui/lens"
+import { motion } from "framer-motion"
+
+export function LensDemo() {
+  const [hovering, setHovering] = useState(false)
+
+  return (
+    <div className="w-full relative rounded-3xl overflow-hidden max-w-md mx-auto bg-gradient-to-r from-[#1D2235] to-[#121318] p-8 border border-neutral-800 shadow-2xl">
+      <Lens hovering={hovering} setHovering={setHovering} zoomFactor={1.5} lensSize={170}>
+        <img
+          src="https://images.unsplash.com/photo-1713869820987-519844949a8a?q=80&w=3500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Apple Vision Pro"
+          className="rounded-2xl w-full object-cover"
+        />
+      </Lens>
+      <motion.div
+        animate={{ filter: hovering ? "blur(2px)" : "blur(0px)" }}
+        className="py-4 relative z-20"
+      >
+        <h2 className="text-white text-2xl font-bold">Apple Vision Pro</h2>
+        <p className="text-neutral-200 mt-4 text-sm">
+          The all new apple vision pro was the best thing that happened around 8 months ago, not anymore.
+        </p>
+      </motion.div>
+    </div>
+  )
 }`
 
       case "Button":
@@ -3674,6 +3706,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Lens":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <LensDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4424,6 +4463,8 @@ export function ScrollAreaDemo() {
         <CometCardGuide />
       ) : componentData.name === "Focus Cards" ? (
         <FocusCardsGuide />
+      ) : componentData.name === "Lens" ? (
+        <LensGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

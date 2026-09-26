@@ -53,6 +53,7 @@ import { CardSpotlightBlockPreview } from "@/components/ui/card-spotlight-demo"
 import { BackgroundRippleEffectBlockPreview } from "@/components/ui/background-ripple-effect-demo"
 import { CometCardBlockPreview } from "@/components/ui/comet-card-demo"
 import { FocusCardsBlockPreview } from "@/components/ui/focus-cards-demo"
+import { LensBlockPreview } from "@/components/ui/lens-demo"
 
 interface BlockItem {
   id: string
@@ -454,6 +455,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "Hover over the card to focus on it, blurring the rest of the cards.",
       cliCommand: "npx shadcn@latest add @aceternity/focus-cards-demo",
       renderPreview: () => <FocusCardsBlockPreview />,
+    },
+    {
+      id: "lens",
+      title: "Lens",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Lens",
+      description:
+        "A lens component to zoom into images, videos, or practically anything.",
+      cliCommand: "npx shadcn@latest add @aceternity/lens-demo",
+      renderPreview: () => <LensBlockPreview />,
     },
   ]
 

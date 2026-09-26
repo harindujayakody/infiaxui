@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -22,6 +22,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Card Spotlight",
     "Comet Card",
     "Focus Cards",
+    "Lens",
     "Dia Text Reveal",
     "Dot Pattern",
     "Particles",
@@ -1216,6 +1217,26 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "index",
       "hovered",
       "setHovered",
+    ],
+  },
+  "Lens": {
+    id: "lens",
+    name: "Lens",
+    description: "A lens component to zoom into images, videos, or practically anything.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/lens-demo",
+    importCode: `import { Lens } from "@/components/ui/lens"`,
+    usageCode: `<Lens zoomFactor={1.5} lensSize={170}>\n  <img src="/image.jpg" alt="Zoom target" />\n</Lens>`,
+    apiReference: [
+      "Lens",
+      "children",
+      "zoomFactor",
+      "lensSize",
+      "position",
+      "isStatic",
+      "isFocusing",
+      "hovering",
+      "setHovering",
     ],
   },
 }
