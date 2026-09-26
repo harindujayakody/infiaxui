@@ -99,33 +99,11 @@ export function CodeBlock({
       {/* Mac Style Code Header */}
       <div className="flex items-center justify-between border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/60 px-4 py-2.5 text-xs select-none">
         <div className="flex items-center gap-3">
-          {/* macOS Window Controls */}
-          <div className="flex items-center gap-1.5 group/dots">
-            <span
-              className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
-              title="Close"
-            >
-              <span className="opacity-0 group-hover/dots:opacity-100 text-[8px] text-[#4A0002] leading-none font-bold">
-                ✕
-              </span>
-            </span>
-            <span
-              className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
-              title="Minimize"
-            >
-              <span className="opacity-0 group-hover/dots:opacity-100 text-[8px] text-[#402A00] leading-none font-bold">
-                −
-              </span>
-            </span>
-            <span
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
-              title="Expand / Collapse"
-            >
-              <span className="opacity-0 group-hover/dots:opacity-100 text-[7px] text-[#003800] leading-none font-black">
-                {isExpanded ? "⤡" : "⤢"}
-              </span>
-            </span>
+          {/* Static macOS Window Controls */}
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            <span className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
+            <span className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
+            <span className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
           </div>
 
           <div className="h-3 w-px bg-[var(--border-subtle)]" />

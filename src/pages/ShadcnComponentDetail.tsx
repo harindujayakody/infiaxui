@@ -914,7 +914,7 @@ export function ComboboxDemo() {
           <div className="border-t border-[var(--border-subtle)] bg-[var(--bg-page)] font-mono text-xs overflow-hidden transition-all duration-300">
             <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/60 select-none">
               <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5 group/dots">
+                <div className="flex items-center gap-1.5" aria-hidden="true">
                   <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
                   <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
                   <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
@@ -1057,33 +1057,11 @@ export function ComboboxDemo() {
             <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs shadow-md">
               <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/60 select-none">
                 <div className="flex items-center gap-3">
-                  {/* macOS Window Controls */}
-                  <div className="flex items-center gap-1.5 group/dots">
-                    <span
-                      className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
-                      title="Close"
-                    >
-                      <span className="opacity-0 group-hover/dots:opacity-100 text-[8px] text-[#4A0002] leading-none font-bold">
-                        ✕
-                      </span>
-                    </span>
-                    <span
-                      className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
-                      title="Minimize"
-                    >
-                      <span className="opacity-0 group-hover/dots:opacity-100 text-[8px] text-[#402A00] leading-none font-bold">
-                        −
-                      </span>
-                    </span>
-                    <span
-                      onClick={() => setIsManualExpanded(!isManualExpanded)}
-                      className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center transition-all hover:brightness-95 cursor-pointer"
-                      title={isManualExpanded ? "Collapse" : "Expand"}
-                    >
-                      <span className="opacity-0 group-hover/dots:opacity-100 text-[7px] text-[#003800] leading-none font-black">
-                        {isManualExpanded ? "⤡" : "⤢"}
-                      </span>
-                    </span>
+                  {/* Static macOS Window Controls */}
+                  <div className="flex items-center gap-1.5" aria-hidden="true">
+                    <span className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
+                    <span className="size-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
+                    <span className="size-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
                   </div>
 
                   <div className="h-3 w-px bg-[var(--border-subtle)]" />

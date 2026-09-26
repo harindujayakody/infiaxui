@@ -138,7 +138,7 @@ export function ShadcnChangelog() {
         <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm shadow-md">
           <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50 select-none">
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5 group/dots">
+              <div className="flex items-center gap-1.5" aria-hidden="true">
                 <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
                 <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
                 <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
@@ -345,7 +345,7 @@ export function ShadcnChangelog() {
         <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden font-mono text-xs sm:text-sm shadow-md">
           <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)]/50 select-none">
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5 group/dots">
+              <div className="flex items-center gap-1.5" aria-hidden="true">
                 <span className="size-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block" />
                 <span className="size-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/80 inline-block" />
                 <span className="size-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/80 inline-block" />
