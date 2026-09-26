@@ -184,6 +184,8 @@ import { ThreeDCardDemo } from "@/components/ui/three-d-card-demo"
 import { ThreeDCardGuide } from "@/components/ui/three-d-card-guide"
 import { AnimatedShinyTextDemo } from "@/components/magicui/animated-shiny-text-demo"
 import { AnimatedShinyTextGuide } from "@/components/magicui/animated-shiny-text-guide"
+import { ScrollBasedVelocityDemo } from "@/components/magicui/scroll-based-velocity-demo"
+import { ScrollBasedVelocityGuide } from "@/components/magicui/scroll-based-velocity-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -721,6 +723,30 @@ export function AnimatedShinyTextDemo() {
           <ArrowRight className="ml-1.5 size-3.5 text-zinc-400 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:text-zinc-200" />
         </AnimatedShinyText>
       </div>
+    </div>
+  )
+}`
+
+      case "Scroll Based Velocity":
+        return `import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/magicui/scroll-based-velocity"
+
+export function ScrollBasedVelocityDemo() {
+  return (
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-10 select-none">
+      <ScrollVelocityContainer className="w-full text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none">
+        <ScrollVelocityRow baseVelocity={12} direction={1} className="py-2 sm:py-3">
+          <span className="mx-4 text-white">ScrollVelocity</span>
+        </ScrollVelocityRow>
+        <ScrollVelocityRow baseVelocity={12} direction={-1} className="py-2 sm:py-3">
+          <span className="mx-4 text-white">ScrollVelocity</span>
+        </ScrollVelocityRow>
+      </ScrollVelocityContainer>
+
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 sm:w-1/3 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 sm:w-1/3 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10" />
     </div>
   )
 }`
@@ -3072,6 +3098,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Scroll Based Velocity":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ScrollBasedVelocityDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3790,6 +3823,8 @@ export function ScrollAreaDemo() {
         <ThreeDCardGuide />
       ) : componentData.name === "Animated Shiny Text" ? (
         <AnimatedShinyTextGuide />
+      ) : componentData.name === "Scroll Based Velocity" ? (
+        <ScrollBasedVelocityGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

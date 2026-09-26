@@ -37,6 +37,7 @@ import { BentoGridBlockPreview } from "@/components/magicui/bento-grid-demo"
 import { RainbowButtonBlockPreview } from "@/components/magicui/rainbow-button-demo"
 import { ThreeDCardBlockPreview } from "@/components/ui/three-d-card-demo"
 import { AnimatedShinyTextBlockPreview } from "@/components/magicui/animated-shiny-text-demo"
+import { ScrollBasedVelocityBlockPreview } from "@/components/magicui/scroll-based-velocity-demo"
 
 interface BlockItem {
   id: string
@@ -262,6 +263,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A light glare effect which pans across text making it appear as if it is shimmering.",
       cliCommand: "npx shadcn@latest add @magicui/animated-shiny-text",
       renderPreview: () => <AnimatedShinyTextBlockPreview />,
+    },
+    {
+      id: "scroll-based-velocity",
+      title: "Scroll Based Velocity",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Scroll Based Velocity",
+      description:
+        "Scrolling text whose speed changes based on scroll speed.",
+      cliCommand: "npx shadcn@latest add @magicui/scroll-based-velocity",
+      renderPreview: () => <ScrollBasedVelocityBlockPreview />,
     },
   ]
 
