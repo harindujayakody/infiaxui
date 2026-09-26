@@ -722,6 +722,17 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout support & API reference",
     ],
   },
+  "Sonner": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Opinionated toast notifications by Emil Kowalski",
+      "Interactive toast playground with description and action callbacks",
+      "Semantic status types (success, info, warning, error) & Promise toasts",
+      "4-corner viewport positioning (top/bottom-left/right)",
+      "RTL layout mirroring & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

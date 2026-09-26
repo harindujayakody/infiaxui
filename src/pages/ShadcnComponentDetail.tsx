@@ -135,6 +135,7 @@ import { AlertDialogGuide } from "@/components/shadcn/alert-dialog-guide"
 import { AspectRatioGuide } from "@/components/shadcn/aspect-ratio-guide"
 import { AttachmentGuide } from "@/components/shadcn/attachment-guide"
 import { ButtonGuide } from "@/components/shadcn/button-guide"
+import { SonnerGuide } from "@/components/shadcn/sonner-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2926,6 +2927,8 @@ export function ChartDemo() {
         <AttachmentGuide />
       ) : componentData.name === "Button" ? (
         <ButtonGuide />
+      ) : componentData.name === "Sonner" ? (
+        <SonnerGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}
