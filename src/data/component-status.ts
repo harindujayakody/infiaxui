@@ -630,6 +630,47 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout support & API reference",
     ],
   },
+  "Carousel": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Motion & swipe slide carousel built with Embla patterns",
+      "Progress bar and slide index counter",
+      "Responsive basis sizing and spacing (-ml-4 / pl-4)",
+      "RTL orientation and navigation button rotation",
+      "API reference",
+    ],
+  },
+  "Card": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter",
+      "Size presets (size='default' | 'sm')",
+      "CSS variable --card-spacing control & edge-to-edge content",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Calendar": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "React DayPicker v9 integration with single & range date selection",
+      "Timezone support to prevent SSR hydration offsets",
+      "RTL-aware logical classes & Arabic/Hijri locale support",
+      "API reference",
+    ],
+  },
+  "Button Group": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Segmented action button toolbars (ButtonGroup, Separator, Text)",
+      "Horizontal and vertical orientations",
+      "Split button with dropdown menu action trigger",
+      "RTL layout mirroring & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

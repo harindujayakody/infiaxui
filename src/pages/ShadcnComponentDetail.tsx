@@ -126,6 +126,10 @@ import { ComboboxGuide } from "@/components/shadcn/combobox-guide"
 import { CollapsibleGuide } from "@/components/shadcn/collapsible-guide"
 import { CheckboxGuide } from "@/components/shadcn/checkbox-guide"
 import { ChartGuide } from "@/components/shadcn/chart-guide"
+import { CarouselGuide } from "@/components/shadcn/carousel-guide"
+import { CardGuide } from "@/components/shadcn/card-guide"
+import { CalendarGuide } from "@/components/shadcn/calendar-guide"
+import { ButtonGroupGuide } from "@/components/shadcn/button-group-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2899,6 +2903,14 @@ export function ChartDemo() {
         <CheckboxGuide />
       ) : componentData.name === "Chart" ? (
         <ChartGuide />
+      ) : componentData.name === "Carousel" ? (
+        <CarouselGuide />
+      ) : componentData.name === "Card" ? (
+        <CardGuide />
+      ) : componentData.name === "Calendar" ? (
+        <CalendarGuide />
+      ) : componentData.name === "Button Group" ? (
+        <ButtonGroupGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}
