@@ -100,6 +100,10 @@ import { QuestionnaireGuide } from "@/components/shadcn/questionnaire-guide"
 import { ProgressGuide } from "@/components/shadcn/progress-guide"
 import { PopoverGuide } from "@/components/shadcn/popover-guide"
 import { NavigationMenuGuide } from "@/components/shadcn/navigation-menu-guide"
+import { PaginationGuide } from "@/components/shadcn/pagination-guide"
+import { NativeSelectGuide } from "@/components/shadcn/native-select-guide"
+import { MessageScrollerGuide } from "@/components/shadcn/message-scroller-guide"
+import { MessageGuide } from "@/components/shadcn/message-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2821,6 +2825,14 @@ export function ChartDemo() {
         <PopoverGuide />
       ) : componentData.name === "Navigation Menu" ? (
         <NavigationMenuGuide />
+      ) : componentData.name === "Pagination" ? (
+        <PaginationGuide />
+      ) : componentData.name === "Native Select" ? (
+        <NativeSelectGuide />
+      ) : componentData.name === "Message Scroller" ? (
+        <MessageScrollerGuide />
+      ) : componentData.name === "Message" ? (
+        <MessageGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}

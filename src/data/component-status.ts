@@ -351,6 +351,53 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "RTL layout support & API reference",
     ],
   },
+  "Pagination": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Page navigation with previous/next buttons and ellipsis",
+      "Interactive page switching demo",
+      "Simple numeric pagination and compact icon-only mode",
+      "Next.js Link component integration guide",
+      "RTL support with customizable text prop on buttons",
+      "API reference",
+    ],
+  },
+  "Native Select": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Native HTML select with styled design system integration",
+      "NativeSelectOptGroup for categorized options",
+      "Disabled and invalid error validation states",
+      "Native Select vs Custom Select comparison guide",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Message Scroller": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Streaming chat scroll container with turn anchoring",
+      "Follows live streaming output without jarring jumps",
+      "Jump to latest floating button with unread awareness",
+      "Preserves scroll position when prepending history",
+      "content-visibility: auto performance optimizations",
+      "Live region accessibility & API reference",
+    ],
+  },
+  "Message": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Single message row layout with avatar, header, and footer",
+      "Start (received) and end (sent) conversation alignments",
+      "MessageGroup for stacking consecutive messages",
+      "MessageFooter actions (copy, feedback, retry)",
+      "File attachment preview card support",
+      "Live status indicator accessibility & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {
