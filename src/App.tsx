@@ -5,6 +5,7 @@ import { ShadcnSidebar } from "@/components/layout/ShadcnSidebar"
 import { ShadcnRightToc } from "@/components/layout/ShadcnRightToc"
 import { ShadcnComponentsCatalog } from "@/pages/ShadcnComponentsCatalog"
 import { ShadcnComponentDetail } from "@/pages/ShadcnComponentDetail"
+import { ShadcnChangelog } from "@/pages/ShadcnChangelog"
 import { SHADCN_COMPONENTS_DETAIL } from "@/data/shadcn-components"
 import { CommandPalette } from "@/components/layout/CommandPalette"
 
@@ -17,14 +18,13 @@ function AppContent() {
 
   const handleSelectComponent = (compName: string) => {
     setSelectedComponent(compName)
+    setActiveSection("Components")
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   const handleSelectSection = (section: string) => {
     setActiveSection(section)
-    if (section === "Components") {
-      setSelectedComponent(null) // show catalog
-    }
+    setSelectedComponent(null) // show section page (e.g. Changelog or Catalog)
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
@@ -39,7 +39,12 @@ function AppContent() {
         activeTab={activeNavTab}
         onTabChange={(tab) => {
           setActiveNavTab(tab)
-          if (tab === "Components") {
+          if (tab === "Changelog") {
+            setActiveSection("Changelog")
+            setSelectedComponent(null)
+            window.scrollTo({ top: 0, behavior: "smooth" })
+          } else if (tab === "Components") {
+            setActiveSection("Components")
             setSelectedComponent(null)
           }
         }}
@@ -64,6 +69,8 @@ function AppContent() {
               onSelectComponent={handleSelectComponent}
               onBackToCatalog={() => setSelectedComponent(null)}
             />
+          ) : activeSection === "Changelog" ? (
+            <ShadcnChangelog />
           ) : (
             <ShadcnComponentsCatalog
               onSelectComponent={handleSelectComponent}
@@ -73,7 +80,13 @@ function AppContent() {
 
         {/* Right Table of Contents & Vercel Deploy Card */}
         <ShadcnRightToc
-          view={selectedComponent ? "detail" : "catalog"}
+          view={
+            selectedComponent
+              ? "detail"
+              : activeSection === "Changelog"
+              ? "changelog"
+              : "catalog"
+          }
           componentName={selectedComponent || undefined}
           apiReference={currentCompData?.apiReference}
         />
@@ -85,6 +98,7 @@ function AppContent() {
         onClose={() => setIsSearchOpen(false)}
         onSelectComponent={(name) => {
           setSelectedComponent(name)
+          setActiveSection("Components")
         }}
       />
     </div>

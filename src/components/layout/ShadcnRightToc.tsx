@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 
 interface ShadcnRightTocProps {
-  view: "catalog" | "detail"
+  view: "catalog" | "detail" | "changelog"
   componentName?: string
   apiReference?: string[]
 }
@@ -13,6 +13,26 @@ export function ShadcnRightToc({ view, componentName, apiReference }: ShadcnRigh
 
   // Dynamic items based on current view & component (matches exact official screenshots)
   const getTocItems = () => {
+    if (view === "changelog") {
+      return [
+        { id: "september-2026-cn", label: "September 2026 - cn" },
+        { id: "what-changed", label: "What changed" },
+        { id: "lib-utils", label: "lib/utils.ts" },
+        { id: "existing-projects", label: "Existing projects" },
+        { id: "august-2026-registries", label: "August 2026 - Private GitHub Registries" },
+        { id: "zero-configuration", label: "Zero configuration" },
+        { id: "ci-support", label: "CI support" },
+        { id: "works-with-every-command", label: "Works with every command" },
+        { id: "how-it-works", label: "How it works" },
+        { id: "august-2026-human-in-the-loop", label: "August 2026 - Human in the Loop" },
+        { id: "august-2026-questionnaire", label: "August 2026 - Questionnaire" },
+        { id: "questionnaire-features", label: "Features" },
+        { id: "questionnaire-installation", label: "Installation" },
+        { id: "july-2026-dynamic-search", label: "July 2026 - Dynamic Search" },
+        { id: "more-updates", label: "More Updates" },
+      ]
+    }
+
     if (view === "catalog") {
       return [
         { id: "new-components", label: "New Components" },
@@ -51,7 +71,12 @@ export function ShadcnRightToc({ view, componentName, apiReference }: ShadcnRigh
 
   // Reset active ID on component / view change
   useEffect(() => {
-    const defaultId = view === "catalog" ? "new-components" : "installation"
+    const defaultId =
+      view === "changelog"
+        ? "september-2026-cn"
+        : view === "catalog"
+        ? "new-components"
+        : "installation"
     setActiveId(defaultId)
   }, [componentName, view])
 

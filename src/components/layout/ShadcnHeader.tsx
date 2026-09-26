@@ -58,6 +58,16 @@ export function ShadcnHeader({ activeTab, onTabChange, onSearchClick }: ShadcnHe
             </kbd>
           </button>
 
+          {/* Version badge */}
+          <button
+            onClick={() => onTabChange("Changelog")}
+            className="hidden sm:inline-flex items-center gap-1.5 h-8 px-2.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-subtle)] type-link-12 font-mono text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
+            title="View latest v1.1.0 Changelog"
+          >
+            <span className="size-1.5 rounded-full bg-blue-500 animate-pulse" />
+            <span>v1.1.0</span>
+          </button>
+
           {/* GitHub 125k counter */}
           <a
             href="https://github.com/shadcn-ui/ui"
