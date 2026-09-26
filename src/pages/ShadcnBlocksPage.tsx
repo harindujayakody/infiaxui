@@ -36,6 +36,7 @@ import { TerminalBlockPreview } from "@/components/magicui/terminal-demo"
 import { BentoGridBlockPreview } from "@/components/magicui/bento-grid-demo"
 import { RainbowButtonBlockPreview } from "@/components/magicui/rainbow-button-demo"
 import { ThreeDCardBlockPreview } from "@/components/ui/three-d-card-demo"
+import { AnimatedShinyTextBlockPreview } from "@/components/magicui/animated-shiny-text-demo"
 
 interface BlockItem {
   id: string
@@ -250,6 +251,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A card perspective effect, hover over the card to elevate card elements.",
       cliCommand: "npx shadcn@latest add @aceternity/3d-card-demo",
       renderPreview: () => <ThreeDCardBlockPreview />,
+    },
+    {
+      id: "animated-shiny-text",
+      title: "Animated Shiny Text",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Animated Shiny Text",
+      description:
+        "A light glare effect which pans across text making it appear as if it is shimmering.",
+      cliCommand: "npx shadcn@latest add @magicui/animated-shiny-text",
+      renderPreview: () => <AnimatedShinyTextBlockPreview />,
     },
   ]
 

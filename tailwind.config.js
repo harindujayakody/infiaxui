@@ -104,6 +104,14 @@ export default {
           "0%": { "background-position": "0%" },
           "100%": { "background-position": "200%" },
         },
+        "shiny-text": {
+          "0%, 90%, 100%": {
+            "background-position": "calc(-100% - var(--shiny-width, 100px)) 0",
+          },
+          "30%, 60%": {
+            "background-position": "calc(100% + var(--shiny-width, 100px)) 0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -115,6 +123,7 @@ export default {
         marquee: "marquee var(--duration, 40s) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration, 40s) linear infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
+        "shiny-text": "shiny-text 8s infinite",
       },
     },
   },

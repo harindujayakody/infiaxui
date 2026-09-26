@@ -182,6 +182,8 @@ import { RainbowButtonDemo } from "@/components/magicui/rainbow-button-demo"
 import { RainbowButtonGuide } from "@/components/magicui/rainbow-button-guide"
 import { ThreeDCardDemo } from "@/components/ui/three-d-card-demo"
 import { ThreeDCardGuide } from "@/components/ui/three-d-card-guide"
+import { AnimatedShinyTextDemo } from "@/components/magicui/animated-shiny-text-demo"
+import { AnimatedShinyTextGuide } from "@/components/magicui/animated-shiny-text-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -700,6 +702,26 @@ export function ThreeDCardDemo() {
         </div>
       </CardBody>
     </CardContainer>
+  )
+}`
+
+      case "Animated Shiny Text":
+        return `import { ArrowRight } from "lucide-react"
+import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text"
+
+export function AnimatedShinyTextDemo() {
+  return (
+    <div className="z-10 flex min-h-[160px] items-center justify-center select-none">
+      <div className="group rounded-full border border-white/10 bg-[#161616] px-4 py-1.5 text-sm sm:text-base text-zinc-300 transition-all ease-in hover:cursor-pointer hover:border-zinc-700 hover:bg-zinc-800/90 shadow-lg inline-flex items-center">
+        <AnimatedShinyText className="inline-flex items-center justify-center transition ease-out hover:text-white hover:duration-300">
+          <span className="flex items-center gap-1.5">
+            <span className="text-amber-300 text-sm">✨</span>
+            <span>Introducing Magic UI</span>
+          </span>
+          <ArrowRight className="ml-1.5 size-3.5 text-zinc-400 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:text-zinc-200" />
+        </AnimatedShinyText>
+      </div>
+    </div>
   )
 }`
 
@@ -3043,6 +3065,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Animated Shiny Text":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <AnimatedShinyTextDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3759,6 +3788,8 @@ export function ScrollAreaDemo() {
         <RainbowButtonGuide />
       ) : componentData.name === "3D Card Effect" ? (
         <ThreeDCardGuide />
+      ) : componentData.name === "Animated Shiny Text" ? (
+        <AnimatedShinyTextGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

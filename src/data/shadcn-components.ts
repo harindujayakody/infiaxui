@@ -9,12 +9,13 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
   [
     "3D Card Effect",
+    "Animated Shiny Text",
     "Accordion",
     "Aspect Ratio",
     "Badge",
@@ -901,5 +902,21 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "as",
     ],
   },
+  "Animated Shiny Text": {
+    id: "animated-shiny-text",
+    name: "Animated Shiny Text",
+    description: "A light glare effect which pans across text making it appear as if it is shimmering.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/animated-shiny-text",
+    importCode: `import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text"`,
+    usageCode: `<AnimatedShinyText>\n  ✨ Introducing Magic UI →\n</AnimatedShinyText>`,
+    apiReference: [
+      "AnimatedShinyText",
+      "shimmerWidth",
+      "children",
+      "className",
+    ],
+  },
 }
+
 
