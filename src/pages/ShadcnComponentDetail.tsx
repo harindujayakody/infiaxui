@@ -2804,9 +2804,9 @@ export function ScrollAreaDemo() {
   return (
     <div className="flex-1 max-w-4xl py-8 px-4 sm:px-8 space-y-10">
       {/* Header section matching Screenshot 2 */}
-      <div className="flex items-start justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
-        <div className="space-y-1.5">
-          <h1 className="type-h1 text-[var(--text-main)]">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
+        <div className="space-y-1.5 min-w-0">
+          <h1 className="type-h1 text-[var(--text-main)] truncate">
             {componentData.name}
           </h1>
           <p className="type-body text-[var(--text-muted)] max-w-xl">
@@ -2826,12 +2826,12 @@ export function ScrollAreaDemo() {
       </div>
 
       {/* Framework Tabs: Base UI | React Aria | Radix UI matching Screenshot 2 */}
-      <div className="flex items-center gap-6 border-b border-[var(--border-subtle)]">
+      <div className="flex items-center gap-6 border-b border-[var(--border-subtle)] overflow-x-auto scrollbar-none">
         {(["Base UI", "React Aria", "Radix UI"] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setLibTab(tab)}
-            className={`pb-2.5 transition-colors relative type-link ${
+            className={`pb-2.5 transition-colors relative type-link shrink-0 ${
               libTab === tab
                 ? "text-[var(--text-main)] font-semibold"
                 : "text-[var(--text-muted)] hover:text-[var(--text-main)]"

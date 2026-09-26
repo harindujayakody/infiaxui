@@ -13,7 +13,7 @@ export function MacTitleBar({
   onSearchClick,
 }: MacTitleBarProps) {
   return (
-    <div className="h-9 w-full bg-[var(--bg-page)] border-b border-[var(--border-subtle)] flex items-center justify-between px-3.5 select-none text-xs relative z-40 transition-colors">
+    <div className="hidden md:flex h-9 w-full bg-[var(--bg-page)] border-b border-[var(--border-subtle)] items-center justify-between px-3.5 select-none text-xs relative z-40 transition-colors">
       {/* Left: Static macOS Window Controls */}
       <div className="flex items-center gap-2" aria-hidden="true">
         <span className="size-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/80 inline-block shadow-[0_0_1px_rgba(0,0,0,0.4)]" />

@@ -9,6 +9,7 @@ import { ShadcnComponentDetail } from "@/pages/ShadcnComponentDetail"
 import { ShadcnChangelog } from "@/pages/ShadcnChangelog"
 import { SHADCN_COMPONENTS_DETAIL } from "@/data/shadcn-components"
 import { CommandPalette } from "@/components/layout/CommandPalette"
+import { MobileNavDrawer } from "@/components/layout/MobileNavDrawer"
 import {
   parseCurrentRoute,
   getComponentUrl,
@@ -26,6 +27,7 @@ function AppContent() {
     initialRoute.view === "component" ? (initialRoute.componentName || "Button") : null
   )
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   // Listen to browser Back/Forward popstate events
   useEffect(() => {
@@ -160,6 +162,7 @@ function AppContent() {
             }
           }}
           onSearchClick={() => setIsSearchOpen(true)}
+          onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
         />
       </div>
 
@@ -203,6 +206,23 @@ function AppContent() {
           apiReference={currentCompData?.apiReference}
         />
       </div>
+
+      {/* Mobile Navigation Slide-Over Drawer */}
+      <MobileNavDrawer
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        currentSection={activeSection}
+        currentComponent={selectedComponent}
+        onSelectSection={(sec) => {
+          handleSelectSection(sec)
+          setIsMobileMenuOpen(false)
+        }}
+        onSelectComponent={(comp) => {
+          handleSelectComponent(comp)
+          setIsMobileMenuOpen(false)
+        }}
+        onSearchClick={() => setIsSearchOpen(true)}
+      />
 
       {/* Search Modal */}
       <CommandPalette
