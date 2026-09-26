@@ -135,6 +135,58 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "API reference",
     ],
   },
+  "Textarea": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Basic placeholder textarea",
+      "Field + FieldLabel + FieldDescription composition",
+      "Disabled state",
+      "Invalid state with aria-invalid & live error message",
+      "Button pairing with submit action",
+      "RTL text direction support",
+      "API reference",
+    ],
+  },
+  "Tabs": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Default pill-style TabsList",
+      "Line variant (border-bottom underline style)",
+      "Vertical orientation with side navigation",
+      "Individual tab disabled state",
+      "Icon + text tabs",
+      "RTL layout support",
+      "API reference",
+    ],
+  },
+  "Table": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Full composition guide (Table/Header/Body/Footer/Row/Head/Cell/Caption)",
+      "TableFooter totals row",
+      "Per-row actions with DropdownMenu",
+      "Live sortable Amount column",
+      "Status badges (Paid/Pending/Unpaid/Processing)",
+      "RTL layout support",
+      "API reference",
+    ],
+  },
+  "Switch": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Basic toggle with live state label",
+      "Label + description Field composition",
+      "Choice Card — full card as clickable label",
+      "Disabled (on & off)",
+      "Invalid state with aria-invalid",
+      "3 size variants (sm, default, lg)",
+      "RTL layout support & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

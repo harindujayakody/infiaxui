@@ -82,6 +82,10 @@ import { TooltipGuide } from "@/components/shadcn/tooltip-guide"
 import { ToggleGuide } from "@/components/shadcn/toggle-guide"
 import { ToggleGroupGuide } from "@/components/shadcn/toggle-group-guide"
 import { ToastGuide } from "@/components/shadcn/toast-guide"
+import { TextareaGuide } from "@/components/shadcn/textarea-guide"
+import { TabsGuide } from "@/components/shadcn/tabs-guide"
+import { TableGuide } from "@/components/shadcn/table-guide"
+import { SwitchGuide } from "@/components/shadcn/switch-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2767,6 +2771,14 @@ export function ChartDemo() {
         <ToggleGroupGuide />
       ) : componentData.name === "Toast" ? (
         <ToastGuide />
+      ) : componentData.name === "Textarea" ? (
+        <TextareaGuide />
+      ) : componentData.name === "Tabs" ? (
+        <TabsGuide />
+      ) : componentData.name === "Table" ? (
+        <TableGuide />
+      ) : componentData.name === "Switch" ? (
+        <SwitchGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}
