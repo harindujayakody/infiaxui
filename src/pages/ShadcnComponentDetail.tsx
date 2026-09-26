@@ -188,6 +188,8 @@ import { ScrollBasedVelocityDemo } from "@/components/magicui/scroll-based-veloc
 import { ScrollBasedVelocityGuide } from "@/components/magicui/scroll-based-velocity-guide"
 import { SmoothCursorDemo } from "@/components/magicui/smooth-cursor-demo"
 import { SmoothCursorGuide } from "@/components/magicui/smooth-cursor-guide"
+import { AnimatedListDemo } from "@/components/magicui/animated-list-demo"
+import { AnimatedListGuide } from "@/components/magicui/animated-list-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -763,6 +765,86 @@ export function SmoothCursorDemo() {
         Move your mouse around
       </p>
       <SmoothCursor />
+    </div>
+  )
+}`
+
+      case "Animated List":
+        return `import { AnimatedList } from "@/components/ui/animated-list"
+import { cn } from "@/lib/utils"
+
+interface Item {
+  name: string
+  description: string
+  icon: string
+  color: string
+  time: string
+}
+
+const notifications: Item[] = [
+  {
+    name: "Payment received",
+    description: "Magic UI",
+    time: "15m ago",
+    icon: "💸",
+    color: "#00C9A7",
+  },
+  {
+    name: "User signed up",
+    description: "Magic UI",
+    time: "10m ago",
+    icon: "👤",
+    color: "#FFB800",
+  },
+  {
+    name: "New message",
+    description: "Magic UI",
+    time: "5m ago",
+    icon: "💬",
+    color: "#FF3D71",
+  },
+  {
+    name: "New event",
+    description: "Magic UI",
+    time: "2m ago",
+    icon: "🗞️",
+    color: "#1E86FF",
+  },
+]
+
+export function AnimatedListDemo() {
+  return (
+    <div className="relative flex h-[400px] w-full max-w-[500px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 shadow-2xl select-none mx-auto">
+      <AnimatedList delay={1500}>
+        {notifications.map((item, idx) => (
+          <figure
+            key={idx}
+            className="relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-2xl p-4 bg-[#161616]/90 border border-white/10 shadow-lg backdrop-blur-md"
+          >
+            <div className="flex flex-row items-center gap-3">
+              <div
+                className="flex size-10 items-center justify-center rounded-2xl shrink-0"
+                style={{ backgroundColor: item.color }}
+              >
+                <span className="text-lg leading-none">{item.icon}</span>
+              </div>
+              <div className="flex flex-col overflow-hidden text-left">
+                <figcaption className="flex flex-row items-center whitespace-pre text-sm sm:text-base font-semibold text-white">
+                  <span>{item.name}</span>
+                  <span className="mx-1 text-zinc-500 font-normal">·</span>
+                  <span className="text-xs text-zinc-500 font-normal font-mono">{item.time}</span>
+                </figcaption>
+                <p className="text-xs sm:text-sm font-normal text-zinc-400 mt-0.5">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          </figure>
+        ))}
+      </AnimatedList>
+
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0A0A0A] to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10" />
     </div>
   )
 }`
@@ -3128,6 +3210,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Animated List":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <AnimatedListDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3850,6 +3939,8 @@ export function ScrollAreaDemo() {
         <ScrollBasedVelocityGuide />
       ) : componentData.name === "Smooth Cursor" ? (
         <SmoothCursorGuide />
+      ) : componentData.name === "Animated List" ? (
+        <AnimatedListGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

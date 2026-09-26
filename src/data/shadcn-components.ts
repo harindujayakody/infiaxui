@@ -9,12 +9,13 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
   [
     "3D Card Effect",
+    "Animated List",
     "Animated Shiny Text",
     "Scroll Based Velocity",
     "Smooth Cursor",
@@ -950,6 +951,22 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "cursor",
       "springConfig",
       "containerRef",
+    ],
+  },
+  "Animated List": {
+    id: "animated-list",
+    name: "Animated List",
+    description: "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/animated-list",
+    importCode: `import { AnimatedList, AnimatedListItem } from "@/components/ui/animated-list"`,
+    usageCode: `<AnimatedList>\n  <p>Item 1</p>\n  <p>Item 2</p>\n  <p>Item 3</p>\n</AnimatedList>`,
+    apiReference: [
+      "AnimatedList",
+      "AnimatedListItem",
+      "delay",
+      "children",
+      "className",
     ],
   },
 }
