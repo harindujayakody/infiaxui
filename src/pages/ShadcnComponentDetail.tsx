@@ -194,6 +194,8 @@ import { RippleDemo } from "@/components/magicui/ripple-demo"
 import { RippleGuide } from "@/components/magicui/ripple-guide"
 import { StripedPatternDemo } from "@/components/magicui/striped-pattern-demo"
 import { StripedPatternGuide } from "@/components/magicui/striped-pattern-guide"
+import { PixelImageDemo } from "@/components/magicui/pixel-image-demo"
+import { PixelImageGuide } from "@/components/magicui/pixel-image-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -906,6 +908,22 @@ export function StripedPatternDemo() {
         width={14}
         height={14}
         className="stroke-zinc-400/40 [mask-image:radial-gradient(circle_at_center,white,transparent_75%)]"
+      />
+    </div>
+  )
+}`
+
+      case "Pixel Image":
+        return `import { PixelImage } from "@/components/ui/pixel-image"
+
+export function PixelImageDemo() {
+  return (
+    <div className="flex items-center justify-center p-6">
+      <PixelImage
+        src="/pixel-image-demo.png"
+        grid="6x4"
+        grayscaleAnimation={true}
+        className="h-72 w-72 md:h-80 md:w-80 shadow-2xl"
       />
     </div>
   )
@@ -3293,6 +3311,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Pixel Image":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <PixelImageDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4021,6 +4046,8 @@ export function ScrollAreaDemo() {
         <RippleGuide />
       ) : componentData.name === "Striped Pattern" ? (
         <StripedPatternGuide />
+      ) : componentData.name === "Pixel Image" ? (
+        <PixelImageGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

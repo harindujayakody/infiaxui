@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -17,6 +17,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "3D Card Effect",
     "Animated List",
     "Animated Shiny Text",
+    "Pixel Image",
     "Ripple",
     "Scroll Based Velocity",
     "Smooth Cursor",
@@ -1001,6 +1002,27 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "width",
       "height",
       "className",
+    ],
+  },
+  "Pixel Image": {
+    id: "pixel-image",
+    name: "Pixel Image",
+    description: "A component that displays your image with a pixelated effect, enhancing the visual appeal of any image in your website.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @magicui/pixel-image",
+    importCode: `import { PixelImage } from "@/components/ui/pixel-image"`,
+    usageCode: `<PixelImage src="/pixel-image-demo.png" grid="8x8" />`,
+    apiReference: [
+      "PixelImage",
+      "src",
+      "grid",
+      "customGrid",
+      "grayscaleAnimation",
+      "pixelFadeInDuration",
+      "maxAnimationDelay",
+      "colorRevealDelay",
+      "className",
+      "alt",
     ],
   },
 }

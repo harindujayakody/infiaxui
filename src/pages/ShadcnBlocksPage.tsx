@@ -42,6 +42,7 @@ import { SmoothCursorBlockPreview } from "@/components/magicui/smooth-cursor-dem
 import { AnimatedListBlockPreview } from "@/components/magicui/animated-list-demo"
 import { RippleBlockPreview } from "@/components/magicui/ripple-demo"
 import { StripedPatternBlockPreview } from "@/components/magicui/striped-pattern-demo"
+import { PixelImageBlockPreview } from "@/components/magicui/pixel-image-demo"
 
 interface BlockItem {
   id: string
@@ -322,6 +323,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
       cliCommand: "npx shadcn@latest add @magicui/striped-pattern",
       renderPreview: () => <StripedPatternBlockPreview />,
+    },
+    {
+      id: "pixel-image",
+      title: "Pixel Image",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Pixel Image",
+      description:
+        "A component that displays your image with a pixelated effect, enhancing visual appeal.",
+      cliCommand: "npx shadcn@latest add @magicui/pixel-image",
+      renderPreview: () => <PixelImageBlockPreview />,
     },
   ]
 
