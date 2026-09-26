@@ -25,9 +25,9 @@ import {
   AnimatedBeamMiniPreview,
   BentoGridMiniPreview,
   GlobeMiniPreview,
-  DockMiniPreview,
 } from "@/components/blocks/block-previews"
 import { GlareHoverBlockCardPreview } from "@/components/magicui/glare-hover-demo"
+import { DockCardPreview } from "@/components/magicui/dock-demo"
 
 interface BlockItem {
   id: string
@@ -131,14 +131,15 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       renderPreview: () => <GlobeMiniPreview />,
     },
     {
-      id: "dock-navigation",
-      title: "Dock Navigation",
-      category: "Components",
-      badge: "macOS",
+      id: "dock",
+      title: "Dock",
+      category: "Magic UI",
+      badge: "Magic UI",
+      componentTarget: "Dock",
       description:
-        "A magnification dock inspired by macOS with spring physics and tooltip indicators.",
+        "An implementation of the MacOS dock using react + tailwindcss + framer motion",
       cliCommand: "npx shadcn@latest add @magicui/dock",
-      renderPreview: () => <DockMiniPreview />,
+      renderPreview: () => <DockCardPreview />,
     },
     {
       id: "glare-hover",

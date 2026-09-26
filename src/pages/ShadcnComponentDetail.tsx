@@ -160,6 +160,8 @@ import { AnimatedBeamDemo } from "@/components/magicui/animated-beam-demo"
 import { AnimatedBeamGuide } from "@/components/magicui/animated-beam-guide"
 import { GlareHoverDemo } from "@/components/magicui/glare-hover-demo"
 import { GlareHoverGuide } from "@/components/magicui/glare-hover-guide"
+import { DockDemo } from "@/components/magicui/dock-demo"
+import { DockGuide } from "@/components/magicui/dock-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -298,6 +300,40 @@ export function GlareHoverDemo() {
         </p>
       </div>
     </GlareHover>
+  )
+}`
+
+      case "Dock":
+        return `import { Dock, DockIcon } from "@/components/magicui/dock"
+import { Home, Terminal, Globe, Mail, Folder, Settings } from "lucide-react"
+
+export function DockDemo() {
+  return (
+    <div className="relative flex w-full items-center justify-center p-8 overflow-hidden">
+      <Dock className="bg-[var(--bg-card)]/90 border border-[var(--border-subtle)] shadow-2xl">
+        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-blue-500/20 text-[var(--text-main)] hover:text-blue-400">
+          <Home className="size-5" />
+        </DockIcon>
+        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-emerald-500/20 text-[var(--text-main)] hover:text-emerald-400">
+          <Terminal className="size-5" />
+        </DockIcon>
+        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-cyan-500/20 text-[var(--text-main)] hover:text-cyan-400">
+          <Globe className="size-5" />
+        </DockIcon>
+        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-purple-500/20 text-[var(--text-main)] hover:text-purple-400">
+          <Mail className="size-5" />
+        </DockIcon>
+
+        <div className="h-6 w-[1px] bg-[var(--border-subtle)] mx-1" />
+
+        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-amber-500/20 text-[var(--text-main)] hover:text-amber-400">
+          <Folder className="size-5" />
+        </DockIcon>
+        <DockIcon className="bg-[var(--bg-subtle)] hover:bg-rose-500/20 text-[var(--text-main)] hover:text-rose-400">
+          <Settings className="size-5" />
+        </DockIcon>
+      </Dock>
+    </div>
   )
 }`
 
@@ -2564,6 +2600,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Dock":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <DockDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -3258,6 +3301,8 @@ export function ScrollAreaDemo() {
         <AnimatedBeamGuide />
       ) : componentData.name === "Glare Hover" ? (
         <GlareHoverGuide />
+      ) : componentData.name === "Dock" ? (
+        <DockGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
