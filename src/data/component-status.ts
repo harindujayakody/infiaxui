@@ -579,6 +579,57 @@ export const COMPONENT_FIX_STATUS: Record<string, ComponentStatusMeta> = {
       "API reference",
     ],
   },
+  "Command": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Command menu with instant text filtering & categorized groups",
+      "Global shortcut dialog overlay (⌘K / ESC dismiss)",
+      "Keyboard action shortcuts (⌘C, ⌘E, ⌘P, ⌘B)",
+      "RTL mirroring & API reference",
+    ],
+  },
+  "Combobox": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Single-select autocomplete dropdown with search filter",
+      "Multi-select with interactive tag chips and deletion",
+      "Grouped options and custom item renderers",
+      "RTL support & API reference",
+    ],
+  },
+  "Collapsible": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Symmetric height expand/collapse animations with Framer Motion",
+      "Controlled and uncontrolled states",
+      "Nested recursive file/folder tree view",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Checkbox": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Accessible checkbox with horizontal Field & Label layout",
+      "Group list with 'Select All' indeterminate state",
+      "Disabled and aria-invalid validation error states",
+      "RTL layout support & API reference",
+    ],
+  },
+  "Chart": {
+    status: "fixed",
+    fixedDate: "2026-09-26",
+    highlights: [
+      "Recharts v3 composable chart architecture",
+      "Interactive Bar & Line visualizer with live hover tooltips",
+      "Multi-series toggle (Desktop vs Mobile) and animation",
+      "CSS variable theming (--chart-1 to --chart-5)",
+      "RTL layout support & API reference",
+    ],
+  },
 }
 
 export function getComponentStatus(name: string): ComponentStatusMeta {

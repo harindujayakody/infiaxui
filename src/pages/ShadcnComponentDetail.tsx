@@ -121,6 +121,11 @@ import { DirectionGuide } from "@/components/shadcn/direction-guide"
 import { DialogGuide } from "@/components/shadcn/dialog-guide"
 import { DatePickerGuide } from "@/components/shadcn/date-picker-guide"
 import { ContextMenuGuide } from "@/components/shadcn/context-menu-guide"
+import { CommandGuide } from "@/components/shadcn/command-guide"
+import { ComboboxGuide } from "@/components/shadcn/combobox-guide"
+import { CollapsibleGuide } from "@/components/shadcn/collapsible-guide"
+import { CheckboxGuide } from "@/components/shadcn/checkbox-guide"
+import { ChartGuide } from "@/components/shadcn/chart-guide"
 import { isComponentFixed } from "@/data/component-status"
 import { cn } from "@/lib/utils"
 
@@ -2884,6 +2889,16 @@ export function ChartDemo() {
         <DatePickerGuide />
       ) : componentData.name === "Context Menu" ? (
         <ContextMenuGuide />
+      ) : componentData.name === "Command" ? (
+        <CommandGuide />
+      ) : componentData.name === "Combobox" ? (
+        <ComboboxGuide />
+      ) : componentData.name === "Collapsible" ? (
+        <CollapsibleGuide />
+      ) : componentData.name === "Checkbox" ? (
+        <CheckboxGuide />
+      ) : componentData.name === "Chart" ? (
+        <ChartGuide />
       ) : componentData.name === "Breadcrumb" ? (
         <>
           {/* Basic Section */}
