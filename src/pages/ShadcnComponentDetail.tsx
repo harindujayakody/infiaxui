@@ -1444,9 +1444,9 @@ export function ImageGenerationLoaderDemo() {
 }`
 
       case "Draggable Card":
-        return `import { DraggableCardContainer } from "@/components/ui/draggable-card"
+        return `import { DraggableCardContainer, DraggableCardItem } from "@/components/ui/draggable-card"
 
-const cards = [
+const cards: DraggableCardItem[] = [
   {
     id: "canada",
     title: "Canada",
@@ -1455,32 +1455,58 @@ const cards = [
     rotation: -6,
     top: "42%",
     left: "32%",
+    zIndex: 1,
+  },
+  {
+    id: "new-zealand",
+    title: "New Zealand",
+    subtitle: "Milford Sound",
+    image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=600&auto=format&fit=crop",
+    rotation: 8,
+    top: "48%",
+    left: "68%",
+    zIndex: 2,
   },
   {
     id: "japan",
     title: "Japan",
     subtitle: "Mount Fuji",
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=600&auto=format&fit=crop",
-    rotation: 8,
-    top: "50%",
-    left: "65%",
+    rotation: -3,
+    top: "52%",
+    left: "50%",
+    zIndex: 3,
   },
 ]
 
 export function DraggableCardDemo() {
-  return <DraggableCardContainer items={cards} className="min-h-[480px] w-full" />
+  return (
+    <div className="w-full">
+      <DraggableCardContainer items={cards} className="min-h-[480px]" />
+    </div>
+  )
 }`
 
       case "Animated Tabs":
-        return `import { AnimatedTabs } from "@/components/ui/animated-tabs"
+        return `import { AnimatedTabs, Tab } from "@/components/ui/animated-tabs"
 
-const tabs = [
+const tabs: Tab[] = [
   {
     title: "Product",
     value: "product",
     content: (
-      <div className="w-full h-full rounded-2xl p-10 text-white bg-gradient-to-br from-purple-900 to-indigo-950">
-        <p className="text-2xl font-bold">Product Tab</p>
+      <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 sm:p-10 text-white bg-gradient-to-br from-purple-900 to-indigo-950 border border-white/10 shadow-2xl">
+        <p className="text-xl sm:text-2xl font-bold">Product Tab</p>
+        <p className="text-xs sm:text-sm text-zinc-300 mt-2 max-w-md">
+          Everything you need to launch world-class digital experiences in record time. Built with React and Tailwind CSS.
+        </p>
+        <div className="mt-6 w-full h-44 sm:h-52 rounded-xl bg-black/40 border border-white/10 overflow-hidden flex items-center justify-center p-4">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+            alt="Analytics Dashboard"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
       </div>
     ),
   },
@@ -1488,112 +1514,397 @@ const tabs = [
     title: "Services",
     value: "services",
     content: (
-      <div className="w-full h-full rounded-2xl p-10 text-white bg-gradient-to-br from-blue-900 to-cyan-950">
-        <p className="text-2xl font-bold">Services Tab</p>
+      <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 sm:p-10 text-white bg-gradient-to-br from-blue-900 to-cyan-950 border border-white/10 shadow-2xl">
+        <p className="text-xl sm:text-2xl font-bold">Services Tab</p>
+        <p className="text-xs sm:text-sm text-zinc-300 mt-2 max-w-md">
+          High-performance cloud infrastructure, edge rendering, and real-time synchronization out of the box.
+        </p>
+        <div className="mt-6 w-full h-44 sm:h-52 rounded-xl bg-black/40 border border-white/10 overflow-hidden flex items-center justify-center p-4">
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop"
+            alt="Services Preview"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Playground",
+    value: "playground",
+    content: (
+      <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 sm:p-10 text-white bg-gradient-to-br from-emerald-900 to-teal-950 border border-white/10 shadow-2xl">
+        <p className="text-xl sm:text-2xl font-bold">Playground Tab</p>
+        <p className="text-xs sm:text-sm text-zinc-300 mt-2 max-w-md">
+          Test and tweak UI components interactively in a sandboxed runtime environment.
+        </p>
+        <div className="mt-6 w-full h-44 sm:h-52 rounded-xl bg-black/40 border border-white/10 overflow-hidden flex items-center justify-center p-4">
+          <img
+            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
+            alt="Code Matrix"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Content",
+    value: "content",
+    content: (
+      <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 sm:p-10 text-white bg-gradient-to-br from-amber-900 to-rose-950 border border-white/10 shadow-2xl">
+        <p className="text-xl sm:text-2xl font-bold">Content Tab</p>
+        <p className="text-xs sm:text-sm text-zinc-300 mt-2 max-w-md">
+          Curated articles, design systems guides, and enterprise architectural blueprints.
+        </p>
+        <div className="mt-6 w-full h-44 sm:h-52 rounded-xl bg-black/40 border border-white/10 overflow-hidden flex items-center justify-center p-4">
+          <img
+            src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format&fit=crop"
+            alt="Content Workspace"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
       </div>
     ),
   },
 ]
 
 export function AnimatedTabsDemo() {
-  return <AnimatedTabs tabs={tabs} />
-}`
-
-      case "Evervault Card":
-        return `import { EvervaultCard } from "@/components/ui/evervault-card"
-
-export function EvervaultCardDemo() {
   return (
-    <div className="border border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[30rem] rounded-3xl bg-[#121214]">
-      <EvervaultCard text="hover" />
+    <div className="relative flex min-h-[560px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 sm:p-10 shadow-2xl select-none">
+      <div className="w-full max-w-3xl">
+        <AnimatedTabs tabs={tabs} />
+      </div>
     </div>
   )
 }`
 
-      case "Glowing Effect":
-        return `import { GlowingEffect } from "@/components/ui/glowing-effect"
-import { Box } from "lucide-react"
+      case "Evervault Card":
+        return `import { EvervaultCard, Icon } from "@/components/ui/evervault-card"
 
-export function GlowingEffectDemo() {
+export function EvervaultCardDemo() {
   return (
-    <div className="relative rounded-2xl border border-white/10 p-6 bg-[#0c0d12]">
-      <GlowingEffect
-        spread={40}
-        glow={true}
-        proximity={64}
-        inactiveZone={0.01}
-        borderWidth={2}
-      />
-      <div className="relative z-10 flex flex-col gap-3">
-        <div className="size-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center">
-          <Box className="size-5 text-white" />
-        </div>
-        <h3 className="text-xl font-bold text-white">Do things the right way</h3>
-        <p className="text-sm text-zinc-400">
-          Running out of copy so I'll write anything.
+    <div className="relative flex min-h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 sm:p-10 shadow-2xl select-none">
+      <div className="border border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[30rem] rounded-3xl bg-[#121214]">
+        <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
+        <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-white" />
+        <Icon className="absolute h-6 w-6 -top-3 -right-3 text-white" />
+        <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-white" />
+
+        <EvervaultCard text="hover" />
+
+        <h2 className="text-white mt-4 text-sm font-light">
+          Hover over this card to reveal an encrypted matrix overlay and radial gradient mask.
+        </h2>
+        <p className="text-sm border font-light border-white/[0.2] rounded-full mt-4 text-white px-2 py-0.5">
+          Watch me hover
         </p>
       </div>
     </div>
   )
 }`
 
+      case "Glowing Effect":
+        return `import React from "react"
+import { GlowingEffect } from "@/components/ui/glowing-effect"
+import { Box, Lock, Sparkles, Settings, Search } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+interface GridItemProps {
+  area?: string
+  icon: React.ReactNode
+  title: string
+  description: React.ReactNode
+  className?: string
+}
+
+const GridItem = ({ area, icon, title, description, className }: GridItemProps) => {
+  return (
+    <div
+      style={{ gridArea: area }}
+      className={cn(
+        "relative rounded-2.5xl border border-white/10 p-2 sm:p-3 shadow-2xl transition-all",
+        className
+      )}
+    >
+      <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0c0d12] p-6 sm:p-7">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={2}
+        />
+        <div className="relative z-10 flex flex-col justify-between h-full space-y-6">
+          <div className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-300">
+            {icon}
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white">
+              {title}
+            </h3>
+            <p className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
+              {description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export function GlowingEffectDemo() {
+  return (
+    <div className="relative flex min-h-[580px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-4 sm:p-8 shadow-2xl select-none">
+      <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[minmax(180px,auto)]">
+        {/* Left Column Cards */}
+        <div className="flex flex-col gap-4">
+          <GridItem
+            icon={<Box className="size-5" />}
+            title="Do things the right way"
+            description="Running out of copy so I'll write anything."
+            className="min-h-[190px]"
+          />
+          <GridItem
+            icon={<Settings className="size-5" />}
+            title="The best AI code editor ever."
+            description="Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me."
+            className="min-h-[190px]"
+          />
+        </div>
+
+        {/* Center Tall Card */}
+        <div className="flex flex-col">
+          <GridItem
+            icon={<Lock className="size-5" />}
+            title="You should buy Aceternity UI Pro"
+            description="It's the best money you'll ever spend"
+            className="h-full min-h-[396px]"
+          />
+        </div>
+
+        {/* Right Column Cards */}
+        <div className="flex flex-col gap-4">
+          <GridItem
+            icon={<Sparkles className="size-5" />}
+            title="This card is also built by Cursor"
+            description="I'm not even kidding. Ask my mom if you don't believe me."
+            className="min-h-[190px]"
+          />
+          <GridItem
+            icon={<Search className="size-5" />}
+            title="Coming soon on Aceternity UI"
+            description="I'm writing the code as I record this, no shit."
+            className="min-h-[190px]"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}`
+
       case "Container Scroll Animation":
-        return `import { ContainerScroll } from "@/components/ui/container-scroll-animation"
+        return `import React from "react"
+import { ContainerScroll } from "@/components/ui/container-scroll-animation"
+import { CheckCircle2, Circle, Clock, Filter, FolderGit2, LayoutGrid, Plus, Sparkles } from "lucide-react"
+
+export function LinearDashboardMockup() {
+  const tasks = [
+    { id: "ENG-248", title: "Release new website", tag: "Magic", due: "12 Oct" },
+    { id: "ENG-250", title: "Design translucent assets", tag: "Design", due: "11 Oct" },
+    { id: "ENG-078", title: "Update documentation", tag: "Docs", due: "30 Sep" },
+    { id: "ENG-199", title: "Batch loading of partial stores", tag: "SuperSync", due: "5 Sep" },
+    { id: "ENG-201", title: "Fix CSS in roadmap team graph", tag: "Bug", due: "5 Sep" },
+  ]
+
+  return (
+    <div className="flex h-full w-full bg-[#0E0F14] text-zinc-300 font-sans select-none overflow-hidden rounded-xl border border-white/10">
+      {/* Sidebar Navigation */}
+      <div className="w-48 border-r border-white/10 p-3 hidden sm:flex flex-col justify-between bg-[#0A0B0E]/60 shrink-0">
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-white/5 border border-white/10">
+            <div className="size-4 rounded-full bg-blue-500" />
+            <span className="text-xs font-semibold text-white">Linear</span>
+          </div>
+          <button className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400 text-xs font-medium">
+            <span className="flex items-center gap-1.5"><Plus className="size-3.5" /><span>New Issue</span></span>
+            <kbd className="text-[10px] bg-blue-500/20 px-1 rounded">C</kbd>
+          </button>
+          <div className="space-y-1 text-xs">
+            <div className="px-2 py-1.5 text-zinc-400 hover:text-white rounded hover:bg-white/5 cursor-pointer flex items-center gap-2">
+              <Circle className="size-3.5 text-zinc-500" /><span>Inbox</span>
+            </div>
+            <div className="px-2 py-1.5 text-white bg-white/10 rounded font-medium flex items-center gap-2">
+              <CheckCircle2 className="size-3.5 text-blue-400" /><span>My Issues</span>
+            </div>
+            <div className="px-2 py-1.5 text-zinc-400 hover:text-white rounded hover:bg-white/5 cursor-pointer flex items-center gap-2">
+              <LayoutGrid className="size-3.5 text-zinc-500" /><span>Views</span>
+            </div>
+          </div>
+        </div>
+        <div className="text-[11px] text-zinc-500 space-y-1">
+          <div className="px-2 py-1 hover:text-zinc-300 cursor-pointer flex items-center gap-1.5">
+            <FolderGit2 className="size-3 text-purple-400" /><span>GitHub Sync</span>
+          </div>
+          <div className="px-2 py-1 hover:text-zinc-300 cursor-pointer flex items-center gap-1.5">
+            <Sparkles className="size-3 text-cyan-400" /><span>Warp Mode</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Task Feed */}
+      <div className="flex-1 flex flex-col min-w-0">
+        <div className="h-12 border-b border-white/10 px-4 flex items-center justify-between bg-black/20">
+          <div className="flex items-center gap-2 text-xs">
+            <span className="font-semibold text-white">Project Solar Sailer</span>
+            <span className="text-zinc-500">•</span>
+            <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] border border-blue-500/20 font-medium">Engineering 89%</span>
+          </div>
+          <div className="flex items-center gap-1 px-2 py-1 rounded bg-white/5 border border-white/10 text-[11px] text-zinc-400">
+            <Filter className="size-3" /><span>Filter</span>
+          </div>
+        </div>
+        <div className="flex-1 p-3 sm:p-4 space-y-2 overflow-y-auto font-mono text-xs">
+          {tasks.map((t) => (
+            <div key={t.id} className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <span className="text-zinc-500 text-[11px]">{t.id}</span>
+                <span className="size-2 rounded-full bg-amber-400/80" />
+                <span className="font-sans text-xs text-zinc-200 truncate">{t.title}</span>
+              </div>
+              <div className="flex items-center gap-2 text-[10px] shrink-0">
+                <span className="px-1.5 py-0.5 rounded bg-white/5 text-zinc-400 border border-white/10">{t.tag}</span>
+                <span className="text-zinc-500 flex items-center gap-1 font-sans"><Clock className="size-3 text-zinc-600" />{t.due}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function ContainerScrollDemo() {
   return (
-    <ContainerScroll
-      titleComponent={
-        <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-300">
-          Unleash the power of <br />
-          <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none text-white tracking-tight">
-            Scroll Animations
-          </span>
-        </h1>
-      }
-    >
-      <img
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
-        alt="Hero preview"
-        className="mx-auto rounded-2xl object-cover h-full"
-      />
-    </ContainerScroll>
+    <div className="flex flex-col overflow-hidden bg-[#0A0A0A] rounded-2xl border border-white/10">
+      <ContainerScroll
+        titleComponent={
+          <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-300">
+            Unleash the power of <br />
+            <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none text-white tracking-tight">
+              Scroll Animations
+            </span>
+          </h1>
+        }
+      >
+        <LinearDashboardMockup />
+      </ContainerScroll>
+    </div>
   )
 }`
 
       case "Resizable Navbar":
-        return `import { ResizableNavbar } from "@/components/ui/resizable-navbar"
+        return `import React, { useRef } from "react"
+import { ResizableNavbar } from "@/components/ui/resizable-navbar"
 
 export function ResizableNavbarDemo() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
   return (
-    <div className="relative h-[560px] w-full overflow-y-auto bg-[#0A0A0A] p-6">
-      <ResizableNavbar
-        navItems={[
-          { name: "Features", link: "#features" },
-          { name: "Pricing", link: "#pricing" },
-          { name: "Contact", link: "#contact" },
-        ]}
-      />
-      <div className="text-center py-20">
-        <h2 className="text-3xl font-bold text-white">Check the navbar at the top of the container</h2>
-        <p className="text-sm text-zinc-400 mt-2">Scroll down to test navbar width compression & blur effects</p>
+    <div className="relative w-full rounded-2xl border border-white/10 bg-[#0A0A0A] overflow-hidden shadow-2xl select-none">
+      <div
+        ref={containerRef}
+        className="relative h-[560px] w-full overflow-y-auto overflow-x-hidden no-visible-scrollbar"
+      >
+        <ResizableNavbar
+          scrollContainerRef={containerRef}
+          navItems={[
+            { name: "Features", link: "#features" },
+            { name: "Pricing", link: "#pricing" },
+            { name: "Contact", link: "#contact" },
+          ]}
+        />
+
+        <div className="p-6 sm:p-10 space-y-8">
+          <div className="text-center max-w-xl mx-auto pt-6 space-y-2">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              Check the navbar at the top of the container
+            </h2>
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              For demo purpose we have kept the position as Sticky. Keep in mind that this component is fixed and will not move when scrolling.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <div className="h-44 sm:h-52 rounded-2xl bg-[#18181b] border border-white/[0.08] flex items-center justify-center p-6 text-white font-bold text-lg sm:text-xl shadow-lg">The</div>
+            <div className="h-44 sm:h-52 rounded-2xl bg-[#18181b] border border-white/[0.08] flex items-center justify-center p-6 text-white font-bold text-lg sm:text-xl shadow-lg">First</div>
+            <div className="h-44 sm:h-52 rounded-2xl bg-[#18181b] border border-white/[0.08] flex items-center justify-center p-6 text-white font-bold text-lg sm:text-xl shadow-lg">Rule</div>
+            <div className="h-44 sm:h-52 rounded-2xl bg-[#18181b] border border-white/[0.08] flex items-center justify-center p-6 text-white font-bold text-lg sm:text-xl shadow-lg sm:col-span-2">Of</div>
+            <div className="h-44 sm:h-52 rounded-2xl bg-[#18181b] border border-white/[0.08] flex items-center justify-center p-6 text-white font-bold text-lg sm:text-xl shadow-lg">F</div>
+          </div>
+
+          <div className="h-40 flex items-center justify-center text-xs font-mono text-zinc-600">
+            Scroll down to test navbar width compression & blur effects
+          </div>
+        </div>
       </div>
     </div>
   )
 }`
 
       case "Hero Sections":
-        return `import { HeroSection } from "@/components/ui/hero-section"
+        return `import React from "react"
+import { HeroSection } from "@/components/ui/hero-section"
 
 export function HeroSectionDemo() {
   return (
-    <HeroSection
-      titlePrefix="Build world class websites at"
-      highlightedText="warp speed"
-      description="Access an ever-growing collection of premium, meticulously crafted templates and component packs. Save time and focus on what matters—building standout websites that captivate your audience."
-      primaryCtaText="Explore Collection"
-      secondaryCtaText="Unlock Unlimited Access"
-    />
+    <div className="relative w-full rounded-2xl border border-white/10 bg-[#0A0A0A] overflow-hidden shadow-2xl select-none">
+      <HeroSection
+        titlePrefix="Build world class websites at"
+        highlightedText="warp speed"
+        description="Access an ever-growing collection of premium, meticulously crafted templates and component packs. Save time and focus on what matters—building standout websites that captivate your audience."
+        primaryCtaText="Explore Collection"
+        secondaryCtaText="Unlock Unlimited Access"
+      />
+
+      {/* Bottom Feature Preview Strip */}
+      <div className="border-t border-white/[0.08] bg-[#0c0d12] p-6 sm:p-10">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-2 max-w-sm">
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Idea to website in <br />
+              <span className="text-blue-400">minutes, not hours.</span>
+            </h3>
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Ship production-ready landing pages with pre-built modular blocks designed for conversion.
+            </p>
+          </div>
+
+          <div className="w-full md:w-auto flex-1 max-w-md rounded-xl border border-white/10 bg-[#14161f] p-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+              <div className="flex items-center gap-2">
+                <div className="size-3 rounded bg-blue-500" />
+                <span className="text-xs font-bold text-white font-mono">DevStudio</span>
+              </div>
+              <div className="flex items-center gap-3 text-[10px] text-zinc-400">
+                <span>Work</span>
+                <span>Services</span>
+                <span>Pricing</span>
+                <span>Contact</span>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="h-3 rounded bg-white/10 w-4/5" />
+              <div className="h-2 rounded bg-white/5 w-3/5" />
+              <div className="h-16 rounded-lg bg-gradient-to-br from-blue-900/30 to-purple-900/20 border border-white/5 mt-2 flex items-center justify-center text-[10px] text-zinc-400">
+                Interactive Showcase Frame
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }`
 
