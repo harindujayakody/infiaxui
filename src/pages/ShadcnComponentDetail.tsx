@@ -238,6 +238,8 @@ import { AnimatedTabsDemo } from "@/components/ui/animated-tabs-demo"
 import { AnimatedTabsGuide } from "@/components/ui/animated-tabs-guide"
 import { EvervaultCardDemo } from "@/components/ui/evervault-card-demo"
 import { EvervaultCardGuide } from "@/components/ui/evervault-card-guide"
+import { GlowingEffectDemo } from "@/components/ui/glowing-effect-demo"
+import { GlowingEffectGuide } from "@/components/ui/glowing-effect-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1498,6 +1500,33 @@ export function EvervaultCardDemo() {
   return (
     <div className="border border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[30rem] rounded-3xl bg-[#121214]">
       <EvervaultCard text="hover" />
+    </div>
+  )
+}`
+
+      case "Glowing Effect":
+        return `import { GlowingEffect } from "@/components/ui/glowing-effect"
+import { Box } from "lucide-react"
+
+export function GlowingEffectDemo() {
+  return (
+    <div className="relative rounded-2xl border border-white/10 p-6 bg-[#0c0d12]">
+      <GlowingEffect
+        spread={40}
+        glow={true}
+        proximity={64}
+        inactiveZone={0.01}
+        borderWidth={2}
+      />
+      <div className="relative z-10 flex flex-col gap-3">
+        <div className="size-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center">
+          <Box className="size-5 text-white" />
+        </div>
+        <h3 className="text-xl font-bold text-white">Do things the right way</h3>
+        <p className="text-sm text-zinc-400">
+          Running out of copy so I'll write anything.
+        </p>
+      </div>
     </div>
   )
 }`
@@ -4038,6 +4067,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Glowing Effect":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <GlowingEffectDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4810,6 +4846,8 @@ export function ScrollAreaDemo() {
         <AnimatedTabsGuide />
       ) : componentData.name === "Evervault Card" ? (
         <EvervaultCardGuide />
+      ) : componentData.name === "Glowing Effect" ? (
+        <GlowingEffectGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

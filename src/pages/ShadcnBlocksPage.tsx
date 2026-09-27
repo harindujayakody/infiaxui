@@ -64,6 +64,7 @@ import { ImageGenerationLoaderBlockPreview } from "@/components/ui/image-generat
 import { DraggableCardBlockPreview } from "@/components/ui/draggable-card-demo"
 import { AnimatedTabsBlockPreview } from "@/components/ui/animated-tabs-demo"
 import { EvervaultCardBlockPreview } from "@/components/ui/evervault-card-demo"
+import { GlowingEffectBlockPreview } from "@/components/ui/glowing-effect-demo"
 
 interface BlockItem {
   id: string
@@ -570,6 +571,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A cool card with amazing hover effect, reveals encrypted text and a mixed gradient.",
       cliCommand: "npx shadcn@latest add @aceternity/evervault-card-demo",
       renderPreview: () => <EvervaultCardBlockPreview />,
+    },
+    {
+      id: "glowing-effect",
+      title: "Glowing Effect",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Glowing Effect",
+      description:
+        "A border glowing effect that adapts to any container or card, as seen on Cursor's website.",
+      cliCommand: "npx shadcn@latest add @aceternity/glowing-effect-demo",
+      renderPreview: () => <GlowingEffectBlockPreview />,
     },
   ]
 

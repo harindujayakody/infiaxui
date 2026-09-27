@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -28,6 +28,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Draggable Card",
     "Evervault Card",
     "Focus Cards",
+    "Glowing Effect",
     "Image Generation Loader",
     "Lens",
     "Dia Text Reveal",
@@ -1432,6 +1433,33 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "EvervaultCard",
       "CardPattern",
       "text",
+      "className",
+    ],
+  },
+  "Glowing Effect": {
+    id: "glowing-effect",
+    name: "Glowing Effect",
+    description: "A border glowing effect that adapts to any container or card, as seen on Cursor's website.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/glowing-effect-demo",
+    importCode: `import { GlowingEffect } from "@/components/ui/glowing-effect"`,
+    usageCode: `<div className="relative rounded-2xl border border-white/10 p-6 bg-[#0c0d12]">
+  <GlowingEffect spread={40} glow={true} proximity={64} inactiveZone={0.01} borderWidth={2} />
+  <div className="relative z-10">
+    <h3 className="text-xl font-bold text-white">Do things the right way</h3>
+  </div>
+</div>`,
+    apiReference: [
+      "GlowingEffect",
+      "spread",
+      "proximity",
+      "inactiveZone",
+      "borderWidth",
+      "variant",
+      "glow",
+      "blur",
+      "movementDuration",
+      "disabled",
       "className",
     ],
   },
