@@ -67,6 +67,7 @@ import { EvervaultCardBlockPreview } from "@/components/ui/evervault-card-demo"
 import { GlowingEffectBlockPreview } from "@/components/ui/glowing-effect-demo"
 import { ContainerScrollBlockPreview } from "@/components/ui/container-scroll-animation-demo"
 import { ResizableNavbarBlockPreview } from "@/components/ui/resizable-navbar-demo"
+import { HeroSectionsBlockPreview } from "@/components/ui/hero-section-demo"
 
 interface BlockItem {
   id: string
@@ -138,12 +139,13 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "hero-sections",
       title: "Hero Sections",
       category: "Heroes",
-      badge: "25+ blocks",
+      badge: "Aceternity",
+      componentTarget: "Hero Sections",
       hasStar: true,
       description:
-        "A collection of hero sections that are modern and stand out",
-      cliCommand: "npx shadcn@latest add @magicui/hero-sections",
-      renderPreview: () => <HeroSectionsPreview />,
+        "A set of hero sections ranging from simple to complex layouts",
+      cliCommand: "npx shadcn@latest add @aceternity/hero-section-demo-1",
+      renderPreview: () => <HeroSectionsBlockPreview />,
     },
     {
       id: "animated-beam",

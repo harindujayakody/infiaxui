@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect", "Container Scroll Animation", "Resizable Navbar"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect", "Container Scroll Animation", "Resizable Navbar", "Hero Sections"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -30,6 +30,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Evervault Card",
     "Focus Cards",
     "Glowing Effect",
+    "Hero Sections",
     "Image Generation Loader",
     "Lens",
     "Resizable Navbar",
@@ -1512,6 +1513,32 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "cta",
       "login",
       "scrollContainerRef",
+      "className",
+    ],
+  },
+  "Hero Sections": {
+    id: "hero-sections",
+    name: "Hero Sections",
+    description: "A set of hero sections ranging from simple to complex layouts",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/hero-section-demo-1",
+    importCode: `import { HeroSection } from "@/components/ui/hero-section"`,
+    usageCode: `<HeroSection
+  titlePrefix="Build world class websites at"
+  highlightedText="warp speed"
+  description="Access an ever-growing collection of premium, meticulously crafted templates and component packs."
+  primaryCtaText="Explore Collection"
+  secondaryCtaText="Unlock Unlimited Access"
+/>`,
+    apiReference: [
+      "HeroSection",
+      "titlePrefix",
+      "highlightedText",
+      "description",
+      "primaryCtaText",
+      "secondaryCtaText",
+      "avatars",
+      "trustedText",
       "className",
     ],
   },

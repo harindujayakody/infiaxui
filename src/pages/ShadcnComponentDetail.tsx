@@ -244,6 +244,8 @@ import { ContainerScrollDemo } from "@/components/ui/container-scroll-animation-
 import { ContainerScrollGuide } from "@/components/ui/container-scroll-animation-guide"
 import { ResizableNavbarDemo } from "@/components/ui/resizable-navbar-demo"
 import { ResizableNavbarGuide } from "@/components/ui/resizable-navbar-guide"
+import { HeroSectionDemo } from "@/components/ui/hero-section-demo"
+import { HeroSectionGuide } from "@/components/ui/hero-section-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1577,6 +1579,21 @@ export function ResizableNavbarDemo() {
         <p className="text-sm text-zinc-400 mt-2">Scroll down to test navbar width compression & blur effects</p>
       </div>
     </div>
+  )
+}`
+
+      case "Hero Sections":
+        return `import { HeroSection } from "@/components/ui/hero-section"
+
+export function HeroSectionDemo() {
+  return (
+    <HeroSection
+      titlePrefix="Build world class websites at"
+      highlightedText="warp speed"
+      description="Access an ever-growing collection of premium, meticulously crafted templates and component packs. Save time and focus on what matters—building standout websites that captivate your audience."
+      primaryCtaText="Explore Collection"
+      secondaryCtaText="Unlock Unlimited Access"
+    />
   )
 }`
 
@@ -4137,6 +4154,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Hero Sections":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <HeroSectionDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4915,6 +4939,8 @@ export function ScrollAreaDemo() {
         <ContainerScrollGuide />
       ) : componentData.name === "Resizable Navbar" ? (
         <ResizableNavbarGuide />
+      ) : componentData.name === "Hero Sections" ? (
+        <HeroSectionGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
