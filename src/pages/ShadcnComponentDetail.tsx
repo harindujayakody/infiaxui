@@ -242,6 +242,8 @@ import { GlowingEffectDemo } from "@/components/ui/glowing-effect-demo"
 import { GlowingEffectGuide } from "@/components/ui/glowing-effect-guide"
 import { ContainerScrollDemo } from "@/components/ui/container-scroll-animation-demo"
 import { ContainerScrollGuide } from "@/components/ui/container-scroll-animation-guide"
+import { ResizableNavbarDemo } from "@/components/ui/resizable-navbar-demo"
+import { ResizableNavbarGuide } from "@/components/ui/resizable-navbar-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1554,6 +1556,27 @@ export function ContainerScrollDemo() {
         className="mx-auto rounded-2xl object-cover h-full"
       />
     </ContainerScroll>
+  )
+}`
+
+      case "Resizable Navbar":
+        return `import { ResizableNavbar } from "@/components/ui/resizable-navbar"
+
+export function ResizableNavbarDemo() {
+  return (
+    <div className="relative h-[560px] w-full overflow-y-auto bg-[#0A0A0A] p-6">
+      <ResizableNavbar
+        navItems={[
+          { name: "Features", link: "#features" },
+          { name: "Pricing", link: "#pricing" },
+          { name: "Contact", link: "#contact" },
+        ]}
+      />
+      <div className="text-center py-20">
+        <h2 className="text-3xl font-bold text-white">Check the navbar at the top of the container</h2>
+        <p className="text-sm text-zinc-400 mt-2">Scroll down to test navbar width compression & blur effects</p>
+      </div>
+    </div>
   )
 }`
 
@@ -4107,6 +4130,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Resizable Navbar":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ResizableNavbarDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4883,6 +4913,8 @@ export function ScrollAreaDemo() {
         <GlowingEffectGuide />
       ) : componentData.name === "Container Scroll Animation" ? (
         <ContainerScrollGuide />
+      ) : componentData.name === "Resizable Navbar" ? (
+        <ResizableNavbarGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

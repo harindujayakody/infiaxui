@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect", "Container Scroll Animation"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect", "Container Scroll Animation", "Resizable Navbar"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -32,6 +32,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Glowing Effect",
     "Image Generation Loader",
     "Lens",
+    "Resizable Navbar",
     "Dia Text Reveal",
     "Dot Pattern",
     "Flickering Grid",
@@ -1487,6 +1488,30 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "Card",
       "titleComponent",
       "children",
+      "className",
+    ],
+  },
+  "Resizable Navbar": {
+    id: "resizable-navbar",
+    name: "Resizable Navbar",
+    description: "A navbar that changes width on scroll, responsive and animated.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/resizable-navbar-demo",
+    importCode: `import { ResizableNavbar } from "@/components/ui/resizable-navbar"`,
+    usageCode: `<ResizableNavbar
+  navItems={[
+    { name: "Features", link: "#features" },
+    { name: "Pricing", link: "#pricing" },
+    { name: "Contact", link: "#contact" },
+  ]}
+/>`,
+    apiReference: [
+      "ResizableNavbar",
+      "navItems",
+      "logo",
+      "cta",
+      "login",
+      "scrollContainerRef",
       "className",
     ],
   },

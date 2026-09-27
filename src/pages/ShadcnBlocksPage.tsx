@@ -66,6 +66,7 @@ import { AnimatedTabsBlockPreview } from "@/components/ui/animated-tabs-demo"
 import { EvervaultCardBlockPreview } from "@/components/ui/evervault-card-demo"
 import { GlowingEffectBlockPreview } from "@/components/ui/glowing-effect-demo"
 import { ContainerScrollBlockPreview } from "@/components/ui/container-scroll-animation-demo"
+import { ResizableNavbarBlockPreview } from "@/components/ui/resizable-navbar-demo"
 
 interface BlockItem {
   id: string
@@ -594,6 +595,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A scroll animation that rotates in 3d on scroll. Perfect for hero or marketing sections.",
       cliCommand: "npx shadcn@latest add @aceternity/container-scroll-animation-demo",
       renderPreview: () => <ContainerScrollBlockPreview />,
+    },
+    {
+      id: "resizable-navbar",
+      title: "Resizable Navbar",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Resizable Navbar",
+      description:
+        "A navbar that changes width on scroll, responsive and animated.",
+      cliCommand: "npx shadcn@latest add @aceternity/resizable-navbar-demo",
+      renderPreview: () => <ResizableNavbarBlockPreview />,
     },
   ]
 
