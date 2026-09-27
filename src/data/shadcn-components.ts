@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect", "Container Scroll Animation"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -25,6 +25,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Cloud Shader",
     "Card Spotlight",
     "Comet Card",
+    "Container Scroll Animation",
     "Draggable Card",
     "Evervault Card",
     "Focus Cards",
@@ -1460,6 +1461,32 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "blur",
       "movementDuration",
       "disabled",
+      "className",
+    ],
+  },
+  "Container Scroll Animation": {
+    id: "container-scroll-animation",
+    name: "Container Scroll Animation",
+    description: "A scroll animation that rotates in 3d on scroll. Perfect for hero or marketing sections.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/container-scroll-animation-demo",
+    importCode: `import { ContainerScroll } from "@/components/ui/container-scroll-animation"`,
+    usageCode: `<ContainerScroll
+  titleComponent={
+    <h1 className="text-4xl font-semibold text-white">
+      Unleash the power of <br />
+      <span className="text-6xl font-bold mt-1 leading-none text-white">Scroll Animations</span>
+    </h1>
+  }
+>
+  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Hero" className="mx-auto rounded-2xl object-cover h-full" />
+</ContainerScroll>`,
+    apiReference: [
+      "ContainerScroll",
+      "Header",
+      "Card",
+      "titleComponent",
+      "children",
       "className",
     ],
   },

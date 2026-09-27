@@ -65,6 +65,7 @@ import { DraggableCardBlockPreview } from "@/components/ui/draggable-card-demo"
 import { AnimatedTabsBlockPreview } from "@/components/ui/animated-tabs-demo"
 import { EvervaultCardBlockPreview } from "@/components/ui/evervault-card-demo"
 import { GlowingEffectBlockPreview } from "@/components/ui/glowing-effect-demo"
+import { ContainerScrollBlockPreview } from "@/components/ui/container-scroll-animation-demo"
 
 interface BlockItem {
   id: string
@@ -582,6 +583,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A border glowing effect that adapts to any container or card, as seen on Cursor's website.",
       cliCommand: "npx shadcn@latest add @aceternity/glowing-effect-demo",
       renderPreview: () => <GlowingEffectBlockPreview />,
+    },
+    {
+      id: "container-scroll-animation",
+      title: "Container Scroll Animation",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Container Scroll Animation",
+      description:
+        "A scroll animation that rotates in 3d on scroll. Perfect for hero or marketing sections.",
+      cliCommand: "npx shadcn@latest add @aceternity/container-scroll-animation-demo",
+      renderPreview: () => <ContainerScrollBlockPreview />,
     },
   ]
 

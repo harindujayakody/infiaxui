@@ -240,6 +240,8 @@ import { EvervaultCardDemo } from "@/components/ui/evervault-card-demo"
 import { EvervaultCardGuide } from "@/components/ui/evervault-card-guide"
 import { GlowingEffectDemo } from "@/components/ui/glowing-effect-demo"
 import { GlowingEffectGuide } from "@/components/ui/glowing-effect-guide"
+import { ContainerScrollDemo } from "@/components/ui/container-scroll-animation-demo"
+import { ContainerScrollGuide } from "@/components/ui/container-scroll-animation-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1528,6 +1530,30 @@ export function GlowingEffectDemo() {
         </p>
       </div>
     </div>
+  )
+}`
+
+      case "Container Scroll Animation":
+        return `import { ContainerScroll } from "@/components/ui/container-scroll-animation"
+
+export function ContainerScrollDemo() {
+  return (
+    <ContainerScroll
+      titleComponent={
+        <h1 className="text-3xl sm:text-4xl font-semibold text-zinc-300">
+          Unleash the power of <br />
+          <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none text-white tracking-tight">
+            Scroll Animations
+          </span>
+        </h1>
+      }
+    >
+      <img
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+        alt="Hero preview"
+        className="mx-auto rounded-2xl object-cover h-full"
+      />
+    </ContainerScroll>
   )
 }`
 
@@ -4074,6 +4100,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Container Scroll Animation":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ContainerScrollDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4848,6 +4881,8 @@ export function ScrollAreaDemo() {
         <EvervaultCardGuide />
       ) : componentData.name === "Glowing Effect" ? (
         <GlowingEffectGuide />
+      ) : componentData.name === "Container Scroll Animation" ? (
+        <ContainerScrollGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
