@@ -58,6 +58,12 @@ import { FlickeringGridBlockPreview } from "@/components/magicui/flickering-grid
 import { MorphingTextBlockPreview } from "@/components/magicui/morphing-text-demo"
 import { PointerBlockPreview } from "@/components/magicui/pointer-demo"
 import { BackgroundGradientAnimationBlockPreview } from "@/components/ui/background-gradient-animation-demo"
+import { CloudShaderBlockPreview } from "@/components/ui/cloud-shader-demo"
+import { ChromaticImageBlockPreview } from "@/components/ui/chromatic-image-demo"
+import { ImageGenerationLoaderBlockPreview } from "@/components/ui/image-generation-loader-demo"
+import { DraggableCardBlockPreview } from "@/components/ui/draggable-card-demo"
+import { AnimatedTabsBlockPreview } from "@/components/ui/animated-tabs-demo"
+import { EvervaultCardBlockPreview } from "@/components/ui/evervault-card-demo"
 
 interface BlockItem {
   id: string
@@ -96,28 +102,34 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "image-generation-loader",
       title: "Image Generation Loader",
       category: "Canvas & Shaders",
+      badge: "Aceternity",
+      componentTarget: "Image Generation Loader",
       description:
-        "A canvas loader that scans across an image with animated pixel grids, text...",
-      cliCommand: "npx shadcn@latest add @magicui/image-generation-loader",
-      renderPreview: () => <ImageGenerationLoaderPreview />,
+        "A canvas loader that scans across an image with animated pixel grids, text masks, and progress overlays.",
+      cliCommand: "npx shadcn@latest add @aceternity/image-generation-loader-demo",
+      renderPreview: () => <ImageGenerationLoaderBlockPreview />,
     },
     {
       id: "chromatic-image",
       title: "Chromatic Image",
       category: "Canvas & Shaders",
+      badge: "Aceternity",
+      componentTarget: "Chromatic Image",
       description:
         "An interactive image with responsive color separation, displacement, and tilt.",
-      cliCommand: "npx shadcn@latest add @magicui/chromatic-image",
-      renderPreview: () => <ChromaticImagePreview />,
+      cliCommand: "npx shadcn@latest add @aceternity/chromatic-image-demo",
+      renderPreview: () => <ChromaticImageBlockPreview />,
     },
     {
       id: "cloud-shader",
       title: "Cloud Shader",
       category: "Canvas & Shaders",
+      badge: "Aceternity",
+      componentTarget: "Cloud Shader",
       description:
-        "Soft procedural clouds that drift across the sky. Tune speed, count, and colors...",
-      cliCommand: "npx shadcn@latest add @magicui/cloud-shader",
-      renderPreview: () => <CloudShaderPreview />,
+        "Soft procedural clouds that drift across the sky. Tune speed, count, and colors with props.",
+      cliCommand: "npx shadcn@latest add @aceternity/cloud-shader-demo",
+      renderPreview: () => <CloudShaderBlockPreview />,
     },
     {
       id: "hero-sections",
@@ -439,6 +451,17 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       renderPreview: () => <BackgroundGradientAnimationBlockPreview />,
     },
     {
+      id: "cloud-shader",
+      title: "Cloud Shader",
+      category: "Canvas & Shaders",
+      badge: "Aceternity",
+      componentTarget: "Cloud Shader",
+      description:
+        "Soft procedural clouds that drift across the sky. Tune speed, count, and colors with props.",
+      cliCommand: "npx shadcn@latest add @aceternity/cloud-shader-demo",
+      renderPreview: () => <CloudShaderBlockPreview />,
+    },
+    {
       id: "tooltip-card",
       title: "Tooltip Card",
       category: "Components",
@@ -514,6 +537,39 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A lens component to zoom into images, videos, or practically anything.",
       cliCommand: "npx shadcn@latest add @aceternity/lens-demo",
       renderPreview: () => <LensBlockPreview />,
+    },
+    {
+      id: "draggable-card",
+      title: "Draggable Card",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Draggable Card",
+      description:
+        "A tiltable, draggable card component that jumps on bounds.",
+      cliCommand: "npx shadcn@latest add @aceternity/draggable-card-demo-2",
+      renderPreview: () => <DraggableCardBlockPreview />,
+    },
+    {
+      id: "animated-tabs",
+      title: "Animated Tabs",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Animated Tabs",
+      description:
+        "Tabs to switch content, click on a tab to check background animation.",
+      cliCommand: "npx shadcn@latest add @aceternity/tabs-demo",
+      renderPreview: () => <AnimatedTabsBlockPreview />,
+    },
+    {
+      id: "evervault-card",
+      title: "Evervault Card",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Evervault Card",
+      description:
+        "A cool card with amazing hover effect, reveals encrypted text and a mixed gradient.",
+      cliCommand: "npx shadcn@latest add @aceternity/evervault-card-demo",
+      renderPreview: () => <EvervaultCardBlockPreview />,
     },
   ]
 

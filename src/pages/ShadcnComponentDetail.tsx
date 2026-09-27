@@ -226,6 +226,18 @@ import { PointerDemo } from "@/components/magicui/pointer-demo"
 import { PointerGuide } from "@/components/magicui/pointer-guide"
 import { BackgroundGradientAnimationDemo } from "@/components/ui/background-gradient-animation-demo"
 import { BackgroundGradientAnimationGuide } from "@/components/ui/background-gradient-animation-guide"
+import { CloudShaderDemo } from "@/components/ui/cloud-shader-demo"
+import { CloudShaderGuide } from "@/components/ui/cloud-shader-guide"
+import { ChromaticImageDemo } from "@/components/ui/chromatic-image-demo"
+import { ChromaticImageGuide } from "@/components/ui/chromatic-image-guide"
+import { ImageGenerationLoaderDemo } from "@/components/ui/image-generation-loader-demo"
+import { ImageGenerationLoaderGuide } from "@/components/ui/image-generation-loader-guide"
+import { DraggableCardDemo } from "@/components/ui/draggable-card-demo"
+import { DraggableCardGuide } from "@/components/ui/draggable-card-guide"
+import { AnimatedTabsDemo } from "@/components/ui/animated-tabs-demo"
+import { AnimatedTabsGuide } from "@/components/ui/animated-tabs-guide"
+import { EvervaultCardDemo } from "@/components/ui/evervault-card-demo"
+import { EvervaultCardGuide } from "@/components/ui/evervault-card-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1364,6 +1376,128 @@ export function BackgroundGradientAnimationDemo() {
           </p>
         </div>
       </BackgroundGradientAnimation>
+    </div>
+  )
+}`
+
+      case "Cloud Shader":
+        return `import { CloudShader } from "@/components/ui/cloud-shader"
+
+export function CloudShaderDemo() {
+  return (
+    <div className="relative flex h-[440px] sm:h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+      <CloudShader
+        speed={1}
+        count={6}
+        cloudColor="#fbf8f2"
+        skyTopColor="#3876ba"
+        skyBottomColor="#8cbfe8"
+        className="size-full"
+      />
+    </div>
+  )
+}`
+
+      case "Chromatic Image":
+        return `import { ChromaticImage } from "@/components/ui/chromatic-image"
+
+export function ChromaticImageDemo() {
+  return (
+    <div className="relative flex min-h-[460px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 shadow-2xl">
+      <div className="w-full max-w-sm">
+        <ChromaticImage
+          src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1284&auto=format&fit=crop"
+          alt="Starry sky sunset landscape"
+          className="aspect-[4/5] w-full rounded-2xl border border-white/10 shadow-2xl"
+          zoom={0.25}
+          displacement={0.08}
+          chromaticShift={0.02}
+          tilt={0.35}
+        />
+      </div>
+    </div>
+  )
+}`
+
+      case "Image Generation Loader":
+        return `import { ImageGenerationLoader } from "@/components/ui/image-generation-loader"
+
+export function ImageGenerationLoaderDemo() {
+  return (
+    <div className="relative flex min-h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 shadow-2xl">
+      <ImageGenerationLoader
+        src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop"
+        alt="Cybernetic Abstract Sphere"
+        duration={3600}
+        autoStart={true}
+      />
+    </div>
+  )
+}`
+
+      case "Draggable Card":
+        return `import { DraggableCardContainer } from "@/components/ui/draggable-card"
+
+const cards = [
+  {
+    id: "canada",
+    title: "Canada",
+    subtitle: "Banff National Park",
+    image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=600&auto=format&fit=crop",
+    rotation: -6,
+    top: "42%",
+    left: "32%",
+  },
+  {
+    id: "japan",
+    title: "Japan",
+    subtitle: "Mount Fuji",
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=600&auto=format&fit=crop",
+    rotation: 8,
+    top: "50%",
+    left: "65%",
+  },
+]
+
+export function DraggableCardDemo() {
+  return <DraggableCardContainer items={cards} className="min-h-[480px] w-full" />
+}`
+
+      case "Animated Tabs":
+        return `import { AnimatedTabs } from "@/components/ui/animated-tabs"
+
+const tabs = [
+  {
+    title: "Product",
+    value: "product",
+    content: (
+      <div className="w-full h-full rounded-2xl p-10 text-white bg-gradient-to-br from-purple-900 to-indigo-950">
+        <p className="text-2xl font-bold">Product Tab</p>
+      </div>
+    ),
+  },
+  {
+    title: "Services",
+    value: "services",
+    content: (
+      <div className="w-full h-full rounded-2xl p-10 text-white bg-gradient-to-br from-blue-900 to-cyan-950">
+        <p className="text-2xl font-bold">Services Tab</p>
+      </div>
+    ),
+  },
+]
+
+export function AnimatedTabsDemo() {
+  return <AnimatedTabs tabs={tabs} />
+}`
+
+      case "Evervault Card":
+        return `import { EvervaultCard } from "@/components/ui/evervault-card"
+
+export function EvervaultCardDemo() {
+  return (
+    <div className="border border-white/[0.2] flex flex-col items-start max-w-sm mx-auto p-4 relative h-[30rem] rounded-3xl bg-[#121214]">
+      <EvervaultCard text="hover" />
     </div>
   )
 }`
@@ -3862,6 +3996,48 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Cloud Shader":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <CloudShaderDemo />
+          </div>
+        )
+
+      case "Chromatic Image":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ChromaticImageDemo />
+          </div>
+        )
+
+      case "Image Generation Loader":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <ImageGenerationLoaderDemo />
+          </div>
+        )
+
+      case "Draggable Card":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <DraggableCardDemo />
+          </div>
+        )
+
+      case "Animated Tabs":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <AnimatedTabsDemo />
+          </div>
+        )
+
+      case "Evervault Card":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <EvervaultCardDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -4622,6 +4798,18 @@ export function ScrollAreaDemo() {
         <PointerGuide />
       ) : componentData.name === "Background Gradient Animation" ? (
         <BackgroundGradientAnimationGuide />
+      ) : componentData.name === "Cloud Shader" ? (
+        <CloudShaderGuide />
+      ) : componentData.name === "Chromatic Image" ? (
+        <ChromaticImageGuide />
+      ) : componentData.name === "Image Generation Loader" ? (
+        <ImageGenerationLoaderGuide />
+      ) : componentData.name === "Draggable Card" ? (
+        <DraggableCardGuide />
+      ) : componentData.name === "Animated Tabs" ? (
+        <AnimatedTabsGuide />
+      ) : componentData.name === "Evervault Card" ? (
+        <EvervaultCardGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (
