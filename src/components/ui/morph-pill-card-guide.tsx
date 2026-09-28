@@ -18,286 +18,244 @@ export function MorphPillCardGuide() {
 
   const componentSourceCode = `"use client"
 
-import React, { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
-import { ArrowUpRight, X } from "lucide-react"
+import React, { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import {
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  Timer,
+  RotateCcw,
+  Mic,
+  Square,
+  ArrowUpRight,
+  X,
+  Volume2,
+  Check,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-export interface MorphPillItem {
-  id: string
-  pill: {
-    type?: "profile" | "product" | "event" | string
-    avatar?: string
-    image?: string
-    label: string
-  }
-  content: {
-    title: string
-    subtitle?: string
-    company?: string
-    email?: string
-    location?: string
-    price?: string
-    time?: string
-    bio?: string
-    actionText?: string
-    onAction?: () => void
-  }
-}
+export type DynamicIslandMode = "music" | "timer" | "record" | "profile"
 
-export interface MorphPillDeckProps {
-  items?: MorphPillItem[]
-  defaultActiveId?: string | null
+export interface DynamicIslandProps {
+  initialMode?: DynamicIslandMode
+  defaultOpen?: boolean
   className?: string
+  onModeChange?: (mode: DynamicIslandMode) => void
 }
 
-const springConfig = {
+const openSpring = {
   type: "spring" as const,
-  stiffness: 420,
-  damping: 32,
+  stiffness: 400,
+  damping: 28,
   mass: 0.8,
 }
 
+const closeSpring = {
+  type: "spring" as const,
+  stiffness: 420,
+  damping: 32,
+  mass: 0.75,
+}
+
 export function MorphPillDeck({
-  items = [],
-  defaultActiveId = null,
+  initialMode = "music",
+  defaultOpen = false,
   className,
-}: MorphPillDeckProps) {
-  const [activeId, setActiveId] = useState<string | null>(defaultActiveId)
-  const containerRef = useRef<HTMLDivElement>(null)
+  onModeChange,
+}: DynamicIslandProps) {
+  const [mode, setMode] = useState<DynamicIslandMode>(initialMode)
+  const [isOpen, setIsOpen] = useState<boolean>(defaultOpen)
+  const [isPlaying, setIsPlaying] = useState<boolean>(true)
+  const [musicProgress, setMusicProgress] = useState<number>(42)
+  const [timerSeconds, setTimerSeconds] = useState<number>(1458)
+  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(true)
+  const [isRecording, setIsRecording] = useState<boolean>(true)
+  const [recordSeconds, setRecordSeconds] = useState<number>(84)
+  const [hasConnected, setHasConnected] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!isTimerRunning) return
+    const interval = setInterval(() => {
+      setTimerSeconds((prev) => (prev > 0 ? prev - 1 : 0))
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [isTimerRunning])
+
+  useEffect(() => {
+    if (!isRecording) return
+    const interval = setInterval(() => {
+      setRecordSeconds((prev) => prev + 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [isRecording])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setActiveId(null)
-      }
+      if (e.key === "Escape") setIsOpen(false)
     }
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
 
-  const activeItem = items.find((i) => i.id === activeId)
+  const getIslandDimensions = () => {
+    if (!isOpen) {
+      switch (mode) {
+        case "music":
+          return { width: 182, height: 38, radius: 999 }
+        case "timer":
+          return { width: 160, height: 38, radius: 999 }
+        case "record":
+          return { width: 168, height: 38, radius: 999 }
+        case "profile":
+          return { width: 154, height: 38, radius: 999 }
+        default:
+          return { width: 160, height: 38, radius: 999 }
+      }
+    }
+
+    switch (mode) {
+      case "music":
+        return { width: 376, height: 178, radius: 34 }
+      case "timer":
+        return { width: 360, height: 172, radius: 34 }
+      case "record":
+        return { width: 360, height: 172, radius: 34 }
+      case "profile":
+        return { width: 368, height: 184, radius: 34 }
+      default:
+        return { width: 360, height: 172, radius: 34 }
+    }
+  }
+
+  const { width, height, radius } = getIslandDimensions()
+
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60)
+    const s = secs % 60
+    return \`\${m.toString().padStart(2, "0")}:\${s.toString().padStart(2, "0")}\`
+  }
 
   return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "relative flex flex-col items-center justify-center min-h-[380px] w-full p-4 sm:p-8 select-none",
-        className
-      )}
-    >
-      <LayoutGroup id="morph-pill-island-deck">
-        <div className="relative flex flex-col items-center justify-center w-full max-w-md">
-          <AnimatePresence mode="wait">
-            {activeItem ? (
-              <motion.div
-                key={\`expanded-\${activeItem.id}\`}
-                layoutId="island-surface"
-                transition={springConfig}
-                className="relative w-full max-w-[360px] sm:max-w-[390px] bg-black text-white rounded-[28px] border border-white/15 p-5 shadow-[0_24px_70px_-15px_rgba(0,0,0,0.9),0_0_30px_0px_rgba(255,255,255,0.06)] overflow-hidden z-30"
-              >
-                <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                    </span>
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">
-                      {activeItem.pill.type || "DYNAMIC ISLAND"}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-1.5">
-                    {items.map((item) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setActiveId(item.id)}
-                        className={cn(
-                          "size-6 rounded-full overflow-hidden border transition-all cursor-pointer",
-                          activeId === item.id
-                            ? "border-white scale-110 shadow-sm"
-                            : "border-white/20 opacity-50 hover:opacity-100"
-                        )}
-                        title={item.pill.label}
-                      >
-                        <img
-                          src={item.pill.avatar || item.pill.image}
-                          alt={item.pill.label}
-                          className="size-full object-cover"
-                        />
-                      </button>
-                    ))}
-
-                    <button
-                      type="button"
-                      onClick={() => setActiveId(null)}
-                      className="size-6 ml-1.5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-zinc-300 hover:text-white transition-colors cursor-pointer"
-                      title="Collapse Island"
-                    >
-                      <X className="size-3.5" />
-                    </button>
-                  </div>
-                </div>
-
+    <div className={cn("relative flex flex-col items-center justify-start py-6 select-none", className)}>
+      <div className="flex items-center gap-1 mb-10 p-1 rounded-full bg-slate-900/80 border border-slate-800 backdrop-blur-xl shadow-lg">
+        {[
+          { id: "music", label: "Now Playing" },
+          { id: "timer", label: "Focus Timer" },
+          { id: "record", label: "Voice Memo" },
+          { id: "profile", label: "Profile" },
+        ].map((tab) => {
+          const isActive = mode === tab.id
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => {
+                setMode(tab.id as DynamicIslandMode)
+                setIsOpen(true)
+                onModeChange?.(tab.id as DynamicIslandMode)
+              }}
+              className={cn(
+                "relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
+                isActive
+                  ? "text-slate-100 font-semibold"
+                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40"
+              )}
+            >
+              {isActive && (
                 <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.22, delay: 0.05 }}
-                  className="pt-4 space-y-4"
-                >
-                  <div className="flex items-start gap-3.5">
-                    <motion.img
-                      layoutId={\`island-avatar-\${activeItem.id}\`}
-                      transition={springConfig}
-                      src={activeItem.pill.avatar || activeItem.pill.image}
-                      alt={activeItem.content.title}
-                      className="w-14 h-14 rounded-2xl object-cover border border-white/15 shrink-0 shadow-md"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="text-base font-bold text-white truncate tracking-tight">
-                          {activeItem.content.title}
-                        </h3>
-                        {activeItem.content.price && (
-                          <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold font-mono shrink-0">
-                            {activeItem.content.price}
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-xs text-zinc-400 truncate mt-0.5">
-                        {activeItem.content.subtitle}
-                      </p>
-                      {activeItem.content.company && (
-                        <p className="text-[11px] text-zinc-500 font-mono mt-0.5">
-                          {activeItem.content.company}
-                        </p>
-                      )}
-                      {activeItem.content.time && (
-                        <span className="inline-block px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-[10px] font-mono mt-1 border border-blue-500/20">
-                          {activeItem.content.time}
-                        </span>
-                      )}
-                    </div>
-                  </div>
+                  layoutId="active-island-mode-pill"
+                  transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                  className="absolute inset-0 bg-slate-800 border border-slate-700/70 rounded-full shadow-sm"
+                />
+              )}
+              <span className="relative z-10">{tab.label}</span>
+            </button>
+          )
+        })}
+      </div>
 
-                  {activeItem.content.bio && (
-                    <p className="text-xs text-zinc-300 leading-relaxed bg-white/[0.03] p-3 rounded-xl border border-white/5">
-                      {activeItem.content.bio}
-                    </p>
-                  )}
+      <div className="relative flex justify-center" style={{ transformOrigin: "top center" }}>
+        <motion.div
+          layout
+          onClick={() => setIsOpen(!isOpen)}
+          transition={isOpen ? openSpring : closeSpring}
+          style={{
+            width,
+            height,
+            borderRadius: radius,
+            background: "#000000",
+            overflow: "hidden",
+            cursor: "pointer",
+            border: "1px solid rgba(255, 255, 255, 0.12)",
+            boxShadow: isOpen
+              ? "0 24px 70px -12px rgba(0, 0, 0, 0.95), 0 0 1px 1px rgba(255, 255, 255, 0.12)"
+              : "0 8px 24px -4px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.08)",
+          }}
+          className="relative transition-colors"
+        >
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none z-20" />
 
-                  {activeItem.content.actionText && (
-                    <button
-                      type="button"
-                      onClick={() => activeItem.content.onAction?.()}
-                      className="w-full py-2.5 px-4 rounded-xl bg-white text-black hover:bg-zinc-200 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-lg cursor-pointer"
-                    >
-                      <span>{activeItem.content.actionText}</span>
-                      <ArrowUpRight className="size-3.5 stroke-[2.5]" />
-                    </button>
-                  )}
-                </motion.div>
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key={\`expanded-\${mode}\`}
+                initial={{ opacity: 0, scale: 0.94, filter: "blur(6px)" }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  filter: "blur(0px)",
+                  transition: { delay: 0.1, duration: 0.2 },
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.94,
+                  filter: "blur(6px)",
+                  transition: { duration: 0.1 },
+                }}
+                style={{ width, height }}
+                className="p-4 text-white flex flex-col justify-between"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Mode Contents */}
               </motion.div>
             ) : (
               <motion.div
-                key="collapsed-dock"
-                layoutId="island-surface"
-                transition={springConfig}
-                className="relative flex items-center gap-2 bg-black text-white px-2.5 py-2 rounded-full border border-white/15 shadow-[0_16px_50px_-10px_rgba(0,0,0,0.8),0_0_20px_0px_rgba(255,255,255,0.05)] backdrop-blur-xl"
+                key="collapsed-island"
+                initial={{ opacity: 0, scale: 0.9, filter: "blur(4px)" }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  filter: "blur(0px)",
+                  transition: { delay: 0.08, duration: 0.15 },
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.9,
+                  filter: "blur(4px)",
+                  transition: { duration: 0.08 },
+                }}
+                style={{ width, height }}
+                className="flex items-center justify-between px-3.5 size-full text-white"
               >
-                {items.map((item) => {
-                  const imageSrc = item.pill.avatar || item.pill.image
-
-                  return (
-                    <motion.button
-                      key={item.id}
-                      type="button"
-                      onClick={() => setActiveId(item.id)}
-                      whileHover={{ scale: 1.04 }}
-                      whileTap={{ scale: 0.96 }}
-                      transition={springConfig}
-                      className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 hover:border-white/25 text-zinc-200 hover:text-white transition-colors cursor-pointer text-xs font-medium"
-                    >
-                      {imageSrc && (
-                        <motion.img
-                          layoutId={\`island-avatar-\${item.id}\`}
-                          transition={springConfig}
-                          src={imageSrc}
-                          alt={item.pill.label}
-                          className="size-5 rounded-full object-cover border border-white/20 shrink-0"
-                        />
-                      )}
-                      <span className="whitespace-nowrap tracking-tight">{item.pill.label}</span>
-                    </motion.button>
-                  )
-                })}
+                {/* Collapsed Wings */}
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
-      </LayoutGroup>
+        </motion.div>
+      </div>
     </div>
   )
 }`
 
-  const usageCode = `import { MorphPillDeck, MorphPillItem } from "@/components/ui/morph-pill-card"
+  const usageCode = `import { MorphPillDeck } from "@/components/ui/morph-pill-card"
 
-const CARDS_DATA: MorphPillItem[] = [
-  {
-    id: "profile",
-    pill: {
-      type: "profile",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-      label: "Maya Okafor",
-    },
-    content: {
-      title: "Maya Okafor",
-      subtitle: "Lead Interaction Designer",
-      company: "Northline • Lisbon",
-      email: "maya@northline.studio",
-      location: "Remote, UTC+0",
-      bio: "Shapes how the product feels in motion — from first-run flows to the small transitions that make an interface feel considered.",
-      actionText: "Say hello",
-    },
-  },
-  {
-    id: "product",
-    pill: {
-      type: "product",
-      image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=200&q=80",
-      label: "Arc Table Lamp",
-    },
-    content: {
-      title: "Arc Table Lamp",
-      subtitle: "Hand-spun brass, dimmable",
-      price: "€240",
-      bio: "A single sweep of brushed brass with a warm, glare-free shade. Made to order in small batches.",
-      actionText: "See the lamp",
-    },
-  },
-  {
-    id: "event",
-    pill: {
-      type: "event",
-      image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=200&q=80",
-      label: "Low Tide Sessions",
-    },
-    content: {
-      title: "Low Tide Sessions",
-      subtitle: "Live set • Episode 12",
-      time: "Fri 21 Nov • 20:00",
-      bio: "Ambient electronic textures and relaxed downtempo grooves recorded live from the coastal studio.",
-      actionText: "Listen live",
-    },
-  },
-]
-
-export function MorphPillDeckDemo() {
+export function DynamicIslandDemo() {
   return (
-    <div className="flex items-center justify-center min-h-[480px] bg-[#0A0A0A] rounded-2xl border border-white/10">
-      <MorphPillDeck items={CARDS_DATA} defaultActiveId="profile" />
+    <div className="flex items-center justify-center min-h-[480px] bg-[#0A0A0A] rounded-2xl border border-slate-800">
+      <MorphPillDeck initialMode="music" defaultOpen={true} />
     </div>
   )
 }`
@@ -308,7 +266,7 @@ export function MorphPillDeckDemo() {
       <div className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight text-white">iDynamics</h1>
         <p className="text-base text-zinc-400">
-          An Apple Dynamic Island-inspired morphing surface that physically stretches and transforms between a compact pill and full rich card with continuous layout spring physics.
+          An authentic Apple Dynamic Island morphing surface that physically transforms between compact wings and expanded interactive cards with smooth spring physics.
         </p>
       </div>
 
@@ -393,22 +351,28 @@ export function MorphPillDeckDemo() {
             </thead>
             <tbody className="divide-y divide-white/5 font-mono text-xs">
               <tr>
-                <td className="px-4 py-3 text-cyan-400 font-bold">items</td>
-                <td className="px-4 py-3 text-purple-400">MorphPillItem[]</td>
-                <td className="px-4 py-3 text-zinc-500">DEFAULT_CARDS_DATA</td>
-                <td className="px-4 py-3 text-zinc-300 font-sans">Array of pill deck item objects with pill metadata and card contents.</td>
+                <td className="px-4 py-3 text-cyan-400 font-bold">initialMode</td>
+                <td className="px-4 py-3 text-purple-400">"music" | "timer" | "record" | "profile"</td>
+                <td className="px-4 py-3 text-zinc-500">"music"</td>
+                <td className="px-4 py-3 text-zinc-300 font-sans">Active interactive card mode.</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 text-cyan-400 font-bold">defaultActiveId</td>
-                <td className="px-4 py-3 text-purple-400">string | null</td>
-                <td className="px-4 py-3 text-zinc-500">null</td>
-                <td className="px-4 py-3 text-zinc-300 font-sans">ID of the card to initially display expanded.</td>
+                <td className="px-4 py-3 text-cyan-400 font-bold">defaultOpen</td>
+                <td className="px-4 py-3 text-purple-400">boolean</td>
+                <td className="px-4 py-3 text-zinc-500">false</td>
+                <td className="px-4 py-3 text-zinc-300 font-sans">Whether the Dynamic Island starts expanded.</td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-cyan-400 font-bold">className</td>
                 <td className="px-4 py-3 text-purple-400">string</td>
                 <td className="px-4 py-3 text-zinc-500">undefined</td>
-                <td className="px-4 py-3 text-zinc-300 font-sans">Outer container styling for padding, height, and backgrounds.</td>
+                <td className="px-4 py-3 text-zinc-300 font-sans">Outer container styling.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-cyan-400 font-bold">onModeChange</td>
+                <td className="px-4 py-3 text-purple-400">(mode) =&gt; void</td>
+                <td className="px-4 py-3 text-zinc-500">undefined</td>
+                <td className="px-4 py-3 text-zinc-300 font-sans">Callback triggered on tab selection.</td>
               </tr>
             </tbody>
           </table>

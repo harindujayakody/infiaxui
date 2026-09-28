@@ -1911,15 +1911,12 @@ export function HeroSectionDemo() {
 }`
 
       case "iDynamics":
-        return `import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Play, Pause, SkipBack, SkipForward, Phone, PhoneOff, Mic, Volume2, Airplay, ArrowUpRight, X, Package, CheckCircle2, Sparkles, Music2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+        return `import React from "react"
 import { MorphPillDeck } from "@/components/ui/morph-pill-card"
 
 export function DynamicIslandDemo() {
   return (
-    <div className="relative flex min-h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 sm:p-12 shadow-2xl select-none">
+    <div className="relative flex min-h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-slate-800 bg-[#0A0A0A] p-6 sm:p-12 shadow-2xl select-none">
       <MorphPillDeck initialMode="music" defaultOpen={true} />
     </div>
   )
