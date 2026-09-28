@@ -18,7 +18,7 @@ export function GlareHoverGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/glare-hover`
+  const cliCode = `npx @infiax/ui add glare-hover`
 
   const componentSourceCode = `import type { ComponentProps, CSSProperties } from "react"
 import { useMemo } from "react"
@@ -354,3 +354,4 @@ export default function PricingCard() {
     </div>
   )
 }
+

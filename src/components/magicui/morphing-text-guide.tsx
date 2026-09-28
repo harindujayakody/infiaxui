@@ -14,7 +14,7 @@ export function MorphingTextGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/morphing-text`
+  const cliCode = `npx @infiax/ui add morphing-text`
 
   const componentSourceCode = `"use client"
 
@@ -342,3 +342,4 @@ export function MorphingTextDemo() {
     </div>
   )
 }
+

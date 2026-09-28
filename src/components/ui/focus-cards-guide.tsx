@@ -14,7 +14,7 @@ export function FocusCardsGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/focus-cards-demo`
+  const cliCode = `npx @infiax/ui add focus-cards-demo`
 
   const componentSourceCode = `"use client"
 
@@ -311,3 +311,4 @@ export function FocusCardsDemo() {
     </div>
   )
 }
+

@@ -18,7 +18,7 @@ export function DiaTextRevealGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/dia-text-reveal`
+  const cliCode = `npx @infiax/ui add dia-text-reveal`
 
   const componentSourceCode = `"use client"
 
@@ -500,3 +500,4 @@ export default function Hero() {
     </div>
   )
 }
+

@@ -14,7 +14,7 @@ export function MorphPillCardGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/idynamics-demo`
+  const cliCode = `npx @infiax/ui add idynamics-demo`
 
   const componentSourceCode = `"use client"
 
@@ -381,3 +381,4 @@ export function DynamicIslandDemo() {
     </div>
   )
 }
+

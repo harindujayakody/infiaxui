@@ -14,7 +14,7 @@ export function GlobeGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/globe`
+  const cliCode = `npx @infiax/ui add globe`
 
   const manualNpmCode = `npm install cobe framer-motion`
 
@@ -424,3 +424,4 @@ export function GlobeHero() {
     </div>
   )
 }
+

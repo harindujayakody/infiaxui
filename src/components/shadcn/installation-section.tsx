@@ -39,14 +39,14 @@ export function InstallationSection({
   const getCliCommand = (pkg: PackageManager) => {
     switch (pkg) {
       case "pnpm":
-        return `pnpm dlx shadcn@latest add ${slug}`
+        return `pnpm dlx @infiax/ui add ${slug}`
       case "yarn":
-        return `npx shadcn@latest add ${slug}`
+        return `npx @infiax/ui add ${slug}`
       case "bun":
-        return `bunx --bun shadcn@latest add ${slug}`
+        return `bunx @infiax/ui add ${slug}`
       case "npm":
       default:
-        return `npx shadcn@latest add ${slug}`
+        return `npx @infiax/ui add ${slug}`
     }
   }
 

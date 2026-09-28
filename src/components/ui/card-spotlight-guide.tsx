@@ -14,7 +14,7 @@ export function CardSpotlightGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/card-spotlight-demo`
+  const cliCode = `npx @infiax/ui add card-spotlight-demo`
 
   const componentSourceCode = `"use client"
 
@@ -293,3 +293,4 @@ export function Example() {
     </div>
   )
 }
+

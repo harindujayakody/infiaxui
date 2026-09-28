@@ -208,7 +208,7 @@ export function CommandPalette({
 
                   <div className="flex items-center gap-2 shrink-0 ml-3">
                     <span className="hidden sm:inline type-caption text-[var(--text-muted)] font-mono text-xs">
-                      npx shadcn add {item.id}
+                      npx @infiax/ui add {item.id}
                     </span>
                     {isSelected ? (
                       <CornerDownLeft className="size-3.5 text-[var(--text-main)]" />
@@ -235,3 +235,4 @@ export function CommandPalette({
     </div>
   )
 }
+

@@ -109,7 +109,7 @@ export function TerminalBlockPreview() {
   return (
     <div className="relative size-full overflow-hidden bg-[#0A0A0A] flex items-center justify-center p-3 select-none">
       <Terminal className="w-full max-w-[340px] max-h-[175px] shadow-xl border-zinc-800/80 scale-[0.88] sm:scale-95 origin-center">
-        <TypingAnimation duration={35}>&gt; npx shadcn add @magicui/terminal</TypingAnimation>
+        <TypingAnimation duration={35}>&gt; npx @infiax/ui add terminal</TypingAnimation>
         <AnimatedSpan className="text-emerald-400">✔ Downloading terminal package...</AnimatedSpan>
         <AnimatedSpan className="text-emerald-400">✔ Generating sequence provider</AnimatedSpan>
         <AnimatedSpan className="text-blue-400">ℹ Created components/ui/terminal.tsx</AnimatedSpan>
@@ -118,3 +118,4 @@ export function TerminalBlockPreview() {
     </div>
   )
 }
+

@@ -14,7 +14,7 @@ export function ResizableNavbarGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/resizable-navbar-demo`
+  const cliCode = `npx @infiax/ui add resizable-navbar-demo`
 
   const componentSourceCode = `"use client"
 
@@ -308,3 +308,4 @@ export default function Example() {
     </div>
   )
 }
+

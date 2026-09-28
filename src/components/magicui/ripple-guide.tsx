@@ -14,7 +14,7 @@ export function RippleGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/ripple`
+  const cliCode = `npx @infiax/ui add ripple`
 
   const componentSourceCode = `import React, { type ComponentPropsWithoutRef, type CSSProperties } from "react"
 
@@ -336,3 +336,4 @@ export default function HeroSection() {
     </div>
   )
 }
+

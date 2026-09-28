@@ -14,7 +14,7 @@ export function GlowingEffectGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/glowing-effect-demo`
+  const cliCode = `npx @infiax/ui add glowing-effect-demo`
 
   const componentSourceCode = `"use client"
 
@@ -351,3 +351,4 @@ export default function Example() {
     </div>
   )
 }
+

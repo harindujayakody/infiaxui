@@ -298,7 +298,7 @@ export function ShadcnComponentDetail({
       id: componentName.toLowerCase().replace(/\s+/g, "-"),
       name: componentName,
       description: `Displays the path to the current resource using a hierarchy of links.`,
-      installationCommand: `npx shadcn@latest add ${componentName.toLowerCase().replace(/\s+/g, "-")}`,
+      installationCommand: `npx @infiax/ui add ${componentName.toLowerCase().replace(/\s+/g, "-")}`,
       importCode: `import { ${componentName} } from "@/components/ui/${componentName.toLowerCase().replace(/\s+/g, "-")}"`,
       usageCode: `<${componentName} />`,
       apiReference: [componentName],
@@ -314,15 +314,15 @@ export function ShadcnComponentDetail({
     const slug = componentData.id
     switch (pkgManager) {
       case "pnpm":
-        return `pnpm dlx shadcn@latest add ${slug}`
+        return `pnpm dlx @infiax/ui add ${slug}`
       case "npm":
-        return `npx shadcn@latest add ${slug}`
+        return `npx @infiax/ui add ${slug}`
       case "yarn":
-        return `npx shadcn@latest add ${slug}`
+        return `npx @infiax/ui add ${slug}`
       case "bun":
-        return `bunx --bun shadcn@latest add ${slug}`
+        return `bunx @infiax/ui add ${slug}`
       default:
-        return `npx shadcn@latest add ${slug}`
+        return `npx @infiax/ui add ${slug}`
     }
   }
 

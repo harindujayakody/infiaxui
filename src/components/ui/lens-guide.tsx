@@ -14,7 +14,7 @@ export function LensGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/lens-demo`
+  const cliCode = `npx @infiax/ui add lens-demo`
 
   const componentSourceCode = `"use client"
 
@@ -392,3 +392,4 @@ export function LensDemo() {
     </div>
   )
 }
+

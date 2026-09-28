@@ -14,7 +14,7 @@ export function FlickeringGridGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/flickering-grid`
+  const cliCode = `npx @infiax/ui add flickering-grid`
 
   const componentSourceCode = `"use client"
 
@@ -450,3 +450,4 @@ export function FlickeringGridDemo() {
     </div>
   )
 }
+

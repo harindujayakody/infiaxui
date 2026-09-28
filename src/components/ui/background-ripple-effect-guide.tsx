@@ -14,7 +14,7 @@ export function BackgroundRippleEffectGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/background-ripple-effect-demo`
+  const cliCode = `npx @infiax/ui add background-ripple-effect-demo`
 
   const componentSourceCode = `"use client"
 
@@ -371,3 +371,4 @@ export function HeroSection() {
     </div>
   )
 }
+

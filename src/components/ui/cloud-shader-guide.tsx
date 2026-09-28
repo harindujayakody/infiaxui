@@ -14,7 +14,7 @@ export function CloudShaderGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/cloud-shader-demo`
+  const cliCode = `npx @infiax/ui add cloud-shader-demo`
 
   const componentSourceCode = `"use client"
 
@@ -536,3 +536,4 @@ export function CloudShaderDemo() {
     </div>
   )
 }
+

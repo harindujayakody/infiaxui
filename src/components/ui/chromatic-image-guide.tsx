@@ -14,7 +14,7 @@ export function ChromaticImageGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/chromatic-image-demo`
+  const cliCode = `npx @infiax/ui add chromatic-image-demo`
 
   const componentSourceCode = `"use client"
 
@@ -531,3 +531,4 @@ export function Example() {
     </div>
   )
 }
+

@@ -14,7 +14,7 @@ export function TerminalGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/terminal`
+  const cliCode = `npx @infiax/ui add terminal`
 
   const terminalComponentCode = `"use client"
 
@@ -615,3 +615,4 @@ export function TerminalDemo() {
     </div>
   )
 }
+

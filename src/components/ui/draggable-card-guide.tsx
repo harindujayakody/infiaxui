@@ -14,7 +14,7 @@ export function DraggableCardGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/draggable-card-demo-2`
+  const cliCode = `npx @infiax/ui add draggable-card-demo-2`
 
   const componentSourceCode = `"use client"
 
@@ -280,3 +280,4 @@ export default function Example() {
     </div>
   )
 }
+

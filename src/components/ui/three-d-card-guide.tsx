@@ -14,7 +14,7 @@ export function ThreeDCardGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/3d-card-demo`
+  const cliCode = `npx @infiax/ui add 3d-card-demo`
 
   const componentSourceCode = `"use client"
 
@@ -406,3 +406,4 @@ export function ThreeDCardDemo() {
     </div>
   )
 }
+

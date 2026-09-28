@@ -17,7 +17,7 @@ export function AnimatedShinyTextGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/animated-shiny-text`
+  const cliCode = `npx @infiax/ui add animated-shiny-text`
 
   const componentSourceCode = `import {
   type ComponentPropsWithoutRef,
@@ -311,3 +311,4 @@ export function Example() {
     </div>
   )
 }
+

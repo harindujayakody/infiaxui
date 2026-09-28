@@ -14,7 +14,7 @@ export function AnimatedListGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/animated-list`
+  const cliCode = `npx @infiax/ui add animated-list`
 
   const componentSourceCode = `"use client"
 
@@ -402,3 +402,4 @@ export default function NotificationsFeed() {
     </div>
   )
 }
+

@@ -20,39 +20,39 @@ export function InstallationGuide() {
 
   const frameworkCommands: Record<string, Record<string, string>> = {
     next: {
-      npm: "npx shadcn@latest init -t next",
+      npm: "npx @infiax/ui init -t next",
       pnpm: "pnpm dlx shadcn@latest init -t next",
-      yarn: "npx shadcn@latest init -t next",
+      yarn: "npx @infiax/ui init -t next",
       bun: "bunx --bun shadcn@latest init -t next",
     },
     vite: {
-      npm: "npx shadcn@latest init -t vite",
+      npm: "npx @infiax/ui init -t vite",
       pnpm: "pnpm dlx shadcn@latest init -t vite",
-      yarn: "npx shadcn@latest init -t vite",
+      yarn: "npx @infiax/ui init -t vite",
       bun: "bunx --bun shadcn@latest init -t vite",
     },
     tanstack: {
-      npm: "npx shadcn@latest init -t start",
+      npm: "npx @infiax/ui init -t start",
       pnpm: "pnpm dlx shadcn@latest init -t start",
-      yarn: "npx shadcn@latest init -t start",
+      yarn: "npx @infiax/ui init -t start",
       bun: "bunx --bun shadcn@latest init -t start",
     },
     laravel: {
-      npm: "laravel new my-app\ncd my-app\nnpx shadcn@latest init",
+      npm: "laravel new my-app\ncd my-app\nnpx @infiax/ui init",
       pnpm: "laravel new my-app\ncd my-app\npnpm dlx shadcn@latest init",
       yarn: "laravel new my-app\ncd my-app\nyarn dlx shadcn@latest init",
       bun: "laravel new my-app\ncd my-app\nbunx --bun shadcn@latest init",
     },
     "react-router": {
-      npm: "npx shadcn@latest init -t react-router",
+      npm: "npx @infiax/ui init -t react-router",
       pnpm: "pnpm dlx shadcn@latest init -t react-router",
-      yarn: "npx shadcn@latest init -t react-router",
+      yarn: "npx @infiax/ui init -t react-router",
       bun: "bunx --bun shadcn@latest init -t react-router",
     },
     astro: {
-      npm: "npx shadcn@latest init -t astro",
+      npm: "npx @infiax/ui init -t astro",
       pnpm: "pnpm dlx shadcn@latest init -t astro",
-      yarn: "npx shadcn@latest init -t astro",
+      yarn: "npx @infiax/ui init -t astro",
       bun: "bunx --bun shadcn@latest init -t astro",
     },
     manual: {
@@ -257,3 +257,4 @@ export function cn(...inputs: ClassValue[]) {
     </div>
   )
 }
+

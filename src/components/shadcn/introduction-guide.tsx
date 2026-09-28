@@ -62,12 +62,12 @@ export function IntroductionGuide() {
     {
       question: "Can I use this in an existing project?",
       answer:
-        "Yes. Run 'npx shadcn@latest init' inside your existing project. It will detect your Tailwind CSS configuration and tsconfig paths, generate components.json, and install the utility helpers without disturbing existing code.",
+        "Yes. Run 'npx @infiax/ui init' inside your existing project. It will detect your Tailwind CSS configuration and tsconfig paths, generate components.json, and install the utility helpers without disturbing existing code.",
     },
     {
       question: "How do I get updates when components improve?",
       answer:
-        "You can run 'npx shadcn@latest diff' to inspect changes between your local component and the latest registry release, or use 'npx shadcn@latest add <component> --overwrite' to pull the newest version.",
+        "You can run 'npx @infiax/ui diff' to inspect changes between your local component and the latest registry release, or use 'npx @infiax/ui add <component> --overwrite' to pull the newest version.",
     },
   ]
 
@@ -120,7 +120,7 @@ export function IntroductionGuide() {
         </p>
 
         <CodeBlock
-          code="npx shadcn@latest init"
+          code="npx @infiax/ui init"
           language="bash"
           fileName="Terminal"
         />
@@ -130,7 +130,7 @@ export function IntroductionGuide() {
         </p>
 
         <CodeBlock
-          code="npx shadcn@latest add button dialog dropdown-menu"
+          code="npx @infiax/ui add button dialog dropdown-menu"
           language="bash"
           fileName="Terminal"
         />
@@ -157,3 +157,4 @@ export function IntroductionGuide() {
     </div>
   )
 }
+

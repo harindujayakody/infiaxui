@@ -17,7 +17,7 @@ export function SmoothCursorGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/smooth-cursor`
+  const cliCode = `npx @infiax/ui add smooth-cursor`
 
   const componentSourceCode = `"use client"
 
@@ -617,3 +617,4 @@ select {
     </div>
   )
 }
+

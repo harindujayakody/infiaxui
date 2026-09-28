@@ -19,7 +19,7 @@ export function AnimatedThemeTogglerGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/animated-theme-toggler`
+  const cliCode = `npx @infiax/ui add animated-theme-toggler`
 
   const componentSourceCode = `"use client"
 
@@ -620,3 +620,4 @@ export default function Navbar() {
     </div>
   )
 }
+

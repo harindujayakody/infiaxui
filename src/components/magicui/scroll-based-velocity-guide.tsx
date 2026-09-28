@@ -17,7 +17,7 @@ export function ScrollBasedVelocityGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/scroll-based-velocity`
+  const cliCode = `npx @infiax/ui add scroll-based-velocity`
 
   const componentSourceCode = `"use client"
 
@@ -544,3 +544,4 @@ export function ScrollBasedVelocityDemo() {
     </div>
   )
 }
+

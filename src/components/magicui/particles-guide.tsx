@@ -14,7 +14,7 @@ export function ParticlesGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/particles`
+  const cliCode = `npx @infiax/ui add particles`
 
   const componentSourceCode = `"use client"
 
@@ -572,3 +572,4 @@ export default function Hero() {
     </div>
   )
 }
+

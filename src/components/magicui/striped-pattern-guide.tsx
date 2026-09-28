@@ -18,7 +18,7 @@ export function StripedPatternGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/striped-pattern`
+  const cliCode = `npx @infiax/ui add striped-pattern`
 
   const componentSourceCode = `import React, { useId } from "react"
 import { cn } from "@/lib/utils"
@@ -316,3 +316,4 @@ export default function Background() {
     </div>
   )
 }
+

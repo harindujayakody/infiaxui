@@ -111,7 +111,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Image Generation Loader",
       description:
         "A canvas loader that scans across an image with animated pixel grids, text masks, and progress overlays.",
-      cliCommand: "npx shadcn@latest add @aceternity/image-generation-loader-demo",
+      cliCommand: "npx @infiax/ui add image-generation-loader",
       renderPreview: () => <ImageGenerationLoaderBlockPreview />,
     },
     {
@@ -122,7 +122,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Chromatic Image",
       description:
         "An interactive image with responsive color separation, displacement, and tilt.",
-      cliCommand: "npx shadcn@latest add @aceternity/chromatic-image-demo",
+      cliCommand: "npx @infiax/ui add chromatic-image",
       renderPreview: () => <ChromaticImageBlockPreview />,
     },
     {
@@ -133,7 +133,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Cloud Shader",
       description:
         "Soft procedural clouds that drift across the sky. Tune speed, count, and colors with props.",
-      cliCommand: "npx shadcn@latest add @aceternity/cloud-shader-demo",
+      cliCommand: "npx @infiax/ui add cloud-shader",
       renderPreview: () => <CloudShaderBlockPreview />,
     },
     {
@@ -145,7 +145,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       hasStar: true,
       description:
         "A set of hero sections ranging from simple to complex layouts",
-      cliCommand: "npx shadcn@latest add @aceternity/hero-section-demo-1",
+      cliCommand: "npx @infiax/ui add hero-sections",
       renderPreview: () => <HeroSectionsBlockPreview />,
     },
     {
@@ -156,7 +156,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Animated Beam",
       description:
         "An animated beam of light which travels along a path. Useful for showcasing integration features.",
-      cliCommand: "npx shadcn@latest add @magicui/animated-beam",
+      cliCommand: "npx @infiax/ui add animated-beam",
       renderPreview: () => <AnimatedBeamMiniPreview />,
     },
     {
@@ -167,7 +167,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Bento Grid",
       description:
         "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
-      cliCommand: "npx shadcn@latest add @magicui/bento-grid",
+      cliCommand: "npx @infiax/ui add bento-grid",
       renderPreview: () => <BentoGridBlockPreview />,
     },
     {
@@ -178,7 +178,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Globe",
       description:
         "An autorotating, interactive, and highly performant globe made using WebGL.",
-      cliCommand: "npx shadcn@latest add @magicui/globe",
+      cliCommand: "npx @infiax/ui add globe",
       renderPreview: () => <GlobeBlockPreview />,
     },
     {
@@ -189,7 +189,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Dock",
       description:
         "An implementation of the MacOS dock using react + tailwindcss + framer motion",
-      cliCommand: "npx shadcn@latest add @magicui/dock",
+      cliCommand: "npx @infiax/ui add dock",
       renderPreview: () => <DockCardPreview />,
     },
     {
@@ -200,7 +200,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Glare Hover",
       description:
         "A diagonal light glare on hover using a ::before gradient, CSS variables, and background-position animation—no extra global keyframes required.",
-      cliCommand: "npx shadcn@latest add @magicui/glare-hover",
+      cliCommand: "npx @infiax/ui add glare-hover",
       renderPreview: () => <GlareHoverBlockCardPreview />,
     },
     {
@@ -211,7 +211,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Tweet Card",
       description:
         "A card that displays a tweet with the author's name, handle, and profile picture.",
-      cliCommand: "npx shadcn@latest add @magicui/tweet-card",
+      cliCommand: "npx @infiax/ui add tweet-card",
       renderPreview: () => <TweetCardBlockPreview />,
     },
     {
@@ -222,7 +222,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Magic Card",
       description:
         "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
-      cliCommand: "npx shadcn@latest add @magicui/magic-card",
+      cliCommand: "npx @infiax/ui add magic-card",
       renderPreview: () => <MagicCardBlockPreview />,
     },
     {
@@ -233,7 +233,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Warp Background",
       description:
         "A card with a time warping background effect.",
-      cliCommand: "npx shadcn@latest add @magicui/warp-background",
+      cliCommand: "npx @infiax/ui add warp-background",
       renderPreview: () => <WarpBackgroundBlockPreview />,
     },
     {
@@ -244,7 +244,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Floating 3D Particles",
       description:
         "A canvas-based pseudo-3D particle field with perspective projection, continuous rotation, buoyant drift and depth-aware rendering.",
-      cliCommand: "npx shadcn@latest add @magicui/floating-3d-particles",
+      cliCommand: "npx @infiax/ui add floating-3d-particles",
       renderPreview: () => <Floating3DParticlesBlockPreview />,
     },
     {
@@ -255,7 +255,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Marquee",
       description:
         "An infinite scrolling component that can be used to display text, images, or videos.",
-      cliCommand: "npx shadcn@latest add @magicui/marquee",
+      cliCommand: "npx @infiax/ui add marquee",
       renderPreview: () => <MarqueeBlockPreview />,
     },
     {
@@ -266,7 +266,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Terminal",
       description:
         "An implementation of the MacOS terminal. Useful for showcasing a command line interface.",
-      cliCommand: "npx shadcn@latest add @magicui/terminal",
+      cliCommand: "npx @infiax/ui add terminal",
       renderPreview: () => <TerminalBlockPreview />,
     },
     {
@@ -277,7 +277,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Rainbow Button",
       description:
         "An animated button with a continuous rainbow linear gradient border and glowing aura.",
-      cliCommand: "npx shadcn@latest add @magicui/rainbow-button",
+      cliCommand: "npx @infiax/ui add rainbow-button",
       renderPreview: () => <RainbowButtonBlockPreview />,
     },
     {
@@ -288,7 +288,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "3D Card Effect",
       description:
         "A card perspective effect, hover over the card to elevate card elements.",
-      cliCommand: "npx shadcn@latest add @aceternity/3d-card-demo",
+      cliCommand: "npx @infiax/ui add 3d-card",
       renderPreview: () => <ThreeDCardBlockPreview />,
     },
     {
@@ -299,7 +299,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Animated Shiny Text",
       description:
         "A light glare effect which pans across text making it appear as if it is shimmering.",
-      cliCommand: "npx shadcn@latest add @magicui/animated-shiny-text",
+      cliCommand: "npx @infiax/ui add animated-shiny-text",
       renderPreview: () => <AnimatedShinyTextBlockPreview />,
     },
     {
@@ -310,7 +310,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Scroll Based Velocity",
       description:
         "Scrolling text whose speed changes based on scroll speed.",
-      cliCommand: "npx shadcn@latest add @magicui/scroll-based-velocity",
+      cliCommand: "npx @infiax/ui add scroll-based-velocity",
       renderPreview: () => <ScrollBasedVelocityBlockPreview />,
     },
     {
@@ -321,7 +321,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Smooth Cursor",
       description:
         "A customizable, physics-based smooth cursor animation component for React applications.",
-      cliCommand: "npx shadcn@latest add @magicui/smooth-cursor",
+      cliCommand: "npx @infiax/ui add smooth-cursor",
       renderPreview: () => <SmoothCursorBlockPreview />,
     },
     {
@@ -332,7 +332,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Animated List",
       description:
         "A list that animates each item in sequence with a delay. Used to showcase notifications or events.",
-      cliCommand: "npx shadcn@latest add @magicui/animated-list",
+      cliCommand: "npx @infiax/ui add animated-list",
       renderPreview: () => <AnimatedListBlockPreview />,
     },
     {
@@ -343,7 +343,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Ripple",
       description:
         "An animated ripple effect typically used behind elements to emphasize them.",
-      cliCommand: "npx shadcn@latest add @magicui/ripple",
+      cliCommand: "npx @infiax/ui add ripple",
       renderPreview: () => <RippleBlockPreview />,
     },
     {
@@ -354,7 +354,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Striped Pattern",
       description:
         "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
-      cliCommand: "npx shadcn@latest add @magicui/striped-pattern",
+      cliCommand: "npx @infiax/ui add striped-pattern",
       renderPreview: () => <StripedPatternBlockPreview />,
     },
     {
@@ -365,7 +365,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Pixel Image",
       description:
         "A component that displays your image with a pixelated effect, enhancing visual appeal.",
-      cliCommand: "npx shadcn@latest add @magicui/pixel-image",
+      cliCommand: "npx @infiax/ui add pixel-image",
       renderPreview: () => <PixelImageBlockPreview />,
     },
     {
@@ -376,7 +376,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Dia Text Reveal",
       description:
         "A horizontal color band sweeps across text with a gradient shine, then settles on your foreground color.",
-      cliCommand: "npx shadcn@latest add @magicui/dia-text-reveal",
+      cliCommand: "npx @infiax/ui add dia-text-reveal",
       renderPreview: () => <DiaTextRevealBlockPreview />,
     },
     {
@@ -387,7 +387,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Theme Toggler",
       description:
         "Animated theme toggle using the View Transitions API with configurable clip-path shapes.",
-      cliCommand: "npx shadcn@latest add @magicui/animated-theme-toggler",
+      cliCommand: "npx @infiax/ui add theme-toggler",
       renderPreview: () => <ThemeTogglerBlockPreview />,
     },
     {
@@ -398,7 +398,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Dot Pattern",
       description:
         "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
-      cliCommand: "npx shadcn@latest add @magicui/dot-pattern",
+      cliCommand: "npx @infiax/ui add dot-pattern",
       renderPreview: () => <DotPatternBlockPreview />,
     },
     {
@@ -409,7 +409,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Particles",
       description:
         "Particles are a fun way to add some visual flair, movement, and depth to your website.",
-      cliCommand: "npx shadcn@latest add @magicui/particles",
+      cliCommand: "npx @infiax/ui add particles",
       renderPreview: () => <ParticlesBlockPreview />,
     },
     {
@@ -420,7 +420,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Flickering Grid",
       description:
         "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
-      cliCommand: "npx shadcn@latest add @magicui/flickering-grid",
+      cliCommand: "npx @infiax/ui add flickering-grid",
       renderPreview: () => <FlickeringGridBlockPreview />,
     },
     {
@@ -431,7 +431,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Morphing Text",
       description:
         "A dynamic text morphing component for Magic UI.",
-      cliCommand: "npx shadcn@latest add @magicui/morphing-text",
+      cliCommand: "npx @infiax/ui add morphing-text",
       renderPreview: () => <MorphingTextBlockPreview />,
     },
     {
@@ -442,7 +442,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Pointer",
       description:
         "A component that displays a pointer when hovering over an element.",
-      cliCommand: "npx shadcn@latest add @magicui/pointer",
+      cliCommand: "npx @infiax/ui add pointer",
       renderPreview: () => <PointerBlockPreview />,
     },
     {
@@ -453,7 +453,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Background Gradient Animation",
       description:
         "A smooth and elegant background gradient animation that changes the gradient position over time.",
-      cliCommand: "npx shadcn@latest add @aceternity/background-gradient-animation-demo",
+      cliCommand: "npx @infiax/ui add background-gradient-animation",
       renderPreview: () => <BackgroundGradientAnimationBlockPreview />,
     },
     {
@@ -464,7 +464,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Cloud Shader",
       description:
         "Soft procedural clouds that drift across the sky. Tune speed, count, and colors with props.",
-      cliCommand: "npx shadcn@latest add @aceternity/cloud-shader-demo",
+      cliCommand: "npx @infiax/ui add cloud-shader",
       renderPreview: () => <CloudShaderBlockPreview />,
     },
     {
@@ -475,7 +475,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Tooltip Card",
       description:
         "A tooltip card container that follows mouse pointer when hovered over.",
-      cliCommand: "npx shadcn@latest add @aceternity/tooltip-card-demo",
+      cliCommand: "npx @infiax/ui add tooltip-card",
       renderPreview: () => <TooltipCardBlockPreview />,
     },
     {
@@ -486,7 +486,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Animated Testimonials",
       description:
         "Minimal testimonials sections with image and quote.",
-      cliCommand: "npx shadcn@latest add @aceternity/animated-testimonials-demo",
+      cliCommand: "npx @infiax/ui add animated-testimonials",
       renderPreview: () => <AnimatedTestimonialsBlockPreview />,
     },
     {
@@ -497,7 +497,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Card Spotlight",
       description:
         "A card component with a spotlight effect revealing a radial gradient background.",
-      cliCommand: "npx shadcn@latest add @aceternity/card-spotlight-demo",
+      cliCommand: "npx @infiax/ui add card-spotlight",
       renderPreview: () => <CardSpotlightBlockPreview />,
     },
     {
@@ -508,7 +508,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Background Ripple Effect",
       description:
         "A grid of cells that ripple when clicked.",
-      cliCommand: "npx shadcn@latest add @aceternity/background-ripple-effect-demo",
+      cliCommand: "npx @infiax/ui add background-ripple-effect",
       renderPreview: () => <BackgroundRippleEffectBlockPreview />,
     },
     {
@@ -519,7 +519,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Comet Card",
       description:
         "A perspective, 3D, Tilt card as seen on Perplexity Comet's website.",
-      cliCommand: "npx shadcn@latest add @aceternity/comet-card-demo",
+      cliCommand: "npx @infiax/ui add comet-card",
       renderPreview: () => <CometCardBlockPreview />,
     },
     {
@@ -530,7 +530,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Focus Cards",
       description:
         "Hover over the card to focus on it, blurring the rest of the cards.",
-      cliCommand: "npx shadcn@latest add @aceternity/focus-cards-demo",
+      cliCommand: "npx @infiax/ui add focus-cards",
       renderPreview: () => <FocusCardsBlockPreview />,
     },
     {
@@ -541,7 +541,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Lens",
       description:
         "A lens component to zoom into images, videos, or practically anything.",
-      cliCommand: "npx shadcn@latest add @aceternity/lens-demo",
+      cliCommand: "npx @infiax/ui add lens",
       renderPreview: () => <LensBlockPreview />,
     },
     {
@@ -552,7 +552,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Draggable Card",
       description:
         "A tiltable, draggable card component that jumps on bounds.",
-      cliCommand: "npx shadcn@latest add @aceternity/draggable-card-demo-2",
+      cliCommand: "npx @infiax/ui add draggable-card",
       renderPreview: () => <DraggableCardBlockPreview />,
     },
     {
@@ -563,7 +563,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Animated Tabs",
       description:
         "Tabs to switch content, click on a tab to check background animation.",
-      cliCommand: "npx shadcn@latest add @aceternity/tabs-demo",
+      cliCommand: "npx @infiax/ui add animated-tabs",
       renderPreview: () => <AnimatedTabsBlockPreview />,
     },
     {
@@ -574,7 +574,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Evervault Card",
       description:
         "A cool card with amazing hover effect, reveals encrypted text and a mixed gradient.",
-      cliCommand: "npx shadcn@latest add @aceternity/evervault-card-demo",
+      cliCommand: "npx @infiax/ui add evervault-card",
       renderPreview: () => <EvervaultCardBlockPreview />,
     },
     {
@@ -585,7 +585,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Glowing Effect",
       description:
         "A border glowing effect that adapts to any container or card, as seen on Cursor's website.",
-      cliCommand: "npx shadcn@latest add @aceternity/glowing-effect-demo",
+      cliCommand: "npx @infiax/ui add glowing-effect",
       renderPreview: () => <GlowingEffectBlockPreview />,
     },
     {
@@ -596,7 +596,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Container Scroll Animation",
       description:
         "A scroll animation that rotates in 3d on scroll. Perfect for hero or marketing sections.",
-      cliCommand: "npx shadcn@latest add @aceternity/container-scroll-animation-demo",
+      cliCommand: "npx @infiax/ui add container-scroll-animation",
       renderPreview: () => <ContainerScrollBlockPreview />,
     },
     {
@@ -607,7 +607,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       componentTarget: "Resizable Navbar",
       description:
         "A navbar that changes width on scroll, responsive and animated.",
-      cliCommand: "npx shadcn@latest add @aceternity/resizable-navbar-demo",
+      cliCommand: "npx @infiax/ui add resizable-navbar",
       renderPreview: () => <ResizableNavbarBlockPreview />,
     },
     {
@@ -619,7 +619,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       hasStar: true,
       description:
         "An Apple Dynamic Island-style morphing surface that physically stretches and transforms between a compact pill and full card layout with spring physics.",
-      cliCommand: "npx shadcn@latest add @aceternity/idynamics-demo",
+      cliCommand: "npx @infiax/ui add idynamics",
       renderPreview: () => <MorphPillCardBlockPreview />,
     },
   ]

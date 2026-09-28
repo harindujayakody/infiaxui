@@ -18,7 +18,7 @@ export function DotPatternGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/dot-pattern`
+  const cliCode = `npx @infiax/ui add dot-pattern`
 
   const componentSourceCode = `"use client"
 
@@ -418,3 +418,4 @@ export default function Background() {
     </div>
   )
 }
+

@@ -18,7 +18,7 @@ export function RainbowButtonGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/rainbow-button`
+  const cliCode = `npx @infiax/ui add rainbow-button`
 
   const componentSourceCode = `import React from "react"
 import { Slot } from "@radix-ui/react-slot"
@@ -340,3 +340,4 @@ export function RainbowButtonDemo() {
     </div>
   )
 }
+

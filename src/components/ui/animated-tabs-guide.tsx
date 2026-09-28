@@ -14,7 +14,7 @@ export function AnimatedTabsGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/tabs-demo`
+  const cliCode = `npx @infiax/ui add tabs-demo`
 
   const componentSourceCode = `"use client"
 
@@ -286,3 +286,4 @@ export default function Example() {
     </div>
   )
 }
+

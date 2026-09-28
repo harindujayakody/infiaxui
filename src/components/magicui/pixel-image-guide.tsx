@@ -14,7 +14,7 @@ export function PixelImageGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/pixel-image`
+  const cliCode = `npx @infiax/ui add pixel-image`
 
   const componentSourceCode = `"use client"
 
@@ -418,3 +418,4 @@ export default function PixelHero() {
     </div>
   )
 }
+

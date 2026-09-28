@@ -14,7 +14,7 @@ export function EvervaultCardGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/evervault-card-demo`
+  const cliCode = `npx @infiax/ui add evervault-card-demo`
 
   const componentSourceCode = `"use client"
 
@@ -230,3 +230,4 @@ export default function Example() {
     </div>
   )
 }
+

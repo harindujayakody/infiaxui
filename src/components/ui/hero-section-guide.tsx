@@ -14,7 +14,7 @@ export function HeroSectionGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/hero-section-demo-1`
+  const cliCode = `npx @infiax/ui add hero-section-demo-1`
 
   const componentSourceCode = `"use client"
 
@@ -280,3 +280,4 @@ export default function Example() {
     </div>
   )
 }
+

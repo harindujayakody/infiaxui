@@ -14,7 +14,7 @@ export function CometCardGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/comet-card-demo`
+  const cliCode = `npx @infiax/ui add comet-card-demo`
 
   const componentSourceCode = `"use client"
 
@@ -373,3 +373,4 @@ export function CometCardDemo() {
     </div>
   )
 }
+

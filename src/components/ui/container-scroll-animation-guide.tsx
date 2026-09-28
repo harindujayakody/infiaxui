@@ -14,7 +14,7 @@ export function ContainerScrollGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/container-scroll-animation-demo`
+  const cliCode = `npx @infiax/ui add container-scroll-animation-demo`
 
   const componentSourceCode = `"use client"
 
@@ -261,3 +261,4 @@ export default function Example() {
     </div>
   )
 }
+

@@ -14,7 +14,7 @@ export function BackgroundGradientAnimationGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/background-gradient-animation-demo`
+  const cliCode = `npx @infiax/ui add background-gradient-animation-demo`
 
   const componentSourceCode = `"use client"
 
@@ -476,3 +476,4 @@ export function BackgroundGradientAnimationDemo() {
     </div>
   )
 }
+

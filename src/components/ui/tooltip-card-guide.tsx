@@ -14,7 +14,7 @@ export function TooltipCardGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/tooltip-card-demo`
+  const cliCode = `npx @infiax/ui add tooltip-card-demo`
 
   const componentSourceCode = `"use client"
 
@@ -403,3 +403,4 @@ export function Example() {
     </div>
   )
 }
+

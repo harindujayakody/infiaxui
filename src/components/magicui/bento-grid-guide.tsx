@@ -14,7 +14,7 @@ export function BentoGridGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/bento-grid`
+  const cliCode = `npx @infiax/ui add bento-grid`
 
   const bentoGridComponentCode = `import { type ComponentPropsWithoutRef, type ReactNode } from "react"
 import { ArrowRight } from "lucide-react"
@@ -381,3 +381,4 @@ export function BentoDemo() {
     </div>
   )
 }
+

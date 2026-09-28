@@ -91,7 +91,7 @@ export function DataTableGuide() {
             </p>
             <CodeBlock
               language="bash"
-              code="npx shadcn@latest add table"
+              code="npx @infiax/ui add table"
               showLineNumbers={false}
             />
           </div>
@@ -689,3 +689,4 @@ export const columns = columnHelper.columns([
     </div>
   )
 }
+

@@ -14,7 +14,7 @@ export function PointerGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @magicui/pointer`
+  const cliCode = `npx @infiax/ui add pointer`
 
   const componentSourceCode = `"use client"
 
@@ -312,3 +312,4 @@ export function PointerDemo() {
     </div>
   )
 }
+

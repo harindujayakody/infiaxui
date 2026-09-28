@@ -14,7 +14,7 @@ export function ImageGenerationLoaderGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/image-generation-loader-demo`
+  const cliCode = `npx @infiax/ui add image-generation-loader-demo`
 
   const componentSourceCode = `"use client"
 
@@ -329,3 +329,4 @@ export default function Example() {
     </div>
   )
 }
+

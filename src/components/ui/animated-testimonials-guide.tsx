@@ -14,7 +14,7 @@ export function AnimatedTestimonialsGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/animated-testimonials-demo`
+  const cliCode = `npx @infiax/ui add animated-testimonials-demo`
 
   const componentSourceCode = `"use client"
 
@@ -401,3 +401,4 @@ export function AnimatedTestimonialsDemo() {
     </div>
   )
 }
+
