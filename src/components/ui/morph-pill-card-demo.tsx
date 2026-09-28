@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
+import { ArrowUpRight, Sparkles, X } from "lucide-react"
 import { MorphPillDeck, DEFAULT_CARDS_DATA } from "@/components/ui/morph-pill-card"
 import { cn } from "@/lib/utils"
 
@@ -21,13 +21,13 @@ export function MorphPillCardDemo({ className }: { className?: string }) {
       <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-2xl text-center">
         <div className="space-y-2">
           <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-zinc-400">
-            Interactive Morphing Surface
+            Apple Dynamic Island Morph
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-            Hover or Click any pill
+            Click to expand the Island
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto">
-            An avatar pill that smoothly expands into a full profile or product card without abrupt layout shifts.
+            One single continuous surface that physically stretches and transforms between compact pill and full card layout with spring physics.
           </p>
         </div>
 
@@ -38,85 +38,83 @@ export function MorphPillCardDemo({ className }: { className?: string }) {
 }
 
 export function MorphPillCardBlockPreview() {
-  const [activeMiniId, setActiveMiniId] = useState<string>("maya")
+  const [isExpanded, setIsExpanded] = useState<boolean>(true)
 
-  const miniItems = [
-    {
-      id: "maya",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
-      label: "Maya O.",
-      title: "Maya Okafor",
-      role: "Interaction Lead",
-      tag: "Lisbon",
-    },
-    {
-      id: "arc",
-      avatar: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=120&q=80",
-      label: "Arc Lamp",
-      title: "Arc Table Lamp",
-      role: "Brushed Brass",
-      tag: "€240",
-    },
-  ]
-
-  const activeItem = miniItems.find((i) => i.id === activeMiniId) || miniItems[0]
+  const spring = {
+    type: "spring" as const,
+    stiffness: 420,
+    damping: 30,
+    mass: 0.8,
+  }
 
   return (
-    <div className="relative size-full flex flex-col items-center justify-between overflow-hidden bg-[#0A0A0A] p-4 select-none">
-      {/* Top Preview Card */}
-      <div className="w-full flex-1 flex items-center justify-center">
+    <div className="relative size-full flex items-center justify-center overflow-hidden bg-[#0A0A0A] p-3 select-none">
+      <LayoutGroup id="morph-pill-block-preview">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeItem.id}
-            initial={{ opacity: 0, y: 6, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="w-full max-w-[210px] rounded-xl border border-white/10 bg-[#12141c] p-2.5 shadow-xl space-y-2"
-          >
-            <div className="flex items-center gap-2">
-              <img
-                src={activeItem.avatar}
-                alt={activeItem.title}
-                className="w-8 h-8 rounded-lg object-cover border border-white/10"
-              />
-              <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-bold text-white truncate">{activeItem.title}</p>
-                <p className="text-[9px] text-zinc-400 truncate">{activeItem.role}</p>
+          {isExpanded ? (
+            <motion.div
+              key="mini-expanded"
+              layoutId="mini-island-surface"
+              transition={spring}
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsExpanded(false)
+              }}
+              className="w-full max-w-[210px] rounded-2xl border border-white/15 bg-black p-3 shadow-xl space-y-2 cursor-pointer"
+            >
+              <div className="flex items-center justify-between pb-1.5 border-b border-white/10">
+                <div className="flex items-center gap-1.5">
+                  <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[8px] font-mono text-zinc-400 uppercase">ISLAND</span>
+                </div>
+                <div className="flex items-center gap-1 text-[8px] text-zinc-400">
+                  <X className="size-3 text-zinc-400 hover:text-white" />
+                </div>
               </div>
-              <span className="text-[9px] font-semibold text-emerald-400 shrink-0 font-mono">
-                {activeItem.tag}
-              </span>
-            </div>
-            <div className="w-full py-1 rounded bg-white/5 border border-white/5 flex items-center justify-center text-[8px] text-zinc-300 font-medium">
-              <span>View details</span>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
 
-      {/* Mini Pill Dock */}
-      <div className="flex items-center gap-1.5 p-1 rounded-full bg-neutral-900/90 border border-white/10 backdrop-blur-md">
-        {miniItems.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              setActiveMiniId(item.id)
-            }}
-            className={cn(
-              "flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] transition-all",
-              activeMiniId === item.id
-                ? "bg-neutral-800 text-white border border-white/20"
-                : "text-zinc-400 hover:text-white"
-            )}
-          >
-            <img src={item.avatar} alt={item.label} className="w-3.5 h-3.5 rounded-full object-cover" />
-            <span className="font-medium">{item.label}</span>
-          </button>
-        ))}
-      </div>
+              <div className="flex items-center gap-2">
+                <motion.img
+                  layoutId="mini-avatar"
+                  transition={spring}
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                  alt="Maya Okafor"
+                  className="w-8 h-8 rounded-xl object-cover border border-white/10 shrink-0"
+                />
+                <div className="min-w-0 flex-1">
+                  <p className="text-[11px] font-bold text-white truncate">Maya Okafor</p>
+                  <p className="text-[9px] text-zinc-400 truncate">Interaction Lead</p>
+                </div>
+              </div>
+
+              <div className="w-full py-1 rounded-lg bg-white text-black font-semibold text-[8px] flex items-center justify-center gap-1 shadow-sm">
+                <span>Say hello</span>
+                <ArrowUpRight className="size-2.5" />
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="mini-collapsed"
+              layoutId="mini-island-surface"
+              transition={spring}
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsExpanded(true)
+              }}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black border border-white/20 shadow-lg cursor-pointer hover:border-white/40"
+            >
+              <motion.img
+                layoutId="mini-avatar"
+                transition={spring}
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                alt="Maya Okafor"
+                className="w-4 h-4 rounded-full object-cover border border-white/20 shrink-0"
+              />
+              <span className="text-[10px] font-medium text-white tracking-tight">Maya Okafor</span>
+              <span className="size-1.5 rounded-full bg-emerald-400" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </LayoutGroup>
     </div>
   )
 }
