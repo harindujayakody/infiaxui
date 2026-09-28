@@ -62,14 +62,14 @@ export function GlowingEffectDemo({ className }: { className?: string }) {
         <div className="flex flex-col gap-4">
           <GridItem
             icon={<Box className="size-5" />}
-            title="Do things the right way"
-            description="Running out of copy so I'll write anything."
+            title="Engineered Primitives"
+            description="Accessible, responsive UI primitives built with Tailwind CSS and Radix UI."
             className="min-h-[190px]"
           />
           <GridItem
             icon={<Settings className="size-5" />}
-            title="The best AI code editor ever."
-            description="Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me."
+            title="Developer First Experience"
+            description="Copy-paste ready components, full TypeScript types, and zero complex setup."
             className="min-h-[190px]"
           />
         </div>
@@ -78,8 +78,8 @@ export function GlowingEffectDemo({ className }: { className?: string }) {
         <div className="flex flex-col">
           <GridItem
             icon={<Lock className="size-5" />}
-            title="You should buy Aceternity UI Pro"
-            description="It's the best money you'll ever spend"
+            title="Build Faster with Infiax UI Pro"
+            description="Access an ever-growing library of high-craft components, layout blocks, and dynamic motion surfaces."
             className="h-full min-h-[396px]"
           />
         </div>
@@ -88,14 +88,14 @@ export function GlowingEffectDemo({ className }: { className?: string }) {
         <div className="flex flex-col gap-4">
           <GridItem
             icon={<Sparkles className="size-5" />}
-            title="This card is also built by Cursor"
-            description="I'm not even kidding. Ask my mom if you don't believe me."
+            title="Reactive Motion & Glow"
+            description="Smooth physics-based borders that track mouse proximity with zero layout shift."
             className="min-h-[190px]"
           />
           <GridItem
             icon={<Search className="size-5" />}
-            title="Coming soon on Aceternity UI"
-            description="I'm writing the code as I record this, no shit."
+            title="Continuous Design Updates"
+            description="New animations, dynamic islands, and interactive blocks shipped regularly."
             className="min-h-[190px]"
           />
         </div>

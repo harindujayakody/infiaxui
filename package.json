@@ -12,7 +12,10 @@
   "files": [
     "bin",
     "dist",
-    "src"
+    "src",
+    "public",
+    "README.md",
+    "THIRD_PARTY_LICENSES.md"
   ],
   "publishConfig": {
     "access": "public"

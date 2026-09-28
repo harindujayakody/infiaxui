@@ -642,16 +642,16 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     id: "installation",
     name: "Installation",
     description: "How to install dependencies and structure your app across Next.js, Vite, Laravel, and TanStack Start.",
-    installationCommand: "npx @infiax/ui init",
+    installationCommand: "npx @infiax/ui add installation",
     importCode: `import { cn } from "@/lib/utils"`,
     usageCode: `npx @infiax/ui init -t next`,
-    apiReference: ["shadcn/create", "shadcn init", "components.json", "utils.ts"],
+    apiReference: ["@infiax/ui", "infiax init", "components.json", "utils.ts"],
   },
   Theming: {
     id: "theming",
     name: "Theming",
     description: "Using CSS variables, semantic tokens, and OKLCH color palettes for customizable component styling.",
-    installationCommand: "npx @infiax/ui init",
+    installationCommand: "npx @infiax/ui add theming",
     importCode: `import "@/app/globals.css"`,
     usageCode: `<div className="bg-background text-foreground" />`,
     apiReference: [
@@ -669,7 +669,7 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     id: "introduction",
     name: "Introduction",
     description: "Re-usable components built using Base UI, Radix UI, and Tailwind CSS.",
-    installationCommand: "npx @infiax/ui init",
+    installationCommand: "npx @infiax/ui add introduction",
     importCode: `import { Button } from "@/components/ui/button"`,
     usageCode: `npx @infiax/ui add button`,
     apiReference: ["Open Code", "Composition", "Distribution", "AI Ready"],
@@ -678,10 +678,10 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     id: "skills",
     name: "Skills",
     description: "AI assistant skills for Antigravity, Claude Code, Cursor, Copilot, and modern coding agents.",
-    installationCommand: "npx skills add shadcn/ui",
-    importCode: `npx skills add shadcn/ui`,
-    usageCode: `npx skills add shadcn/ui`,
-    apiReference: ["npx skills", "components.json", ".cursorrules", "Schema"],
+    installationCommand: "npx @infiax/ui add skills",
+    importCode: `npx @infiax/ui add skills`,
+    usageCode: `npx @infiax/ui add skills`,
+    apiReference: ["npx @infiax/ui", "components.json", ".cursorrules", "Schema"],
   },
   "Animated Beam": {
     id: "animated-beam",
@@ -864,7 +864,7 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     isNew: true,
     installationCommand: "npx @infiax/ui add terminal",
     importCode: `import {\n  Terminal,\n  AnimatedSpan,\n  TypingAnimation,\n} from "@/components/magicui/terminal"`,
-    usageCode: `<Terminal>\n  <TypingAnimation>> pnpm dlx shadcn@latest init</TypingAnimation>\n  <AnimatedSpan>✔ Preflight checks.</AnimatedSpan>\n  <AnimatedSpan>✔ Validating Tailwind CSS.</AnimatedSpan>\n  <TypingAnimation>Success! Project initialization completed.</TypingAnimation>\n</Terminal>`,
+    usageCode: `<Terminal>\n  <TypingAnimation>> pnpm dlx @infiax/ui init</TypingAnimation>\n  <AnimatedSpan>✔ Preflight checks.</AnimatedSpan>\n  <AnimatedSpan>✔ Validating Tailwind CSS.</AnimatedSpan>\n  <TypingAnimation>Success! Project initialization completed.</TypingAnimation>\n</Terminal>`,
     apiReference: [
       "Terminal",
       "AnimatedSpan",
@@ -1561,6 +1561,7 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     ],
   },
 }
+
 
 
 

@@ -28,7 +28,7 @@ export function FocusCardsDemo() {
     },
     {
       title: "The First Rule",
-      src: "https://assets.aceternity.com/the-first-rule.png",
+      src: "/images/the-first-rule.png",
     },
   ]
 

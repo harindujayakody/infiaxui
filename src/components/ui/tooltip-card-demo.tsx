@@ -10,7 +10,7 @@ export const TylerDurdenCard = () => {
     <div className="w-56 sm:w-60">
       <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-neutral-800 border border-neutral-700/50">
         <img
-          src="https://assets.aceternity.com/screenshots/tyler.webp"
+          src="/images/tyler.webp"
           alt="Tyler Durden"
           className="aspect-square w-full object-cover transition-transform duration-300 hover:scale-105"
           onError={(e) => {
@@ -43,7 +43,7 @@ export const TestimonialCard = () => {
       </blockquote>
       <div className="flex items-center gap-2.5 pt-1 border-t border-neutral-200/60 dark:border-neutral-800/80">
         <img
-          src="https://assets.aceternity.com/screenshots/tyler.webp"
+          src="/images/tyler.webp"
           alt="Tyler Durden"
           className="size-7 rounded-full object-cover ring-1 ring-amber-500/40"
         />

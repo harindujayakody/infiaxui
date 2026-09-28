@@ -1,11 +1,11 @@
-# Infiax UI
+# Infiax UI (`@infiax/ui`)
 
 <div align="center">
-  <p><strong>Precision Engineering with Zero AI Slop. An open-source, ultra-minimal, high-precision React Component Library and documentation platform built with Shadcn UI, Tailwind CSS, Geist Sans, and Radix Primitives.</strong></p>
+  <p><strong>Precision Engineering with Zero AI Slop. A production-ready React component library, CLI tool, and interactive block system built with Tailwind CSS, Framer Motion, and Radix UI primitives.</strong></p>
 
   <p>
-    <a href="https://github.com/harindujayakody/infiaxui"><img src="https://img.shields.io/badge/version-v1.2.0-blue.svg?style=flat-square" alt="Version" /></a>
-    <a href="https://github.com/harindujayakody/infiaxui/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License" /></a>
+    <a href="https://www.npmjs.com/package/@infiax/ui"><img src="https://img.shields.io/npm/v/@infiax/ui.svg?style=flat-square&color=black" alt="npm version" /></a>
+    <a href="https://github.com/harindujayakody/infiaxui"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License" /></a>
     <img src="https://img.shields.io/badge/React-19.0.0-61DAFB.svg?style=flat-square&logo=react" alt="React 19" />
     <img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC.svg?style=flat-square&logo=tailwind-css" alt="Tailwind CSS" />
     <img src="https://img.shields.io/badge/TypeScript-5.7-blue.svg?style=flat-square&logo=typescript" alt="TypeScript" />
@@ -14,68 +14,81 @@
 
 ---
 
+## ⚡ Quick Start with CLI
+
+Install any component directly into your project using the Infiax CLI:
+
+```bash
+# Add the Apple-inspired Dynamic Island
+npx @infiax/ui add idynamics
+
+# Add navigation dock, animated beam, or interactive cards
+npx @infiax/ui add dock
+npx @infiax/ui add animated-beam
+npx @infiax/ui add magic-card
+npx @infiax/ui add button
+
+# Initialize folders and utils in your project
+npx @infiax/ui init
+
+# List all available components and blocks
+npx @infiax/ui list
+```
+
+Or install the package directly:
+
+```bash
+npm install @infiax/ui
+```
+
+---
+
 ## 🌟 Highlights
 
-- **Pure Slate & Black Aesthetic**: Pure `#0A0A0A` page background, `#161616` cards & containers, `#262626` hairline borders, `#EDEDED` high-contrast typography, and `#8C8C8C` muted accents.
-- **1 Page Per Component Clean URLs**: Real URLs (`/components/button`, `/components/breadcrumb`, `/components/slider`, `/docs/changelog`) with smooth SPA history and browser back/forward support.
-- **Interactive "View Code" Inspector**: Displays actual runnable TypeScript demo code with syntax highlighting, line numbers, TS badge, and one-click copy feedback.
+- **Native CLI**: Add production-ready TypeScript components and styles into your project with `npx @infiax/ui add <component>`.
+- **iDynamics**: An Apple Dynamic Island-style morphing surface that physically stretches and transforms between compact wings and expanded interactive cards with authentic spring physics.
+- **Pure Slate & Black Aesthetic**: Pure `#0A0A0A` page background, `#121214` card surfaces, `#262626` hairline borders, and `#EDEDED` high-contrast typography.
+- **Interactive Block Catalog**: 40+ responsive building blocks including Bento Grids, 3D particles, cloud shaders, interactive terminals, and floating cards.
 - **Flawless Dark & Light Mode**: Seamless dynamic theme switching with persistent CSS variables and zero flash on reload.
-- **Geist Sans Typography**: Official typography styles extracted via Peek with exact scales (`type-h1`, `type-h2`, `type-heading`, `type-body`, `type-caption`).
-- **57+ Canonical Shadcn Components**: Breadcrumb, Button, Button Group, Bubble, Calendar, Slider, Card, Badge, Alert, Checkbox, Switch, Input, Skeleton, Separator, Avatar, Questionnaire, and more.
-- **Up-to-Date Changelog**: Canonical release timeline tracking **September 2026** (Clean URLs, Code Inspector, and `cn` package), **August 2026** (Private GitHub Registries, Human in the Loop, Questionnaire), and **July 2026** (Dynamic Search).
-- **Mac Style Window Header & Code Blocks**: Desktop-class macOS window titlebar with interactive red/yellow/green traffic lights with vector hover icons (`✕`, `−`, `⤢`), fullscreen toggle, dynamic titles, and Mac-themed code editors.
-- **Interactive Action Bar**: Split-pill button (`Copy Page | ⌵`) with copy options and previous/next squircle navigation buttons.
-- **Precision ScrollSpy Table of Contents**: Dynamic right sidebar tracking headers in real time with smooth scrolling and sticky header offsets.
+- **Mac Style Window Header & Code Blocks**: Desktop-class macOS window titlebars with interactive red/yellow/green traffic lights, fullscreen toggle, and syntax-highlighted code.
 - **Command Palette (`⌘K`)**: Instant modal search across all components and CLI commands.
 
 ---
 
-## 📦 Component Catalog
+## 📦 Component & Block Catalog
 
-| Component | Status | Description |
+| Component | Slug | Description |
 | :--- | :--- | :--- |
-| **Breadcrumb** | ✅ Stable | Accessible hierarchical navigation with custom separators, ellipsis dropdowns, and RTL support |
-| **Button** | ✅ Stable | Multi-variant button system (Default, Outline, Ghost, Secondary, Destructive, Icon, Squircle) |
-| **Card** | ✅ Stable | Obsidian elevated surfaces with header, title, description, content, and footer slots |
-| **Magic Card** | ✅ Stable | Radial gradient cursor-following border glow effects with slate background |
-| **Badge** | ✅ Stable | Pill and rounded badges with Default, Secondary, Outline, and Destructive variants |
-| **Alert** | ✅ Stable | Notification callouts with icons, titles, and descriptions |
-| **Input** | ✅ Stable | High-precision text fields with focus rings, disabled states, and validation styles |
-| **Checkbox** | ✅ Stable | Custom-styled accessible checkbox with check indicator animations |
-| **Switch** | ✅ Stable | Accessible toggle switch with smooth thumb translations |
-| **Skeleton** | ✅ Stable | Pulsing loading placeholders with customizable shapes and sizes |
-| **Avatar** | ✅ Stable | Profile image with graceful fallback initials |
-| **Separator** | ✅ Stable | Clean 1px divider for horizontal and vertical layouts |
-| **Questionnaire** | ✅ New (v1.1.0) | Multi-step interactive question flow for AI prompts and forms |
+| **iDynamics** | `idynamics` | Apple Dynamic Island morphing surface with spring physics & interactive modes |
+| **Animated Beam** | `animated-beam` | Animated light ray traversing nodes for integration diagrams |
+| **Dock** | `dock` | macOS-inspired magnification dock built with Framer Motion |
+| **Magic Card** | `magic-card` | Spotlight card with cursor-following radial border illumination |
+| **Glare Hover** | `glare-hover` | Diagonal CSS-variable light glare on hover without global keyframes |
+| **Bento Grid** | `bento-grid` | Modular Bento layout system for feature showcases |
+| **Globe** | `globe` | Interactive, performant WebGL globe powered by Cobe |
+| **Terminal** | `terminal` | macOS terminal window with animated typing sequences |
+| **3D Card Effect** | `3d-card` | Perspective tilt card with depth-aware multi-layer parallax |
+| **Cloud Shader** | `cloud-shader` | Soft procedural volumetric cloud shader with customizable drift |
+| **Glowing Effect** | `glowing-effect` | Proximity-tracking glowing borders with zero layout shift |
+| **Button** | `button` | Multi-variant button system (Default, Outline, Ghost, Secondary, Destructive) |
+| **Card** | `card` | Obsidian elevated surfaces with header, title, description, and footer slots |
 
 ---
 
-## 🚀 Quick Start
-
-### 1. Clone the repository
+## 🚀 Running the Documentation Site Locally
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/harindujayakody/infiaxui.git
 cd infiaxui
-```
 
-### 2. Install dependencies
-
-```bash
+# 2. Install dependencies
 npm install
-```
 
-### 3. Start development server
-
-```bash
+# 3. Start development server
 npm run dev
-```
 
-Visit `http://localhost:3000` to explore the catalog, components, and live interactive changelog.
-
-### 4. Build for production
-
-```bash
+# 4. Build for production
 npm run build
 ```
 
@@ -88,12 +101,11 @@ Infiax UI enforces a strict color and typography token system:
 ```css
 :root {
   --bg-page: #FFFFFF;
-  --bg-card: #F9F9F9;
-  --bg-subtle: #F0F0F0;
-  --border-subtle: #E5E5E5;
-  --border-active: #D4D4D4;
-  --text-main: #0A0A0A;
-  --text-muted: #737373;
+  --bg-card: #FAFAFA;
+  --bg-subtle: #F4F4F5;
+  --border-subtle: #E4E4E7;
+  --text-main: #09090B;
+  --text-muted: #71717A;
 }
 
 .dark {
@@ -101,23 +113,21 @@ Infiax UI enforces a strict color and typography token system:
   --bg-card: #161616;
   --bg-subtle: #1F1F1F;
   --border-subtle: #262626;
-  --border-active: #404040;
   --text-main: #EDEDED;
   --text-muted: #8C8C8C;
 }
 ```
 
-For full specifications and typography scales, refer to [DESIGN.md](file:///d:/Demo/All%20in%20One/DESIGN.md).
-
 ---
 
-## 📖 Documentation
+## 📄 License & Acknowledgements
 
-- [Design System Guide (DESIGN.md)](file:///d:/Demo/All%20in%20One/DESIGN.md)
-- [Installation & Setup Guide (Installation.md)](file:///d:/Demo/All%20in%20One/Installation.md)
+Infiax UI is licensed under the [MIT License](LICENSE).
 
----
+This library incorporates and builds upon open-source primitives and concepts from:
+- [shadcn/ui](https://ui.shadcn.com) (MIT License, Copyright © 2023 shadcn)
+- [Aceternity UI](https://ui.aceternity.com) open-source components by Manu Arora (MIT License, Copyright © 2024 Manu Arora)
+- [Magic UI](https://magicui.design) by Dillion Verma (MIT License, Copyright © 2024 dillionverma)
+- [Radix UI Primitives](https://www.radix-ui.com) (MIT License, Copyright © 2022 WorkOS)
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
+Full license texts and author credits are preserved in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).

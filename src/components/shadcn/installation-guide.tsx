@@ -21,39 +21,39 @@ export function InstallationGuide() {
   const frameworkCommands: Record<string, Record<string, string>> = {
     next: {
       npm: "npx @infiax/ui init -t next",
-      pnpm: "pnpm dlx shadcn@latest init -t next",
+      pnpm: "pnpm dlx @infiax/ui init -t next",
       yarn: "npx @infiax/ui init -t next",
-      bun: "bunx --bun shadcn@latest init -t next",
+      bun: "bunx --bun @infiax/ui init -t next",
     },
     vite: {
       npm: "npx @infiax/ui init -t vite",
-      pnpm: "pnpm dlx shadcn@latest init -t vite",
+      pnpm: "pnpm dlx @infiax/ui init -t vite",
       yarn: "npx @infiax/ui init -t vite",
-      bun: "bunx --bun shadcn@latest init -t vite",
+      bun: "bunx --bun @infiax/ui init -t vite",
     },
     tanstack: {
       npm: "npx @infiax/ui init -t start",
-      pnpm: "pnpm dlx shadcn@latest init -t start",
+      pnpm: "pnpm dlx @infiax/ui init -t start",
       yarn: "npx @infiax/ui init -t start",
-      bun: "bunx --bun shadcn@latest init -t start",
+      bun: "bunx --bun @infiax/ui init -t start",
     },
     laravel: {
       npm: "laravel new my-app\ncd my-app\nnpx @infiax/ui init",
-      pnpm: "laravel new my-app\ncd my-app\npnpm dlx shadcn@latest init",
-      yarn: "laravel new my-app\ncd my-app\nyarn dlx shadcn@latest init",
-      bun: "laravel new my-app\ncd my-app\nbunx --bun shadcn@latest init",
+      pnpm: "laravel new my-app\ncd my-app\npnpm dlx @infiax/ui init",
+      yarn: "laravel new my-app\ncd my-app\nyarn dlx @infiax/ui init",
+      bun: "laravel new my-app\ncd my-app\nbunx --bun @infiax/ui init",
     },
     "react-router": {
       npm: "npx @infiax/ui init -t react-router",
-      pnpm: "pnpm dlx shadcn@latest init -t react-router",
+      pnpm: "pnpm dlx @infiax/ui init -t react-router",
       yarn: "npx @infiax/ui init -t react-router",
-      bun: "bunx --bun shadcn@latest init -t react-router",
+      bun: "bunx --bun @infiax/ui init -t react-router",
     },
     astro: {
       npm: "npx @infiax/ui init -t astro",
-      pnpm: "pnpm dlx shadcn@latest init -t astro",
+      pnpm: "pnpm dlx @infiax/ui init -t astro",
       yarn: "npx @infiax/ui init -t astro",
-      bun: "bunx --bun shadcn@latest init -t astro",
+      bun: "bunx --bun @infiax/ui init -t astro",
     },
     manual: {
       npm: "npm install tailwindcss-animate class-variance-authority clsx tailwind-merge lucide-react",
@@ -257,4 +257,5 @@ export function cn(...inputs: ClassValue[]) {
     </div>
   )
 }
+
 

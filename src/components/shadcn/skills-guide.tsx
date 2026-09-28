@@ -77,7 +77,7 @@ export function SkillsGuide() {
         </p>
 
         <CodeBlock
-          code="npx skills add shadcn/ui"
+          code="npx @infiax/ui add skills"
           language="bash"
           fileName="Terminal"
         />

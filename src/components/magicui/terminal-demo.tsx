@@ -21,7 +21,7 @@ export function TerminalDemo() {
       </div>
 
       <Terminal key={key} className="w-full">
-        <TypingAnimation>&gt; pnpm dlx shadcn@latest init</TypingAnimation>
+        <TypingAnimation>&gt; pnpm dlx @infiax/ui init</TypingAnimation>
         <AnimatedSpan className="text-emerald-400">
           ✔ Preflight checks.
         </AnimatedSpan>
@@ -118,4 +118,5 @@ export function TerminalBlockPreview() {
     </div>
   )
 }
+
 

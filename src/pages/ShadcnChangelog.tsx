@@ -176,10 +176,10 @@ export function ShadcnChangelog() {
                 Registry components, blocks and examples import <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> from <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> instead of <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">@/lib/utils</code>.
               </li>
               <li>
-                <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">npx shadcn init</code> installs <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> and generates a one-line <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">lib/utils.ts</code>.
+                <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">npx @infiax/ui init</code> installs <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> and generates a one-line <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">lib/utils.ts</code>.
               </li>
               <li>
-                Every registry item that uses <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> declares it as a dependency, so <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">npx shadcn add</code> installs it in projects created before this change.
+                Every registry item that uses <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> declares it as a dependency, so <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">npx @infiax/ui add</code> installs it in projects created before this change.
               </li>
             </ul>
           </div>
@@ -226,9 +226,9 @@ export function ShadcnChangelog() {
               Nothing breaks. Your <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">lib/utils.ts</code> keeps working and new components install <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">cn</code> next to it. To move the rest of your project over and drop <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">clsx</code> and <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">tailwind-merge</code>, run the migration:
             </p>
             <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-3 sm:p-4 flex items-center justify-between font-mono text-xs sm:text-sm">
-              <span className="text-emerald-400">$ npx shadcn@latest migrate cn</span>
+              <span className="text-emerald-400">$ npx @infiax/ui migrate cn</span>
               <button
-                onClick={() => handleCopy("cmd-mig", "npx shadcn@latest migrate cn")}
+                onClick={() => handleCopy("cmd-mig", "npx @infiax/ui migrate cn")}
                 className="flex items-center gap-1 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors ml-2 shrink-0"
               >
                 {copiedId === "cmd-mig" ? <Check className="size-3.5 text-emerald-400" /> : <Copy className="size-3.5" />}
@@ -285,9 +285,9 @@ export function ShadcnChangelog() {
               Where the GitHub CLI is not installed, set <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">GH_TOKEN</code> or <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">GITHUB_TOKEN</code>:
             </p>
             <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-3 sm:p-4 flex items-center justify-between font-mono text-xs sm:text-sm">
-              <span className="text-purple-400 truncate">$ GH_TOKEN=github_pat_xxx npx shadcn@latest add acme/internal-toolkit/auth-kit</span>
+              <span className="text-purple-400 truncate">$ GH_TOKEN=github_pat_xxx npx @infiax/ui add acme/internal-toolkit/auth-kit</span>
               <button
-                onClick={() => handleCopy("cmd-ci", "GH_TOKEN=github_pat_xxx npx shadcn@latest add acme/internal-toolkit/auth-kit")}
+                onClick={() => handleCopy("cmd-ci", "GH_TOKEN=github_pat_xxx npx @infiax/ui add acme/internal-toolkit/auth-kit")}
                 className="text-[var(--text-muted)] hover:text-[var(--text-main)] shrink-0 ml-2"
               >
                 {copiedId === "cmd-ci" ? <Check className="size-3.5 text-emerald-400" /> : <Copy className="size-3.5" />}
@@ -301,10 +301,10 @@ export function ShadcnChangelog() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
-                { cmd: "npx shadcn@latest list acme/internal-toolkit", label: "List items" },
-                { cmd: "npx shadcn@latest search acme/internal-toolkit --query auth", label: "Search registry" },
-                { cmd: "npx shadcn@latest view acme/internal-toolkit/auth-kit", label: "Inspect item" },
-                { cmd: "npx shadcn@latest registry validate acme/internal-toolkit", label: "Validate registry" },
+                { cmd: "npx @infiax/ui list acme/internal-toolkit", label: "List items" },
+                { cmd: "npx @infiax/ui search acme/internal-toolkit --query auth", label: "Search registry" },
+                { cmd: "npx @infiax/ui view acme/internal-toolkit/auth-kit", label: "Inspect item" },
+                { cmd: "npx @infiax/ui registry validate acme/internal-toolkit", label: "Validate registry" },
               ].map((item, idx) => (
                 <div key={idx} className="p-3 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] space-y-1">
                   <div className="type-caption text-[var(--text-muted)]">{item.label}</div>
@@ -507,9 +507,9 @@ export function ShadcnChangelog() {
               Installation
             </h3>
             <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-3 sm:p-4 flex items-center justify-between font-mono text-xs sm:text-sm">
-              <span className="text-emerald-400">$ npx shadcn@latest add questionnaire</span>
+              <span className="text-emerald-400">$ npx @infiax/ui add questionnaire</span>
               <button
-                onClick={() => handleCopy("cmd-q", "npx shadcn@latest add questionnaire")}
+                onClick={() => handleCopy("cmd-q", "npx @infiax/ui add questionnaire")}
                 className="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
               >
                 {copiedId === "cmd-q" ? <Check className="size-3.5 text-emerald-400" /> : <Copy className="size-3.5" />}
@@ -533,13 +533,13 @@ export function ShadcnChangelog() {
         </div>
 
         <p className="type-body text-[var(--text-muted)] leading-relaxed">
-          Registries can now handle search server-side. When you run <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">shadcn search</code>, the CLI forwards the search parameters to your registry as query params. Return the matching items with a pagination object and the CLI uses your results as-is. This makes search fast for large registries: no more downloading the whole index up front.
+          Registries can now handle search server-side. When you run <code className="px-1.5 py-0.5 rounded border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-main)] font-mono text-xs">infiax search</code>, the CLI forwards the search parameters to your registry as query params. Return the matching items with a pagination object and the CLI uses your results as-is. This makes search fast for large registries: no more downloading the whole index up front.
         </p>
 
         <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-3 sm:p-4 flex items-center justify-between font-mono text-xs sm:text-sm">
-          <span className="text-blue-400 truncate">$ npx shadcn@latest search --registry https://ui.example.com --query button</span>
+          <span className="text-blue-400 truncate">$ npx @infiax/ui search --registry https://ui.example.com --query button</span>
           <button
-            onClick={() => handleCopy("cmd-search", "npx shadcn@latest search --registry https://ui.example.com --query button")}
+            onClick={() => handleCopy("cmd-search", "npx @infiax/ui search --registry https://ui.example.com --query button")}
             className="text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors shrink-0 ml-2"
           >
             {copiedId === "cmd-search" ? <Check className="size-3.5 text-emerald-400" /> : <Copy className="size-3.5" />}
@@ -599,3 +599,4 @@ export function ShadcnChangelog() {
     </div>
   )
 }
+

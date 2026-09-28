@@ -326,7 +326,7 @@ export const Terminal = ({
 export function TerminalDemo() {
   return (
     <Terminal>
-      <TypingAnimation>> pnpm dlx shadcn@latest init</TypingAnimation>
+      <TypingAnimation>> pnpm dlx @infiax/ui init</TypingAnimation>
       <AnimatedSpan>✔ Preflight checks.</AnimatedSpan>
       <AnimatedSpan>✔ Validating Tailwind CSS.</AnimatedSpan>
       <TypingAnimation>Success! Project initialization completed.</TypingAnimation>
@@ -615,4 +615,5 @@ export function TerminalDemo() {
     </div>
   )
 }
+
 
