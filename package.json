@@ -1,12 +1,38 @@
 {
-  "name": "all-in-one-ui",
-  "private": true,
-  "version": "1.2.0",
+  "name": "@infiax/ui",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A modern, beautifully crafted React UI and animation block library built with Tailwind CSS, Framer Motion, and Radix UI.",
+  "main": "./dist/index.html",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harindujayakody/infiaxui.git"
+  },
+  "keywords": [
+    "ui",
+    "react",
+    "tailwind",
+    "framer-motion",
+    "shadcn",
+    "components",
+    "blocks",
+    "magic-ui",
+    "dynamic-island"
+  ],
+  "author": "Harindu Jayakody",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.3.3",
