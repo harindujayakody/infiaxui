@@ -1911,13 +1911,21 @@ export function HeroSectionDemo() {
 }`
 
       case "iDynamics":
-        return `import React from "react"
-import { MorphPillDeck } from "@/components/ui/morph-pill-card"
+        return `import React, { useState } from "react"
+import { IDynamics, DynamicActivityType } from "@/components/ui/morph-pill-card"
 
 export function DynamicIslandDemo() {
+  const [activity, setActivity] = useState<DynamicActivityType>("music")
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <div className="relative flex min-h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-slate-800 bg-[#0A0A0A] p-6 sm:p-12 shadow-2xl select-none">
-      <MorphPillDeck initialMode="music" defaultOpen={true} />
+    <div className="relative flex min-h-[480px] w-full items-center justify-center rounded-2xl border border-slate-800 bg-[#030712] p-8 select-none">
+      <IDynamics
+        activity={activity}
+        isOpen={isOpen}
+        onToggle={setIsOpen}
+        onActivityChange={setActivity}
+      />
     </div>
   )
 }`
