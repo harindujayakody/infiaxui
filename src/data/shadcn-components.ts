@@ -9,7 +9,7 @@ export interface ShadcnComponentDef {
   apiReference?: string[]
 }
 
-export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect", "Container Scroll Animation", "Resizable Navbar", "Hero Sections"]
+export const NEW_COMPONENTS: string[] = ["Questionnaire", "Animated Beam", "Glare Hover", "Dock", "Tweet Card", "Magic Card", "Warp Background", "Floating 3D Particles", "Marquee", "Globe", "Terminal", "Bento Grid", "Rainbow Button", "3D Card Effect", "Animated Shiny Text", "Scroll Based Velocity", "Smooth Cursor", "Animated List", "Ripple", "Striped Pattern", "Pixel Image", "Dia Text Reveal", "Theme Toggler", "Dot Pattern", "Particles", "Tooltip Card", "Animated Testimonials", "Card Spotlight", "Background Ripple Effect", "Comet Card", "Focus Cards", "Lens", "Flickering Grid", "Morphing Text", "Pointer", "Background Gradient Animation", "Cloud Shader", "Chromatic Image", "Image Generation Loader", "Draggable Card", "Animated Tabs", "Evervault Card", "Glowing Effect", "Container Scroll Animation", "Resizable Navbar", "Hero Sections", "Morph Pill Card"]
 
 export const ALL_COMPONENTS_COLUMNS = [
   // Column 1
@@ -33,6 +33,7 @@ export const ALL_COMPONENTS_COLUMNS = [
     "Hero Sections",
     "Image Generation Loader",
     "Lens",
+    "Morph Pill Card",
     "Resizable Navbar",
     "Dia Text Reveal",
     "Dot Pattern",
@@ -1540,6 +1541,42 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
       "avatars",
       "trustedText",
       "className",
+    ],
+  },
+  "Morph Pill Card": {
+    id: "morph-pill-card",
+    name: "Morph Pill Card",
+    description: "An avatar pill that grows into a full profile or product card on hover. It is one surface moving between two measured layouts, so the pill visibly becomes the card instead of a card appearing behind it.",
+    isNew: true,
+    installationCommand: "npx shadcn@latest add @aceternity/morph-pill-card-demo",
+    importCode: `import { MorphPillDeck, MorphPillItem } from "@/components/ui/morph-pill-card"`,
+    usageCode: `<MorphPillDeck
+  items={[
+    {
+      id: "profile",
+      pill: {
+        type: "profile",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+        label: "Maya Okafor",
+      },
+      content: {
+        title: "Maya Okafor",
+        subtitle: "Lead Interaction Designer",
+        company: "Northline • Lisbon",
+        bio: "Shapes how the product feels in motion.",
+        actionText: "Say hello",
+      },
+    },
+  ]}
+/>`,
+    apiReference: [
+      "MorphPillDeck",
+      "MorphPillItem",
+      "items",
+      "defaultActiveId",
+      "trigger",
+      "className",
+      "deckClassName",
     ],
   },
 }

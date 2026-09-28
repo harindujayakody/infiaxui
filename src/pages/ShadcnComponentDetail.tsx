@@ -246,6 +246,8 @@ import { ResizableNavbarDemo } from "@/components/ui/resizable-navbar-demo"
 import { ResizableNavbarGuide } from "@/components/ui/resizable-navbar-guide"
 import { HeroSectionDemo } from "@/components/ui/hero-section-demo"
 import { HeroSectionGuide } from "@/components/ui/hero-section-guide"
+import { MorphPillCardDemo } from "@/components/ui/morph-pill-card-demo"
+import { MorphPillCardGuide } from "@/components/ui/morph-pill-card-guide"
 import { InstallationSection } from "@/components/shadcn/installation-section"
 import { highlightGithubLine } from "@/lib/github-highlighter"
 import { cn } from "@/lib/utils"
@@ -1904,6 +1906,70 @@ export function HeroSectionDemo() {
           </div>
         </div>
       </div>
+    </div>
+  )
+}`
+
+      case "Morph Pill Card":
+        return `import React, { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
+import { MorphPillDeck, MorphPillItem } from "@/components/ui/morph-pill-card"
+
+const CARDS_DATA: MorphPillItem[] = [
+  {
+    id: "profile",
+    pill: {
+      type: "profile",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      label: "Maya Okafor",
+    },
+    content: {
+      title: "Maya Okafor",
+      subtitle: "Lead Interaction Designer",
+      company: "Northline • Lisbon",
+      email: "maya@northline.studio",
+      location: "Remote, UTC+0",
+      bio: "Shapes how the product feels in motion — from first-run flows to the small transitions that make an interface feel considered.",
+      actionText: "Say hello",
+    },
+  },
+  {
+    id: "product",
+    pill: {
+      type: "product",
+      image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=200&q=80",
+      label: "Arc Table Lamp",
+    },
+    content: {
+      title: "Arc Table Lamp",
+      subtitle: "Hand-spun brass, dimmable",
+      price: "€240",
+      bio: "A single sweep of brushed brass with a warm, glare-free shade. Made to order in small batches.",
+      actionText: "See the lamp",
+    },
+  },
+  {
+    id: "event",
+    pill: {
+      type: "event",
+      image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=200&q=80",
+      label: "Low Tide Sessions",
+    },
+    content: {
+      title: "Low Tide Sessions",
+      subtitle: "Live set • Episode 12",
+      time: "Fri 21 Nov • 20:00",
+      bio: "Ambient electronic textures and relaxed downtempo grooves recorded live from the coastal studio.",
+      actionText: "Listen live",
+    },
+  },
+]
+
+export function MorphPillDeckDemo() {
+  return (
+    <div className="relative flex min-h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] p-6 sm:p-12 shadow-2xl select-none">
+      <MorphPillDeck items={CARDS_DATA} defaultActiveId="profile" />
     </div>
   )
 }`
@@ -4472,6 +4538,13 @@ export function ScrollAreaDemo() {
           </div>
         )
 
+      case "Morph Pill Card":
+        return (
+          <div className="w-full flex justify-center py-6">
+            <MorphPillCardDemo />
+          </div>
+        )
+
       case "Progress":
         return (
           <div className="w-full max-w-sm space-y-3 p-4">
@@ -5252,6 +5325,8 @@ export function ScrollAreaDemo() {
         <ResizableNavbarGuide />
       ) : componentData.name === "Hero Sections" ? (
         <HeroSectionGuide />
+      ) : componentData.name === "Morph Pill Card" ? (
+        <MorphPillCardGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />
       ) : componentData.name === "Calendar" ? (

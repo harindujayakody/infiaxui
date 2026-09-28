@@ -68,6 +68,7 @@ import { GlowingEffectBlockPreview } from "@/components/ui/glowing-effect-demo"
 import { ContainerScrollBlockPreview } from "@/components/ui/container-scroll-animation-demo"
 import { ResizableNavbarBlockPreview } from "@/components/ui/resizable-navbar-demo"
 import { HeroSectionsBlockPreview } from "@/components/ui/hero-section-demo"
+import { MorphPillCardBlockPreview } from "@/components/ui/morph-pill-card-demo"
 
 interface BlockItem {
   id: string
@@ -608,6 +609,18 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
         "A navbar that changes width on scroll, responsive and animated.",
       cliCommand: "npx shadcn@latest add @aceternity/resizable-navbar-demo",
       renderPreview: () => <ResizableNavbarBlockPreview />,
+    },
+    {
+      id: "morph-pill-card",
+      title: "Morph Pill Card",
+      category: "Components",
+      badge: "Aceternity",
+      componentTarget: "Morph Pill Card",
+      hasStar: true,
+      description:
+        "An avatar pill that grows into a full profile or product card on hover. It is one surface moving between two measured layouts.",
+      cliCommand: "npx shadcn@latest add @aceternity/morph-pill-card-demo",
+      renderPreview: () => <MorphPillCardBlockPreview />,
     },
   ]
 
