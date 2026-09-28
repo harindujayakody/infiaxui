@@ -1910,7 +1910,7 @@ export function HeroSectionDemo() {
   )
 }`
 
-      case "Morph Pill Card":
+      case "iDynamics":
         return `import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
@@ -4538,7 +4538,7 @@ export function ScrollAreaDemo() {
           </div>
         )
 
-      case "Morph Pill Card":
+      case "iDynamics":
         return (
           <div className="w-full flex justify-center py-6">
             <MorphPillCardDemo />
@@ -5325,7 +5325,7 @@ export function ScrollAreaDemo() {
         <ResizableNavbarGuide />
       ) : componentData.name === "Hero Sections" ? (
         <HeroSectionGuide />
-      ) : componentData.name === "Morph Pill Card" ? (
+      ) : componentData.name === "iDynamics" ? (
         <MorphPillCardGuide />
       ) : componentData.name === "Card" ? (
         <CardGuide />

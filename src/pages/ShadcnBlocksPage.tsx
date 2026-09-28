@@ -611,15 +611,15 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       renderPreview: () => <ResizableNavbarBlockPreview />,
     },
     {
-      id: "morph-pill-card",
-      title: "Morph Pill Card",
+      id: "idynamics",
+      title: "iDynamics",
       category: "Components",
       badge: "Aceternity",
-      componentTarget: "Morph Pill Card",
+      componentTarget: "iDynamics",
       hasStar: true,
       description:
-        "An avatar pill that grows into a full profile or product card on hover. It is one surface moving between two measured layouts.",
-      cliCommand: "npx shadcn@latest add @aceternity/morph-pill-card-demo",
+        "An Apple Dynamic Island-style morphing surface that physically stretches and transforms between a compact pill and full card layout with spring physics.",
+      cliCommand: "npx shadcn@latest add @aceternity/idynamics-demo",
       renderPreview: () => <MorphPillCardBlockPreview />,
     },
   ]

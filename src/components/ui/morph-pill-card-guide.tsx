@@ -14,7 +14,7 @@ export function MorphPillCardGuide() {
     setTimeout(() => setCopiedKey(null), 2000)
   }
 
-  const cliCode = `npx shadcn@latest add @aceternity/morph-pill-card-demo`
+  const cliCode = `npx shadcn@latest add @aceternity/idynamics-demo`
 
   const componentSourceCode = `"use client"
 
@@ -306,7 +306,7 @@ export function MorphPillDeckDemo() {
     <div className="space-y-10 pb-16">
       {/* Component Title & Description */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight text-white">Morph Pill Card</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-white">iDynamics</h1>
         <p className="text-base text-zinc-400">
           An Apple Dynamic Island-inspired morphing surface that physically stretches and transforms between a compact pill and full rich card with continuous layout spring physics.
         </p>
