@@ -1,10 +1,16 @@
 {
   "name": "@infiax/ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A modern, beautifully crafted React UI and animation block library built with Tailwind CSS, Framer Motion, and Radix UI.",
   "main": "./dist/index.html",
+  "bin": {
+    "infiax": "./bin/index.js",
+    "infiax-ui": "./bin/index.js",
+    "@infiax/ui": "./bin/index.js"
+  },
   "files": [
+    "bin",
     "dist",
     "src"
   ],

@@ -107,7 +107,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "image-generation-loader",
       title: "Image Generation Loader",
       category: "Canvas & Shaders",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Image Generation Loader",
       description:
         "A canvas loader that scans across an image with animated pixel grids, text masks, and progress overlays.",
@@ -118,7 +118,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "chromatic-image",
       title: "Chromatic Image",
       category: "Canvas & Shaders",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Chromatic Image",
       description:
         "An interactive image with responsive color separation, displacement, and tilt.",
@@ -129,7 +129,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "cloud-shader",
       title: "Cloud Shader",
       category: "Canvas & Shaders",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Cloud Shader",
       description:
         "Soft procedural clouds that drift across the sky. Tune speed, count, and colors with props.",
@@ -140,7 +140,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "hero-sections",
       title: "Hero Sections",
       category: "Heroes",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Hero Sections",
       hasStar: true,
       description:
@@ -152,7 +152,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "animated-beam",
       title: "Animated Beam",
       category: "Integrations",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Animated Beam",
       description:
         "An animated beam of light which travels along a path. Useful for showcasing integration features.",
@@ -163,7 +163,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "bento-grid",
       title: "Bento Grid",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Bento Grid",
       description:
         "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
@@ -185,7 +185,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "dock",
       title: "Dock",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Dock",
       description:
         "An implementation of the MacOS dock using react + tailwindcss + framer motion",
@@ -196,7 +196,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "glare-hover",
       title: "Glare Hover",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Glare Hover",
       description:
         "A diagonal light glare on hover using a ::before gradient, CSS variables, and background-position animation—no extra global keyframes required.",
@@ -207,7 +207,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "tweet-card",
       title: "Tweet Card",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Tweet Card",
       description:
         "A card that displays a tweet with the author's name, handle, and profile picture.",
@@ -218,7 +218,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "magic-card",
       title: "Magic Card",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Magic Card",
       description:
         "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -229,7 +229,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "warp-background",
       title: "Warp Background",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Warp Background",
       description:
         "A card with a time warping background effect.",
@@ -251,7 +251,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "marquee",
       title: "Marquee",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Marquee",
       description:
         "An infinite scrolling component that can be used to display text, images, or videos.",
@@ -262,7 +262,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "terminal",
       title: "Terminal",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Terminal",
       description:
         "An implementation of the MacOS terminal. Useful for showcasing a command line interface.",
@@ -273,7 +273,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "rainbow-button",
       title: "Rainbow Button",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Rainbow Button",
       description:
         "An animated button with a continuous rainbow linear gradient border and glowing aura.",
@@ -284,7 +284,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "3d-card",
       title: "3D Card Effect",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "3D Card Effect",
       description:
         "A card perspective effect, hover over the card to elevate card elements.",
@@ -295,7 +295,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "animated-shiny-text",
       title: "Animated Shiny Text",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Animated Shiny Text",
       description:
         "A light glare effect which pans across text making it appear as if it is shimmering.",
@@ -306,7 +306,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "scroll-based-velocity",
       title: "Scroll Based Velocity",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Scroll Based Velocity",
       description:
         "Scrolling text whose speed changes based on scroll speed.",
@@ -317,7 +317,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "smooth-cursor",
       title: "Smooth Cursor",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Smooth Cursor",
       description:
         "A customizable, physics-based smooth cursor animation component for React applications.",
@@ -328,7 +328,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "animated-list",
       title: "Animated List",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Animated List",
       description:
         "A list that animates each item in sequence with a delay. Used to showcase notifications or events.",
@@ -339,7 +339,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "ripple",
       title: "Ripple",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Ripple",
       description:
         "An animated ripple effect typically used behind elements to emphasize them.",
@@ -350,7 +350,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "striped-pattern",
       title: "Striped Pattern",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Striped Pattern",
       description:
         "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
@@ -361,7 +361,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "pixel-image",
       title: "Pixel Image",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Pixel Image",
       description:
         "A component that displays your image with a pixelated effect, enhancing visual appeal.",
@@ -372,7 +372,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "dia-text-reveal",
       title: "Dia Text Reveal",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Dia Text Reveal",
       description:
         "A horizontal color band sweeps across text with a gradient shine, then settles on your foreground color.",
@@ -383,7 +383,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "theme-toggler",
       title: "Theme Toggler",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Theme Toggler",
       description:
         "Animated theme toggle using the View Transitions API with configurable clip-path shapes.",
@@ -394,7 +394,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "dot-pattern",
       title: "Dot Pattern",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Dot Pattern",
       description:
         "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
@@ -405,7 +405,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "particles",
       title: "Particles",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Particles",
       description:
         "Particles are a fun way to add some visual flair, movement, and depth to your website.",
@@ -416,7 +416,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "flickering-grid",
       title: "Flickering Grid",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Flickering Grid",
       description:
         "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
@@ -427,7 +427,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "morphing-text",
       title: "Morphing Text",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Morphing Text",
       description:
         "A dynamic text morphing component for Magic UI.",
@@ -438,7 +438,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "pointer",
       title: "Pointer",
       category: "Magic UI",
-      badge: "Magic UI",
+      badge: "Infiax Motion",
       componentTarget: "Pointer",
       description:
         "A component that displays a pointer when hovering over an element.",
@@ -449,7 +449,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "background-gradient-animation",
       title: "Background Gradient Animation",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Background Gradient Animation",
       description:
         "A smooth and elegant background gradient animation that changes the gradient position over time.",
@@ -460,7 +460,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "cloud-shader",
       title: "Cloud Shader",
       category: "Canvas & Shaders",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Cloud Shader",
       description:
         "Soft procedural clouds that drift across the sky. Tune speed, count, and colors with props.",
@@ -471,7 +471,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "tooltip-card",
       title: "Tooltip Card",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Tooltip Card",
       description:
         "A tooltip card container that follows mouse pointer when hovered over.",
@@ -482,7 +482,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "animated-testimonials",
       title: "Animated Testimonials",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Animated Testimonials",
       description:
         "Minimal testimonials sections with image and quote.",
@@ -493,7 +493,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "card-spotlight",
       title: "Card Spotlight",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Card Spotlight",
       description:
         "A card component with a spotlight effect revealing a radial gradient background.",
@@ -504,7 +504,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "background-ripple-effect",
       title: "Background Ripple Effect",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Background Ripple Effect",
       description:
         "A grid of cells that ripple when clicked.",
@@ -515,7 +515,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "comet-card",
       title: "Comet Card",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Comet Card",
       description:
         "A perspective, 3D, Tilt card as seen on Perplexity Comet's website.",
@@ -526,7 +526,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "focus-cards",
       title: "Focus Cards",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Focus Cards",
       description:
         "Hover over the card to focus on it, blurring the rest of the cards.",
@@ -537,7 +537,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "lens",
       title: "Lens",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Lens",
       description:
         "A lens component to zoom into images, videos, or practically anything.",
@@ -548,7 +548,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "draggable-card",
       title: "Draggable Card",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Draggable Card",
       description:
         "A tiltable, draggable card component that jumps on bounds.",
@@ -559,7 +559,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "animated-tabs",
       title: "Animated Tabs",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Animated Tabs",
       description:
         "Tabs to switch content, click on a tab to check background animation.",
@@ -570,7 +570,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "evervault-card",
       title: "Evervault Card",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Evervault Card",
       description:
         "A cool card with amazing hover effect, reveals encrypted text and a mixed gradient.",
@@ -581,7 +581,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "glowing-effect",
       title: "Glowing Effect",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Glowing Effect",
       description:
         "A border glowing effect that adapts to any container or card, as seen on Cursor's website.",
@@ -592,7 +592,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "container-scroll-animation",
       title: "Container Scroll Animation",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Container Scroll Animation",
       description:
         "A scroll animation that rotates in 3d on scroll. Perfect for hero or marketing sections.",
@@ -603,7 +603,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "resizable-navbar",
       title: "Resizable Navbar",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "Resizable Navbar",
       description:
         "A navbar that changes width on scroll, responsive and animated.",
@@ -614,7 +614,7 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
       id: "idynamics",
       title: "iDynamics",
       category: "Components",
-      badge: "Aceternity",
+      badge: "Infiax UI",
       componentTarget: "iDynamics",
       hasStar: true,
       description:
@@ -859,3 +859,4 @@ export function ShadcnBlocksPage({ onSelectComponent }: ShadcnBlocksPageProps) {
     </div>
   )
 }
+

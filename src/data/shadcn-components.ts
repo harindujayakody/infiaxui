@@ -1548,33 +1548,16 @@ export const SHADCN_COMPONENTS_DETAIL: Record<string, ShadcnComponentDef> = {
     name: "iDynamics",
     description: "An Apple Dynamic Island-style morphing surface that physically stretches and transforms between a compact pill and full card layout with spring physics.",
     isNew: true,
-    installationCommand: "npx @infiax/ui add idynamics-demo",
-    importCode: `import { MorphPillDeck, MorphPillItem } from "@/components/ui/morph-pill-card"`,
-    usageCode: `<MorphPillDeck
-  items={[
-    {
-      id: "profile",
-      pill: {
-        type: "profile",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-        label: "Maya Okafor",
-      },
-      content: {
-        title: "Maya Okafor",
-        subtitle: "Lead Interaction Designer",
-        company: "Northline • Lisbon",
-        bio: "Shapes how the product feels in motion.",
-        actionText: "Say hello",
-      },
-    },
-  ]}
-/>`,
+    installationCommand: "npx @infiax/ui add idynamics",
+    importCode: `import { MorphPillDeck } from "@/components/ui/morph-pill-card"`,
+    usageCode: `<MorphPillDeck initialMode="music" defaultOpen={true} />`,
     apiReference: [
       "MorphPillDeck",
-      "MorphPillItem",
-      "items",
-      "defaultActiveId",
+      "DynamicIslandMode",
+      "initialMode",
+      "defaultOpen",
       "className",
+      "onModeChange",
     ],
   },
 }
